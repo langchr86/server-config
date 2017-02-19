@@ -1,5 +1,5 @@
 [Unit]
-Description=Daily trigger for status check
+Description=Daily trigger for btrfs status check
 
 [Timer]
 OnCalendar=daily
