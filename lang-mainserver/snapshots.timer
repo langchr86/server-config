@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily snapshot task
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install] 
+WantedBy=timers.target

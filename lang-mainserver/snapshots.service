@@ -1,0 +1,6 @@
+[Unit]
+Description=Perform snapshoting tasks
+
+[Service]
+ExecStart=/opt/clang/snapshots.sh 
+User=root
