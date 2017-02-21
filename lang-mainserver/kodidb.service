@@ -1,0 +1,12 @@
+[Unit]
+Description=Kodi MariaDB container
+Requires=docker.service
+After=docker.service
+
+[Service] 
+Restart=always
+ExecStart=/usr/bin/docker start -a kodidb
+ExecStop=/usr/bin/docker stop -t 5 kodidb
+
+[Install]
+WantedBy=default.target
