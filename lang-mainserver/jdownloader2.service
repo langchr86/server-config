@@ -1,0 +1,12 @@
+[Unit]
+Description=JDownloader2 container
+Requires=docker.service
+After=docker.service
+
+[Service] 
+Restart=always
+ExecStart=/usr/bin/docker start -a jdownloader2
+ExecStop=/usr/bin/docker stop -t 15 jdownloader2
+
+[Install]
+WantedBy=default.target
