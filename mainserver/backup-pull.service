@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync pull backup of piserver
+
+[Service]
+ExecStart=/opt/clang/backup-pull.sh
+User=clang
