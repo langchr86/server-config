@@ -1,0 +1,9 @@
+[Unit]
+Description=Trigger the generation of the wiki daily.
+
+[Timer]
+OnCalendar=*-*-* 17:00:00
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

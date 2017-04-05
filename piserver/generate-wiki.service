@@ -1,0 +1,6 @@
+[Unit]
+Description=Newly create the wiki.
+
+[Service]
+ExecStart=/home/christian/system-config/generate-wiki.sh
+User=root
