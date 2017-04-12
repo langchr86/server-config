@@ -3,4 +3,4 @@ Description=Startup backup server
 
 [Service]
 ExecStart=/opt/clang/backup-server.sh
-User=clang
+User=root
