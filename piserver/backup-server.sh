@@ -9,5 +9,5 @@ NAS16="/share/lang-nas16/force_on"
 touch ${NAS16}
 sleep 1m
 touch ${NAS08}
-sleep 15m
+sleep 30m
 rm -f ${NAS08} ${NAS16}
