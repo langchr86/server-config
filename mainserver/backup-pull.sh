@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+# let the network establish
+sleep 30
+
+
 ADDR="christian@192.168.0.8"
 DEST="/mnt/subvolumes/share-main/Backups/lang-piserver"
 
