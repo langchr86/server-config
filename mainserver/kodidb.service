@@ -9,4 +9,4 @@ ExecStart=/usr/bin/docker start -a kodidb
 ExecStop=/usr/bin/docker stop -t 10 kodidb
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
