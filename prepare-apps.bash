@@ -19,7 +19,4 @@ cp tmux-helper.bash ~
 cat .bashrc >> ~/.bashrc
 cp git-prompt.bash ~
 
-cd ~
-git clone https://github.com/jf647/btrfs-snap.git
 cp ./btrfs-snap/btrfs-snap /usr/bin
-cd -
