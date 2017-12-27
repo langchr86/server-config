@@ -16,7 +16,7 @@
 set -u
 
 LOG_FACILITY=local0
-VERSION="1.7.3"
+VERSION="1.7.3-custom"
 prog=${0##*/}
 PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin"
 
@@ -191,16 +191,17 @@ function log.error() {
     exit 1;
 }
 
-# Verify that the path is either a valid btrfs mountpoint
-mount -t btrfs | cut -d " " -f 3 | grep "^${mp}$" > /dev/null
-if [ $? -ne 0 ] ; then
-    # or a valid snapshot matching mp
-    btrfs subvolume show $mp | grep "${mp}$" > /dev/null
-    if [ $? -ne 0 ] ; then
-        log.error "${mp} is not a btrfs mountpoint (or old version of btrfs-tools, try > 0.19)"
-        exit 1;
-    fi
-fi
+# This check is not needed in my usecase
+## Verify that the path is either a valid btrfs mountpoint
+#mount -t btrfs | cut -d " " -f 3 | grep "^${mp}$" > /dev/null
+#if [ $? -ne 0 ] ; then
+#    # or a valid snapshot matching mp
+#    btrfs subvolume show $mp | grep "${mp}$" > /dev/null
+#    if [ $? -ne 0 ] ; then
+#        log.error "${mp} is not a btrfs mountpoint (or old version of btrfs-tools, try > 0.19)"
+#        exit 1;
+#    fi
+#fi
 
 # set default for dir
 if [ "x$dir" == "x" ]
