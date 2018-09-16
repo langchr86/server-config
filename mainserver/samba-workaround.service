@@ -1,6 +1,0 @@
-[Unit]
-Description=Workaround to start samba
-
-[Service]
-ExecStart=/opt/clang/samba-workaround.sh 
-User=root

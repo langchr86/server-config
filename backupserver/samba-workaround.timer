@@ -1,8 +1,0 @@
-[Unit]
-Description=Workaround to start samba
-
-[Timer]
-OnBootSec=30
-
-[Install] 
-WantedBy=timers.target
