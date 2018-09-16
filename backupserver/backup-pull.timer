@@ -1,8 +1,8 @@
 [Unit]
-Description=weekly backup pull task
+Description=daily backup pull task
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=daily
 Persistent=true
 
 [Install] 
