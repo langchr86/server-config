@@ -10,6 +10,7 @@ apt-get install openssh-client openssh-server
 apt-get install samba
 apt-get install docker.io
 apt-get install htop iotop
+apt-get install smartmontools
 
 git config --global user.name "Christian Lang"
 git config --global user.email "lang.chr86@gmail.com"
