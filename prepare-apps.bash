@@ -2,15 +2,12 @@
 
 apt-get update
 
-apt-get install -y btrfs-tools
-apt-get install -y lvm2
-apt-get install -y git-core git-gui gitk
-apt-get install -y tmux tree
-apt-get install -y openssh-client openssh-server
-apt-get install -y samba
-apt-get install -y docker.io
-apt-get install -y htop iotop
-apt-get install -y smartmontools
+apt-get install -y --no-install-recommends \
+  btrfs-tools lvm2 smartmontools ledmon \
+  git-core git-gui gitk \
+  tmux tree htop iotop \
+  openssh-client openssh-server \
+  docker.io samba
 
 git config --global user.name "Christian Lang"
 git config --global user.email "lang.chr86@gmail.com"
