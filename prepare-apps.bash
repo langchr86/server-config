@@ -5,7 +5,7 @@ apt-get update
 apt-get install -y --no-install-recommends \
   btrfs-tools lvm2 smartmontools ledmon \
   git-core git-gui gitk \
-  tmux tree htop iotop \
+  tmux tree htop iotop sysstat dstat \
   openssh-client openssh-server \
   docker.io samba
 
