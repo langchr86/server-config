@@ -11,11 +11,11 @@ if [ -f /etc/bash_completion.d/git ]; then
 fi
 
 # source own tools
-if [ -f ./tmux-helper.bash ]; then
-  source ./tmux-helper.bash
+if [ -f ~/tmux-helper.bash ]; then
+  source ~/tmux-helper.bash
 fi
-if [ -f ./git-helper.bash ]; then
-  source ./git-helper.bash
+if [ -f ~/git-helper.bash ]; then
+  source ~/git-helper.bash
 fi
 
 
