@@ -7,13 +7,6 @@
 #
 # Released into Public Domain
 
-# this has to be sourced in .bashrc like:
-#
-#if [ -f ./tmux-helper.bash ]; then
-#	source ./tmux-helper.bash
-#fi
-
-
 if [ -n "$(which tmux 2>/dev/null)" ]; then
     function tmux() {
         local tmux=$(type -fp tmux)

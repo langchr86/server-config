@@ -12,9 +12,9 @@ apt-get install -y --no-install-recommends \
 git config --global user.name "Christian Lang"
 git config --global user.email "lang.chr86@gmail.com"
 
+cp .bash_aliases ~
 cp .tmux.conf ~
 cp tmux-helper.bash ~
-cat .bashrc >> ~/.bashrc
-cp git-prompt.bash ~
+cp git-helper.bash ~
 
 cp ./btrfs-snap/btrfs-snap /usr/bin
