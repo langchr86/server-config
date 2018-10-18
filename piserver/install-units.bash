@@ -12,3 +12,7 @@ TOOL_PATH="/opt/clang"
 
 mkdir -p ${TOOL_PATH}
 cp -f *.sh ${TOOL_PATH}
+
+
+systemctl enable backup-server.timer
+systemctl start backup-server.timer
