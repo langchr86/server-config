@@ -1,6 +1,0 @@
-[Unit]
-Description=Newly create the wiki.
-
-[Service]
-ExecStart=/opt/clang/generate-wiki.sh
-User=root
