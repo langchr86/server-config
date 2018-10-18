@@ -2,10 +2,11 @@
 
 sudo apt-get update
 
-sudo apt-get install -y --no-install-recommends \
-  smartmontools rsync \
+sudo apt-get install -y \
+  xorg xauth xbase-clients x11-common
   git-core git-gui gitk \
-  tmux tree htop iotop sysstat dstat \
+  tmux tree rsync \
+  htop iotop sysstat dstat smartmontools \
   openssh-client openssh-server
 
 git config --global user.name "Christian Lang"
