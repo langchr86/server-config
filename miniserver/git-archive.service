@@ -1,0 +1,5 @@
+[Unit]
+Description=Create git archive releases
+
+[Service]
+ExecStart=/opt/clang/git-archive.sh /git /share/fileshare/git
