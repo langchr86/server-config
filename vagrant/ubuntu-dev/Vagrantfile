@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+
+  # not working #config.ssh.username = "clang"
+  # not working #config.ssh.password = ""
+  config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "ubuntu18-dev"
+    vb.memory = "4096"
+	#vb.cpus = 3
+  end
+
+  config.vm.provision :shell, privileged: false, path: "../../setup-basic.sh"
+  
+  config.vm.provision "file", source: "../../ssh/.", destination: "/tmp"
+  config.vm.provision :shell, privileged: false, path: "../../ssh/setup-ssh.sh"
+  
+  config.vm.provision "file", source: "../../bash/.", destination: "/tmp"
+  config.vm.provision :shell, privileged: false, path: "../../bash/setup-bash.sh"
+  
+  config.vm.provision :shell, privileged: false, path: "../../setup-git.sh"
+  config.vm.provision :shell, privileged: false, path: "../../setup-buildtools.sh"
+  config.vm.provision :shell, privileged: false, path: "../../setup-docker.sh"
+  config.vm.provision :shell, privileged: false, path: "../../tools/install-clion.sh"
+end
