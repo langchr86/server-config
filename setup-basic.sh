@@ -8,7 +8,7 @@ sudo apt-get autoremove -y
 # basic tools
 sudo apt-get install -y \
   tmux tree nano wget iotop htop rsync \
-  htop iotop sysstat dstat smartmontools
+  htop iotop sysstat dstat
 
 # setup timezone
 sudo timedatectl set-timezone Europe/Zurich
