@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SCRIPT_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
+cd ${SCRIPT_DIR}
+
 SD_PATH="/etc/systemd/system"
 
 cp -f ddclient.service ${SD_PATH}
