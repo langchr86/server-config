@@ -1,0 +1,6 @@
+[Unit]
+Description=daily synced media task
+
+[Service]
+ExecStart=/opt/clang/synced-media.sh
+User=clang
