@@ -5,16 +5,14 @@
 sleep 30
 
 
-ADDR="christian@192.168.0.8"
+ADDR="clang@192.168.0.8"
 DEST="/mnt/subvolumes/share-main/Backups/lang-miniserver"
 
-# piserver backup pull
-mkdir -p ${DEST}
 
+mkdir -p ${DEST}/lang-miniserver_git/
 rsync -a --delete --stats ${ADDR}:/git/ ${DEST}/lang-miniserver_git/
 
-rsync -a --delete --stats ${ADDR}:/resilio/ ${DEST}/lang-miniserver_resilio/
-
+mkdir -p ${DEST}/lang-miniserver_share/
 rsync -a --delete --stats ${ADDR}:/share/data/ ${DEST}/lang-miniserver_share/data/
 rsync -a --delete --stats ${ADDR}:/share/fileshare/ ${DEST}/lang-miniserver_share/fileshare/
 rsync -a --delete --stats ${ADDR}:/share/gallery/ ${DEST}/lang-miniserver_share/gallery/
