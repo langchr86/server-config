@@ -14,11 +14,6 @@ fi
 if [ -f ~/tmux-helper.bash ]; then
   source ~/tmux-helper.bash
 fi
-if [ -f ~/git-helper.bash ]; then
-  source ~/git-helper.bash
-  PROMPT_COMMAND="git-find-head-file; $PROMPT_COMMAND"
-  export PS1=$GIT_PROMPT
-fi
 
 export HISTSIZE=9999
 export HISTFILESIZE=99999
