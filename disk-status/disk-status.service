@@ -1,0 +1,6 @@
+[Unit]
+Description=status reporting of disks
+
+[Service]
+ExecStart=/opt/clang/disk-status.sh 
+User=root
