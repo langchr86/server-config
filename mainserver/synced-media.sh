@@ -12,3 +12,4 @@ rsync -a --delete --stats "/mnt/subvolumes/share-main/Bücher/TechnischeLiteratu
 rsync -a --delete --stats "/mnt/subvolumes/share-main/Bücher/Magazine/" "${DEST}/books/magazines/"
 
 rsync -a --delete --stats "/mnt/subvolumes/share-main/Backups/lang-ct2014/lang-ct2014_Daten/Daten/Archiv/08-14 FHNW/" "${DEST}/fhnw_archive/"
+rsync -a --delete --stats "/mnt/subvolumes/share-main/Programme/_BasicSoftware/" "${DEST}/software/"
