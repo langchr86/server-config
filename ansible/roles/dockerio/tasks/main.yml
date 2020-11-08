@@ -1,0 +1,18 @@
+---
+
+- name: Install docker.io and dependencies
+  become: yes
+  apt:
+    name: ['apt-transport-https','ca-certificates','curl','software-properties-common','docker.io','docker-compose']
+
+- name: Create group docker
+  become: yes
+  group:
+    name: docker
+
+- name: Add docker user to docker group
+  become: yes
+  user:
+    name: "{{ ansible_env.USER }}"
+    append: yes
+    groups: docker
