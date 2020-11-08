@@ -1,0 +1,19 @@
+---
+version: "3"
+services:
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission:version-3.00-r0
+    restart: always
+    ports:
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
+    volumes:
+      - {{ transmission_config_folder }}:/config
+      - {{ transmission_download_folder }}:/downloads
+      - {{ transmission_watch_folder }}:/watch
+    environment:
+      - TZ=Europe/Zurich
+      - PUID=1000   # clang
+      - PGID=100   # users

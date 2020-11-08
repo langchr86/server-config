@@ -1,0 +1,7 @@
+---
+
+transmission_config_folder: "/var/local/transmission"
+transmission_download_folder: "/share/downloads/transmission"
+transmission_watch_folder: "/share/downloads/transmission-watch"
+transmission_service_name: "transmission"
+transmission_compose_folder: "/etc/docker-compose/{{ transmission_service_name }}"
