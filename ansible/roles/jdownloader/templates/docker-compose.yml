@@ -1,0 +1,13 @@
+---
+version: "3"
+services:
+  jdownloader:
+    image: jaymoulin/jdownloader
+    container_name: jdownloader
+    restart: always
+    user: 1000:100  # clang:users
+    volumes:
+      - {{ jdownloader_config_folder }}:/opt/JDownloader/cfg
+      - {{ jdownloader_download_folder }}:/opt/JDownloader/Downloads
+    ports:
+      - "3129:3129"

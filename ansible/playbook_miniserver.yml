@@ -30,3 +30,4 @@
   - role: dockerio
   - role: docker-compose-service
   - role: transmission
+  - role: jdownloader
