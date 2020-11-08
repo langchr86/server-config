@@ -2,6 +2,7 @@ server-config
 =============
 
 [![ansible-lint](https://github.com/langchr86/server-config/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/langchr86/server-config/actions/workflows/ansible-lint.yml)
+[![vagrant-up](https://github.com/langchr86/server-config/actions/workflows/vagrant-up.yml/badge.svg)](https://github.com/langchr86/server-config/actions/workflows/vagrant-up.yml)
 
 Configuration of my private server infrastructure.
 Completely managed by ansible and linux containers.
