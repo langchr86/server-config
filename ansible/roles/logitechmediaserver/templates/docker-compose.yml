@@ -1,0 +1,19 @@
+---
+version: "2.3"
+services:
+  logitechmediaserver:
+    container_name: "logitechmediaserver"
+    image: toertel/logitech-media-server
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ lms_config_folder }}:/srv/squeezebox
+      - {{ lms_music_folder }}:/srv/music:ro
+      - {{ lms_additional_music_folder }}:/srv/additional_music:ro
+    ports:
+      - "9000:9000"
+      - "9090:9090"
+      - "3483:3483"
+      - "3483:3483/udp"
+    restart: always
+    init: true

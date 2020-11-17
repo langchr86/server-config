@@ -31,3 +31,4 @@
   - role: docker-compose-service
   - role: transmission
   - role: jdownloader
+  - role: logitechmediaserver

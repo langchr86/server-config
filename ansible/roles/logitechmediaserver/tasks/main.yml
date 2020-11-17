@@ -1,0 +1,34 @@
+---
+
+- name: Create folders
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ lms_user }}"
+    group: "{{ lms_group }}"
+    mode: "775"
+    recurse: yes
+  with_items:
+    - "{{ lms_music_folder }}"
+    - "{{ lms_additional_music_folder }}"
+    - "{{ lms_config_folder }}"
+
+- name: Create folder for docker compose file
+  become: yes
+  file:
+    path: "{{ lms_compose_folder }}"
+    state: directory
+
+- name: Copy docker compose file
+  become: yes
+  template:
+    src: "docker-compose.yml"
+    dest: "{{ lms_compose_folder }}"
+
+- name: Enable and start docker compose service
+  become: yes
+  systemd:
+    name: "docker-compose@{{ lms_service_name }}"
+    state: started
+    enabled: yes
