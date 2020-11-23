@@ -3,7 +3,7 @@ version: "2.3"
 services:
   logitechmediaserver:
     container_name: "logitechmediaserver"
-    image: toertel/logitech-media-server
+    image: toertel/logitech-media-server:v7.9.2-5
     restart: always
     volumes:
       - /etc/localtime:/etc/localtime:ro
