@@ -1,0 +1,16 @@
+---
+version: '3.1'
+services:
+  kodidb:
+    container_name: kodidb
+    image: yobasystems/alpine-mariadb
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - {{ kodidb_data_folder }}:/var/lib/mysql
+      - {{ kodidb_init_folder }}:/init.d
+    environment:
+      MYSQL_ROOT_PASSWORD: kodi
+      MYSQL_USER: kodi
+      MYSQL_PASSWORD: kodi

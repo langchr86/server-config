@@ -32,3 +32,4 @@
   - role: transmission
   - role: jdownloader
   - role: logitechmediaserver
+  - role: kodidb

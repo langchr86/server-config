@@ -1,0 +1,7 @@
+---
+
+kodidb_service_name: "kodidb"
+kodidb_base_folder: "/share/config/{{ kodidb_service_name }}"
+kodidb_data_folder: "{{ kodidb_base_folder }}/data"
+kodidb_init_folder: "{{ kodidb_base_folder }}/init.d"
+kodidb_compose_folder: "/etc/docker-compose/{{ kodidb_service_name }}"
