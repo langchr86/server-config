@@ -12,8 +12,8 @@
     - "{{ kodidb_init_folder }}"
 
 - name: Copy SQL init file
-  copy:
-    src: "kodidb_init.sql"
+  template:
+    src: "{{ kodidb_init_file }}"
     dest: "{{ kodidb_init_folder }}"
     mode: "775"
 
@@ -39,7 +39,7 @@
 
 - name: Grant user rights in Mariadb for Kodi
   shell:
-    cmd: "docker exec {{ kodidb_service_name }} /bin/sh -c '/usr/bin/mariadb --user=root --password=kodi mysql < /init.d/kodidb_init.sql'"
+    cmd: "docker exec {{ kodidb_service_name }} /bin/sh -c '/usr/bin/mariadb --user=root --password={{ kodidb_root_password }} mysql < /init.d/{{ kodidb_init_file }}'"
   when: systemctl.changed
   retries: 4
   delay: 5

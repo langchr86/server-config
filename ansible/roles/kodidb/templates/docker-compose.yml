@@ -11,6 +11,6 @@ services:
       - {{ kodidb_data_folder }}:/var/lib/mysql
       - {{ kodidb_init_folder }}:/init.d
     environment:
-      MYSQL_ROOT_PASSWORD: kodi
-      MYSQL_USER: kodi
-      MYSQL_PASSWORD: kodi
+      MYSQL_ROOT_PASSWORD: {{ kodidb_root_password }}
+      MYSQL_USER: {{ kodidb_user_name }}
+      MYSQL_PASSWORD: {{ kodidb_user_password }}
