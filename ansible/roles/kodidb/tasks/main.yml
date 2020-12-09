@@ -8,8 +8,15 @@
     mode: "777"
   with_items:
     - "{{ kodidb_base_folder }}"
-    - "{{ kodidb_data_folder }}"
     - "{{ kodidb_init_folder }}"
+
+- name: "Create database folder: {{ kodidb_data_folder }}"
+  become: yes
+  file:
+    path: "{{ kodidb_data_folder }}"
+    state: directory
+    mode: "777"
+  register: data_folder
 
 - name: Copy SQL init file
   template:
@@ -35,12 +42,11 @@
     name: "docker-compose@{{ kodidb_service_name }}"
     state: started
     enabled: yes
-  register: systemctl
 
 - name: Grant user rights in Mariadb for Kodi
   shell:
     cmd: "docker exec {{ kodidb_service_name }} /bin/sh -c '/usr/bin/mariadb --user=root --password={{ kodidb_root_password }} mysql < /init.d/{{ kodidb_init_file }}'"
-  when: systemctl.changed
+  when: data_folder.changed
   retries: 4
   delay: 5
   register: dbinit
