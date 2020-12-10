@@ -12,7 +12,7 @@ disks
 
 ###########################################
 # Ansible
-playbook.retry
+*.retry
 
 
 
