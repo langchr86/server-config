@@ -4,7 +4,6 @@ services:
   logitechmediaserver:
     container_name: "logitechmediaserver"
     image: toertel/logitech-media-server:v7.9.2-5
-    restart: always
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - {{ lms_config_folder }}:/srv/squeezebox
