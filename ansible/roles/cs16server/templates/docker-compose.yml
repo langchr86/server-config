@@ -1,0 +1,14 @@
+---
+version: "2.3"
+services:
+  cs16server:
+    container_name: "cs16server"
+    image: b4k3r/cs16-server:latest
+    restart: always
+    ports:
+      - "27015:27015/udp"
+      - "27015:27015/tcp"
+    volumes:
+      - {{ cs_server_config_file }}:/home/steam/cs16/cstrike/server.cfg
+      - {{ cs_bot_config_file }}:/home/steam/cs16/cstrike/addons/podbot/podbot.cfg
+      - {{ cs_mapcycle_config_file }}:/home/steam/cs16/cstrike/mapcycle.txt

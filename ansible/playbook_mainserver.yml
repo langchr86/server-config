@@ -22,4 +22,5 @@
   - role: tmux
   - role: dockerio
   - role: docker-compose-service
-  - role: jdownloader
+  #- role: jdownloader
+  - role: cs16server

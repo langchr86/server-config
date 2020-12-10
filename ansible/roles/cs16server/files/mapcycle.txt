@@ -1,0 +1,17 @@
+de_dust2
+cs_assault
+de_aztec
+cs_office
+de_dust
+cs_italy
+de_chateau
+cs_siege
+de_mirage
+cs_747
+de_nuke
+cs_backalley
+de_prodigy
+cs_militia
+de_train
+de_inferno
+de_cbble
