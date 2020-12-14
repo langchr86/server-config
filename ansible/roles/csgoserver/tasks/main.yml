@@ -1,0 +1,54 @@
+---
+
+- name: "Create app folder: {{ cs_app_folder }}"
+  become: yes
+  file:
+    path: "{{ cs_app_folder }}"
+    state: directory
+    mode: "777"
+    recurse: yes
+
+- name: "Create config folder: {{ cs_config_folder }}"
+  become: yes
+  file:
+    path: "{{ cs_config_folder }}"
+    state: directory
+    mode: "777"
+    recurse: yes
+
+- name: "Copy config files to {{ cs_config_folder }}"
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: "{{ cs_config_folder }}"
+  with_items:
+    - "autoexec.cfg"
+    - "gamemode_casual_server.cfg"
+  register: config
+
+- name: Create folder for docker compose file
+  become: yes
+  file:
+    path: "{{ cs_compose_folder }}"
+    state: directory
+
+- name: Copy docker compose file
+  become: yes
+  template:
+    src: "docker-compose.yml"
+    dest: "{{ cs_compose_folder }}"
+  register: compose
+
+- name: Enable and start docker compose service
+  become: yes
+  systemd:
+    name: "docker-compose@{{ cs_service_name }}"
+    state: started
+    enabled: yes
+
+- name: Restart container
+  become: yes
+  systemd:
+    name: "docker-compose@{{ cs_service_name }}"
+    state: restarted
+  when: compose.changed or config.changed

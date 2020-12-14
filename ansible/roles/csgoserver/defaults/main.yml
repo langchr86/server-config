@@ -1,0 +1,8 @@
+---
+
+cs_service_name: "csgoserver"
+cs_compose_folder: "/etc/docker-compose/{{ cs_service_name }}"
+cs_app_folder: "/etc/{{ cs_service_name }}"
+cs_config_folder: "{{ cs_app_folder }}/csgo/cfg"
+cs_autoexec_file: "{{ cs_config_folder }}/autoexec.cfg"
+cs_server_config_file: "{{ cs_config_folder }}/server.cfg"
