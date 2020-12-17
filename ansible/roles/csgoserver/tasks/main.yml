@@ -24,6 +24,7 @@
   with_items:
     - "autoexec.cfg"
     - "gamemode_casual_server.cfg"
+    - "gamemode_competitive_server.cfg"
   register: config
 
 - name: Create folder for docker compose file
@@ -39,12 +40,11 @@
     dest: "{{ cs_compose_folder }}"
   register: compose
 
-- name: Enable and start docker compose service
+- name: Start docker compose service
   become: yes
   systemd:
     name: "docker-compose@{{ cs_service_name }}"
     state: started
-    enabled: yes
 
 - name: Restart container
   become: yes

@@ -30,12 +30,11 @@
     dest: "{{ cs_compose_folder }}"
   register: compose
 
-- name: Enable and start docker compose service
+- name: Start docker compose service
   become: yes
   systemd:
     name: "docker-compose@{{ cs_service_name }}"
     state: started
-    enabled: yes
 
 - name: Restart container
   become: yes
