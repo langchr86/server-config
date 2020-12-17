@@ -17,7 +17,7 @@ services:
       - SRCDS_RCONPW="admin"
       - SRCDS_PW="scs"
       - SRCDS_GAMETYPE=0
-      - SRCDS_GAMEMODE=0 # 0 casual / 1 competitive
+      - SRCDS_GAMEMODE=1 # 0 casual / 1 competitive
       # https://steamcommunity.com/dev/managegameservers
       - SRCDS_TOKEN=BCFC7F22FBA498944AE76EDD5341E1C2
       - SRCDS_MAXPLAYERS=24
