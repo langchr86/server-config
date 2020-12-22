@@ -3,6 +3,7 @@
 cs_service_name: "cs16server"
 cs_compose_folder: "/etc/docker-compose/{{ cs_service_name }}"
 cs_config_folder: "/etc/{{ cs_service_name }}"
+cs_maps_folder: "{{ cs_config_folder }}/maps"
 cs_server_config_file: "{{ cs_config_folder }}/server.cfg"
 cs_bot_config_file: "{{ cs_config_folder }}/podbot.cfg"
 cs_mapcycle_config_file: "{{ cs_config_folder }}/mapcycle.txt"

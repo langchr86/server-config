@@ -9,6 +9,7 @@ services:
       - "27015:27015/udp"
       - "27015:27015/tcp"
     volumes:
-      - {{ cs_server_config_file }}:/home/steam/cs16/cstrike/server.cfg
-      - {{ cs_bot_config_file }}:/home/steam/cs16/cstrike/addons/podbot/podbot.cfg
-      - {{ cs_mapcycle_config_file }}:/home/steam/cs16/cstrike/mapcycle.txt
+      - {{ cs_server_config_file }}:/home/steam/cs16/cstrike/server.cfg:ro
+      - {{ cs_bot_config_file }}:/home/steam/cs16/cstrike/addons/podbot/podbot.cfg:ro
+      - {{ cs_mapcycle_config_file }}:/home/steam/cs16/cstrike/mapcycle.txt:ro
+      - {{ cs_maps_folder }}:/home/steam/cs16/cstrike/maps:ro
