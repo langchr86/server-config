@@ -15,7 +15,7 @@ services:
       - SRCDS_PORT=27016
       - SRCDS_TV_PORT=27021
       - SRCDS_RCONPW="admin"
-      - SRCDS_PW="scs"
+      - SRCDS_PW="clang"
       - SRCDS_GAMETYPE=0
       - SRCDS_GAMEMODE=1 # 0 casual / 1 competitive
       # https://steamcommunity.com/dev/managegameservers
