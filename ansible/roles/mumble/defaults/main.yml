@@ -1,0 +1,11 @@
+---
+
+mb_user: "clang"
+mb_group: "users"
+mb_cert_user: "www-data"
+mb_cert_group: "www-data"
+mb_service_name: "mumble"
+mb_app_folder: "/share/config/{{ mb_service_name }}"
+mb_config_folder: "{{ mb_app_folder }}/conf"
+mb_data_folder: "{{ mb_app_folder }}/data"
+mb_compose_folder: "/etc/docker-compose/{{ mb_service_name }}"

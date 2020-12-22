@@ -1,0 +1,17 @@
+---
+version: "2.3"
+services:
+  mumble:
+    container_name: "mumble"
+    image: magicalex/mumble:latest
+    restart: always
+    environment:
+      - UID={{ uid.stdout }}
+      - GID={{ gid.stdout }}
+    volumes:
+      - {{ mb_config_folder }}:/opt/mumble/conf:ro
+      - {{ mb_data_folder }}:/opt/mumble/data
+      - /etc/letsencrypt:/opt/mumble/cert:ro
+    ports:
+      - "64738:64738"
+      - "64738:64738/udp"

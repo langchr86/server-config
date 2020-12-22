@@ -33,3 +33,4 @@
   - role: jdownloader
   - role: logitechmediaserver
   - role: kodidb
+  - role: mumble
