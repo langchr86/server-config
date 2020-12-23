@@ -13,21 +13,7 @@
     - "{{ transmission_download_folder }}/incomplete"
     - "{{ transmission_watch_folder }}"
 
-- name: Create folder for docker compose file
-  become: yes
-  file:
-    path: "{{ transmission_compose_folder }}"
-    state: directory
-
-- name: Copy docker compose file
-  become: yes
-  template:
-    src: "docker-compose.yml"
-    dest: "{{ transmission_compose_folder }}"
-
-- name: Enable and start docker compose service
-  become: yes
-  systemd:
-    name: "docker-compose@{{ transmission_service_name }}"
-    state: started
-    enabled: yes
+- include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ transmission_service_name }}"

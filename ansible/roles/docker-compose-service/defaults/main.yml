@@ -1,0 +1,11 @@
+---
+
+# to provide
+service_name: "example"
+compose_template: "templates/docker-compose.yml"
+service_enabled: yes
+force_restart: no
+
+# usually not needed to change
+systemd_folder: "/etc/systemd/system"
+compose_folder: "/etc/docker-compose"

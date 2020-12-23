@@ -1,0 +1,3 @@
+---
+
+compose_service_folder: "{{ compose_folder }}/{{ service_name }}"

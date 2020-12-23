@@ -27,28 +27,9 @@
     - "gamemode_competitive_server.cfg"
   register: config
 
-- name: Create folder for docker compose file
-  become: yes
-  file:
-    path: "{{ cs_compose_folder }}"
-    state: directory
-
-- name: Copy docker compose file
-  become: yes
-  template:
-    src: "docker-compose.yml"
-    dest: "{{ cs_compose_folder }}"
-  register: compose
-
-- name: Start docker compose service
-  become: yes
-  systemd:
-    name: "docker-compose@{{ cs_service_name }}"
-    state: started
-
-- name: Restart container
-  become: yes
-  systemd:
-    name: "docker-compose@{{ cs_service_name }}"
-    state: restarted
-  when: compose.changed or config.changed
+- include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ cs_service_name }}"
+    service_enabled: no
+    force_restart: "{{ config.changed }}"
