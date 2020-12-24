@@ -14,15 +14,13 @@
     - "{{ mb_config_folder }}"
     - "{{ mb_data_folder }}"
 
-- name: "Evaluate {{ mb_cert_user }} UID"
-  command: "id -u {{ mb_cert_user }}"
-  changed_when: false
-  register: uid
+- import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ mb_cert_user }}"
 
-- name: "Evaluate {{ mb_cert_group }} GID"
-  command: "id -g {{ mb_cert_group }}"
-  changed_when: false
-  register: gid
+- import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ mb_cert_group }}"
 
 - name: "Create docker compose service. Run 'docker exec -it mumble supw <new_password>' to change the super user password"
   include_role:

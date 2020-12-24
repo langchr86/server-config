@@ -1,5 +1,7 @@
 ---
 
+transmission_user: "clang"
+transmission_group: "users"
 transmission_config_folder: "/var/local/transmission"
 transmission_download_folder: "/share/downloads/transmission"
 transmission_watch_folder: "/share/downloads/transmission-watch"

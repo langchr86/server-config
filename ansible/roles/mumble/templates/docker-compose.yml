@@ -6,8 +6,8 @@ services:
     image: magicalex/mumble:latest
     restart: always
     environment:
-      - UID={{ uid.stdout }}
-      - GID={{ gid.stdout }}
+      - UID={{ uid }}
+      - GID={{ gid }}
     volumes:
       - {{ mb_config_folder }}:/opt/mumble/conf:ro
       - {{ mb_data_folder }}:/opt/mumble/data

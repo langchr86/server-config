@@ -15,5 +15,5 @@ services:
       - {{ transmission_watch_folder }}:/watch
     environment:
       - TZ=Europe/Zurich
-      - PUID=1000   # clang
-      - PGID=100   # users
+      - PUID={{ uid }}
+      - PGID={{ gid }}

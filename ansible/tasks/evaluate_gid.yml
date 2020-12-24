@@ -1,0 +1,10 @@
+---
+
+- name: "Evaluate GID for '{{ group_name }}'"
+  command: "/bin/bash -c 'cut -d: -f3 < <(getent group {{ group_name }})'"
+  changed_when: false
+  register: gid_stream
+
+- name: "GID for '{{ group_name }}' is '{{ gid_stream.stdout }}'"
+  set_fact:
+    gid: "{{ gid_stream.stdout }}"

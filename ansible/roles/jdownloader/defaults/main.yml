@@ -1,5 +1,7 @@
 ---
 
+jdownloader_user: "clang"
+jdownloader_group: "users"
 jdownloader_config_folder: "/var/local/jdownloader"
 jdownloader_myjd_config_file: "{{ jdownloader_config_folder }}/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json"
 jdownloader_download_folder: "/share/downloads/jdownloader"
