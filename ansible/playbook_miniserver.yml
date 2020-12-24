@@ -1,12 +1,5 @@
 - hosts: all
 
-  pre_tasks:
-  - name: Update package manager repositories
-    become: yes
-    apt:
-      update_cache: yes
-    changed_when: False
-
   roles:
   - role: ssh
     vars:
