@@ -11,10 +11,10 @@
       git_rerere: on
       git_editor_nano: on
       git_prompt: on
-      git_archivestotext: on
-      git_docxtotext: on
-      git_pdftotext: on
-      git_xlsxtotext: on
+      git_archivestotext: off
+      git_docxtotext: off
+      git_pdftotext: off
+      git_xlsxtotext: off
       git_user_name: "Christian Lang"
       git_user_email: "lang.chr86@gmail.com"
 
