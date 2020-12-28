@@ -22,3 +22,6 @@ services:
       - SRCDS_TOKEN=BCFC7F22FBA498944AE76EDD5341E1C2
       - SRCDS_MAXPLAYERS=24
       - SRCDS_STARTMAP="de_dust2"
+      # https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
+      # Domainname: langchr86.mooo.com
+      - SRCDS_WORKSHOP_AUTHKEY=A9AD79BD43FDBBFF75373A441237A1F4
