@@ -25,6 +25,7 @@
     - "autoexec.cfg"
     - "gamemode_casual_server.cfg"
     - "gamemode_competitive_server.cfg"
+    - "gamemode_deathmatch_server.cfg"
   register: config
 
 - include_role:
