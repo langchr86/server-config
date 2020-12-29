@@ -5,8 +5,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: clang
-    group: users
+    owner: "{{ jdownloader_user }}"
+    group: "{{ jdownloader_group }}"
   with_items:
     - "{{ jdownloader_config_folder }}"
     - "{{ jdownloader_download_folder }}"
