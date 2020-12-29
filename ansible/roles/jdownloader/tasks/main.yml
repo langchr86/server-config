@@ -11,7 +11,7 @@
     - "{{ jdownloader_config_folder }}"
     - "{{ jdownloader_download_folder }}"
 
-- name: "Create config file. Do edit manually later: {{ jdownloader_myjd_config_file }}"
+- name: "Create config file. Do edit manually later: '{{ jdownloader_myjd_config_file }}'"
   template:
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"
