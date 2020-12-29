@@ -1,0 +1,10 @@
+- name: Install build tools
+  become: yes
+  package: name={{ item }}
+  with_items:
+  - build-essential
+  - gcc
+  - automake
+  - cmake
+  - autoconf
+  - pkg-config

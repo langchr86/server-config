@@ -1,5 +1,9 @@
 - hosts: all
 
+  pre_tasks:
+  - import_tasks: tasks/basic_setup.yml
+  - import_tasks: tasks/build_tools.yml
+
   roles:
   - role: ssh
     vars:
