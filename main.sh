@@ -6,5 +6,4 @@ ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
 ansible-playbook \
   --inventory 192.168.0.6, \
-  --ask-become-pass \
   ${SCRIPT_DIR}/ansible/playbook_main.yml
