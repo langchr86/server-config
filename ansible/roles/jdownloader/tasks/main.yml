@@ -1,15 +1,21 @@
 ---
 
-- name: Create folders
+- name: "Create configuration folder: '{{ jdownloader_config_folder }}'"
   become: yes
   file:
-    path: "{{ item }}"
+    path: "{{ jdownloader_config_folder }}"
     state: directory
     owner: "{{ jdownloader_user }}"
     group: "{{ jdownloader_group }}"
-  with_items:
-    - "{{ jdownloader_config_folder }}"
-    - "{{ jdownloader_download_folder }}"
+
+- name: "Create download folder: '{{ jdownloader_download_folder }}'"
+  become: yes
+  file:
+    path: "{{ jdownloader_download_folder }}"
+    state: directory
+    mode: "775"
+    owner: "{{ jdownloader_user }}"
+    group: "{{ jdownloader_group }}"
 
 - name: "Create config file. Do edit manually later: '{{ jdownloader_myjd_config_file }}'"
   template:
