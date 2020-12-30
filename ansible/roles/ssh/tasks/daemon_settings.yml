@@ -24,7 +24,6 @@
   with_items:
     - { regexp: "^PermitRootLogin", line: "PermitRootLogin yes" }
     - { regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes" }
-    - { regexp: "^PasswordAuthentication", line: "PasswordAuthentication no" }
     - { regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no" }
 
 - name: "Daemon hardening: local network"
@@ -33,6 +32,6 @@
     path: "{{ sshd_config_file }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Daemon hardening: local network"
     block: |
-      # Allow password login only for local network
+      PasswordAuthentication no
       Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
       PasswordAuthentication yes
