@@ -23,7 +23,7 @@
 - name: "Create docker compose file for: {{ service_name }}"
   become: yes
   template:
-    src: "docker-compose.yml"
+    src: "{{ compose_template }}"
     dest: "{{ compose_service_folder }}/docker-compose.yml"
   register: compose
 
