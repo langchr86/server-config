@@ -28,6 +28,3 @@ systemctl start backup-pull.timer
 
 systemctl enable synced-media.timer
 systemctl start synced-media.timer
-
-systemctl enable jdownloader2.service
-systemctl enable kodidb.service
