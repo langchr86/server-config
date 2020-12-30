@@ -1,0 +1,10 @@
+---
+
+- set_fact:
+    content: "{{ lookup('template', 'templates/host.j2') }}"
+
+- name: "Add host aliases for: '{{ host.name }}' -> '{{ host.real }}'"
+  blockinfile:
+    path: "{{ ssh_user_config_file }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: host alias: {{ host.name }}"
+    block: "{{ content }}"

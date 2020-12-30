@@ -2,3 +2,13 @@
 
 ssh_pub_files: []
 sshd_config_file: "/etc/ssh/sshd_config"
+
+ssh_user_config_folder: "{{ ansible_env.HOME }}/.ssh"
+ssh_user_config_file: "{{ ssh_user_config_folder }}/config"
+ssh_host_aliases:
+  - { name: 'lang-mini', real: '192.168.0.8'}
+  - { name: 'lang-odroid', real: '192.168.0.8'}
+  - { name: 'lang-main', real: '192.168.0.6'}
+  - { name: 'lang-nas16', real: '192.168.0.6'}
+  - { name: 'lang-backup', real: '192.168.0.5'}
+  - { name: 'lang-nas08', real: '192.168.0.5'}

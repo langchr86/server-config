@@ -1,6 +1,0 @@
-Host lang-nas08
-  User clang
-  Hostname 192.168.0.5
-Host lang-nas16
-  User clang
-  Hostname 192.168.0.6

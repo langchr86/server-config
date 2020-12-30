@@ -1,0 +1,6 @@
+---
+
+- include_tasks: tasks/alias.yml
+  with_items: "{{ ssh_host_aliases }}"
+  loop_control:
+    loop_var: host

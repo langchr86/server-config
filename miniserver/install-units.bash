@@ -21,8 +21,3 @@ systemctl enable backup-server.timer
 systemctl start backup-server.timer
 systemctl enable git-archive.timer
 systemctl start git-archive.timer
-
-
-
-# ssh config
-cp config ~/.ssh/

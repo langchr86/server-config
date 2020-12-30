@@ -52,3 +52,10 @@
       # Allow password login only for local network
       Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
       PasswordAuthentication yes
+
+- name: Create users local ssh config folder
+  file:
+    path: "{{ ssh_user_config_folder }}"
+    state: directory
+
+- include_tasks: tasks/host_aliases.yml
