@@ -1,8 +1,0 @@
-
-# Disallow password login
-PasswordAuthentication no
-ChallengeResponseAuthentication no
-
-# Allow password login only for local network
-Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-PasswordAuthentication yes
