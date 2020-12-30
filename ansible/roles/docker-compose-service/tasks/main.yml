@@ -38,10 +38,11 @@
   systemd:
     name: "docker-compose@{{ service_name }}"
     state: started
+  register: start
 
 - name: "Restart service: {{ service_name }}"
   become: yes
   systemd:
     name: "docker-compose@{{ service_name }}"
     state: restarted
-  when: compose.changed or force_restart
+  when: not start.changed and (compose.changed or force_restart)
