@@ -25,8 +25,9 @@
   - role: bash
   - role: tmux
   - role: dockerio
-  - role: transmission
   - role: jdownloader
+
+  - role: transmission
   - role: logitechmediaserver
   - role: kodidb
   - role: mumble

@@ -25,6 +25,9 @@
   - role: bash
   - role: tmux
   - role: dockerio
-  #- role: jdownloader
+  - role: jdownloader
+    vars:
+      jdownloader_download_folder: "/mnt/subvolumes/share-main/Downloads"
+
   - role: cs16server
   - role: csgoserver
