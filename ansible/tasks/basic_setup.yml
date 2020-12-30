@@ -17,11 +17,6 @@
   - sysstat
   - dstat
 
-- name: Install bash-completion
-  become: yes
-  package:
-    name: bash-completion
-
 - name: Install X11 base
   become: yes
   package: name={{ item }}

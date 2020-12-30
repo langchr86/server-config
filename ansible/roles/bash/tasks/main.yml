@@ -1,5 +1,10 @@
 ---
 
+- name: Install bash-completion
+  become: yes
+  package:
+    name: bash-completion
+
 - name: Add bash aliases
   lineinfile:
     dest="~/.bash_aliases"
