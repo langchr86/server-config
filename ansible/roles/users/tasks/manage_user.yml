@@ -1,0 +1,13 @@
+---
+
+- name: "Create user '{{ user_name }}': change passwords later with 'sudo passwd {{ user_name }}'!"
+  become: yes
+  user:
+    name: "{{ user_name }}"
+
+- name: "Add user '{{ user_name }}' to group '{{ main_users_group_name }}'"
+  become: yes
+  user:
+    name: "{{ user_name }}"
+    groups: "{{ main_users_group_name }}"
+    append: yes

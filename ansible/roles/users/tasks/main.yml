@@ -1,0 +1,11 @@
+---
+
+- name: "Create main user group: {{ main_users_group_name }}"
+  become: yes
+  group:
+    name: "{{ main_users_group_name }}"
+
+- include_tasks: tasks/manage_user.yml
+  with_items: "{{ user_names }}"
+  loop_control:
+    loop_var: user_name

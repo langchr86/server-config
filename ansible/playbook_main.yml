@@ -5,6 +5,7 @@
 
 
   roles:
+  - role: users
   - role: ssh
     vars:
       ssh_pub_files: ['ssh_key_clang_home.opub']
