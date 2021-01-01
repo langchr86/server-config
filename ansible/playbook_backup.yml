@@ -1,35 +1,35 @@
 - hosts: all
 
   pre_tasks:
-  - import_tasks: tasks/ubuntu_apt.yml
-  - import_tasks: tasks/basic_setup.yml
+    - import_tasks: tasks/ubuntu_apt.yml
+    - import_tasks: tasks/basic_setup.yml
 
 
   roles:
-  - role: users
-    vars:
-      user_names: ['clang']
+    - role: users
+      vars:
+        user_names: [ 'clang' ]
 
-  - role: ssh
-    vars:
-      ssh_pub_files: ['ssh_key_clang_home.opub']
+    - role: ssh
+      vars:
+        ssh_pub_files: [ 'ssh_key_clang_home.opub' ]
 
-  - role: git-tools
-    vars:
-      git_aliases: on
-      git_rerere: on
-      git_editor_nano: on
-      git_prompt: on
-      git_archivestotext: off
-      git_docxtotext: off
-      git_pdftotext: off
-      git_xlsxtotext: off
-      git_user_name: "Christian Lang"
-      git_user_email: "lang.chr86@gmail.com"
+    - role: git-tools
+      vars:
+        git_aliases: on
+        git_rerere: on
+        git_editor_nano: on
+        git_prompt: on
+        git_archivestotext: off
+        git_docxtotext: off
+        git_pdftotext: off
+        git_xlsxtotext: off
+        git_user_name: "Christian Lang"
+        git_user_email: "lang.chr86@gmail.com"
 
-  - role: bash
-  - role: tmux
+    - role: bash
+    - role: tmux
 
-  - role: wol
-    vars:
-      device: "ens130"
+    - role: wol
+      vars:
+        device: "ens130"
