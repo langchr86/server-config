@@ -17,13 +17,6 @@
   - sysstat
   - dstat
 
-- name: Install X11 base
-  become: yes
-  package: name={{ item }}
-  with_items:
-  - xbase-clients
-  - x11-common
-
 - name: Set timezone to Europe/Zurich
   become: yes
   timezone:
