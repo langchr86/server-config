@@ -28,3 +28,7 @@
 
   - role: bash
   - role: tmux
+
+  - role: wol
+    vars:
+      device: "ens130"

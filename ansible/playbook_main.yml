@@ -28,6 +28,11 @@
 
   - role: bash
   - role: tmux
+
+  - role: wol
+    vars:
+      device: "ens130"
+
   - role: dockerio
   - role: jdownloader
     vars:

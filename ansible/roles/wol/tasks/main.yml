@@ -1,0 +1,27 @@
+---
+
+- name: Systemd service template file for WOL
+  become: yes
+  copy:
+    src: "wol@.service"
+    dest: "{{ systemd_folder }}"
+  register: service_template
+
+- name: Reload systemd config files
+  become: yes
+  systemd:
+    daemon_reload: yes
+  when: service_template.changed
+
+- name: "Set WOL enabled={{ enabled }} for: {{ device }}"
+  become: yes
+  systemd:
+    name: "wol@{{ device }}"
+    enabled: "{{ enabled }}"
+
+- name: "Start WOL for: {{ device }}"
+  become: yes
+  systemd:
+    name: "wol@{{ device }}"
+    state: started
+  when: enabled

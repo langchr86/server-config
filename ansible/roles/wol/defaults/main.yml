@@ -1,0 +1,7 @@
+---
+
+device: ""
+enabled: on
+
+# usually not needed to change
+systemd_folder: "/etc/systemd/system"
