@@ -1,0 +1,11 @@
+---
+
+- name: Install rsync
+  become: yes
+  package:
+    name: rsync
+
+- include_tasks: tasks/task_group.yml
+  with_items: "{{ rsync_groups }}"
+  loop_control:
+    loop_var: task_group

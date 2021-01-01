@@ -37,3 +37,14 @@
     - role: share
       vars:
         share_source: "/mnt/subvolumes/share-main"
+
+    - role: rsync
+      vars:
+        rsync_groups:
+          - name: "backups-lang-main"
+            dest: "/share/backups/lang-main"
+            user: "clang"
+            timer_OnCalendar: "*-*-* 03:00:00"
+            pre_sleep_seconds: 30
+            sources:
+              - "lang-main:/mnt/subvolumes/share-main"

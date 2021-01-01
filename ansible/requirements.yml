@@ -1,2 +1,4 @@
 - src: 'https://github.com/langchr86/git-tools.git'
   version: 'master'
+- src: 'https://github.com/vlcty/ansible-systemd-timers.git'
+  version: '3f300a7'
