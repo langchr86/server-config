@@ -23,5 +23,9 @@
     path: "{{ ssh_user_config_folder }}"
     state: directory
 
+- include_tasks: tasks/ensure_file_exists.yml
+  vars:
+    file_path: "{{ ssh_user_config_file }}"
+
 - include_tasks: tasks/daemon_settings.yml
 - include_tasks: tasks/host_aliases.yml

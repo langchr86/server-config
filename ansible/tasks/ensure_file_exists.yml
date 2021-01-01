@@ -1,0 +1,7 @@
+---
+
+- name: "Ensure file exists: '{{ file_path }}'"
+  copy:
+    content: ""
+    dest: "{{ file_path }}"
+    force: no
