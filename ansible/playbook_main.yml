@@ -34,6 +34,10 @@
       vars:
         device: "ens130"
 
+    - role: share
+      vars:
+        share_source: "/mnt/subvolumes/share-main"
+
     - role: dockerio
     - role: jdownloader
       vars:

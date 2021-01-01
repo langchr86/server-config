@@ -1,0 +1,8 @@
+---
+
+- name: "Create central symlink to main share: '{{ share_path }}' -> '{{ share_source }}'"
+  become: yes
+  file:
+    state: link
+    path: "{{ share_path }}"
+    src: "{{ share_source }}"

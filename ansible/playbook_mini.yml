@@ -34,6 +34,10 @@
 
 
 
+    - role: share
+      vars:
+        share_source: "/mnt/share-main/share"
+
     - role: dockerio
     - role: jdownloader
 
