@@ -18,10 +18,3 @@
   systemd:
     name: "wol@{{ device }}"
     enabled: "{{ enabled }}"
-
-- name: "Start WOL for: {{ device }}"
-  become: yes
-  systemd:
-    name: "wol@{{ device }}"
-    state: started
-  when: enabled
