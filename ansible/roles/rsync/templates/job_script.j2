@@ -3,10 +3,12 @@
 {% if job.pre_sleep_seconds is defined%}
 echo "pre-sleep: {{ job.pre_sleep_seconds }} seconds"
 sleep {{ job.pre_sleep_seconds }}
+printf "************************************************************************************\n\n"
 {% endif %}
 
 {% for step in job.steps %}
 echo "run rsync step: {{ step.src }}/ into {{ step.dest }}/"
-rsync --archive --delete --stats "{{ step.src }}/" "{{ step.dest }}/"
+rsync --archive --delete --stats --itemize-changes "{{ step.src }}/" "{{ step.dest }}/"
+printf "************************************************************************************\n\n"
 
 {% endfor %}
