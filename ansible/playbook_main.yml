@@ -17,9 +17,6 @@
           - { name: "rsync", password: "{{ passwords.rsync }}" }
 
     - role: ssh
-      vars:
-        ssh_pub_files: [ 'ssh_key_clang_home.opub' ]
-
     - role: git-tools
       vars:
         git_aliases: on

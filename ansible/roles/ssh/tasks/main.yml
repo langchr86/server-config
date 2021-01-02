@@ -24,6 +24,12 @@
     state: directory
     mode: "700"
 
+- name: Add technical users private RSA key
+  copy:
+    src: "technical_user_rsa"
+    dest: "{{ ssh_user_config_folder }}/id_rsa"
+    mode: "600"
+
 - include_tasks: tasks/ensure_file_exists.yml
   vars:
     file_path: "{{ ssh_user_config_file }}"

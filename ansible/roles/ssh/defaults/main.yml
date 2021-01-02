@@ -1,6 +1,9 @@
 ---
 
-ssh_pub_files: []
+ssh_pub_files:
+  - 'ssh_key_clang_home.opub'
+  - 'technical_user_rsa.pub'
+
 sshd_config_file: "/etc/ssh/sshd_config"
 
 ssh_user_config_folder: "{{ ansible_env.HOME }}/.ssh"
