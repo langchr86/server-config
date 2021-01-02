@@ -17,7 +17,7 @@
     owner: "{{ jdownloader_user }}"
     group: "{{ jdownloader_group }}"
 
-- name: "Create config file."
+- name: "Create MyJDownloader config file."
   template:
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"

@@ -48,6 +48,7 @@
     - role: jdownloader
       vars:
         jdownloader_download_folder: "/mnt/subvolumes/share-main/Downloads"
+        myjd_password: "{{ passwords.myjd }}"
 
     - role: cs16server
     - role: csgoserver

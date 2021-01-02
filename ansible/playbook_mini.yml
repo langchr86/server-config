@@ -46,6 +46,8 @@
 
     - role: dockerio
     - role: jdownloader
+      vars:
+        myjd_password: "{{ passwords.myjd }}"
 
     - role: transmission
     - role: logitechmediaserver
