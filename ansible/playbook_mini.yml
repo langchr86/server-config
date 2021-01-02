@@ -1,14 +1,20 @@
 - hosts: all
 
   pre_tasks:
+    - include_vars:
+        file: passwords.yml
+        name: passwords
+
     - import_tasks: tasks/ubuntu_apt.yml
     - import_tasks: tasks/basic_setup.yml
     - import_tasks: tasks/build_tools.yml
 
   roles:
     - role: users
-
-
+      vars:
+        users:
+          - { name: "clang", password: "{{ passwords.clang }}" }
+          - { name: "velin", password: "{{ passwords.velin }}" }
 
     - role: ssh
       vars:

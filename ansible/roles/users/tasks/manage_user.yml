@@ -1,13 +1,20 @@
 ---
 
-- name: "Create user '{{ user_name }}': change passwords later with 'sudo passwd {{ user_name }}'!"
+- name: "Create user: '{{ user.name }}'"
   become: yes
   user:
-    name: "{{ user_name }}"
+    name: "{{ user.name }}"
 
-- name: "Add user '{{ user_name }}' to group '{{ main_users_group_name }}'"
+- name: "Add user '{{ user.name }}' to group '{{ main_users_group_name }}'"
   become: yes
   user:
-    name: "{{ user_name }}"
+    name: "{{ user.name }}"
     groups: "{{ main_users_group_name }}"
     append: yes
+
+- name: "Change password of user: '{{ user.name }}'"
+  become: yes
+  user:
+    name: "{{ user.name }}"
+    password: "{{ user.password | password_hash('sha512', passwords.salt) }}"
+  when: user.password is defined

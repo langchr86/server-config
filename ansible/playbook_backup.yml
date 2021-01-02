@@ -1,14 +1,18 @@
 - hosts: all
 
   pre_tasks:
+    - include_vars:
+        file: passwords.yml
+        name: passwords
+
     - import_tasks: tasks/ubuntu_apt.yml
     - import_tasks: tasks/basic_setup.yml
-
 
   roles:
     - role: users
       vars:
-        user_names: [ 'clang' ]
+        users:
+          - { name: "clang", password: "{{ passwords.clang }}" }
 
     - role: ssh
       vars:

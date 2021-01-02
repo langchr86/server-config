@@ -6,6 +6,6 @@
     name: "{{ main_users_group_name }}"
 
 - include_tasks: tasks/manage_user.yml
-  with_items: "{{ user_names }}"
+  with_items: "{{ users }}"
   loop_control:
-    loop_var: user_name
+    loop_var: user
