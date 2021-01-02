@@ -22,6 +22,7 @@
   file:
     path: "{{ ssh_user_config_folder }}"
     state: directory
+    mode: "700"
 
 - include_tasks: tasks/ensure_file_exists.yml
   vars:
