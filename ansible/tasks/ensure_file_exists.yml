@@ -5,3 +5,4 @@
     content: ""
     dest: "{{ file_path }}"
     force: no
+    mode: "{{ file_mode | default('preserve') }}"

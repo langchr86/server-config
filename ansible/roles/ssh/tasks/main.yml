@@ -36,3 +36,4 @@
 
 - include_tasks: tasks/daemon_settings.yml
 - include_tasks: tasks/host_aliases.yml
+- include_tasks: tasks/known_hosts.yml

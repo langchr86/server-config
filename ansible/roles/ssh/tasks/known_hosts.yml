@@ -1,0 +1,11 @@
+---
+
+- include_tasks: tasks/ensure_file_exists.yml
+  vars:
+    file_path: "{{ ssh_known_hosts_file }}"
+    file_mode: "600"
+
+- include_tasks: tasks/known_host.yml
+  with_items: "{{ ssh_host_aliases }}"
+  loop_control:
+    loop_var: host

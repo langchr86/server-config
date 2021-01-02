@@ -1,0 +1,11 @@
+---
+
+- name: "Search for host hash for: '{{ host.real }}'"
+  command: "ssh-keygen -F {{ host.real }}"
+  failed_when: false
+  changed_when: false
+  register: search
+
+- name: "Add missing hash for host: '{{ host.real }}'"
+  command: "/bin/bash -c 'ssh-keyscan -H {{ host.real }} >> {{ ssh_known_hosts_file }}'"
+  when: search.rc == 1
