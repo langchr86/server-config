@@ -63,3 +63,11 @@
             valid_users: +users
             write_list: clang
             include_file: "share-main-include.conf"
+
+    - role: disk-monitoring
+      vars:
+        disk_monitoring_status_log_path: "/share"
+        disk_monitoring_devices:
+          - path: '/dev/sda'
+          - path: '/dev/sdb'
+          - path: '/dev/sdc'
