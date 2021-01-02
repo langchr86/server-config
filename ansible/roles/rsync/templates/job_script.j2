@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+{% if job.pre_sleep_seconds is defined%}
+echo "pre-sleep: {{ job.pre_sleep_seconds }} seconds"
+sleep {{ job.pre_sleep_seconds }}
+{% endif %}
+
+{% for step in job.steps %}
+echo "run rsync step: {{ step.src }}/ into {{ step.dest }}/"
+rsync --archive --delete --stats "{{ step.src }}/" "{{ step.dest }}/"
+
+{% endfor %}

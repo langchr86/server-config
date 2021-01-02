@@ -5,7 +5,14 @@
   package:
     name: rsync
 
-- include_tasks: tasks/task_group.yml
-  with_items: "{{ rsync_groups }}"
+- name: "Create scripts folder: '{{ rsync_script_folder }}'"
+  become: yes
+  file:
+    path: "{{ rsync_script_folder }}"
+    state: directory
+    recurse: yes
+
+- include_tasks: tasks/job.yml
+  with_items: "{{ rsync_jobs }}"
   loop_control:
-    loop_var: task_group
+    loop_var: job

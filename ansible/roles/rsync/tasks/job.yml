@@ -1,25 +1,19 @@
 ---
 
-- name: "Create backup directory: '{{ task_group.dest }}'"
-  file:
-    path: "{{ task_group.dest }}"
-    state: directory
-    recurse: yes
-
 - set_fact:
-    script: "{{ task_group.dest }}/{{ task_group.name }}.bash"
+    script: "{{ rsync_script_folder }}/{{ job.name }}.bash"
 
 # we have to create a dict out of a list to be able to use a variable as key
 # see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
 - set_fact:
     timer_tags:
-      - key: "{{ task_group.name }}"
+      - key: "{{ job.name }}"
         value:
           timer_command: "{{ script }}"
-          timer_user: "{{ task_group.user }}"
+          timer_user: "{{ job.user | default('clang') }}"
           timer_persistent: yes
           timer_AccuracySec: 1m
-          timer_OnCalendar: "{{ task_group.timer_OnCalendar | default('*-*-* 03:00:00') }}"
+          timer_OnCalendar: "{{ job.timer_OnCalendar | default('*-*-* 03:00:00') }}"
 # see: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
 # for definition of value in timer_OnCalendar
 
@@ -32,8 +26,9 @@
     timers:
       - "{{ timer_tags | items2dict }}"
 
-- name: "Create task script: '{{ script }}'"
+- name: "Create job script: '{{ script }}'"
+  become: yes
   template:
-    src: "task_group.j2"
+    src: "job_script.j2"
     dest: "{{ script }}"
     mode: "755"
