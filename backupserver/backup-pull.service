@@ -1,6 +1,0 @@
-[Unit]
-Description=Sync pull backup of main-server
-
-[Service]
-ExecStart=/opt/clang/backup-pull.sh
-User=clang
