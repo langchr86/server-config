@@ -6,4 +6,5 @@ ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
 ansible-playbook \
   --inventory clang@192.168.0.6, \
+  --vault-id infra@${SCRIPT_DIR}/infra_pw \
   ${SCRIPT_DIR}/ansible/playbook_main.yml

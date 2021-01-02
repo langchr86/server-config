@@ -17,11 +17,13 @@
     owner: "{{ jdownloader_user }}"
     group: "{{ jdownloader_group }}"
 
-- name: "Create config file. Do edit manually later: '{{ jdownloader_myjd_config_file }}'"
+- name: "Create config file."
   template:
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"
+    mode: "644"
     force: no
+  register: config
 
 - import_tasks: tasks/evaluate_uid.yml
   vars:
@@ -35,3 +37,4 @@
     name: docker-compose-service
   vars:
     service_name: "{{ jdownloader_service_name }}"
+    force_restart: "{{ config.changed }}"
