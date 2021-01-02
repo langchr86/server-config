@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 {% if task_group.pre_sleep_seconds is defined%}
 echo "pre-sleep: {{ task_group.pre_sleep_seconds }} seconds"
