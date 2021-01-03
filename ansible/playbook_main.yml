@@ -37,6 +37,15 @@
       vars:
         share_source: "/mnt/subvolumes/share-main"
 
+    - role: disk-monitoring
+      vars:
+        disk_monitoring_status_log_path: "/share"
+        disk_monitoring_devices:
+          - path: '/dev/sda'
+          - path: '/dev/sdb'
+          - path: '/dev/sdc'
+          - path: '/dev/sdd'
+
     - role: dockerio
     - role: jdownloader
       vars:

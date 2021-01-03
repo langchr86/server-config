@@ -29,13 +29,16 @@
     - role: bash
     - role: tmux
 
-
-
-
-
     - role: share
       vars:
         share_source: "/mnt/share-main/share"
+
+    - role: disk-monitoring
+      vars:
+        disk_monitoring_status_log_path: "/share"
+        disk_monitoring_devices:
+          - path: '/dev/sda'
+            smart_type: 'sat'
 
     - role: dockerio
     - role: jdownloader
