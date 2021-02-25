@@ -3,7 +3,7 @@ version: "2.3"
 services:
   logitechmediaserver:
     container_name: "logitechmediaserver"
-    image: toertel/logitech-media-server:v7.9.2-5
+    image: toertel/logitech-media-server:v8.1.1-1
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - {{ lms_config_folder }}:/srv/squeezebox
