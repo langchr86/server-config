@@ -19,7 +19,7 @@ services:
       - SRCDS_GAMETYPE=0
       - SRCDS_GAMEMODE=1 # 0 casual / 1 competitive
       # https://steamcommunity.com/dev/managegameservers
-      - SRCDS_TOKEN=BCFC7F22FBA498944AE76EDD5341E1C2
+      - SRCDS_TOKEN=A8EA02F244D4E2EE58AD01A6E78C6634
       - SRCDS_MAXPLAYERS=24
       - SRCDS_STARTMAP="de_dust2"
       # https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
