@@ -10,6 +10,7 @@ ssh_user_config_folder: "{{ ansible_env.HOME }}/.ssh"
 ssh_user_config_file: "{{ ssh_user_config_folder }}/config"
 ssh_known_hosts_file: "{{ ssh_user_config_folder }}/known_hosts"
 
+ssh_evaluate_host_aliases: on
 ssh_host_aliases:
   - { name: 'lang-mini', real: '192.168.0.8'}
   - { name: 'lang-odroid', real: '192.168.0.8'}
