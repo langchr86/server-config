@@ -1,6 +1,6 @@
 ---
 
-mb_user: "clang"
+mb_user: "{{ ansible_env.USER }}"
 mb_group: "users"
 mb_cert_user: "www-data"
 mb_cert_group: "www-data"

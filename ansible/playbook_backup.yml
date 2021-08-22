@@ -4,6 +4,9 @@
     - include_vars:
         file: passwords.yml
         name: passwords
+    - set_fact:
+        main_user: "clang"
+        main_password: "{{ passwords.clang }}"
 
     - import_tasks: tasks/ubuntu_apt.yml
     - import_tasks: tasks/basic_setup.yml
@@ -12,7 +15,7 @@
     - role: users
       vars:
         users:
-          - { name: "clang", password: "{{ passwords.clang }}" }
+          - { name: "{{ main_user }}", password: "{{ main_password }}" }
 
     - role: ssh
     - role: git-tools
@@ -52,26 +55,26 @@
       vars:
         rsync_jobs:
           - name: "backups-lang-main"
-            user: "clang"
+            user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "clang@lang-main:/mnt/subvolumes/share-main", dest: "/share/backups/lang-main/share-main" }
+              - { src: "{{ main_user }}@lang-main:/mnt/subvolumes/share-main", dest: "/share/backups/lang-main/share-main" }
 
     - role: ansible-role-samba
       become: yes
       vars:
         samba_mitigate_cve_2017_7494: off
         samba_users:
-          - name: "clang"
-            password: "{{ passwords.clang }}"
+          - name: "{{ main_user }}"
+            password: "{{ main_password }}"
         samba_shares:
-          - name: share-main
+          - name: "share-main"
             path: "/mnt/pool-main/share-main"
             browseable: on
-            owner: clang
-            group: users
-            write_list: clang
+            owner: "{{ main_user }}"
+            group: "users"
+            write_list: "{{ main_user }}"
 
     - role: disk-monitoring
       vars:

@@ -14,5 +14,7 @@
       "real": "192.168.10.7"
     }
   ],
-  "disk_monitoring_enable_smart": false
+  "disk_monitoring_enable_smart": false,
+  "main_user": "vagrant",
+  "main_password": "vagrant"
 }

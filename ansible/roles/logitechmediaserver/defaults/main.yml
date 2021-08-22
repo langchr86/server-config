@@ -1,6 +1,6 @@
 ---
 
-lms_user: "clang"
+lms_user: "{{ ansible_env.USER }}"
 lms_group: "users"
 lms_config_folder: "/share/config/lms/"
 lms_music_folder: "/share/synced_media/audios/"

@@ -1,6 +1,6 @@
 ---
 
-transmission_user: "clang"
+transmission_user: "{{ ansible_env.USER }}"
 transmission_group: "users"
 transmission_config_folder: "/var/local/transmission"
 transmission_download_folder: "/share/downloads/transmission"

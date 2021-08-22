@@ -10,7 +10,7 @@
       - key: "{{ job.name }}"
         value:
           timer_command: "{{ script }}"
-          timer_user: "{{ job.user | default('clang') }}"
+          timer_user: "{{ job.user | default(ansible_env.USER) }}"
           timer_persistent: yes
           timer_AccuracySec: 1m
           timer_OnCalendar: "{{ job.timer_OnCalendar | default('*-*-* 03:00:00') }}"
@@ -35,7 +35,7 @@
 
 - name: "Create jobs destination folders (if no remote URL)"
   become: yes
-  become_user: "{{ job.user | default('clang') }}"
+  become_user: "{{ job.user | default(ansible_env.USER) }}"
   file:
     path: "{{ item.dest }}"
     state: directory

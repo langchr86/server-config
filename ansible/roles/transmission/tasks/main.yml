@@ -5,8 +5,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: clang
-    group: users
+    owner: "{{ transmission_user }}"
+    group: "{{ transmission_group }}"
   with_items:
     - "{{ transmission_config_folder }}"
     - "{{ transmission_download_folder }}/complete"
