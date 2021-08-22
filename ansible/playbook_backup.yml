@@ -68,8 +68,8 @@
           - name: share-main
             path: "/mnt/pool-main/share-main"
             browseable: on
+            owner: clang
             group: users
-            valid_users: +users
             write_list: clang
 
     - role: disk-monitoring
