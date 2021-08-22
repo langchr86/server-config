@@ -52,6 +52,7 @@
       vars:
         rsync_jobs:
           - name: "backups-lang-main"
+            user: "clang"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
