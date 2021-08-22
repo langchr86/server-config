@@ -71,7 +71,6 @@
             group: users
             valid_users: +users
             write_list: clang
-            include_file: "share-main-include.conf"
 
     - role: disk-monitoring
       vars:
