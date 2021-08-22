@@ -18,5 +18,5 @@ ansible-playbook \
   --limit 127.0.0.1 \
   --vault-id infra@${SCRIPT_DIR}/infra_pw \
   --extra-vars 'ansible_python_interpreter=/usr/bin/python3' \
-  --extra-vars "@${SCRIPT_DIR}/vagrant/ssh_host_aliases.json" \
+  --extra-vars "@${SCRIPT_DIR}/vagrant/vagrant_variables.json" \
   ${SCRIPT_DIR}/ansible/${PLAYBOOK}

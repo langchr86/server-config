@@ -12,6 +12,7 @@
   with_items: "{{ disk_monitoring_devices }}"
   loop_control:
     loop_var: device
+  when: disk_monitoring_enable_smart
 
 - name: "Install helper scripts"
   become: yes

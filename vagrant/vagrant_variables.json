@@ -13,5 +13,6 @@
       "name": "lang-backup",
       "real": "192.168.10.7"
     }
-  ]
+  ],
+  "disk_monitoring_enable_smart": false
 }
