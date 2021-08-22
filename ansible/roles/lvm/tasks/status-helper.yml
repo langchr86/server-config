@@ -1,0 +1,32 @@
+---
+
+- name: "Install helper to show volume status: '{{ lvm_status_helper_path }}'"
+  become: yes
+  template:
+    src: "lvm-status"
+    dest: "{{ lvm_status_helper_path }}"
+    owner: "root"
+    group: "root"
+    mode: 0755
+
+- set_fact:
+    status_log_file: "{{ status_log_path }}/lvm-status.log"
+
+- set_fact:
+    timer_tags:
+      - key: "lvm-status"
+        value:
+          timer_command: "/bin/bash -c \"{{ lvm_status_helper_path }} > {{ status_log_file }}\""
+          timer_user: root
+          timer_persistent: yes
+          timer_AccuracySec: 1m
+          timer_OnCalendar: "*-*-* 03:00:00"
+
+- name: "Setup timer which logs status of: LVM"
+  include_role:
+    name: ansible-systemd-timers
+    apply:
+      become: yes
+  vars:
+    timers:
+      - "{{ timer_tags | items2dict }}"

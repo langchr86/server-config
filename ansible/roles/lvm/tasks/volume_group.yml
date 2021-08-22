@@ -1,0 +1,42 @@
+---
+
+- set_fact:
+    device_list_string: "{{ vg.devices|join(' ') }}"
+
+- name: "Ensure volume group with label: '{{ vg.label }}' not already existing"
+  become: yes
+  command: "vgdisplay {{ vg.label }}"
+  register: vgdisplay
+  changed_when: false
+  failed_when: false
+  ignore_errors: true
+  no_log: true
+
+# for options see: https://btrfs.wiki.kernel.org/index.php/Manpage/mkfs.btrfs
+- name: "Create physical volume on devices: '{{ device_list_string }}'. Use 'wipefs -a <path>' to clean a not empty device."
+  become: yes
+  command: "pvcreate {{ device_list_string }}"
+  when: vgdisplay.rc != 0
+
+- name: "Create volume_group {{ vg.label }} on devices: '{{ device_list_string }}'."
+  become: yes
+  command: "vgcreate {{ vg.label }} {{ device_list_string }}"
+  when: vgdisplay.rc != 0
+
+- name: "Create volume group directory: '{{ vg.mount_path }}'"
+  become: yes
+  file:
+    path: "{{ vg.mount_path }}"
+    state: directory
+
+- name: "Ensure volume group '{{ vg.mount_path }}' is accessible by 'users' group"
+  become: yes
+  file:
+    path: '{{ vg.mount_path }}'
+    group: 'users'
+    mode: '0775'
+
+- include_tasks: tasks/logical_volume.yml
+  with_items: "{{ vg.logical_volumes }}"
+  loop_control:
+    loop_var: lv

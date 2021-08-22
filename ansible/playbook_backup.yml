@@ -31,9 +31,22 @@
       vars:
         device: "ens130"
 
+    - role: lvm
+      vars:
+        status_log_path: "/share"
+        volume_groups:
+          - label: "pool-main"
+            mount_path: "/mnt/pool-main"
+            devices:
+              - "/dev/sdb"
+              - "/dev/sdc"
+            logical_volumes:
+              - label: "share-main"
+                size_options: "-l 100%FREE"
+
     - role: share
       vars:
-        share_source: "/mnt/subvolumes/share-main"
+        share_source: "/mnt/pool-main/share-main"
 
     - role: rsync
       vars:
@@ -53,7 +66,7 @@
             password: "{{ passwords.clang }}"
         samba_shares:
           - name: share-main
-            path: "/mnt/subvolumes/share-main"
+            path: "/mnt/pool-main/share-main"
             browseable: on
             group: users
             valid_users: +users

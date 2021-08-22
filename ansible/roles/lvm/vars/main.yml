@@ -1,0 +1,3 @@
+---
+
+lvm_status_helper_path: "/usr/bin/lvm-status"

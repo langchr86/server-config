@@ -1,0 +1,13 @@
+---
+
+- name: "Install LVM packages"
+  become: yes
+  package:
+    name: "lvm2"
+
+- import_tasks: tasks/status-helper.yml
+
+- include_tasks: tasks/volume_group.yml
+  with_items: "{{ volume_groups }}"
+  loop_control:
+    loop_var: vg
