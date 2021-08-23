@@ -39,7 +39,7 @@
         status_log_path: "/share"
         volume_groups:
           - label: "pool-main"
-            mount_path: "/mnt/pool-main"
+            mount_path: "/mnt/pool-main/subvolumes"
             devices:
               - "/dev/sdb"
               - "/dev/sdc"
@@ -49,7 +49,7 @@
 
     - role: share
       vars:
-        share_source: "/mnt/pool-main/share-main"
+        share_source: "/mnt/pool-main/subvolumes/share-main"
 
     - role: rsync
       vars:
@@ -59,7 +59,7 @@
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "{{ main_user }}@lang-main:/mnt/subvolumes/share-main", dest: "/share/backups/lang-main/share-main" }
+              - { src: "{{ main_user }}@lang-main:/mnt/pool-main/subvolumes/share-main", dest: "/share/backups/lang-main/share-main" }
 
     - role: ansible-role-samba
       become: yes
@@ -70,7 +70,7 @@
             password: "{{ main_password }}"
         samba_shares:
           - name: "share-main"
-            path: "/mnt/pool-main/share-main"
+            path: "/mnt/pool-main/subvolumes/share-main"
             browseable: on
             owner: "{{ main_user }}"
             group: "users"
