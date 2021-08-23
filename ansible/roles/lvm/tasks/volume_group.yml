@@ -23,17 +23,20 @@
   command: "vgcreate {{ vg.label }} {{ device_list_string }}"
   when: vgdisplay.rc != 0
 
-- name: "Create volume group directory: '{{ vg.mount_path }}'"
+- name: "Create volume group directory: '{{ vg.mount_path }}' and set group 'users'"
   become: yes
   file:
     path: "{{ vg.mount_path }}"
     state: directory
+    group: 'users'
+    mode: '0775'
+    recurse: on
 
-- name: "Ensure volume group '{{ vg.mount_path }}' is accessible by 'users' group"
+- name: "Ensure volume group '{{ vg.mount_path }}' is accessible by user '{{ ansible_env.USER }}'"
   become: yes
   file:
     path: '{{ vg.mount_path }}'
-    group: 'users'
+    owner: '{{ ansible_env.USER }}'
     mode: '0775'
 
 - include_tasks: tasks/logical_volume.yml

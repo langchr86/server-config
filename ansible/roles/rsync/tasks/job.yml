@@ -34,11 +34,8 @@
     mode: "755"
 
 - name: "Create jobs destination folders (if no remote URL)"
-  become: yes
-  become_user: "{{ job.user | default(ansible_env.USER) }}"
   file:
     path: "{{ item.dest }}"
     state: directory
-    recurse: yes
   when: item.dest is not search(":")
   with_items: "{{ job.steps }}"

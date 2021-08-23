@@ -32,9 +32,10 @@
         mount_path: "{{ lv_dir }}"
         type: "ext4"
 
-- name: "Ensure logical volume '{{ lv_dir }}' is accessible by 'users' group"
+- name: "Ensure logical volume '{{ lv_dir }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
   become: yes
   file:
     path: '{{ lv_dir }}'
+    owner: '{{ ansible_env.USER }}'
     group: 'users'
     mode: '0775'
