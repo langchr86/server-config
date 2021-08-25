@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Activate the experimental disk feature:
+# $ export VAGRANT_EXPERIMENTAL="disks"
+
 Vagrant.configure("2") do |config|
 
   config.vm.box = "geerlingguy/ubuntu2004"
@@ -14,22 +17,6 @@ Vagrant.configure("2") do |config|
     vb.cpus = 4
     vb.customize ["modifyvm", :id, "--vram", "128"]
     vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
-
-    disk_count = 4
-    disk_size_gb = 20
-    disk_format = 'vdi'
-    disk_controller = 'SCSI'
-
-    (0..disk_count-1).each do |i|
-	  disk_file = "disks/data-disk-#{i}.#{disk_format}"
-	  unless File.exist?(disk_file)
-	    if (i == 0)
-	      vb.customize ["storagectl", :id, "--name", disk_controller, "--add", "sata"]		# create disk controller if not already existing
-	    end
-        vb.customize ['createhd', '--filename', disk_file, '--format', disk_format, '--size', disk_size_gb * 1024]
-      end
-	  vb.customize ['storageattach', :id,  '--storagectl', disk_controller, '--port', i+2, '--device', 0, '--type', 'hdd', '--medium', disk_file]
-    end
   end
 
 
@@ -54,6 +41,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "backup" do |backup|
     backup.vm.hostname = "lang-backup"
     backup.vm.network "private_network", ip: "192.168.10.7"
+    backup.vm.disk :disk, size: "6GB", name: "share_1"
+    backup.vm.disk :disk, size: "6GB", name: "share_2"
 
     backup.vm.provision "shell",
         inline: "/vagrant/vagrant-ansible.sh playbook_backup.yml",
