@@ -10,13 +10,15 @@ sudo apt-get install ansible -y
 
 ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
-chmod -x ${SCRIPT_DIR}/infra_pw
+cat ${SCRIPT_DIR}/infra_pw > /tmp/infra_pw
 
 ansible-playbook \
   --connection=local \
   --inventory 127.0.0.1, \
   --limit 127.0.0.1 \
-  --vault-id infra@${SCRIPT_DIR}/infra_pw \
+  --vault-id infra@/tmp/infra_pw \
   --extra-vars 'ansible_python_interpreter=/usr/bin/python3' \
   --extra-vars "@${SCRIPT_DIR}/vagrant/vagrant_variables.json" \
   ${SCRIPT_DIR}/ansible/${PLAYBOOK}
+
+rm -f /tmp/infra_pw
