@@ -33,9 +33,9 @@
         value:
           timer_command: "/bin/bash -c \"{{ disk_monitoring_disk_status_file }} > {{ disk_monitoring_status_log_path }}/disk-status.log\""
           timer_user: root
-          timer_persistent: yes
           timer_AccuracySec: 1m
-          timer_OnCalendar: "*-*-* 20:00:00"
+          timer_OnBootSec: 15m
+          timer_OnUnitActiveSec: 60m
 
 - name: "Setup daily disk-status timer event"
   include_role:
