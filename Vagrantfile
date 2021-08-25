@@ -28,15 +28,18 @@ Vagrant.configure("2") do |config|
 #        inline: "/vagrant/local-mini.sh",
 #        privileged: false
 #  end
-#
-#  config.vm.define "main" do |main|
-#    main.vm.hostname = "lang-main"
-#    main.vm.network "private_network", ip: "192.168.10.8"
-#
-#    main.vm.provision "shell",
-#        inline: "/vagrant/local-main.sh",
-#        privileged: false
-#  end
+
+  config.vm.define "main" do |main|
+    main.vm.hostname = "lang-main"
+    main.vm.network "private_network", ip: "192.168.10.8"
+    main.vm.disk :disk, size: "8GB", name: "share_1"
+    main.vm.disk :disk, size: "8GB", name: "share_2"
+    main.vm.disk :disk, size: "8GB", name: "share_3"
+
+    main.vm.provision "shell",
+        inline: "/vagrant/vagrant-ansible.sh playbook_empty.yml",
+        privileged: false
+  end
 
   config.vm.define "backup" do |backup|
     backup.vm.hostname = "lang-backup"
