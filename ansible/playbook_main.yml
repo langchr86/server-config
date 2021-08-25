@@ -4,6 +4,9 @@
     - include_vars:
         file: passwords.yml
         name: passwords
+    - set_fact:
+        main_user: "clang"
+        main_password: "{{ passwords.clang }}"
 
     - import_tasks: tasks/ubuntu_apt.yml
     - import_tasks: tasks/basic_setup.yml
@@ -12,7 +15,7 @@
     - role: users
       vars:
         users:
-          - { name: "clang", password: "{{ passwords.clang }}" }
+          - { name: "{{ main_user }}", password: "{{ main_password }}" }
           - { name: "velin", password: "{{ passwords.velin }}" }
           - { name: "rsync", password: "{{ passwords.rsync }}" }
 
@@ -33,9 +36,23 @@
       vars:
         device: "ens130"
 
+    - role: btrfs
+      vars:
+        volumes:
+          - label: "pool-main"
+            mount_path: "/mnt/pool-main"
+            mkfs_options: "--data raid1 --metadata raid1"
+            status_log_path: "/mnt/pool-main/subvolumes/share-main"
+            devices:
+              - "/dev/sdb"
+              - "/dev/sdc"
+              - "/dev/sdd"
+            subvolumes:
+              - "share-main"
+
     - role: share
       vars:
-        share_source: "/mnt/subvolumes/share-main"
+        share_source: "/mnt/pool-main/subvolumes/share-main"
 
     - role: disk-monitoring
       vars:
@@ -49,7 +66,7 @@
     - role: dockerio
     - role: jdownloader
       vars:
-        jdownloader_download_folder: "/mnt/subvolumes/share-main/Downloads"
+        jdownloader_download_folder: "/mnt/pool-main/subvolumes/share-main/Downloads"
         myjd_password: "{{ passwords.myjd }}"
 
     - role: cs16server

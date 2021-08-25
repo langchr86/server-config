@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     main.vm.disk :disk, size: "8GB", name: "share_3"
 
     main.vm.provision "shell",
-        inline: "/vagrant/vagrant-ansible.sh playbook_empty.yml",
+        inline: "/vagrant/vagrant-ansible.sh playbook_main.yml",
         privileged: false
   end
 
