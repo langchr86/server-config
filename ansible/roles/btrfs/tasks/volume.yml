@@ -1,0 +1,51 @@
+- set_fact:
+    device_list_string: "{{ volume.devices|join(' ') }}"
+
+- name: "Ensure filesystem with label: '{{ volume.label }}' not already existing"
+  command: "blkid --label {{ volume.label }}"
+  register: blkid
+  changed_when: false
+  failed_when: false
+  ignore_errors: true
+  no_log: true
+
+# for options see: https://btrfs.wiki.kernel.org/index.php/Manpage/mkfs.btrfs
+- name: "Create btrfs filesystem on devices: '{{ device_list_string }}'. Use 'wipefs -a <path>' to clean a not empty device."
+  become: yes
+  command: >
+    mkfs.btrfs
+    {{ volume.mkfs_options|default('--data single') }}
+    --label {{ volume.label }} {{ device_list_string }}
+  when: blkid.rc != 0
+
+- name: "Create mount point directory: '{{ volume.mount_path }}'"
+  become: yes
+  file:
+    path: "{{ volume.mount_path }}"
+    state: directory
+
+- name: "Mount filesystem with label: '{{ volume.label }}' at '{{ volume.mount_path }}'"
+  become: yes
+  mount:
+    src: 'LABEL={{ volume.label }}'
+    path: '{{ volume.mount_path }}'
+    fstype: btrfs
+    state: mounted
+
+- import_tasks: tasks/volume-status.yml
+
+- import_tasks: tasks/quota.yml
+
+- set_fact:
+    subvolumes_dir: "{{ volume.mount_path }}/subvolumes"
+
+- name: "Create subvolumes directory: '{{ subvolumes_dir }}'"
+  become: yes
+  file:
+    path: "{{ subvolumes_dir }}"
+    state: directory
+
+- include_tasks: tasks/subvolume.yml
+  with_items: "{{ volume.subvolumes }}"
+  loop_control:
+    loop_var: subvolume

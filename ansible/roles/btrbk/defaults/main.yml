@@ -1,0 +1,4 @@
+---
+
+btrbk_pool_label: "pool-main"
+btrbk_mount_path: "/mnt/{{ btrbk_pool_label }}"

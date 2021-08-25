@@ -1,0 +1,4 @@
+---
+
+btrfs_quota_helper_path: "/usr/bin/btrfs-snapshot-quotas"
+btrfs_status_helper_path: "/usr/bin/btrfs-status"

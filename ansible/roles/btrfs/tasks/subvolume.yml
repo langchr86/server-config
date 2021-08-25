@@ -1,0 +1,23 @@
+- set_fact:
+    subvolume_path: "{{ subvolumes_dir }}/{{ subvolume }}"
+
+- name: "Ensure subvolume: '{{ subvolume_path }}' not already existing"
+  become: yes
+  command: "btrfs subvolume list {{ subvolume_path }}"
+  register: subvolume_list
+  changed_when: false
+  failed_when: false
+  ignore_errors: true
+  no_log: true
+
+- name: "Create subvolume: '{{ subvolume_path }}'"
+  become: yes
+  command: "btrfs subvolume create {{ subvolume_path }}"
+  when: subvolume_list.rc != 0
+
+- name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group:"
+  become: yes
+  file:
+    path: '{{ subvolume_path }}'
+    group: 'users'
+    mode: '0775'

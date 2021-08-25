@@ -1,0 +1,4 @@
+---
+
+btrbk_snapshots_path: "{{ btrbk_mount_path }}/snapshots"
+btrbk_base_config_path: "/etc/btrbk"
