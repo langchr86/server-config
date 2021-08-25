@@ -15,9 +15,10 @@
   command: "btrfs subvolume create {{ subvolume_path }}"
   when: subvolume_list.rc != 0
 
-- name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group:"
+- name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
   become: yes
   file:
     path: '{{ subvolume_path }}'
+    owner: '{{ ansible_env.USER }}'
     group: 'users'
     mode: '0775'
