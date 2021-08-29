@@ -63,7 +63,7 @@
             password: "{{ main_password }}"
         samba_shares:
           - name: "share-main"
-            path: "/mnt/pool-main/subvolumes/share-main"
+            path: "/share"
             browseable: on
             owner: "{{ main_user }}"
             group: "users"
@@ -81,7 +81,7 @@
     - role: dockerio
     - role: jdownloader
       vars:
-        jdownloader_download_folder: "/mnt/pool-main/subvolumes/share-main/Downloads"
+        jdownloader_download_folder: "/share/downloads"
         myjd_password: "{{ passwords.myjd }}"
 
     - role: cs16server

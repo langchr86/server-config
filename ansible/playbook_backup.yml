@@ -59,7 +59,7 @@
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "{{ main_user }}@lang-main:/mnt/pool-main/subvolumes/share-main", dest: "/share/backups/lang-main/share-main" }
+              - { src: "{{ main_user }}@lang-main:/share", dest: "/share/backups/lang-main/share-main" }
 
     - role: ansible-role-samba
       become: yes
@@ -70,7 +70,7 @@
             password: "{{ main_password }}"
         samba_shares:
           - name: "share-main"
-            path: "/mnt/pool-main/subvolumes/share-main"
+            path: "/share"
             browseable: on
             owner: "{{ main_user }}"
             group: "users"
