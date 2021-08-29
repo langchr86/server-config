@@ -54,6 +54,43 @@
       vars:
         share_source: "/mnt/pool-main/subvolumes/share-main"
 
+    - role: rsync
+      vars:
+        rsync_jobs:
+          - name: "backups-lang-mini"
+            user: "{{ main_user }}"
+            timer_OnCalendar: "*-*-* 03:00:00"
+            pre_sleep_seconds: 30
+            steps:
+              - { src: "{{ main_user }}@lang-mini:/share/config", dest: "/share/backups/lang-mini/share-main/config" }
+              - { src: "{{ main_user }}@lang-mini:/share/data", dest: "/share/backups/lang-mini/share-main/data" }
+              - { src: "{{ main_user }}@lang-mini:/share/fileshare", dest: "/share/backups/lang-mini/share-main/fileshare" }
+              - { src: "{{ main_user }}@lang-mini:/share/gallery", dest: "/share/backups/lang-mini/share-main/gallery" }
+              - { src: "{{ main_user }}@lang-mini:/share/projects", dest: "/share/backups/lang-mini/share-main/projects" }
+              - { src: "{{ main_user }}@lang-mini:/share/temp", dest: "/share/backups/lang-mini/share-main/temp" }
+              - { src: "{{ main_user }}@lang-mini:/git", dest: "/share/backups/lang-mini/share-main/git" }
+          - name: "synced-lang-mini"
+            user: "{{ main_user }}"
+            timer_OnCalendar: "*-*-* 03:00:00"
+            steps:
+              - { src: "/share/Audios", dest: "{{ main_user }}@lang-mini:/share/synced/audios" }
+              - { src: "/share/Bücher/technology", dest: "{{ main_user }}@lang-mini:/share/synced/books/technology" }
+              - { src: "/share/Bücher/magazines", dest: "{{ main_user }}@lang-mini:/share/synced/books/magazines" }
+
+    - role: rsync-daemon
+      vars:
+        rsyncd_user: "qtdsync"
+        rsyncd_password: "qtdsync"
+        rsyncd_backups_path: "/share/backups"
+        rsyncd_backups:
+          - user_name: "{{ main_user }}"
+            subfolders:
+              - 'lang-ct21'
+              - 'lang-xps13'
+          - user_name: 'velin'
+            subfolders:
+              - 'lang-zen11'
+
     - role: ansible-role-samba
       become: yes
       vars:
