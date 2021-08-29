@@ -33,6 +33,13 @@
     dest: "{{ script }}"
     mode: "755"
 
+- name: "Create jobs source folders (if no remote URL)"
+  file:
+    path: "{{ item.src }}"
+    state: directory
+  when: item.src is not search(":")
+  with_items: "{{ job.steps }}"
+
 - name: "Create jobs destination folders (if no remote URL)"
   file:
     path: "{{ item.dest }}"
