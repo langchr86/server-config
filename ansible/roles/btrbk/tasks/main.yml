@@ -18,8 +18,3 @@
   with_items: "{{ btrbk_subvolumes }}"
   loop_control:
     loop_var: subvolume
-
-- include_tasks: tasks/samba_config.yml
-  with_items: "{{ btrbk_subvolumes }}"
-  loop_control:
-    loop_var: subvolume
