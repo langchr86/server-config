@@ -4,6 +4,9 @@
     - include_vars:
         file: passwords.yml
         name: passwords
+    - set_fact:
+        main_user: "clang"
+        main_password: "{{ passwords.clang }}"
 
     - import_tasks: tasks/ubuntu_apt.yml
     - import_tasks: tasks/basic_setup.yml
@@ -13,7 +16,7 @@
     - role: users
       vars:
         users:
-          - { name: "clang", password: "{{ passwords.clang }}" }
+          - { name: "{{ main_user }}", password: "{{ main_password }}" }
           - { name: "velin", password: "{{ passwords.velin }}" }
 
     - role: ssh
