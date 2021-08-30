@@ -1,6 +1,0 @@
-[Unit]
-Description=status reporting of btrfs filesystem
-
-[Service]
-ExecStart=/opt/clang/btrfs-status.sh 
-User=root

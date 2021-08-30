@@ -1,6 +1,0 @@
-[Unit]
-Description=daily backup pull task
-
-[Service]
-ExecStart=/opt/clang/backup-pull.sh
-User=clang
