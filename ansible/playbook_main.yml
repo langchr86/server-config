@@ -50,6 +50,16 @@
             subvolumes:
               - "share-main"
 
+    - role: btrbk
+      vars:
+        btrbk_pool_label: "pool-main"
+        btrbk_mount_path: "/mnt/pool-main"
+        btrbk_subvolumes:
+          - name: "share-main"
+            snapshot_preserve_min: "1h"
+            snapshot_preserve: "24h 14d 5w 3m"
+            timer_OnCalendar: "*-*-* *:00,30:00"
+
     - role: share
       vars:
         share_source: "/mnt/pool-main/subvolumes/share-main"
@@ -105,6 +115,7 @@
             owner: "{{ main_user }}"
             group: "users"
             write_list: "{{ main_user }}"
+            include_file: "share-main-include.conf"
 
     - role: disk-monitoring
       vars:
