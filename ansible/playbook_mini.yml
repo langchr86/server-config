@@ -34,7 +34,7 @@
 
     - role: share
       vars:
-        share_source: "/mnt/share-main/share"
+        share_source: "/mnt/share-main"
 
     - role: disk-monitoring
       vars:

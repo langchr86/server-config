@@ -1,5 +1,14 @@
 ---
 
+- name: "Create real share directory: '{{ share_source }}'"
+  become: yes
+  file:
+    path: "{{ share_source }}"
+    state: directory
+    mode: 0775
+    owner: "{{ ansible_env.USER }}"
+    group: "users"
+
 - name: "Create central symlink to main share: '{{ share_path }}' -> '{{ share_source }}'"
   become: yes
   file:
