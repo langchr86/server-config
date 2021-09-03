@@ -36,6 +36,19 @@
       vars:
         share_source: "/mnt/share-main"
 
+    - role: user_folders
+      vars:
+        folders:
+          - "/git"
+          - "/share/config/"
+          - "/share/data/"
+          - "/share/fileshare/"
+          - "/share/gallery/"
+          - "/share/lang-backup/"
+          - "/share/lang-main/"
+          - "/share/projects/"
+          - "/share/temp/"
+
     - role: disk-monitoring
       vars:
         disk_monitoring_status_log_path: "/share"
