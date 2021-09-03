@@ -49,6 +49,21 @@
           - "/share/projects/"
           - "/share/temp/"
 
+    - role: ansible-role-samba
+      become: yes
+      vars:
+        samba_mitigate_cve_2017_7494: off
+        samba_users:
+          - name: "{{ main_user }}"
+            password: "{{ main_password }}"
+        samba_shares:
+          - name: "share-main"
+            path: "/share"
+            browseable: on
+            owner: "{{ main_user }}"
+            group: "users"
+            write_list: "{{ main_user }}"
+
     - role: disk-monitoring
       vars:
         disk_monitoring_status_log_path: "/share"
