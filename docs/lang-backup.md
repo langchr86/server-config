@@ -30,8 +30,8 @@ Mount
 -----
 
 ~~~
-sudo mkdir /mnt/snapshots
-sudo mkdir -p /mnt/subvolumes/share-main
+sudo mkdir -p /mnt/pool-main/snapshots
+sudo mkdir -p /mnt/pool-main/subvolumes/share-main
 ~~~
 
 ~~~
@@ -39,15 +39,15 @@ sudo nano /etc/fstab
 ~~~
 
 ~~~
-/dev/pool-main/share-main  /mnt/subvolumes/share-main  ext4  rw,noatime  0 0
+/dev/pool-main/share-main  /mnt/pool-main/subvolumes/share-main  ext4  rw,noatime  0 0
 ~~~
 
 ~~~
-sudo mount /mnt/subvolumes/share-main
+sudo mount /mnt/pool-main/subvolumes/share-main
 ~~~
 
 ~~~
-sudo chown clang:users /mnt/subvolumes/share-main/
-sudo chmod 770 /mnt/subvolumes/share-main
-ll /mnt/subvolumes
+sudo chown clang:users /mnt/pool-main/subvolumes/share-main/
+sudo chmod 770 /mnt/pool-main/subvolumes/share-main
+ll /mnt/pool-main/subvolumes
 ~~~

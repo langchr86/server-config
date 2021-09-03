@@ -82,6 +82,11 @@ sudo reboot
 ~~~
 
 
+### Port forwarding
+
+Ensure that the used listening port `23722` is available from outside NAT via TCP/UDP to Host `192.168.0.8`
+
+
 Update system
 -------------
 
