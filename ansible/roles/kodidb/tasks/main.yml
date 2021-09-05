@@ -34,6 +34,7 @@
     service_name: "{{ kodidb_service_name }}"
 
 - name: Grant user rights in Mariadb for Kodi
+  become: yes
   shell:
     cmd: "docker exec {{ kodidb_service_name }} /bin/sh -c '/usr/bin/mariadb --user=root --password={{ kodidb_root_password }} mysql < /init.d/{{ kodidb_init_file }}'"
   when: data_folder.changed
