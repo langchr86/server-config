@@ -7,6 +7,7 @@
   - wget
   - unzip
   - tar
+  - net-tools
 
 - name: Install system statistics tools
   become: yes
