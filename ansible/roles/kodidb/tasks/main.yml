@@ -5,6 +5,8 @@
   file:
     path: "{{ item }}"
     state: directory
+    owner: "{{ kodidb_user }}"
+    group: "{{ kodidb_group }}"
     mode: "777"
   with_items:
     - "{{ kodidb_base_folder }}"
@@ -15,6 +17,8 @@
   file:
     path: "{{ kodidb_data_folder }}"
     state: directory
+    owner: "{{ kodidb_user }}"
+    group: "{{ kodidb_group }}"
     mode: "777"
   register: data_folder
 
