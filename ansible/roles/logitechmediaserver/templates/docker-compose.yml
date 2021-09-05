@@ -14,5 +14,4 @@ services:
       - "9090:9090"
       - "3483:3483"
       - "3483:3483/udp"
-    restart: always
     init: true

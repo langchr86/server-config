@@ -4,7 +4,6 @@ services:
   transmission:
     container_name: transmission
     image: linuxserver/transmission:version-3.00-r0
-    restart: always
     ports:
       - "9091:9091"
       - "51413:51413"

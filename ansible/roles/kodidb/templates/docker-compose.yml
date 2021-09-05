@@ -4,7 +4,6 @@ services:
   kodidb:
     container_name: kodidb
     image: yobasystems/alpine-mariadb
-    restart: always
     ports:
       - "3306:3306"
     volumes:

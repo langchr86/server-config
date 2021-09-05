@@ -4,7 +4,6 @@ services:
   csgoserver:
     container_name: "csgoserver"
     image: cm2network/csgo:metamod
-    restart: always
     ports:
       - "27016:27016/udp"
       - "27016:27016/tcp"

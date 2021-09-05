@@ -7,7 +7,6 @@ After=docker.service network-online.target
 WorkingDirectory=/etc/docker-compose/%i
 Type=simple
 TimeoutStartSec=15min
-Restart=always
 
 ExecStartPre=/usr/bin/docker-compose pull --quiet --ignore-pull-failures
 ExecStartPre=/usr/bin/docker-compose build --pull

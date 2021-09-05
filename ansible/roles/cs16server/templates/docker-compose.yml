@@ -4,7 +4,6 @@ services:
   cs16server:
     container_name: "cs16server"
     image: b4k3r/cs16-server:latest
-    restart: always
     ports:
       - "27015:27015/udp"
       - "27015:27015/tcp"

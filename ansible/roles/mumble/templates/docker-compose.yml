@@ -4,7 +4,6 @@ services:
   mumble:
     container_name: "mumble"
     image: magicalex/mumble:latest
-    restart: always
     environment:
       - UID={{ uid }}
       - GID={{ gid }}

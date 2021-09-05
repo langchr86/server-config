@@ -4,7 +4,6 @@ services:
   jdownloader:
     image: jaymoulin/jdownloader:2.0.2
     container_name: jdownloader
-    restart: always
     user: {{ uid }}:{{ gid }}
     volumes:
       - {{ jdownloader_config_folder }}:/opt/JDownloader/app/cfg
