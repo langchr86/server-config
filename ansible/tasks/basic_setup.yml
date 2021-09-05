@@ -17,10 +17,10 @@
   - sysstat
   - dstat
 
-- name: Set timezone to Europe/Zurich
+- name: "Set timezone to {{ timezone }}"
   become: yes
   timezone:
-    name: Europe/Zurich
+    name: "{{ timezone }}"
 
 - name: Set locale to en_US.UTF-8
   become: yes

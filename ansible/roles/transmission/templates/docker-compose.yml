@@ -14,6 +14,6 @@ services:
       - {{ transmission_download_folder }}:/downloads
       - {{ transmission_watch_folder }}:/watch
     environment:
-      - TZ=Europe/Zurich
+      - TZ="{{ timezone }}"
       - PUID={{ uid }}
       - PGID={{ gid }}
