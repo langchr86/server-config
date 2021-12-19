@@ -3,7 +3,7 @@
 - name: "Install LVM packages"
   become: yes
   package:
-    name: "lvm2"
+    name: lvm2
 
 - import_tasks: tasks/status-helper.yml
 

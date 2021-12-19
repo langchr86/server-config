@@ -1,22 +1,22 @@
 - name: Install basic tools
   become: yes
-  package: name={{ item }}
-  with_items:
-  - tree
-  - nano
-  - wget
-  - unzip
-  - tar
-  - net-tools
+  package:
+    name:
+      - tree
+      - nano
+      - wget
+      - unzip
+      - tar
+      - net-tools
 
 - name: Install system statistics tools
   become: yes
-  package: name={{ item }}
-  with_items:
-  - iotop
-  - htop
-  - sysstat
-  - dstat
+  package:
+    name:
+      - iotop
+      - htop
+      - sysstat
+      - dstat
 
 - name: "Set timezone to {{ timezone }}"
   become: yes

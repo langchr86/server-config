@@ -12,9 +12,16 @@
 - name: Install Docker CE and dependencies
   become: yes
   apt:
-    name: ['apt-transport-https','ca-certificates','curl','software-properties-common','docker-ce','docker-ce-cli','containerd.io']
     state: present
     update_cache: yes
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
 
 - name: Create group docker
   become: yes

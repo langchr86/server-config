@@ -3,7 +3,13 @@
 - name: Install docker.io and dependencies
   become: yes
   apt:
-    name: ['apt-transport-https','ca-certificates','curl','software-properties-common','docker.io','docker-compose']
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - docker.io
+      - docker-compose
 
 - name: Create group docker
   become: yes

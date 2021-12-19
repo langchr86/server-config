@@ -2,12 +2,12 @@
 
 - name: Install ssh tools
   become: yes
-  package: name={{ item }}
-  with_items:
-  - xorg
-  - xauth
-  - openssh-client
-  - openssh-server
+  package:
+    name:
+      - xorg
+      - xauth
+      - openssh-client
+      - openssh-server
 
 - name: Add authorized keys
   become: yes
