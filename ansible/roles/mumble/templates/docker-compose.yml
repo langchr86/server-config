@@ -8,7 +8,7 @@ services:
       - UID={{ uid }}
       - GID={{ gid }}
     volumes:
-      - {{ mb_config_folder }}:/opt/mumble/conf:ro
+      - {{ mb_config_folder }}:/opt/mumble/conf
       - {{ mb_data_folder }}:/opt/mumble/data
       - /etc/letsencrypt:/opt/mumble/cert:ro
     ports:
