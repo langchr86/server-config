@@ -42,3 +42,10 @@
   delay: 5
   register: dbinit
   until: dbinit.rc == 0
+
+- name: "Ensure correct user/group of database folder: {{ kodidb_data_folder }}"
+  become: yes
+  file:
+    path: "{{ kodidb_data_folder }}"
+    owner: "{{ kodidb_user }}"
+    group: "{{ kodidb_group }}"
