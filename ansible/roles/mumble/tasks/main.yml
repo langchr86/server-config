@@ -1,6 +1,6 @@
 ---
 
-- name: Create folders
+- name: Create app config folder
   become: yes
   file:
     path: "{{ item }}"
@@ -8,9 +8,15 @@
     owner: "{{ mb_user }}"
     group: "{{ mb_group }}"
     mode: "775"
-    recurse: yes
   with_items:
     - "{{ mb_app_folder }}"
+
+- name: Create config subfolders
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
     - "{{ mb_config_folder }}"
     - "{{ mb_data_folder }}"
 
