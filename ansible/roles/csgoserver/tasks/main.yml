@@ -1,29 +1,25 @@
 ---
 
-- name: "Create app folder: {{ cs_app_folder }}"
+- name: "Create folders"
   become: yes
   file:
-    path: "{{ cs_app_folder }}"
+    path: "{{ item }}"
     state: directory
     mode: "777"
-    recurse: yes
+  with_items:
+    - "{{ cs_server_folder }}"
+    - "{{ cs_config_folder }}"
+    - "{{ cs_config_folder }}/cfg"
 
-- name: "Create config folder: {{ cs_config_folder }}"
-  become: yes
-  file:
-    path: "{{ cs_config_folder }}"
-    state: directory
-    mode: "777"
-    recurse: yes
-
-- name: "Copy config files to {{ cs_config_folder }}"
+- name: "Copy config files to {{ cs_config_folder }}/cfg"
   become: yes
   copy:
     src: "{{ item }}"
-    dest: "{{ cs_config_folder }}"
+    dest: "{{ cs_config_folder }}/cfg"
   with_items:
     - "autoexec.cfg"
     - "gamemode_casual_server.cfg"
+    - "gamemode_competitive2v2_server.cfg"
     - "gamemode_competitive_server.cfg"
     - "gamemode_deathmatch_server.cfg"
   register: config

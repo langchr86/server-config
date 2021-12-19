@@ -1,24 +1,30 @@
 ---
-version: "2.3"
+
+# https://github.com/timche/docker-csgo
+# 0 casual / 1 competitive
+# https://steamcommunity.com/dev/managegameservers
+# https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
+# Domainname: langchr86.mooo.com
+
+version: "3.5"
 services:
   csgoserver:
     container_name: "csgoserver"
-    image: cm2network/csgo:metamod
-    ports:
-      - "27016:27016/udp"
-      - "27016:27016/tcp"
-      - "27021:27021/udp"
+    image: timche/csgo:sourcemod-3.0.15
+    network_mode: host
     volumes:
-      - {{ cs_app_folder }}:/home/steam/csgo-dedicated/
+      - {{ cs_server_folder }}:/home/csgo/server
+      - {{ cs_config_folder }}:/usr/csgo
     environment:
-      - SRCDS_PORT=27016
-      - SRCDS_TV_PORT=27021
-      - SRCDS_GAMETYPE=0
-      - SRCDS_GAMEMODE=1 # 0 casual / 1 competitive
-      # https://steamcommunity.com/dev/managegameservers
-      - SRCDS_TOKEN=A8EA02F244D4E2EE58AD01A6E78C6634
-      - SRCDS_MAXPLAYERS=24
-      - SRCDS_STARTMAP="de_dust2"
-      # https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
-      # Domainname: langchr86.mooo.com
-      - SRCDS_WORKSHOP_AUTHKEY=A9AD79BD43FDBBFF75373A441237A1F4
+      - CSGO_PORT=27016
+      - CSGO_TV_PORT=27021
+      - CSGO_PW="clang"
+      - CSGO_RCON_PW="admin86"
+      - CSGO_MAP="de_dust2"
+      - CSGO_MAX_PLAYERS=24
+      - CSGO_GAME_TYPE=0
+      - CSGO_GAME_MODE=0
+      - CSGO_GSLT=01BA7A6250DB8F48DAF09870D82CC1C9
+      - CSGO_WS_API_KEY=A9AD79BD43FDBBFF75373A441237A1F4
+      - SERVER_CONFIGS=true
+      - SOURCEMOD_ADMINS="STEAM_1:0:8287216"

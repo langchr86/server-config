@@ -2,4 +2,5 @@
 
 cs_service_name: "csgoserver"
 cs_app_folder: "/etc/{{ cs_service_name }}"
-cs_config_folder: "{{ cs_app_folder }}/csgo/cfg"
+cs_server_folder: "{{ cs_app_folder }}/server"
+cs_config_folder: "{{ cs_app_folder }}/config"
