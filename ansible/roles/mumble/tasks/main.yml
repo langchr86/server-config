@@ -28,11 +28,19 @@
   vars:
     group_name: "{{ mb_cert_group }}"
 
+- name: "Copy config file to {{ mb_config_folder }}"
+  become: yes
+  template:
+    src: "files/config.ini"
+    dest: "{{ mb_config_folder }}/config.ini"
+  register: config
+
 - name: "Create docker compose service. Run 'docker exec -it mumble supw <new_password>' to change the super user password"
   include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ mb_service_name }}"
+    force_restart: "{{ config.changed }}"
 
 # we have to create a dict out of a list to be able to use a variable as key
 # see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter

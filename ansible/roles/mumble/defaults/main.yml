@@ -2,8 +2,8 @@
 
 mb_user: "{{ ansible_env.USER }}"
 mb_group: "users"
-mb_cert_user: "www-data"
-mb_cert_group: "www-data"
+mb_cert_user: "root"
+mb_cert_group: "root"
 mb_service_name: "mumble"
 mb_app_folder: "/share/config/{{ mb_service_name }}"
 mb_config_folder: "{{ mb_app_folder }}/conf"

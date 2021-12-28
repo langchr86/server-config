@@ -8,9 +8,9 @@ services:
       - UID={{ uid }}
       - GID={{ gid }}
     volumes:
-      - {{ mb_config_folder }}:/opt/mumble/conf
+      - {{ mb_config_folder }}/config.ini:/opt/mumble/conf/config.ini:ro
       - {{ mb_data_folder }}:/opt/mumble/data
-      - /etc/letsencrypt:/opt/mumble/cert:ro
+      - /etc/caddy/data/caddy/certificates:/opt/mumble/cert:ro
     ports:
       - "64738:64738"
       - "64738:64738/udp"
