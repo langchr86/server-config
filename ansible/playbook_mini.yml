@@ -80,3 +80,4 @@
     - role: logitechmediaserver
     - role: kodidb
     - role: mumble
+    - role: caddy

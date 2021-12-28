@@ -15,6 +15,7 @@
     }
   ],
   "disk_monitoring_enable_smart": false,
+  "caddy_domain": "localhost",
   "main_user": "vagrant",
   "main_password": "vagrant"
 }

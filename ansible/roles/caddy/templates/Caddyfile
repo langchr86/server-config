@@ -1,0 +1,4 @@
+{{ caddy_domain }} {
+  root * /srv
+  file_server
+}

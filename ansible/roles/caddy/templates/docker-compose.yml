@@ -1,0 +1,15 @@
+---
+version: "3.5"
+services:
+  caddy:
+    image: caddy:2.4.6
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - {{ caddy_config_folder }}:/config
+      - {{ caddy_data_folder }}:/data
+      - {{ caddy_app_folder }}/Caddyfile:/etc/caddy/Caddyfile
+      - /share/gallery:/srv/gallery
+      - /share/fileshare:/srv/fileshare
+      - /var/www/html/wiki:/srv/wiki
