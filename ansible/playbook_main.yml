@@ -4,6 +4,7 @@
     - include_vars:
         file: passwords.yml
         name: passwords
+      no_log: yes
     - set_fact:
         main_user: "clang"
         main_password: "{{ passwords.clang }}"
