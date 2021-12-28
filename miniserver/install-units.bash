@@ -19,5 +19,3 @@ cp -f *.sh ${TOOL_PATH}
 
 systemctl enable backup-server.timer
 systemctl start backup-server.timer
-systemctl enable git-archive.timer
-systemctl start git-archive.timer
