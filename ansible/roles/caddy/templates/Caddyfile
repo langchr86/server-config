@@ -2,3 +2,26 @@
   root * /srv
   file_server
 }
+
+bitwarden.{{ caddy_domain }}:443 {
+  # This setting may have compatibility issues with some browsers
+  # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.
+  encode gzip
+
+  # Uncomment to allow access to the admin interface only from local networks
+  @insecureadmin {
+    not remote_ip 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+    path /admin*
+  }
+  redir @insecureadmin /
+
+  # Notifications redirected to the websockets server
+  reverse_proxy /notifications/hub bitwarden:3012
+
+  # Proxy everything else to Rocket
+  reverse_proxy bitwarden:80 {
+    # Send the true remote IP to Rocket, so that vaultwarden can put this in the
+    # log, so that fail2ban can ban the correct IP.
+    header_up X-Real-IP {remote_host}
+  }
+}

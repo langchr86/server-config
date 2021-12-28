@@ -1,0 +1,7 @@
+---
+
+- name: "Create docker compose service"
+  include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ bw_service_name }}"

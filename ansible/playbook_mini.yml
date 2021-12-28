@@ -80,6 +80,7 @@
         myjd_password: "{{ passwords.myjd }}"
 
     - role: caddy
+    - role: bitwarden
     - role: transmission
     - role: logitechmediaserver
     - role: kodidb

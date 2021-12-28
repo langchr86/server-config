@@ -16,3 +16,8 @@ services:
       - /share/gallery:/srv/gallery
       - /share/fileshare:/srv/fileshare
       - /var/www/html/wiki:/srv/wiki
+    networks:
+      - bitwarden_net
+
+networks:
+  bitwarden_net:
