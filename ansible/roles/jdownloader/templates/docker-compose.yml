@@ -6,7 +6,12 @@ services:
     container_name: jdownloader
     user: {{ uid }}:{{ gid }}
     volumes:
+      - app_data:/opt/JDownloader/app
       - {{ jdownloader_config_folder }}:/opt/JDownloader/app/cfg
       - {{ jdownloader_download_folder }}:/opt/JDownloader/Downloads
     ports:
       - "3129:3129"
+    restart: always
+
+volumes:
+  app_data:
