@@ -15,7 +15,3 @@ services:
       - "64738:64738"
       - "64738:64738/udp"
 
-    # workaround for https://wiki.alpinelinux.org/wiki/Release_Notes_for_Alpine_3.13.0#musl_1.2
-    # this should be fixed after the system updates docker to 19.03.9
-    security_opt:
-      - "seccomp=unconfined"
