@@ -3,15 +3,15 @@
   "ssh_host_aliases": [
     {
       "name": "lang-mini",
-      "real": "192.168.10.9"
-    },
-    {
-      "name": "lang-main",
       "real": "192.168.10.8"
     },
     {
+      "name": "lang-main",
+      "real": "192.168.10.6"
+    },
+    {
       "name": "lang-backup",
-      "real": "192.168.10.7"
+      "real": "192.168.10.5"
     }
   ],
   "disk_monitoring_enable_smart": false,
