@@ -56,13 +56,15 @@
         samba_users:
           - name: "{{ main_user }}"
             password: "{{ main_password }}"
+          - name: "velin"
+            password: "{{ passwords.velin }}"
         samba_shares:
           - name: "share-main"
             path: "/share"
             browseable: on
             owner: "{{ main_user }}"
             group: "users"
-            write_list: "{{ main_user }}"
+            write_list: "{{ main_user }} velin"
 
     - role: disk-monitoring
       vars:

@@ -108,6 +108,8 @@
         samba_users:
           - name: "{{ main_user }}"
             password: "{{ main_password }}"
+          - name: "velin"
+            password: "{{ passwords.velin }}"
         samba_shares:
           - name: "share-main"
             path: "/share"
