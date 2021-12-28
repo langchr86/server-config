@@ -17,10 +17,15 @@
   file:
     path: "{{ kodidb_data_folder }}"
     state: directory
+  register: data_folder
+
+- name: "Ensure correct user/group of database folder: {{ kodidb_data_folder }}"
+  become: yes
+  file:
+    path: "{{ kodidb_data_folder }}"
     owner: "{{ kodidb_user }}"
     group: "{{ kodidb_group }}"
     mode: "777"
-  register: data_folder
 
 - name: Copy SQL init file
   template:
@@ -42,10 +47,3 @@
   delay: 5
   register: dbinit
   until: dbinit.rc == 0
-
-- name: "Ensure correct user/group of database folder: {{ kodidb_data_folder }}"
-  become: yes
-  file:
-    path: "{{ kodidb_data_folder }}"
-    owner: "{{ kodidb_user }}"
-    group: "{{ kodidb_group }}"
