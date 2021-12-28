@@ -79,8 +79,8 @@
       vars:
         myjd_password: "{{ passwords.myjd }}"
 
+    - role: caddy
     - role: transmission
     - role: logitechmediaserver
     - role: kodidb
     - role: mumble
-    - role: caddy
