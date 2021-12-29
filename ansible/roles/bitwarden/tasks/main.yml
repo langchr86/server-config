@@ -5,3 +5,52 @@
     name: docker-compose-service
   vars:
     service_name: "{{ bw_service_name }}"
+
+- name: "Create data backup folder: {{ bw_backup_folder }}"
+  become: yes
+  file:
+    path: "{{ bw_backup_folder }}"
+    state: directory
+
+- name: "Create script folder: {{ bw_scripts_folder }}"
+  become: yes
+  file:
+    path: "{{ bw_scripts_folder }}"
+    state: directory
+
+- name: "Copy scripts etc. for backup"
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: "{{ bw_scripts_folder }}"
+    mode: "755"
+  with_items:
+    - backup.sh
+    - Dockerfile
+
+- name: "Create run script for backup"
+  become: yes
+  template:
+    src: "templates/run_backup.sh"
+    dest: "{{ bw_scripts_folder }}/run_backup.sh"
+    mode: "755"
+
+# we have to create a dict out of a list to be able to use a variable as key
+# see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
+- set_fact:
+    timer_tags:
+      - key: "{{ bw_service_name }}_backup"
+        value:
+          timer_command: "/share/config/{{ bw_service_name }}/backup_scripts/run_backup.sh"
+          timer_AccuracySec: 1m
+          timer_OnCalendar: "*-*-* 04:00:00"
+
+# see: https://github.com/vlcty/ansible-systemd-timers
+- name: "Install backup timer task for {{ bw_service_name }}"
+  include_role:
+    name: ansible-systemd-timers
+    apply:
+      become: yes
+  vars:
+    timers:
+      - "{{ timer_tags | items2dict }}"
