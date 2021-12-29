@@ -6,6 +6,7 @@ services:
     image: vaultwarden/server:1.23.1
     environment:
       - WEBSOCKET_ENABLED=true
+      - ADMIN_TOKEN={{ passwords.bitwarden_admin }}
     volumes:
       - data:/data
     networks:
