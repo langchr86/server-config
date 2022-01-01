@@ -13,7 +13,5 @@ TODO
   * stdout no journal
   * docker for build and docker for run
 
-* certbot
 * pihole
 * ddclient
-* lighttpd (wiki, gallery, certbot??
