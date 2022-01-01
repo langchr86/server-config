@@ -4,7 +4,6 @@
   become: yes
   package:
     name:
-      - xorg
       - xauth
       - openssh-client
       - openssh-server
