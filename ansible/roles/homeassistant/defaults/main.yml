@@ -1,0 +1,5 @@
+---
+
+user: "{{ ansible_env.USER }}"
+group: "users"
+app_folder: "/share/config/homeassistant"

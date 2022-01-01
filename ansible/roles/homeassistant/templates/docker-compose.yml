@@ -1,0 +1,17 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:2021.12
+    ports:
+      - "8123:8123"
+    volumes:
+      - /share/config/homeassistant:/config
+    environment:
+      - TZ=Europe/Zurich
+    networks:
+      - mosquitto_homeassistant_net
+
+networks:
+  mosquitto_homeassistant_net:
+    external: true
