@@ -4,5 +4,3 @@ caddy_service_name: "caddy"
 caddy_app_folder: "/etc/{{ caddy_service_name }}"
 caddy_config_folder: "{{ caddy_app_folder }}/config"
 caddy_data_folder: "{{ caddy_app_folder }}/data"
-
-caddy_domain: "langchr86.mooo.com"

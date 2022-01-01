@@ -31,7 +31,7 @@
 - name: "Copy config file to {{ mb_config_folder }}"
   become: yes
   template:
-    src: "files/config.ini"
+    src: "templates/config.ini"
     dest: "{{ mb_config_folder }}/config.ini"
   register: config
 

@@ -1,9 +1,9 @@
-{{ caddy_domain }} {
+{{ domain }} {
   root * /srv
   file_server
 }
 
-bitwarden.{{ caddy_domain }}:443 {
+bitwarden.{{ domain }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.
   encode gzip
