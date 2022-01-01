@@ -3,6 +3,7 @@
 # to provide
 service_name: "example"
 compose_template: "templates/docker-compose.yml"
+service_dependencies: []
 service_enabled: yes
 force_restart: no
 

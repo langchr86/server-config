@@ -5,6 +5,8 @@
     name: docker-compose-service
   vars:
     service_name: "{{ bw_service_name }}"
+    service_dependencies:
+      - caddy.service
 
 - name: "Create data backup folder: {{ bw_backup_folder }}"
   become: yes

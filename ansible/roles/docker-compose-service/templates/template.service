@@ -2,6 +2,10 @@
 Description=docker-compose {{ service_name }} service
 Requires=docker.service network-online.target
 After=docker.service network-online.target
+{% for dep in service_dependencies %}
+Requires={{ dep }}
+After={{ dep }}
+{% endfor %}
 
 [Service]
 WorkingDirectory=/etc/docker-compose/{{ service_name }}
