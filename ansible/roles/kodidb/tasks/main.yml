@@ -43,7 +43,7 @@
   shell:
     cmd: "docker exec {{ kodidb_service_name }} /bin/sh -c '/usr/bin/mariadb --user=root --password={{ kodidb_root_password }} mysql < /init.d/{{ kodidb_init_file }}'"
   when: data_folder.changed
-  retries: 4
+  retries: 10
   delay: 5
   register: dbinit
   until: dbinit.rc == 0
