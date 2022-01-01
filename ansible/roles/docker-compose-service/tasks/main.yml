@@ -1,17 +1,17 @@
 ---
 
-- name: Systemd service template file for arbitrary docker-compose services
+- name: "Create systemd service file: {{ service_file_path }}"
   become: yes
-  copy:
-    src: "docker-compose@.service"
-    dest: "{{ systemd_folder }}"
-  register: service_template
+  template:
+    src: "templates/template.service"
+    dest: "{{ service_file_path }}"
+  register: service_file
 
 - name: Reload systemd config files
   become: yes
   systemd:
     daemon_reload: yes
-  when: service_template.changed
+  when: service_file.changed
 
 - name: "Create docker compose folder: {{ compose_service_folder }}"
   become: yes
@@ -20,29 +20,29 @@
     state: directory
     recurse: yes
 
-- name: "Create docker compose file for: {{ service_name }}"
+- name: "Create docker compose file: {{ compose_file_path }}"
   become: yes
   template:
     src: "{{ compose_template }}"
-    dest: "{{ compose_service_folder }}/docker-compose.yml"
+    dest: "{{ compose_file_path }}"
   register: compose
 
 - name: "Set enabled={{ service_enabled }} for: {{ service_name }}"
   become: yes
   systemd:
-    name: "docker-compose@{{ service_name }}"
+    name: "{{ service_name }}"
     enabled: "{{ service_enabled }}"
 
 - name: "Start service: {{ service_name }}"
   become: yes
   systemd:
-    name: "docker-compose@{{ service_name }}"
+    name: "{{ service_name }}"
     state: started
   register: start
 
 - name: "Restart service: {{ service_name }}"
   become: yes
   systemd:
-    name: "docker-compose@{{ service_name }}"
+    name: "{{ service_name }}"
     state: restarted
   when: not start.changed and (compose.changed or force_restart)

@@ -48,7 +48,7 @@
     timer_tags:
       - key: "{{ mb_service_name }}_periodic_restart"
         value:
-          timer_command: "/bin/systemctl try-restart docker-compose@{{ mb_service_name }}"
+          timer_command: "/bin/systemctl try-restart {{ mb_service_name }}"
           timer_AccuracySec: 1m
           timer_OnCalendar: "Mon *-*-* 04:00:00"
 

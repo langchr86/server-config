@@ -8,4 +8,7 @@ force_restart: no
 
 # usually not needed to change
 systemd_folder: "/etc/systemd/system"
+service_file_path: "{{ systemd_folder }}/{{ service_name }}.service"
 compose_folder: "/etc/docker-compose"
+compose_service_folder: "{{ compose_folder }}/{{ service_name }}"
+compose_file_path: "{{ compose_service_folder }}/docker-compose.yml"
