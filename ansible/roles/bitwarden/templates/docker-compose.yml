@@ -11,6 +11,7 @@ services:
       - data:/data
     networks:
       - caddy_bitwarden_net
+    restart: always
 
 volumes:
   data:
