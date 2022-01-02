@@ -8,7 +8,7 @@ services:
     volumes:
       - /share/config/homeassistant:/config
     environment:
-      - TZ=Europe/Zurich
+      - TZ="{{ timezone }}"
     networks:
       - mosquitto_homeassistant_net
 
