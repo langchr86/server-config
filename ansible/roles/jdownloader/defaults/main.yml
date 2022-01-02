@@ -2,7 +2,7 @@
 
 jdownloader_user: "{{ ansible_env.USER }}"
 jdownloader_group: "users"
-jdownloader_config_folder: "/var/local/jdownloader"
+jdownloader_config_folder: "/share/config/jdownloader"
 jdownloader_myjd_config_file: "{{ jdownloader_config_folder }}/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json"
 jdownloader_download_folder: "/share/downloads/jdownloader"
 jdownloader_service_name: "jdownloader"
