@@ -1,0 +1,4 @@
+---
+
+app_folder: "/etc/ddclient"
+config_file: "{{ app_folder }}/ddclient.conf"

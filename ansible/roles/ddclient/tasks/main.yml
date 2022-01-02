@@ -1,0 +1,21 @@
+---
+
+- name: "Create app folder: {{ app_folder }}"
+  become: yes
+  file:
+    path: "{{ app_folder }}"
+    state: directory
+    mode: "744"
+
+- name: "Copy config file to {{ app_folder }}"
+  become: yes
+  template:
+    src: "templates/ddclient.conf"
+    dest: "{{ config_file }}"
+  register: config
+
+- include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "ddclient"
+    force_restart: "{{ config.changed }}"

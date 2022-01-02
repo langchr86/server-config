@@ -87,3 +87,4 @@
     - role: mumble
     - role: mosquitto
     - role: homeassistant
+    - role: ddclient

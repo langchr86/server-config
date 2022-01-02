@@ -1,6 +1,0 @@
-[Unit]
-Description=Perform update of IP address on freedns
-
-[Service]
-ExecStart=/usr/sbin/ddclient -daemon=0 -syslog -quiet -force
-User=root

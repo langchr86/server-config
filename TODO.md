@@ -14,4 +14,3 @@ TODO
   * docker for build and docker for run
 
 * pihole
-* ddclient
