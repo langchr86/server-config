@@ -23,5 +23,6 @@
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
+    auto_restart_if_failing: yes
     service_dependencies:
       - mosquitto.service

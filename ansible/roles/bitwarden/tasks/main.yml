@@ -4,6 +4,7 @@
     name: docker-compose-service
   vars:
     service_name: "{{ bw_service_name }}"
+    auto_restart_if_failing: yes
     service_dependencies:
       - caddy.service
 

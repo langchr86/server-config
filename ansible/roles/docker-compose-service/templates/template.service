@@ -1,5 +1,9 @@
 [Unit]
 Description=docker-compose {{ service_name }} service
+{% if auto_restart_if_failing %}
+StartLimitIntervalSec=5min
+StartLimitBurst=10
+{% endif %}
 Requires=docker.service network-online.target
 After=docker.service network-online.target
 {% for dep in service_dependencies %}
@@ -11,6 +15,10 @@ After={{ dep }}
 WorkingDirectory=/etc/docker-compose/{{ service_name }}
 Type=simple
 TimeoutStartSec=15min
+{% if auto_restart_if_failing %}
+Restart=always
+RestartSec=5sec
+{% endif %}
 
 ExecStart=/usr/bin/docker-compose up --build --remove-orphans
 

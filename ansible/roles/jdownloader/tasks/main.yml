@@ -37,4 +37,5 @@
     name: docker-compose-service
   vars:
     service_name: "{{ jdownloader_service_name }}"
+    auto_restart_if_failing: yes
     force_restart: "{{ config.changed }}"

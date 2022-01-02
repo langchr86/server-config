@@ -6,6 +6,7 @@ compose_template: "templates/docker-compose.yml"
 service_dependencies: []
 service_enabled: yes
 force_restart: no
+auto_restart_if_failing: no
 
 # usually not needed to change
 systemd_folder: "/etc/systemd/system"
