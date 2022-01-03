@@ -2,21 +2,10 @@
   "hostname_mini": "vm-mini",
   "hostname_main": "vm-main",
   "hostname_backup": "vm-backup",
+  "ip_address_mini": "192.168.10.8",
+  "ip_address_main": "192.168.10.6",
+  "ip_address_backup": "192.168.10.5",
   "ssh_evaluate_host_aliases": false,
-  "ssh_host_aliases": [
-    {
-      "name": "{{ hostname_mini }}",
-      "real": "192.168.10.8"
-    },
-    {
-      "name": "{{ hostname_main }}",
-      "real": "192.168.10.6"
-    },
-    {
-      "name": "{{ hostname_backup }}",
-      "real": "192.168.10.5"
-    }
-  ],
   "disk_monitoring_enable_smart": false,
   "domain": "localhost",
   "cert_authority": "local",
