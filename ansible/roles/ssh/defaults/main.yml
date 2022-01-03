@@ -12,9 +12,9 @@ ssh_known_hosts_file: "{{ ssh_user_config_folder }}/known_hosts"
 
 ssh_evaluate_host_aliases: on
 ssh_host_aliases:
-  - { name: 'lang-mini', real: '192.168.0.8'}
+  - { name: '{{ hostname_mini }}', real: '192.168.0.8'}
   - { name: 'lang-odroid', real: '192.168.0.8'}
-  - { name: 'lang-main', real: '192.168.0.6'}
+  - { name: '{{ hostname_main }}', real: '192.168.0.6'}
   - { name: 'lang-nas16', real: '192.168.0.6'}
-  - { name: 'lang-backup', real: '192.168.0.5'}
+  - { name: '{{ hostname_backup }}', real: '192.168.0.5'}
   - { name: 'lang-nas08', real: '192.168.0.5'}

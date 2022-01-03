@@ -69,25 +69,25 @@
     - role: rsync
       vars:
         rsync_jobs:
-          - name: "backups-lang-mini"
+          - name: "backups-{{ hostname_mini }}"
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "{{ main_user }}@lang-mini:/share/config", dest: "/share/backups/lang-mini/share-main/config" }
-              - { src: "{{ main_user }}@lang-mini:/share/data", dest: "/share/backups/lang-mini/share-main/data" }
-              - { src: "{{ main_user }}@lang-mini:/share/fileshare", dest: "/share/backups/lang-mini/share-main/fileshare" }
-              - { src: "{{ main_user }}@lang-mini:/share/gallery", dest: "/share/backups/lang-mini/share-main/gallery" }
-              - { src: "{{ main_user }}@lang-mini:/share/projects", dest: "/share/backups/lang-mini/share-main/projects" }
-              - { src: "{{ main_user }}@lang-mini:/share/temp", dest: "/share/backups/lang-mini/share-main/temp" }
-              - { src: "{{ main_user }}@lang-mini:/git", dest: "/share/backups/lang-mini/share-main/git" }
-          - name: "synced-lang-mini"
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/data", dest: "/share/backups/{{ hostname_mini }}/share-main/data" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/fileshare", dest: "/share/backups/{{ hostname_mini }}/share-main/fileshare" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/gallery", dest: "/share/backups/{{ hostname_mini }}/share-main/gallery" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/projects", dest: "/share/backups/{{ hostname_mini }}/share-main/projects" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp" }
+              - { src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git" }
+          - name: "synced-{{ hostname_mini }}"
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             steps:
-              - { src: "/share/Audios", dest: "{{ main_user }}@lang-mini:/share/synced/audios" }
-              - { src: "/share/Bücher/technology", dest: "{{ main_user }}@lang-mini:/share/synced/books/technology" }
-              - { src: "/share/Bücher/magazines", dest: "{{ main_user }}@lang-mini:/share/synced/books/magazines" }
+              - { src: "/share/Audios", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/audios" }
+              - { src: "/share/Bücher/technology", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/technology" }
+              - { src: "/share/Bücher/magazines", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/magazines" }
 
     - role: rsync-daemon
       vars:

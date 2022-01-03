@@ -12,7 +12,6 @@ General
 
 * pihole
 * change passwords
-* real vs VM hostnames (lang-mini vs vm-mini)?
 
 
 hostcontrold

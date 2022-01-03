@@ -45,8 +45,7 @@
           - "/share/data/"
           - "/share/fileshare/"
           - "/share/gallery/"
-          - "/share/lang-backup/"
-          - "/share/lang-main/"
+          - "/share/hostcontrold/"
           - "/share/projects/"
           - "/share/temp/"
 

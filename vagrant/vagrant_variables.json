@@ -1,16 +1,19 @@
 {
+  "hostname_mini": "vm-mini",
+  "hostname_main": "vm-main",
+  "hostname_backup": "vm-backup",
   "ssh_evaluate_host_aliases": false,
   "ssh_host_aliases": [
     {
-      "name": "lang-mini",
+      "name": "{{ hostname_mini }}",
       "real": "192.168.10.8"
     },
     {
-      "name": "lang-main",
+      "name": "{{ hostname_main }}",
       "real": "192.168.10.6"
     },
     {
-      "name": "lang-backup",
+      "name": "{{ hostname_backup }}",
       "real": "192.168.10.5"
     }
   ],
