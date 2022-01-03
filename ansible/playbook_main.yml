@@ -23,13 +23,13 @@
     - role: ssh
     - role: git-tools
       vars:
+        git_graphical_tools: off
         git_aliases: on
         git_rerere: on
         git_editor_nano: on
         git_prompt: on
         git_user_name: "Christian Lang"
         git_user_email: "lang.chr86@gmail.com"
-      when: real_machine
 
     - role: bash
     - role: tmux

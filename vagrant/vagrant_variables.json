@@ -1,5 +1,4 @@
 {
-  "real_machine": false,
   "ssh_evaluate_host_aliases": false,
   "ssh_host_aliases": [
     {
