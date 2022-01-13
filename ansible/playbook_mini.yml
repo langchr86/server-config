@@ -46,6 +46,7 @@
           - "/share/fileshare/"
           - "/share/gallery/"
           - "/share/hostcontrold/"
+          - "/share/movies/"
           - "/share/projects/"
           - "/share/temp/"
 

@@ -1,6 +1,8 @@
 {{ domain }} {
+  redir /movies movies/movies.html
+
   @staticServer {
-    path /fileshare* /gallery* /wiki*
+    path /fileshare* /gallery* /wiki* /movies/*
   }
   handle @staticServer {
     root * /srv/
