@@ -1,6 +1,19 @@
 {{ domain }} {
-  root * /srv
-  file_server
+  @staticServer {
+    path /fileshare* /gallery* /wiki*
+  }
+  handle @staticServer {
+    root * /srv/
+    file_server
+  }
+
+  handle {
+    @notLocal {
+      not remote_ip 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+    }
+    respond @notLocal 403
+    reverse_proxy heimdall
+  }
 }
 
 bitwarden.{{ domain }}:443 {

@@ -1,0 +1,16 @@
+---
+
+- name: Create folders
+  become: yes
+  file:
+    path: "{{ heimdall_config_folder }}"
+    state: directory
+    mode: "775"
+
+- include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "heimdall"
+    auto_restart_if_failing: yes
+    service_dependencies:
+      - caddy.service

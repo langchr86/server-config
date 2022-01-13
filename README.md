@@ -37,6 +37,7 @@ The following services are available:
 * host start/stop manager: [hostcontrold](https://github.com/langchr86/hostcontrold)
 * counter strike dedicated server: CS:GO and CS 1.6
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
+* local application dashboard: [heimdall](https://heimdall.site/)
 * password manager: [bitwarden](https://go.bitwarden.com/)
 * multi-room audio system: [logitech media server](https://en.wikipedia.org/wiki/Logitech_Media_Server)
 * central kodi DB: [sharing the library](https://kodi.wiki/view/MySQL)

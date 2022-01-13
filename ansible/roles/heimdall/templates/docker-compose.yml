@@ -1,0 +1,16 @@
+---
+version: "3.5"
+services:
+  heimdall:
+    container_name: "heimdall"
+    image: linuxserver/heimdall:2.2.2
+    environment:
+      - TZ="{{ timezone }}"
+    volumes:
+      - {{ heimdall_config_folder }}:/config
+    networks:
+      - caddy_heimdall_net
+
+networks:
+  caddy_heimdall_net:
+    external: true
