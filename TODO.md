@@ -11,7 +11,7 @@ General
 * check idempotency
 
 * pihole
-* change passwords
+* markdown-wiki (change folder for testing?)
 
 
 hostcontrold
