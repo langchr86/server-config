@@ -1,0 +1,6 @@
+---
+
+wiki_service_name: "wiki"
+wiki_opt_folder: "/opt/langchr86/markdown-wiki"
+wiki_src_folder: "/share/data/wiki"
+wiki_dst_folder: "/var/www/html/wiki"
