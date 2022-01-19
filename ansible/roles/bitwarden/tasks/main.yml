@@ -37,22 +37,10 @@
     dest: "{{ bw_scripts_folder }}/run_backup.sh"
     mode: "755"
 
-# we have to create a dict out of a list to be able to use a variable as key
-# see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
-- set_fact:
-    timer_tags:
-      - key: "{{ bw_service_name }}_backup"
-        value:
-          timer_command: "/share/config/{{ bw_service_name }}/backup_scripts/run_backup.sh"
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "*-*-* 04:00:00"
-
-# see: https://github.com/vlcty/ansible-systemd-timers
 - name: "Install backup timer task for {{ bw_service_name }}"
   include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "{{ bw_service_name }}_backup"
+    sd_timer_command: "/share/config/{{ bw_service_name }}/backup_scripts/run_backup.sh"
+    sd_timer_OnCalendar: "*-*-* 04:00:00"

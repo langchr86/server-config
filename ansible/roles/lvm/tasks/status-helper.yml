@@ -12,21 +12,11 @@
 - set_fact:
     status_log_file: "{{ status_log_path }}/lvm-status.log"
 
-- set_fact:
-    timer_tags:
-      - key: "lvm-status"
-        value:
-          timer_command: "/bin/bash -c \"{{ lvm_status_helper_path }} > {{ status_log_file }}\""
-          timer_user: root
-          timer_persistent: yes
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "*-*-* 03:00:00"
-
-- name: "Setup timer which logs status of: LVM"
-  include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+- include_role:
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "lvm-status"
+    sd_timer_command: "/bin/bash -c \"{{ lvm_status_helper_path }} > {{ status_log_file }}\""
+    sd_timer_OnCalendar: "*-*-* 03:00:00"
+    sd_timer_user: root
+    sd_timer_persistent: yes

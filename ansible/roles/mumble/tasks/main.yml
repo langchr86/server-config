@@ -42,22 +42,10 @@
     service_name: "{{ mb_service_name }}"
     force_restart: "{{ config.changed }}"
 
-# we have to create a dict out of a list to be able to use a variable as key
-# see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
-- set_fact:
-    timer_tags:
-      - key: "{{ mb_service_name }}_periodic_restart"
-        value:
-          timer_command: "/bin/systemctl try-restart {{ mb_service_name }}"
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "Mon *-*-* 04:00:00"
-
-# see: https://github.com/vlcty/ansible-systemd-timers
 - name: "Install periodic restart timer task for {{ mb_service_name }}"
   include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "{{ mb_service_name }}_periodic_restart"
+    sd_timer_command: "/bin/systemctl try-restart {{ mb_service_name }}"
+    sd_timer_OnCalendar: "Mon *-*-* 04:00:00"

@@ -1,21 +1,13 @@
+---
+
 - set_fact:
     status_log_file: "{{ volume.status_log_path }}/btrfs-status-{{ volume.label }}.log"
 
-- set_fact:
-    timer_tags:
-      - key: "btrfs-status-{{ volume.label }}"
-        value:
-          timer_command: "/bin/bash -c \"{{ btrfs_status_helper_path }} {{ volume.mount_path }} > {{ status_log_file }}\""
-          timer_user: root
-          timer_persistent: yes
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "*-*-* 03:00:00"
-
-- name: "Setup timer which logs status of: '{{ volume.mount_path }}'"
-  include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+- include_role:
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "btrfs-status-{{ volume.label }}"
+    sd_timer_command: "/bin/bash -c \"{{ btrfs_status_helper_path }} {{ volume.mount_path }} > {{ status_log_file }}\""
+    sd_timer_OnCalendar: "*-*-* 03:00:00"
+    sd_timer_user: root
+    sd_timer_persistent: yes

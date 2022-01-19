@@ -3,28 +3,14 @@
 - set_fact:
     script: "{{ rsync_script_folder }}/{{ job.name }}.bash"
 
-# we have to create a dict out of a list to be able to use a variable as key
-# see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
-- set_fact:
-    timer_tags:
-      - key: "{{ job.name }}"
-        value:
-          timer_command: "{{ script }}"
-          timer_user: "{{ job.user | default(ansible_env.USER) }}"
-          timer_persistent: yes
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "{{ job.timer_OnCalendar | default('*-*-* 03:00:00') }}"
-# see: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
-# for definition of value in timer_OnCalendar
-
-# see: https://github.com/vlcty/ansible-systemd-timers
 - include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "{{ job.name }}"
+    sd_timer_command: "{{ script }}"
+    sd_timer_OnCalendar: "{{ job.timer_OnCalendar | default('*-*-* 03:00:00') }}"
+    sd_timer_user: "{{ job.user | default(ansible_env.USER) }}"
+    sd_timer_persistent: yes
 
 - name: "Create job script: '{{ script }}'"
   become: yes

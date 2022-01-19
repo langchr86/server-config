@@ -27,40 +27,20 @@
     - "smart-long-test"
     - "smart-short-test"
 
-- set_fact:
-    timer_tags:
-      - key: "disk-status"
-        value:
-          timer_command: "/bin/bash -c \"{{ disk_monitoring_disk_status_file }} > {{ disk_monitoring_status_log_path }}/disk-status.log\""
-          timer_user: root
-          timer_AccuracySec: 1m
-          timer_OnBootSec: 15m
-          timer_OnUnitActiveSec: 60m
-
-- name: "Setup daily disk-status timer event"
-  include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+- include_role:
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "disk-status"
+    sd_timer_command: "/bin/bash -c \"{{ disk_monitoring_disk_status_file }} > {{ disk_monitoring_status_log_path }}/disk-status.log\""
+    sd_timer_OnUnitActiveSec: 60m
+    sd_timer_OnBootSec: 15m
+    sd_timer_user: root
 
-- set_fact:
-    timer_tags:
-      - key: "smart-short-test"
-        value:
-          timer_command: "{{ disk_monitoring_short_test_file }}"
-          timer_user: root
-          timer_persistent: yes
-          timer_AccuracySec: 1m
-          timer_OnCalendar: "*-*-* 02:00:00"
-
-- name: "Setup daily smart-short-test timer event"
-  include_role:
-    name: ansible-systemd-timers
-    apply:
-      become: yes
+- include_role:
+    name: systemd-timer
   vars:
-    timers:
-      - "{{ timer_tags | items2dict }}"
+    sd_timer_name: "smart-short-test"
+    sd_timer_command: "{{ disk_monitoring_short_test_file }}"
+    sd_timer_OnCalendar: "*-*-* 02:00:00"
+    sd_timer_user: root
+    sd_timer_persistent: yes

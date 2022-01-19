@@ -1,0 +1,42 @@
+---
+
+- name: 'Check mandatory variables are defined'
+  assert:
+    that:
+      - sd_timer_name is defined
+      - sd_timer_command is defined
+      - not (sd_timer_OnCalendar is defined and sd_timer_OnBootSec is defined)
+
+# we have to create a dict out of a list to be able to use a variable as key
+# see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
+- set_fact:
+    timer_tags:
+      - key: "{{ sd_timer_name }}"
+        value:
+          timer_command: "{{ sd_timer_command }}"
+          timer_user: "{{ sd_timer_user | default('root')}}"
+          timer_persistent: "{{ sd_timer_persistent | default('no') }}"
+          timer_OnCalendar: "{{ sd_timer_OnCalendar }}"
+          # for definition of value in sd_timer_OnCalendar: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
+  when: sd_timer_OnCalendar is defined
+
+- set_fact:
+    timer_tags:
+      - key: "{{ sd_timer_name }}"
+        value:
+          timer_command: "{{ sd_timer_command }}"
+          timer_user: "{{ sd_timer_user | default('root')}}"
+          timer_persistent: "{{ sd_timer_persistent | default('no') }}"
+          timer_OnUnitActiveSec: "{{ sd_timer_OnUnitActiveSec }}"
+          timer_OnBootSec: "{{ sd_timer_OnBootSec }}"
+  when: sd_timer_OnBootSec is defined
+
+# see: https://github.com/vlcty/ansible-systemd-timers
+- name: "Install timer task: {{ sd_timer_name }}"
+  include_role:
+    name: ansible-systemd-timers
+    apply:
+      become: yes
+  vars:
+    timers:
+      - "{{ timer_tags | items2dict }}"
