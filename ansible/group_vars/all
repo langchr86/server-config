@@ -11,3 +11,5 @@ hostname_backup: "lang-backup"
 ip_address_mini: "192.168.0.8"
 ip_address_main: "192.168.0.6"
 ip_address_backup: "192.168.0.5"
+
+deploy_examples: no

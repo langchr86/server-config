@@ -39,3 +39,9 @@
     sd_timer_command: "{{ wiki_opt_folder }}/mdwiki.sh {{ wiki_src_folder }} {{ wiki_dst_folder }}"
     sd_timer_OnCalendar: "*-*-* *:10:00"
     sd_timer_user: "root"
+
+- name: "Install example files for role: {{ wiki_service_name }}"
+  when: deploy_examples
+  copy:
+    src: index.md
+    dest: "{{ wiki_src_folder }}"

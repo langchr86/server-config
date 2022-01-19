@@ -7,6 +7,7 @@
   "ip_address_backup": "192.168.10.5",
   "ssh_evaluate_host_aliases": false,
   "disk_monitoring_enable_smart": false,
+  "deploy_examples": true,
   "domain": "localhost",
   "cert_authority": "local",
   "main_user": "vagrant",
