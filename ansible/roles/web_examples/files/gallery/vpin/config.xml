@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<juiceboxgallery 
+  useFullscreenExpand="true"
+>
+  <image imageURL="2019-05-25-14-26-10.jpg"
+	thumbURL="thumbs/2019-05-25-14-26-10.jpg"
+	linkURL="orig/2019-05-25-14-26-10.jpg"
+	linkTarget="_blank"
+	sourcePath="">
+    <title><![CDATA[2019-05-25-14-26-10]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="2019-05-29-06-56-33.jpg"
+	thumbURL="thumbs/2019-05-29-06-56-33.jpg"
+	linkURL="orig/2019-05-29-06-56-33.jpg"
+	linkTarget="_blank"
+	sourcePath="">
+    <title><![CDATA[2019-05-29-06-56-33]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+</juiceboxgallery>

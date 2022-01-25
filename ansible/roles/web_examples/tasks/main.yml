@@ -6,3 +6,8 @@
     src: "files/movies/"
     dest: "/share/web/movies"
 
+- name: "Install example files: gallery"
+  when: deploy_examples
+  synchronize:
+    src: "files/gallery/"
+    dest: "/share/web/gallery"
