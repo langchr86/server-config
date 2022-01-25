@@ -11,3 +11,9 @@
   synchronize:
     src: "files/gallery/"
     dest: "/share/web/gallery"
+
+- name: "Install example files: fileshare"
+  when: deploy_examples
+  synchronize:
+    src: "files/fileshare/"
+    dest: "/share/web/fileshare"
