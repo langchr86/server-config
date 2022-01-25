@@ -13,10 +13,10 @@ services:
       - {{ caddy_config_folder }}:/config
       - {{ caddy_data_folder }}:/data
       - {{ caddy_app_folder }}/Caddyfile:/etc/caddy/Caddyfile
-      - /share/gallery:/srv/gallery
-      - /share/fileshare:/srv/fileshare
-      - /share/movies:/srv/movies
-      - /var/www/html/wiki:/srv/wiki
+      - /share/web/gallery:/srv/gallery
+      - /share/web/fileshare:/srv/fileshare
+      - /share/web/movies:/srv/movies
+      - /share/web/wiki:/srv/wiki
     networks:
       - bitwarden_net
       - heimdall_net

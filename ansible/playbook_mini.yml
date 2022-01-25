@@ -43,12 +43,13 @@
           - "/git"
           - "/share/config/"
           - "/share/data/"
-          - "/share/fileshare/"
-          - "/share/gallery/"
           - "/share/hostcontrold/"
-          - "/share/movies/"
           - "/share/projects/"
           - "/share/temp/"
+          - "/share/web/"
+          - "/share/web/fileshare/"
+          - "/share/web/gallery/"
+          - "/share/web/movies/"
 
     - role: ansible-role-samba
       become: yes
