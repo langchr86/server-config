@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Movies</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="MediaElch">
+		<link rel="stylesheet" type="text/css" href="../style.css">
+		<link rel="stylesheet" type="text/css" href="../css/tabs.css">
+		<link rel="stylesheet" type="text/css" href="../css/fontello.css">
+		<script src="../js/trailer.js"></script>
+		<script src="../js/check_title.js"></script>
+		<script src="../js/fill_empty.js"></script>
+		<script src="../js/duration.js"></script>
+		<script src="../js/play_button.js"></script>
+	</head>
+	<body onload="calc_duration(); check_original_title(); media_available(); create_trailer_iframe(); fill_empty_listings();">
+		<div class="sidenav">
+			<div class="navigationArea">
+				<a href="../movies.html" class="sideBarItem active">
+					<span class="icon-video"></span>
+					<span>Movies</span>
+				</a>
+				<a href="../tvshows.html" class="sideBarItem">
+					<span class="icon-television"></span>
+					<span>TV-Shows</span>
+				</a>
+				<a href="../concerts.html" class="sideBarItem">
+					<span class="icon-mic"></span>
+					<span>Concerts</span>
+				</a>
+			</div>
+			<div class="searchArea" style="visibility: hidden;">
+				<span class="icon-search"></span>
+				<input type="text" id="filter_search" onkeyup="filter()" placeholder="Search">
+			</div>
+		</div>
+		<div class="main main-tab">
+			<!-- tabs -->
+			<div class="tabs">
+				<input type="radio" name="tabs" id="overview" checked="checked">
+				<label for="overview">Overview</label>
+				<div class="tab tabOverview">
+					<div class="poster">
+						<img src="../movie_images/1629-poster_400x600.jpg"/>
+					</div>
+					<div class="overviewContent">
+						<h1 class="title">
+							<!-- max:[800,310] -->
+							<img src="../defaults/movie_logo_600x232.png" alt="(500) Days of Summer" align="middle"/>
+						</h1>
+						<span class="year">2009</span>
+						<br>
+						<span class="original-title">Original Title: (500) Days of Summer</span>
+						<br>
+						<div class="plot">Tom (Joseph Gordon-Levitt) ist in Summer (Zooey Deschanel) verliebt. Seit sie die Schwelle zur Grußkartenfirma, in der er arbeitet, überschritten hat, ist sich der Möchtegern-Architekt sicher: Summer ist die Frau, mit der er sein restliches Leben verbringen möchte. Doch Toms Traumfrau glaubt weder an die Liebe, noch will sie eine Beziehung führen. Abgesehen von diesem fundamentalen Widerspruch haben Summer und Tom jedoch so viele Gemeinsamkeiten, dass sich aus der Bürobekanntschaft bald eine Freundschaft mit Extras entwickelt. Als Summer die Quasi-Beziehung nach 500 Tagen himmlischer Höhen und traumatischer Tiefen schließlich beendet, ruft sich Tom die prägendsten Momente ihres Zusammenseins immer wieder vor Augen, um herauszufinden, warum sein Happily Everafter ein solch jähes Ende fand…</div>
+						<div class="bubbles">
+							<div class="bubble icon-star" id="rating">
+								7.9 / 10
+							</div>
+							<div class="bubble jsCalcDuration">
+								5470
+							</div>
+							<div class="bubble play-media icon-play">
+								<a href="file://X:/Videos/Filme/(500) Days of Summer (2009)/(500) Days of Summer (2009).avi">Play</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<input type="radio" name="tabs" id="details">
+				<label for="details">Details</label>
+				<div class="tab">
+					<div class="listings">
+						<div class="listing">
+							<h3>Genres:</h3>
+							Komödie, Drama, Lovestory, Indie
+						</div>
+						<div class="listing">
+							<h3>Writer:</h3>
+							Scott Neustadter, Michael H. Weber
+						</div>
+						<div class="listing">
+							<h3>Director:</h3>
+							Marc Webb
+						</div>
+						<div class="listing">
+							<h3>Movie-Set:</h3>
+							
+						</div>
+						<div class="listing">
+							<h3>Votes:</h3>
+							53
+						</div>
+						<div class="listing">
+							<h3>Countrys:</h3>
+							<ul>
+							<li>
+									United States of America
+								</li>
+							</ul>
+						</div>
+						<div class="listing">
+							<h3>Studios:</h3>
+							<ul>
+							<li>
+									Fox Searchlight Pictures
+								</li> <li>
+									Watermark
+								</li> <li>
+									Dune Entertainment III
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<input type="radio" name="tabs" id="actors">
+				<label for="actors">Actors</label>
+				<div class="tab">
+					<div class="listings">
+					<div class="listing">
+							&bull; Joseph Gordon-Levitt as: Tom Hansen
+						</div> <div class="listing">
+							&bull; Zooey Deschanel as: Summer Finn
+						</div> <div class="listing">
+							&bull; Chloë Grace Moretz as: Rachel Hansen
+						</div> <div class="listing">
+							&bull; Geoffrey Arend as: McKenzie
+						</div> <div class="listing">
+							&bull; Matthew Gray Gubler as: Paul
+						</div> <div class="listing">
+							&bull; Clark Gregg as: Vance
+						</div> <div class="listing">
+							&bull; Rachel Boston as: Alison
+						</div> <div class="listing">
+							&bull; Minka Kelly as: Autumn
+						</div> <div class="listing">
+							&bull; Patricia Belcher as: Millie
+						</div> <div class="listing">
+							&bull; Chris Connell as: Marcus
+						</div> <div class="listing">
+							&bull; Jennifer Hetrick as: Sarah
+						</div> <div class="listing">
+							&bull; Ian Reed Kesler as: Douche
+						</div>
+					</div>
+				</div>
+
+				<input type="radio" name="tabs" id="file">
+				<label for="file">File</label>
+				<div class="tab">
+					<div class="listings">
+						<div class="listing">
+							<h3>Resolution:</h3>
+							720x304
+						</div>
+						<div class="listing">
+							<h3>Aspect ratio:</h3>
+							2.368
+						</div>
+						<div class="listing">
+							<h3>Duration (in sec):</h3>
+							5470
+						</div>
+						<div class="listing">
+							<h3>Audio codec(s):</h3>
+							AC3
+						</div>
+						<div class="listing">
+							<h3>Audio languages(s):</h3>
+							
+						</div>
+						<div class="listing">
+							<h3>Subtitles:</h3>
+							
+						</div>
+					</div>
+				</div>
+
+				<input type="radio" name="tabs" id="trailer">
+				<label for="trailer">Trailer</label>
+				<div class="tab">
+					<div class="trailer" id="http://www.youtube.com/watch?v=4Fwf-VKkrmg">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -90,4 +90,5 @@
     - role: mosquitto
     - role: homeassistant
     - role: ddclient
+    - role: web_examples
     - role: wiki
