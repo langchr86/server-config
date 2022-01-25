@@ -1,57 +1,27 @@
 ---
 
-- name: "Install pandoc"
-  become: yes
-  package:
-    name: pandoc
-
-- name: "Create app folder: {{ wiki_opt_folder }}"
+- name: "Create wiki folder"
   become: yes
   file:
-    path: "{{ wiki_opt_folder }}"
-    state: directory
-    mode: "775"
-
-- name: "Install markdown-wiki"
-  become: yes
-  git:
-    repo: 'https://github.com/langchr86/markdown-wiki.git'
-    dest: "{{ wiki_opt_folder }}/"
-    version: "dec67da3"
-  register: wiki_script
-
-- name: "Create source and destination folders"
-  become: yes
-  file:
-    path: "{{ item }}"
+    path: "{{ wiki_web_folder }}"
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "users"
     mode: "774"
+
+- name: "Install mdwiki framework"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ wiki_web_folder }}"
   with_items:
-    - "{{ wiki_src_folder }}"
-    - "{{ wiki_dst_folder }}"
+    - index.html
+    - config.json
 
-- name: "Install periodic timer task for: {{ wiki_service_name }}"
-  include_role:
-    name: systemd-timer
-  vars:
-    sd_timer_name: "{{ wiki_service_name }}"
-    sd_timer_command: "{{ wiki_opt_folder }}/mdwiki.sh {{ wiki_src_folder }} {{ wiki_dst_folder }}"
-    sd_timer_OnCalendar: "*-*-* *:10:00"
-    sd_timer_user: "root"
-  register: wiki_timer
-
-- name: "Install example files for role: {{ wiki_service_name }}"
+- name: "Install example index file"
   when: deploy_examples
   copy:
-    src: index.md
-    dest: "{{ wiki_src_folder }}"
-  register: wiki_example
-
-- name: "Trigger wiki creation"
-  become: yes
-  systemd:
-    name: "{{ wiki_service_name }}"
-    state: started
-  when: wiki_script.changed or wiki_timer.changed or wiki_example.changed
+    src: "{{ item }}"
+    dest: "{{ wiki_web_folder }}"
+  with_items:
+    - index.md
+    - navigation.md
