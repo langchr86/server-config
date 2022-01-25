@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Activate the experimental disk feature:
-# $ export VAGRANT_EXPERIMENTAL="disks"
+ENV["VAGRANT_EXPERIMENTAL"] = "disks"
 
 Vagrant.configure("2") do |config|
 
