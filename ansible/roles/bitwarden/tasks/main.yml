@@ -13,6 +13,11 @@
     path: "{{ bw_backup_folder }}"
     state: directory
 
+- name: "Create data restore folder: {{ bw_restore_folder }}"
+  file:
+    path: "{{ bw_restore_folder }}"
+    state: directory
+
 - name: "Create script folder: {{ bw_scripts_folder }}"
   file:
     path: "{{ bw_scripts_folder }}"
@@ -31,6 +36,12 @@
   template:
     src: "templates/run_backup.sh"
     dest: "{{ bw_scripts_folder }}/run_backup.sh"
+    mode: "755"
+
+- name: "Create run script for restore"
+  template:
+    src: "templates/run_restore.sh"
+    dest: "{{ bw_scripts_folder }}/run_restore.sh"
     mode: "755"
 
 - name: "Install backup timer task for {{ bw_service_name }}"
