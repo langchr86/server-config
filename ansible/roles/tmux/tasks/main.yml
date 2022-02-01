@@ -1,3 +1,5 @@
+---
+
 - name: Install tmux tools
   become: yes
   package:
@@ -7,4 +9,4 @@
 - name: Add tmux config
   copy:
     src: .tmux.conf
-    dest: "~/"
+    dest: "{{ ansible_env.HOME }}"
