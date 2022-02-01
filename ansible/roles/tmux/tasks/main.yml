@@ -9,25 +9,9 @@
     src: .tmux.conf
     dest: "~/"
 
-- name: Add tmux-helper
-  copy:
-    src: tmux-helper.bash
-    dest: "~/"
-
 - name: Ensure Unix line endings
   replace:
-    path: "{{ item }}"
+    path: "~/.tmux.conf"
     regexp: "\r\n"
     replace: "\n"
-  with_items:
-  - "~/tmux-helper.bash"
-  - "~/.tmux.conf"
 
-- name: Source tmux-helper
-  blockinfile:
-    path: "~/.bashrc"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK: tmux-helper"
-    block: |
-      if [ -f ~/tmux-helper.bash ]; then
-        source ~/tmux-helper.bash
-      fi
