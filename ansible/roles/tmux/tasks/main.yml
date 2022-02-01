@@ -8,10 +8,3 @@
   copy:
     src: .tmux.conf
     dest: "~/"
-
-- name: Ensure Unix line endings
-  replace:
-    path: "~/.tmux.conf"
-    regexp: "\r\n"
-    replace: "\n"
-
