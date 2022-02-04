@@ -106,6 +106,7 @@
       become: yes
       vars:
         samba_mitigate_cve_2017_7494: off
+        samba_global_include: "samba-global-include.conf"
         samba_users:
           - name: "{{ main_user }}"
             password: "{{ main_password }}"

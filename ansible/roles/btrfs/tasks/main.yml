@@ -11,6 +11,7 @@
     name: "{{ btrfs_packages }}"
 
 - import_tasks: tasks/status-helper.yml
+- import_tasks: tasks/samba-quota.yml
 
 - include_tasks: tasks/volume.yml
   with_items: "{{ volumes }}"
