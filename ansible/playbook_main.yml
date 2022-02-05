@@ -71,7 +71,7 @@
         rsync_jobs:
           - name: "backups-{{ hostname_mini }}"
             user: "{{ main_user }}"
-            timer_OnCalendar: "*-*-* 03:00:00"
+            timer_OnCalendar: "*-*-* *:10:00"
             pre_sleep_seconds: 30
             steps:
               - { src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config" }
