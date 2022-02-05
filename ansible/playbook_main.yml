@@ -114,12 +114,16 @@
             password: "{{ passwords.velin }}"
         samba_shares:
           - name: "share-main"
-            path: "/share"
+            path: "/mnt/pool-main/subvolumes/share-main"
             browseable: on
             owner: "{{ main_user }}"
             group: "users"
             write_list: "{{ main_user }}"
-            include_file: "share-main-include.conf"
+          - name: "snapshots"
+            path: "/mnt/pool-main/snapshots"
+            browseable: on
+            owner: "{{ main_user }}"
+            group: "users"
 
     - role: disk-monitoring
       vars:
