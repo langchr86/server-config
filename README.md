@@ -13,9 +13,9 @@ The whole infrastructure has several purposes:
 * central data storage with redundancy and change history
 * automated backup solution for servers and clients
 * protection of private data
-* multiple services accessible only in local LAN or internet.
+* multiple services accessible only in local LAN or internet
 
-The infrastructure contains of multiple hosts that usually are powered off
+The infrastructure consists of multiple hosts that usually are powered off
 and only started if clients are available in the local LAN.
 One always-on low-power server controls the other servers
 and provides external available services through internet.
@@ -46,6 +46,21 @@ The following services are available:
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)
+
+
+Development with Vagrant
+------------------------
+
+The whole setup can be emulated by using virtual machines managed by [Vagrant](https://www.vagrantup.com/).
+Some of the usual commands are as follows:
+
+~~~~~~
+vagrant up
+vagrant up mini
+vagrant provision mini
+~~~~~~
+
+See the [Vagrantfile](./Vagrantfile) for more information.
 
 
 Common setup
