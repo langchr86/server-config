@@ -19,6 +19,7 @@
           - { name: "{{ main_user }}", password: "{{ main_password }}" }
           - { name: "velin", password: "{{ passwords.velin }}" }
           - { name: "rsync", password: "{{ passwords.rsync }}" }
+          - { name: "kodi", password: "{{ passwords.kodi }}" }
 
     - role: ssh
     - role: git-tools
@@ -112,6 +113,8 @@
             password: "{{ main_password }}"
           - name: "velin"
             password: "{{ passwords.velin }}"
+          - name: "kodi"
+            password: "{{ passwords.kodi }}"
         samba_shares:
           - name: "share-main"
             path: "/mnt/pool-main/subvolumes/share-main"
