@@ -3,11 +3,6 @@
   package:
     name: rsync
 
-- name: "Create qtdsync user: {{ rsyncd_user }}"
-  become: yes
-  user:
-    name: "{{ rsyncd_user }}"
-
 - name: "Create global rsyncd config: '{{ rsyncd_rsyncd_global_config }}'"
   become: yes
   template:
@@ -27,23 +22,12 @@
     path: "{{ rsyncd_backups_path }}"
     state: directory
     mode: 0755
-    owner: "{{ rsyncd_user }}"
     group: "users"
 
 - include_tasks: tasks/backups.yml
   with_items: "{{ rsyncd_backups }}"
   loop_control:
     loop_var: backup
-
-- name: "Create rsyncd secrets file: '{{ rsyncd_rsyncd_secrets }}'"
-  become: yes
-  template:
-    src: "rsyncd.secrets"
-    dest: "{{ rsyncd_rsyncd_secrets }}"
-    mode: 0400
-    owner: root
-    group: root
-  notify: restart rsync daemon
 
 - name: "Enable rsync daemon"
   become: yes

@@ -18,7 +18,6 @@
         users:
           - { name: "{{ main_user }}", password: "{{ main_password }}" }
           - { name: "velin", password: "{{ passwords.velin }}" }
-          - { name: "rsync", password: "{{ passwords.rsync }}" }
           - { name: "kodi", password: "{{ passwords.kodi }}" }
 
     - role: ssh
@@ -91,15 +90,15 @@
 
     - role: rsync-daemon
       vars:
-        rsyncd_user: "qtdsync"
-        rsyncd_password: "qtdsync"
         rsyncd_backups_path: "/share/backups"
         rsyncd_backups:
           - user_name: "{{ main_user }}"
+            user_password: "{{ main_password }}"
             subfolders:
               - 'lang-ct21'
               - 'lang-xps13'
           - user_name: 'velin'
+            user_password: "{{ passwords.velin }}"
             subfolders:
               - 'lang-zen11'
 

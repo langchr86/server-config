@@ -1,12 +1,23 @@
 - set_fact:
     config_path: "{{ rsyncd_rsyncd_config_folder }}/{{ backup.user_name }}.conf"
     backup_path: "{{ rsyncd_backups_path }}/{{ backup.user_name }}/"
+    secrets_path: "{{ rsyncd_rsyncd_config_folder }}/{{ backup.user_name }}.secrets"
 
 - name: "Create rsyncd config: '{{ config_path }}'"
   become: yes
   template:
     src: "rsyncd_user.conf"
     dest: "{{ config_path }}"
+  notify: restart rsync daemon
+
+- name: "Create rsyncd secrets file: '{{ secrets_path }}'"
+  become: yes
+  template:
+    src: "rsyncd.secrets"
+    dest: "{{ secrets_path }}"
+    mode: 0400
+    owner: root
+    group: root
   notify: restart rsync daemon
 
 - name: "Create per user backup directory: '{{ backup_path }}'"
