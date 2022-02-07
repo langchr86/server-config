@@ -1,4 +1,4 @@
 ---
 
-rsyncd_backups_path: "/mnt/backups"
+rsyncd_destination_modules_path: "/mnt/backups"
 rsyncd_allowed_hosts: "192.168.0.0/255.255.0.0,fe80::/64"

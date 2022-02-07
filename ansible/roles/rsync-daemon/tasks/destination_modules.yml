@@ -1,0 +1,41 @@
+- set_fact:
+    config_path: "{{ rsyncd_rsyncd_config_folder }}/{{ module.user_name }}.conf"
+    secrets_path: "{{ rsyncd_rsyncd_config_folder }}/{{ module.user_name }}.secrets"
+    module_path: "{{ rsyncd_destination_modules_path }}/{{ module.user_name }}/"
+
+- name: "Create destination module config: '{{ config_path }}'"
+  become: yes
+  template:
+    src: "rsyncd_destination_module.conf"
+    dest: "{{ config_path }}"
+  notify: restart rsync daemon
+
+- name: "Create secrets file for user: '{{ module.user_name }}'"
+  become: yes
+  template:
+    src: "rsyncd.secrets"
+    dest: "{{ secrets_path }}"
+    mode: 0400
+    owner: root
+    group: root
+  notify: restart rsync daemon
+
+- name: "Create destination directory for module: '{{ module.user_name }}'"
+  become: yes
+  file:
+    path: "{{ module_path }}"
+    state: directory
+    mode: 0755
+    owner: "{{ module.user_name }}"
+    group: "users"
+
+- name: "Create subfolders for user: '{{ module.user_name }}'"
+  become: yes
+  file:
+    path: "{{ module_path }}/{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ module.user_name }}"
+    group: "users"
+  when: module.subfolders is defined
+  with_items: "{{ module.subfolders }}"

@@ -16,18 +16,18 @@
     path: "{{ rsyncd_rsyncd_config_folder }}"
     state: directory
 
-- name: "Create root backup directory: '{{ rsyncd_backups_path }}'"
+- name: "Create destination modules root directory: '{{ rsyncd_destination_modules_path }}'"
   become: yes
   file:
-    path: "{{ rsyncd_backups_path }}"
+    path: "{{ rsyncd_destination_modules_path }}"
     state: directory
     mode: 0755
     group: "users"
 
-- include_tasks: tasks/backups.yml
-  with_items: "{{ rsyncd_backups }}"
+- include_tasks: tasks/destination_modules.yml
+  with_items: "{{ rsyncd_destination_modules }}"
   loop_control:
-    loop_var: backup
+    loop_var: module
 
 - name: "Enable rsync daemon"
   become: yes

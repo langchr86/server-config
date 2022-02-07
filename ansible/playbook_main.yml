@@ -90,8 +90,8 @@
 
     - role: rsync-daemon
       vars:
-        rsyncd_backups_path: "/share/backups"
-        rsyncd_backups:
+        rsyncd_destination_modules_path: "/share/backups"
+        rsyncd_destination_modules:
           - user_name: "{{ main_user }}"
             user_password: "{{ main_password }}"
             subfolders:
