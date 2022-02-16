@@ -83,6 +83,7 @@
           - name: "synced-{{ hostname_mini }}"
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
+            pre_sleep_seconds: 30
             steps:
               - { src: "/share/Audios", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/audios" }
               - { src: "/share/Bücher/technology", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/technology" }
