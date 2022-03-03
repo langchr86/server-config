@@ -2,7 +2,7 @@
 version: "2.3"
 services:
   jdownloader:
-    image: jaymoulin/jdownloader:2.0.2
+    image: jaymoulin/jdownloader:2.0.3
     container_name: jdownloader
     user: {{ uid }}:{{ gid }}
     volumes:
