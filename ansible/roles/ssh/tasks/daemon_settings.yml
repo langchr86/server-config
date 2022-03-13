@@ -10,7 +10,7 @@
     insertafter: EOF
     create: true
   with_items:
-    - { regexp: "^X11Forwarding", line: "X11Forwarding yes" }
+    - {regexp: "^X11Forwarding", line: "X11Forwarding yes"}
 
 - name: "Daemon hardening: global"
   become: true
@@ -22,9 +22,9 @@
     insertafter: EOF
     create: true
   with_items:
-    - { regexp: "^PermitRootLogin", line: "PermitRootLogin yes" }
-    - { regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes" }
-    - { regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no" }
+    - {regexp: "^PermitRootLogin", line: "PermitRootLogin yes"}
+    - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}
+    - {regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no"}
 
 - name: "Daemon hardening: local network"
   become: true

@@ -9,7 +9,7 @@
     create=True
   with_items:
     - {regexp: '^APT::Periodic::Update-Package-Lists', line: 'APT::Periodic::Update-Package-Lists "0";'}
-    - {regexp: '^APT::Periodic::Unattended-Upgrade',   line: 'APT::Periodic::Unattended-Upgrade "0";'}
+    - {regexp: '^APT::Periodic::Unattended-Upgrade', line: 'APT::Periodic::Unattended-Upgrade "0";'}
 
 - name: Get possible apt update process
   become: true

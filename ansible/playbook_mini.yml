@@ -16,8 +16,8 @@
     - role: users
       vars:
         users:
-          - { name: "{{ main_user }}", password: "{{ main_password }}" }
-          - { name: "velin", password: "{{ passwords.velin }}" }
+          - {name: "{{ main_user }}", password: "{{ main_password }}"}
+          - {name: "velin", password: "{{ passwords.velin }}"}
 
     - role: ssh
     - role: git-tools

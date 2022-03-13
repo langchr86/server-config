@@ -16,9 +16,9 @@
     - role: users
       vars:
         users:
-          - { name: "{{ main_user }}", password: "{{ main_password }}" }
-          - { name: "velin", password: "{{ passwords.velin }}" }
-          - { name: "kodi", password: "{{ passwords.kodi }}" }
+          - {name: "{{ main_user }}", password: "{{ main_password }}"}
+          - {name: "velin", password: "{{ passwords.velin }}"}
+          - {name: "kodi", password: "{{ passwords.kodi }}"}
 
     - role: ssh
     - role: git-tools
@@ -74,20 +74,20 @@
             timer_OnCalendar: "*-*-* *:10:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config" }
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/data", dest: "/share/backups/{{ hostname_mini }}/share-main/data" }
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/projects", dest: "/share/backups/{{ hostname_mini }}/share-main/projects" }
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp" }
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web" }
-              - { src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git" }
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/data", dest: "/share/backups/{{ hostname_mini }}/share-main/data"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/projects", dest: "/share/backups/{{ hostname_mini }}/share-main/projects"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git"}
           - name: "synced-{{ hostname_mini }}"
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "/share/Audios", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/audios" }
-              - { src: "/share/Bücher/technology", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/technology" }
-              - { src: "/share/Bücher/magazines", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/magazines" }
+              - {src: "/share/Audios", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/audios"}
+              - {src: "/share/Bücher/technology", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/technology"}
+              - {src: "/share/Bücher/magazines", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/magazines"}
 
     - role: rsync-daemon
       vars:

@@ -16,7 +16,7 @@
     - role: users
       vars:
         users:
-          - { name: "{{ main_user }}", password: "{{ main_password }}" }
+          - {name: "{{ main_user }}", password: "{{ main_password }}"}
 
     - role: ssh
     - role: git-tools
@@ -61,7 +61,7 @@
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:
-              - { src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main" }
+              - {src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main"}
 
     - role: ansible-role-samba
       become: true
