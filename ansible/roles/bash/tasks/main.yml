@@ -14,9 +14,9 @@
     insertafter=EOF
     create=True
   with_items:
-  - {regexp: "^alias ll=", line: "alias ll='ls -lhA --color=auto'"}
-  - {regexp: "^alias cdp=", line: "alias cdp='cd $(pwd)'"}
-  - {regexp: "^alias bigdirs=", line: "alias bigdirs='du --max-depth=1 2> /dev/null | sort -n -r | head -n20'"}
+    - {regexp: "^alias ll=", line: "alias ll='ls -lhA --color=auto'"}
+    - {regexp: "^alias cdp=", line: "alias cdp='cd $(pwd)'"}
+    - {regexp: "^alias bigdirs=", line: "alias bigdirs='du --max-depth=1 2> /dev/null | sort -n -r | head -n20'"}
 
 - name: Add bash exports
   lineinfile:
@@ -27,9 +27,9 @@
     insertafter=EOF
     create=True
   with_items:
-  - {regexp: "^export HISTSIZE=", line: "export HISTSIZE=9999"}
-  - {regexp: "^export HISTFILESIZE=", line: "export HISTFILESIZE=99999"}
-  - {regexp: "^export LS_COLORS=", line: "export LS_COLORS='di=0;35'"}
+    - {regexp: "^export HISTSIZE=", line: "export HISTSIZE=9999"}
+    - {regexp: "^export HISTFILESIZE=", line: "export HISTFILESIZE=99999"}
+    - {regexp: "^export LS_COLORS=", line: "export LS_COLORS='di=0;35'"}
 
 - name: Source usual bash definitions
   blockinfile:
