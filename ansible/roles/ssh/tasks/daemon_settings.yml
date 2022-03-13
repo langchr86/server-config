@@ -1,7 +1,7 @@
 ---
 
 - name: "Daemon settings: global"
-  become: yes
+  become: true
   lineinfile:
     dest: "{{ sshd_config_file }}"
     line: "{{ item.line }}"
@@ -13,7 +13,7 @@
     - { regexp: "^X11Forwarding", line: "X11Forwarding yes" }
 
 - name: "Daemon hardening: global"
-  become: yes
+  become: true
   lineinfile:
     dest: "{{ sshd_config_file }}"
     line: "{{ item.line }}"
@@ -27,7 +27,7 @@
     - { regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no" }
 
 - name: "Daemon hardening: local network"
-  become: yes
+  become: true
   blockinfile:
     path: "{{ sshd_config_file }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Daemon hardening: local network"

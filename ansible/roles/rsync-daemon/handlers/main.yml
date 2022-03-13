@@ -1,7 +1,7 @@
 ---
 
 - name: restart rsync daemon
-  become: yes
+  become: true
   systemd:
     name: rsync
     state: restarted

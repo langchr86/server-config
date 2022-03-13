@@ -4,7 +4,7 @@
     device_list_string: "{{ vg.devices|join(' ') }}"
 
 - name: "Ensure volume group with label: '{{ vg.label }}' not already existing"
-  become: yes
+  become: true
   command: "vgdisplay {{ vg.label }}"
   register: vgdisplay
   changed_when: false
@@ -14,26 +14,26 @@
 
 # for options see: https://btrfs.wiki.kernel.org/index.php/Manpage/mkfs.btrfs
 - name: "Create physical volume on devices: '{{ device_list_string }}'. Use 'wipefs -a <path>' to clean a not empty device."
-  become: yes
+  become: true
   command: "pvcreate {{ device_list_string }}"
   when: vgdisplay.rc != 0
 
 - name: "Create volume_group {{ vg.label }} on devices: '{{ device_list_string }}'."
-  become: yes
+  become: true
   command: "vgcreate {{ vg.label }} {{ device_list_string }}"
   when: vgdisplay.rc != 0
 
 - name: "Create volume group directory: '{{ vg.mount_path }}' and set group 'users'"
-  become: yes
+  become: true
   file:
     path: "{{ vg.mount_path }}"
     state: directory
     group: 'users'
     mode: '0775'
-    recurse: on
+    recurse: true
 
 - name: "Ensure volume group '{{ vg.mount_path }}' is accessible by user '{{ ansible_env.USER }}'"
-  become: yes
+  become: true
   file:
     path: '{{ vg.mount_path }}'
     owner: '{{ ansible_env.USER }}'

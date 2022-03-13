@@ -1,5 +1,5 @@
 - name: Install basic tools
-  become: yes
+  become: true
   package:
     name:
       - tree
@@ -10,7 +10,7 @@
       - net-tools
 
 - name: Install system statistics tools
-  become: yes
+  become: true
   package:
     name:
       - iotop
@@ -19,17 +19,17 @@
       - dstat
 
 - name: "Set timezone to {{ timezone }}"
-  become: yes
+  become: true
   timezone:
     name: "{{ timezone }}"
 
 - name: Set locale to en_US.UTF-8
-  become: yes
+  become: true
   locale_gen:
     name: en_US.UTF-8
 
 - name: Set default locale to en_US.UTF-8
-  become: yes
+  become: true
   lineinfile: dest=/etc/default/locale
     regexp="LC_ALL"
     line="LC_ALL=\"en_US.UTF-8\""

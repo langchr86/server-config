@@ -7,4 +7,4 @@
     sd_timer_command: "/usr/sbin/btrbk -c {{ btrbk_config_path }}/{{ subvolume.name }}.conf run"
     sd_timer_OnCalendar: "{{ subvolume.timer_OnCalendar | default('*-*-* 03:00:00') }}"
     sd_timer_user: root
-    sd_timer_persistent: yes
+    sd_timer_persistent: true

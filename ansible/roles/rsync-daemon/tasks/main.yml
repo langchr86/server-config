@@ -1,23 +1,23 @@
 - name: "Install rsync-daemon"
-  become: yes
+  become: true
   package:
     name: rsync
 
 - name: "Create global rsyncd config: '{{ rsyncd_rsyncd_global_config }}'"
-  become: yes
+  become: true
   template:
     src: "rsyncd_global.conf"
     dest: "{{ rsyncd_rsyncd_global_config }}"
   notify: restart rsync daemon
 
 - name: "Create rsyncd config directory: '{{ rsyncd_rsyncd_config_folder }}'"
-  become: yes
+  become: true
   file:
     path: "{{ rsyncd_rsyncd_config_folder }}"
     state: directory
 
 - name: "Create destination modules root directory: '{{ rsyncd_destination_modules_path }}'"
-  become: yes
+  become: true
   file:
     path: "{{ rsyncd_destination_modules_path }}"
     state: directory
@@ -30,8 +30,8 @@
     loop_var: module
 
 - name: "Enable rsync daemon"
-  become: yes
+  become: true
   systemd:
     name: rsync
-    enabled: yes
+    enabled: true
     state: started

@@ -1,7 +1,7 @@
 ---
 
 - name: Create app config folder
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -12,7 +12,7 @@
     - "{{ mb_app_folder }}"
 
 - name: Create config subfolders
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -29,7 +29,7 @@
     group_name: "{{ mb_cert_group }}"
 
 - name: "Copy config file to {{ mb_config_folder }}"
-  become: yes
+  become: true
   template:
     src: "templates/config.ini"
     dest: "{{ mb_config_folder }}/config.ini"

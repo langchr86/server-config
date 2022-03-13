@@ -1,47 +1,47 @@
 ---
 
 - name: "Create systemd service file: {{ service_file_path }}"
-  become: yes
+  become: true
   template:
     src: "templates/template.service"
     dest: "{{ service_file_path }}"
   register: service_file
 
 - name: Reload systemd config files
-  become: yes
+  become: true
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
   when: service_file.changed
 
 - name: "Create docker compose folder: {{ compose_service_folder }}"
-  become: yes
+  become: true
   file:
     path: "{{ compose_service_folder }}"
     state: directory
-    recurse: yes
+    recurse: true
 
 - name: "Create docker compose file: {{ compose_file_path }}"
-  become: yes
+  become: true
   template:
     src: "{{ compose_template }}"
     dest: "{{ compose_file_path }}"
   register: compose
 
 - name: "Set enabled={{ service_enabled }} for: {{ service_name }}"
-  become: yes
+  become: true
   systemd:
     name: "{{ service_name }}"
     enabled: "{{ service_enabled }}"
 
 - name: "Start service: {{ service_name }}"
-  become: yes
+  become: true
   systemd:
     name: "{{ service_name }}"
     state: started
   register: start
 
 - name: "Restart service: {{ service_name }}"
-  become: yes
+  become: true
   systemd:
     name: "{{ service_name }}"
     state: restarted

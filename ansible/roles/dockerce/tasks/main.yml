@@ -1,19 +1,19 @@
 ---
 
 - name: Add Docker CE GPG key
-  become: yes
+  become: true
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
 
 - name: Add Docker CE APT repository
-  become: yes
+  become: true
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
 
 - name: Install Docker CE and dependencies
-  become: yes
+  become: true
   apt:
     state: present
-    update_cache: yes
+    update_cache: true
     name:
       - apt-transport-https
       - ca-certificates
@@ -24,19 +24,19 @@
       - containerd.io
 
 - name: Create group docker
-  become: yes
+  become: true
   group:
     name: docker
 
 - name: Add docker user to docker group
-  become: yes
+  become: true
   user:
     name: "{{ ansible_env.USER }}"
-    append: yes
+    append: true
     groups: docker
 
 - name: Install docker-compose
-  become: yes
+  become: true
   apt:
     name: docker-compose
     state: present

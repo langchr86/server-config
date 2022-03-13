@@ -1,10 +1,10 @@
 - name: Install S.M.A.R.T tools
-  become: yes
+  become: true
   package:
     name: smartmontools
 
 - name: Install hddtemp
-  become: yes
+  become: true
   package:
     name: hddtemp
 
@@ -15,7 +15,7 @@
   when: disk_monitoring_enable_smart
 
 - name: "Install helper scripts"
-  become: yes
+  become: true
   template:
     src: "{{ item }}"
     dest: "/usr/bin/"
@@ -43,4 +43,4 @@
     sd_timer_command: "{{ disk_monitoring_short_test_file }}"
     sd_timer_OnCalendar: "*-*-* 02:00:00"
     sd_timer_user: root
-    sd_timer_persistent: yes
+    sd_timer_persistent: true

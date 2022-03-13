@@ -1,5 +1,5 @@
 - name: "Check if quotas enabled: '{{ volume.mount_path }}'"
-  become: yes
+  become: true
   command: "btrfs qgroup show {{ volume.mount_path }}"
   register: qgroup_show
   changed_when: false
@@ -8,6 +8,6 @@
   no_log: true
 
 - name: "Disable quota support on volume: '{{ volume.mount_path }}' because this is unstable and has bad performance impact"
-  become: yes
+  become: true
   command: "btrfs quota disable {{ volume.mount_path }}"
   when: qgroup_show.rc == 0

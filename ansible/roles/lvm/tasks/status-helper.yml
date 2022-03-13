@@ -1,7 +1,7 @@
 ---
 
 - name: "Install helper to show volume status: '{{ lvm_status_helper_path }}'"
-  become: yes
+  become: true
   template:
     src: "lvm-status"
     dest: "{{ lvm_status_helper_path }}"
@@ -19,4 +19,4 @@
     sd_timer_command: "/bin/bash -c \"{{ lvm_status_helper_path }} > {{ status_log_file }}\""
     sd_timer_OnCalendar: "*-*-* 03:00:00"
     sd_timer_user: root
-    sd_timer_persistent: yes
+    sd_timer_persistent: true

@@ -4,7 +4,7 @@
     - include_vars:
         file: passwords.yml
         name: passwords
-      no_log: yes
+      no_log: true
     - set_fact:
         main_user: "clang"
         main_password: "{{ passwords.clang }}"
@@ -21,11 +21,11 @@
     - role: ssh
     - role: git-tools
       vars:
-        git_graphical_tools: off
-        git_aliases: on
-        git_rerere: on
-        git_editor_nano: on
-        git_prompt: on
+        git_graphical_tools: false
+        git_aliases: true
+        git_rerere: true
+        git_editor_nano: true
+        git_prompt: true
         git_user_name: "Christian Lang"
         git_user_email: "lang.chr86@gmail.com"
 
@@ -64,16 +64,16 @@
               - { src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main" }
 
     - role: ansible-role-samba
-      become: yes
+      become: true
       vars:
-        samba_mitigate_cve_2017_7494: off
+        samba_mitigate_cve_2017_7494: false
         samba_users:
           - name: "{{ main_user }}"
             password: "{{ main_password }}"
         samba_shares:
           - name: "share-main"
             path: "/share"
-            browseable: on
+            browseable: true
             owner: "{{ main_user }}"
             group: "users"
             write_list: "{{ main_user }}"

@@ -1,7 +1,7 @@
 ---
 
 device: ""
-enabled: on
+enabled: true
 
 # usually not needed to change
 systemd_folder: "/etc/systemd/system"

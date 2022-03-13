@@ -1,14 +1,14 @@
 ---
 
 - name: "Create app folder: {{ caddy_app_folder }}"
-  become: yes
+  become: true
   file:
     path: "{{ caddy_app_folder }}"
     state: directory
     mode: "744"
 
 - name: "Create config folder: {{ caddy_config_folder }}"
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -18,7 +18,7 @@
     - "{{ caddy_data_folder }}"
 
 - name: "Copy Caddyfile to {{ caddy_app_folder }}"
-  become: yes
+  become: true
   template:
     src: "templates/Caddyfile"
     dest: "{{ caddy_app_folder }}/Caddyfile"

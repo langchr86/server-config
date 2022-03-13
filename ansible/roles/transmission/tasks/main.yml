@@ -1,7 +1,7 @@
 ---
 
 - name: Create folders
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory

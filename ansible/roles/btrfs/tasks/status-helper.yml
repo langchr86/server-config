@@ -1,5 +1,5 @@
 - name: "Install helper to show used snapshot space: '{{ btrfs_quota_helper_path }}'. This will only work if quotas enabled."
-  become: yes
+  become: true
   copy:
     src: "btrfs-snapshot-quotas"
     dest: "{{ btrfs_quota_helper_path }}"
@@ -8,7 +8,7 @@
     mode: 0755
 
 - name: "Install helper to show volume status: '{{ btrfs_status_helper_path }}'"
-  become: yes
+  become: true
   template:
     src: "btrfs-status"
     dest: "{{ btrfs_status_helper_path }}"

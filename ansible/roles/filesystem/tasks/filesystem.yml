@@ -7,7 +7,7 @@
   no_log: true
 
 - name: "Create {{ filesystem.type }} filesystem on device: {{ filesystem.device }}"
-  become: yes
+  become: true
   filesystem:
     dev: "{{ filesystem.device }}"
     fstype: "{{ filesystem.type }}"
@@ -15,13 +15,13 @@
   when: blkid.rc != 0
 
 - name: "Create mount point directory: '{{ filesystem.mount_path }}'"
-  become: yes
+  become: true
   file:
     path: "{{ filesystem.mount_path }}"
     state: directory
 
 - name: "Mount filesystem with label: '{{ filesystem.label }}' at '{{ filesystem.mount_path }}'"
-  become: yes
+  become: true
   mount:
     src: "LABEL={{ filesystem.label }}"
     path: "{{ filesystem.mount_path }}"

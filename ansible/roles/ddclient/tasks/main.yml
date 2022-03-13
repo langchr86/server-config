@@ -1,14 +1,14 @@
 ---
 
 - name: "Create app folder: {{ app_folder }}"
-  become: yes
+  become: true
   file:
     path: "{{ app_folder }}"
     state: directory
     mode: "744"
 
 - name: "Copy config file to {{ app_folder }}"
-  become: yes
+  become: true
   template:
     src: "templates/ddclient.conf"
     dest: "{{ config_file }}"

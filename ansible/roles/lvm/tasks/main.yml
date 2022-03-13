@@ -1,7 +1,7 @@
 ---
 
 - name: "Install LVM packages"
-  become: yes
+  become: true
   package:
     name: lvm2
 

@@ -1,16 +1,16 @@
 ---
 
 - name: Install rsync
-  become: yes
+  become: true
   package:
     name: rsync
 
 - name: "Create scripts folder: '{{ rsync_script_folder }}'"
-  become: yes
+  become: true
   file:
     path: "{{ rsync_script_folder }}"
     state: directory
-    recurse: yes
+    recurse: true
 
 - include_tasks: tasks/job.yml
   with_items: "{{ rsync_jobs }}"

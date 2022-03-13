@@ -4,7 +4,7 @@
     device_path: "/dev/{{ vg.label }}/{{ lv.label }}"
 
 - name: "Ensure logical volume '{{ lv.label }}' in volume group '{{ vg.label }}' not already existing"
-  become: yes
+  become: true
   shell: "lvdisplay {{ vg.label }} | grep {{ lv.label }}"
   register: lvdisplay
   changed_when: false
@@ -13,7 +13,7 @@
   no_log: true
 
 - name: "Create logical volume: '{{ lv.label }}'"
-  become: yes
+  become: true
   command: "lvcreate --name {{ lv.label }} {{ lv.size_options }} {{ vg.label }}"
   when: lvdisplay.rc != 0
 
@@ -24,7 +24,7 @@
   include_role:
     name: filesystem
     apply:
-      become: yes
+      become: true
   vars:
     filesystems:
       - label: "{{ lv.label }}"
@@ -33,7 +33,7 @@
         type: "ext4"
 
 - name: "Ensure logical volume '{{ lv_dir }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
-  become: yes
+  become: true
   file:
     path: '{{ lv_dir }}'
     owner: '{{ ansible_env.USER }}'

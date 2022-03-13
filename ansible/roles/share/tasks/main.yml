@@ -1,7 +1,7 @@
 ---
 
 - name: "Create real share directory: '{{ share_source }}'"
-  become: yes
+  become: true
   file:
     path: "{{ share_source }}"
     state: directory
@@ -10,7 +10,7 @@
     group: "users"
 
 - name: "Create central symlink to main share: '{{ share_path }}' -> '{{ share_source }}'"
-  become: yes
+  become: true
   file:
     state: link
     path: "{{ share_path }}"

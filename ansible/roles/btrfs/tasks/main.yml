@@ -6,7 +6,7 @@
     - "tasks/os_Unknown.yml"
 
 - name: "Install btrfs packages: {{ btrfs_packages }}"
-  become: yes
+  become: true
   package:
     name: "{{ btrfs_packages }}"
 

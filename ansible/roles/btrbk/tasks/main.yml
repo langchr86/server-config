@@ -1,10 +1,10 @@
 - name: Install btrbk
-  become: yes
+  become: true
   package:
     name: btrbk
 
 - name: "Create snapshots directory: '{{ btrbk_snapshots_path }}'"
-  become: yes
+  become: true
   file:
     path: "{{ btrbk_snapshots_path }}"
     state: directory

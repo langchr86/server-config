@@ -1,7 +1,7 @@
 ---
 
 - name: "Create configuration folder: '{{ jdownloader_config_folder }}'"
-  become: yes
+  become: true
   file:
     path: "{{ jdownloader_config_folder }}"
     state: directory
@@ -9,7 +9,7 @@
     group: "{{ jdownloader_group }}"
 
 - name: "Create download folder: '{{ jdownloader_download_folder }}'"
-  become: yes
+  become: true
   file:
     path: "{{ jdownloader_download_folder }}"
     state: directory
@@ -22,7 +22,7 @@
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"
     mode: "644"
-    force: no
+    force: false
   register: config
 
 - import_tasks: tasks/evaluate_uid.yml
@@ -37,5 +37,5 @@
     name: docker-compose-service
   vars:
     service_name: "{{ jdownloader_service_name }}"
-    auto_restart_if_failing: yes
+    auto_restart_if_failing: true
     force_restart: "{{ config.changed }}"

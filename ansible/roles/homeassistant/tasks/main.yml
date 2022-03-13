@@ -1,7 +1,7 @@
 ---
 
 - name: Create app config folder
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -12,7 +12,7 @@
     - "{{ app_folder }}"
 
 - name: Create config subfolders
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -23,6 +23,6 @@
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
-    auto_restart_if_failing: yes
+    auto_restart_if_failing: true
     service_dependencies:
       - mosquitto.service

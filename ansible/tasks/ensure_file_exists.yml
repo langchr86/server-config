@@ -4,5 +4,5 @@
   copy:
     content: ""
     dest: "{{ file_path }}"
-    force: no
+    force: false
     mode: "{{ file_mode | default('preserve') }}"

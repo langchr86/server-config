@@ -4,14 +4,14 @@
     module_path: "{{ rsyncd_destination_modules_path }}/{{ module.user_name }}/"
 
 - name: "Create destination module config: '{{ config_path }}'"
-  become: yes
+  become: true
   template:
     src: "rsyncd_destination_module.conf"
     dest: "{{ config_path }}"
   notify: restart rsync daemon
 
 - name: "Create secrets file for user: '{{ module.user_name }}'"
-  become: yes
+  become: true
   template:
     src: "rsyncd.secrets"
     dest: "{{ secrets_path }}"
@@ -21,7 +21,7 @@
   notify: restart rsync daemon
 
 - name: "Create destination directory for module: '{{ module.user_name }}'"
-  become: yes
+  become: true
   file:
     path: "{{ module_path }}"
     state: directory
@@ -30,7 +30,7 @@
     group: "users"
 
 - name: "Create subfolders for user: '{{ module.user_name }}'"
-  become: yes
+  become: true
   file:
     path: "{{ module_path }}/{{ item }}"
     state: directory

@@ -36,7 +36,7 @@
   include_role:
     name: ansible-systemd-timers
     apply:
-      become: yes
+      become: true
   vars:
     timers:
       - "{{ timer_tags | items2dict }}"

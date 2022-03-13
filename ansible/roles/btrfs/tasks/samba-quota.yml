@@ -1,7 +1,7 @@
 ---
 
 - name: "Install samba-btrfs-quota.sh"
-  become: yes
+  become: true
   copy:
     src: "samba-btrfs-quota.sh"
     dest: "/opt"

@@ -1,7 +1,7 @@
 ---
 
 - name: Install bash-completion
-  become: yes
+  become: true
   package:
     name: bash-completion
 

@@ -1,14 +1,14 @@
 ---
 
 - name: Create folders
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
     owner: "{{ lms_user }}"
     group: "{{ lms_group }}"
     mode: "775"
-    recurse: yes
+    recurse: true
   with_items:
     - "{{ lms_music_folder }}"
     - "{{ lms_additional_music_folder }}"

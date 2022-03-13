@@ -11,7 +11,7 @@
 
 # for options see: https://btrfs.wiki.kernel.org/index.php/Manpage/mkfs.btrfs
 - name: "Create btrfs filesystem on devices: '{{ device_list_string }}'. Use 'wipefs -a <path>' to clean a not empty device."
-  become: yes
+  become: true
   command: >
     mkfs.btrfs
     {{ volume.mkfs_options|default('--data single') }}
@@ -19,13 +19,13 @@
   when: blkid.rc != 0
 
 - name: "Create mount point directory: '{{ volume.mount_path }}'"
-  become: yes
+  become: true
   file:
     path: "{{ volume.mount_path }}"
     state: directory
 
 - name: "Mount filesystem with label: '{{ volume.label }}' at '{{ volume.mount_path }}'"
-  become: yes
+  become: true
   mount:
     src: 'LABEL={{ volume.label }}'
     path: '{{ volume.mount_path }}'
@@ -33,7 +33,7 @@
     state: mounted
 
 - name: "Ensure volume '{{ volume.mount_path }}' is accessible by user '{{ ansible_env.USER }}'"
-  become: yes
+  become: true
   file:
     path: '{{ volume.mount_path }}'
     owner: '{{ ansible_env.USER }}'
@@ -47,7 +47,7 @@
     subvolumes_dir: "{{ volume.mount_path }}/subvolumes"
 
 - name: "Create subvolumes directory: '{{ subvolumes_dir }}'"
-  become: yes
+  become: true
   file:
     path: "{{ subvolumes_dir }}"
     state: directory
