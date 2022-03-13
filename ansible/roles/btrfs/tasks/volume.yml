@@ -23,6 +23,7 @@
   ansible.builtin.file:
     path: "{{ volume.mount_path }}"
     state: directory
+    mode: "u+rw"
 
 - name: "Mount filesystem with label: '{{ volume.label }}' at '{{ volume.mount_path }}'"
   become: true
@@ -51,6 +52,7 @@
   ansible.builtin.file:
     path: "{{ subvolumes_dir }}"
     state: directory
+    mode: "u+rw"
 
 - ansible.builtin.include_tasks: tasks/subvolume.yml
   with_items: "{{ volume.subvolumes }}"

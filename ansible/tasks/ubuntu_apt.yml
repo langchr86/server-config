@@ -7,6 +7,7 @@
     state: present
     insertafter: EOF
     create: true
+    mode: "u+rw"
   with_items:
     - {regexp: '^APT::Periodic::Update-Package-Lists', line: 'APT::Periodic::Update-Package-Lists "0";'}
     - {regexp: '^APT::Periodic::Unattended-Upgrade', line: 'APT::Periodic::Unattended-Upgrade "0";'}

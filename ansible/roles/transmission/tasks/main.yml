@@ -5,6 +5,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "u+rw"
     owner: "{{ transmission_user }}"
     group: "{{ transmission_group }}"
   with_items:

@@ -17,6 +17,7 @@
   ansible.builtin.file:
     path: "{{ kodidb_data_folder }}"
     state: directory
+    mode: "u+rw"
   register: data_folder
 
 - name: "Ensure correct user/group of database folder: {{ kodidb_data_folder }}"

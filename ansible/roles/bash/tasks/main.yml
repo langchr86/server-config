@@ -13,6 +13,7 @@
     state: present
     insertafter: EOF
     create: true
+    mode: "u+rw"
   with_items:
     - {regexp: "^alias ll=", line: "alias ll='ls -lhA --color=auto'"}
     - {regexp: "^alias cdp=", line: "alias cdp='cd $(pwd)'"}
@@ -26,6 +27,7 @@
     state: present
     insertafter: EOF
     create: true
+    mode: "u+rw"
   with_items:
     - {regexp: "^export HISTSIZE=", line: "export HISTSIZE=9999"}
     - {regexp: "^export HISTFILESIZE=", line: "export HISTFILESIZE=99999"}

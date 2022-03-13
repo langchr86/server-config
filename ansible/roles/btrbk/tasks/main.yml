@@ -8,6 +8,7 @@
   ansible.builtin.file:
     path: "{{ btrbk_snapshots_path }}"
     state: directory
+    mode: "ug+rw"
 
 - ansible.builtin.include_tasks: tasks/config.yml
   with_items: "{{ btrbk_subvolumes }}"

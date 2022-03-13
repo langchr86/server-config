@@ -10,3 +10,4 @@
   ansible.builtin.copy:
     src: .tmux.conf
     dest: "{{ ansible_env.HOME }}"
+    mode: "u+rw"

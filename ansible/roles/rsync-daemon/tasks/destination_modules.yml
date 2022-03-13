@@ -8,6 +8,7 @@
   ansible.builtin.template:
     src: "rsyncd_destination_module.conf"
     dest: "{{ config_path }}"
+    mode: "u+rw"
   notify: restart rsync daemon
 
 - name: "Create secrets file for user: '{{ module.user_name }}'"

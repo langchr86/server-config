@@ -16,6 +16,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "u+rw"
   with_items:
     - "{{ app_folder }}"
 

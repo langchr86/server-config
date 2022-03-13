@@ -12,6 +12,7 @@
   ansible.builtin.template:
     src: "templates/ddclient.conf"
     dest: "{{ config_file }}"
+    mode: "u+rw"
   register: config
 
 - ansible.builtin.include_role:

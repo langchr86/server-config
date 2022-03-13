@@ -5,6 +5,7 @@
   ansible.builtin.copy:
     src: "wol@.service"
     dest: "{{ systemd_folder }}"
+    mode: "u+rw"
   register: service_template
 
 - name: Reload systemd config files

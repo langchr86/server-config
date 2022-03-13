@@ -16,6 +16,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ cs_config_folder }}/cfg"
+    mode: "u+rw"
   with_items:
     - "autoexec.cfg"
     - "gamemode_casual_server.cfg"

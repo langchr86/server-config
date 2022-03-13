@@ -23,6 +23,7 @@
   ansible.builtin.file:
     path: "{{ item.src }}"
     state: directory
+    mode: "u+rw"
     owner: "{{ job.user }}"
     group: 'users'
   when: item.src is not search(":")
@@ -32,6 +33,7 @@
   ansible.builtin.file:
     path: "{{ item.dest }}"
     state: directory
+    mode: "u+rw"
     owner: "{{ job.user }}"
     group: 'users'
   when: item.dest is not search(":")

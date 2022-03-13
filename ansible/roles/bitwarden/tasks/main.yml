@@ -13,18 +13,21 @@
   ansible.builtin.file:
     path: "{{ bw_backup_folder }}"
     state: directory
+    mode: "ug+rw"
 
 - name: "Create data restore folder: {{ bw_restore_folder }}"
   become: true
   ansible.builtin.file:
     path: "{{ bw_restore_folder }}"
     state: directory
+    mode: "ug+rw"
 
 - name: "Create script folder: {{ bw_scripts_folder }}"
   become: true
   ansible.builtin.file:
     path: "{{ bw_scripts_folder }}"
     state: directory
+    mode: "ug+rw"
 
 - name: "Copy scripts etc. for backup"
   become: true

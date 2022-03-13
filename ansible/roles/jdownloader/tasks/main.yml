@@ -5,6 +5,7 @@
   ansible.builtin.file:
     path: "{{ jdownloader_config_folder }}"
     state: directory
+    mode: "u+rw"
     owner: "{{ jdownloader_user }}"
     group: "{{ jdownloader_group }}"
 

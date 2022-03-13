@@ -9,6 +9,7 @@
     state: present
     insertafter: EOF
     create: true
+    mode: "u+rw"
   with_items:
     - {regexp: "^X11Forwarding", line: "X11Forwarding yes"}
 
@@ -21,6 +22,7 @@
     state: present
     insertafter: EOF
     create: true
+    mode: "u+rw"
   with_items:
     - {regexp: "^PermitRootLogin", line: "PermitRootLogin yes"}
     - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}

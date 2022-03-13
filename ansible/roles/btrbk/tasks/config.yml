@@ -6,9 +6,11 @@
   ansible.builtin.file:
     path: "{{ btrbk_config_path }}"
     state: directory
+    mode: "u+rw"
 
 - name: "Create btrbk config for: '{{ subvolume.name }}'"
   become: true
   ansible.builtin.template:
     src: "btrbk.conf"
     dest: "{{ btrbk_config_path }}/{{ subvolume.name }}.conf"
+    mode: "u+rw"

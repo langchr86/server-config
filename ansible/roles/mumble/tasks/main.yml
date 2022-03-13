@@ -16,6 +16,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "775"
   with_items:
     - "{{ mb_config_folder }}"
     - "{{ mb_data_folder }}"
@@ -33,6 +34,7 @@
   ansible.builtin.template:
     src: "templates/config.ini"
     dest: "{{ mb_config_folder }}/config.ini"
+    mode: "u+rw"
   register: config
 
 - name: "Create docker compose service. Run 'docker exec -it mumble supw <new_password>' to change the super user password"

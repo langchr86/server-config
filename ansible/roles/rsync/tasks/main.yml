@@ -10,6 +10,7 @@
   ansible.builtin.file:
     path: "{{ rsync_script_folder }}"
     state: directory
+    mode: "u+rw"
     recurse: true
 
 - ansible.builtin.include_tasks: tasks/job.yml
