@@ -1,0 +1,20 @@
+skip_list:
+  - line-length
+  - unnamed-task
+
+
+exclude_paths:
+  - roles/swapfile
+
+skip_list:
+  - command-instead-of-shell
+  - deprecated-command-syntax
+  - experimental
+  - ignore-errors
+  - name[casing]
+  - name[missing]
+  - name[play]
+  - name[template]
+  - no-handler
+  - risky-shell-pipe
+  - yaml[line-length]

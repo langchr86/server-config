@@ -1,0 +1,13 @@
+name: ansible-lint
+
+on: [push, pull_request]
+
+jobs:
+  ansible-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Lint ansible
+        run: |
+          sudo linting/lint.sh
