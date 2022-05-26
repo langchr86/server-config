@@ -57,7 +57,7 @@
       vars:
         rsync_jobs:
           - name: "backups-{{ hostname_main }}"
-            ansible.builtin.user: "{{ main_user }}"
+            user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:

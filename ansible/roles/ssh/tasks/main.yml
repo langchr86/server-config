@@ -11,7 +11,7 @@
 - name: Add authorized keys
   become: true
   ansible.posix.authorized_key:
-    ansible.builtin.user: "{{ ansible_env.USER }}"
+    user: "{{ ansible_env.USER }}"
     state: present
     key: "{{ lookup('file', '{{ item }}') }}"
   with_items:
