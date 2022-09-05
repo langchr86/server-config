@@ -1,7 +1,7 @@
 ---
 
 ssh_pub_files:
-  - 'ssh_key_clang_home.opub'
+  - 'eddsa-key-clang-privat-20220905.opub'
   - 'technical_user_rsa.pub'
 
 sshd_config_file: "/etc/ssh/sshd_config"
