@@ -2,12 +2,12 @@
 
 - name: "Install LVM packages"
   become: true
-  package:
+  ansible.builtin.package:
     name: lvm2
 
-- import_tasks: tasks/status-helper.yml
+- ansible.builtin.import_tasks: tasks/status-helper.yml
 
-- include_tasks: tasks/volume_group.yml
+- ansible.builtin.include_tasks: tasks/volume_group.yml
   with_items: "{{ volume_groups }}"
   loop_control:
     loop_var: vg

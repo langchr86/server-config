@@ -1,7 +1,7 @@
 ---
 
 - name: "Ensure file exists: '{{ file_path }}'"
-  copy:
+  ansible.builtin.copy:
     content: ""
     dest: "{{ file_path }}"
     force: false

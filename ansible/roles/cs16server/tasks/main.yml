@@ -2,13 +2,13 @@
 
 - name: "Create config folder: {{ cs_config_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ cs_config_folder }}"
     state: directory
 
 - name: Copy config files
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ cs_config_folder }}"
   with_items:
@@ -17,7 +17,7 @@
     - "mapcycle.txt"
   register: config
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ cs_service_name }}"

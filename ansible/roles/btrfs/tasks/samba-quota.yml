@@ -2,7 +2,7 @@
 
 - name: "Install samba-btrfs-quota.sh"
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "samba-btrfs-quota.sh"
     dest: "/opt"
     mode: "755"

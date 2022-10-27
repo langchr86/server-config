@@ -1,16 +1,16 @@
 - hosts: all
 
   pre_tasks:
-    - include_vars:
-        file: passwords.yml
+    - ansible.builtin.include_vars:
+        ansible.builtin.file: passwords.yml
         name: passwords
       no_log: true
-    - set_fact:
+    - ansible.builtin.set_fact:
         main_user: "clang"
         main_password: "{{ passwords.clang }}"
 
-    - import_tasks: tasks/ubuntu_apt.yml
-    - import_tasks: tasks/basic_setup.yml
+    - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
+    - ansible.builtin.import_tasks: tasks/basic_setup.yml
 
   roles:
     - role: users

@@ -2,7 +2,7 @@
 
 - name: Install ssh tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - xauth
       - openssh-client
@@ -10,30 +10,30 @@
 
 - name: Add authorized keys
   become: true
-  authorized_key:
-    user: "{{ ansible_env.USER }}"
+  ansible.posix.authorized_key:
+    ansible.builtin.user: "{{ ansible_env.USER }}"
     state: present
     key: "{{ lookup('file', '{{ item }}') }}"
   with_items:
     - "{{ ssh_pub_files }}"
 
 - name: Create users local ssh config folder
-  file:
+  ansible.builtin.file:
     path: "{{ ssh_user_config_folder }}"
     state: directory
     mode: "700"
 
 - name: Add technical users private RSA key
-  copy:
+  ansible.builtin.copy:
     src: "technical_user_rsa"
     dest: "{{ ssh_user_config_folder }}/id_rsa"
     mode: "600"
 
-- include_tasks: tasks/ensure_file_exists.yml
+- ansible.builtin.include_tasks: tasks/ensure_file_exists.yml
   vars:
     file_path: "{{ ssh_user_config_file }}"
 
-- include_tasks: tasks/daemon_settings.yml
-- include_tasks: tasks/host_aliases.yml
-- include_tasks: tasks/known_hosts.yml
+- ansible.builtin.include_tasks: tasks/daemon_settings.yml
+- ansible.builtin.include_tasks: tasks/host_aliases.yml
+- ansible.builtin.include_tasks: tasks/known_hosts.yml
   when: ssh_evaluate_host_aliases

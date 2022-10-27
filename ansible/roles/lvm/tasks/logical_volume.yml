@@ -1,11 +1,11 @@
 ---
 
-- set_fact:
+- ansible.builtin.set_fact:
     device_path: "/dev/{{ vg.label }}/{{ lv.label }}"
 
 - name: "Ensure logical volume '{{ lv.label }}' in volume group '{{ vg.label }}' not already existing"
   become: true
-  shell: "lvdisplay {{ vg.label }} | grep {{ lv.label }}"
+  ansible.builtin.shell: "lvdisplay {{ vg.label }} | grep {{ lv.label }}"
   register: lvdisplay
   changed_when: false
   failed_when: false
@@ -14,14 +14,14 @@
 
 - name: "Create logical volume: '{{ lv.label }}'"
   become: true
-  command: "lvcreate --name {{ lv.label }} {{ lv.size_options }} {{ vg.label }}"
+  ansible.builtin.command: "lvcreate --name {{ lv.label }} {{ lv.size_options }} {{ vg.label }}"
   when: lvdisplay.rc != 0
 
-- set_fact:
+- ansible.builtin.set_fact:
     lv_dir: "{{ vg.mount_path }}/{{ lv.label }}"
 
 - name: "Format and mount logical volume: '{{ lv.label }}' with ext4"
-  include_role:
+  ansible.builtin.include_role:
     name: filesystem
     apply:
       become: true
@@ -34,7 +34,7 @@
 
 - name: "Ensure logical volume '{{ lv_dir }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: '{{ lv_dir }}'
     owner: '{{ ansible_env.USER }}'
     group: 'users'

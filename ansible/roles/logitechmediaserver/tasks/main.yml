@@ -2,7 +2,7 @@
 
 - name: Create folders
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ lms_user }}"
@@ -14,7 +14,7 @@
     - "{{ lms_additional_music_folder }}"
     - "{{ lms_config_folder }}"
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ lms_service_name }}"

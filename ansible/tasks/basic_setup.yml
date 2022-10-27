@@ -1,6 +1,6 @@
 - name: Install basic tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - tree
       - nano
@@ -11,7 +11,7 @@
 
 - name: Install system statistics tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - iotop
       - htop
@@ -20,16 +20,16 @@
 
 - name: "Set timezone to {{ timezone }}"
   become: true
-  timezone:
+  community.general.timezone:
     name: "{{ timezone }}"
 
 - name: Set locale to en_US.UTF-8
   become: true
-  locale_gen:
+  community.general.locale_gen:
     name: en_US.UTF-8
 
 - name: Set default locale to en_US.UTF-8
   become: true
-  lineinfile: dest=/etc/default/locale
+  ansible.builtin.lineinfile: dest=/etc/default/locale
     regexp="LC_ALL"
     line="LC_ALL=\"en_US.UTF-8\""

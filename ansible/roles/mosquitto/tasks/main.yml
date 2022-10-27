@@ -1,6 +1,6 @@
 ---
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "mosquitto"

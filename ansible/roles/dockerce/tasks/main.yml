@@ -11,7 +11,7 @@
 
 - name: Install Docker CE and dependencies
   become: true
-  apt:
+  ansible.builtin.apt:
     state: present
     update_cache: true
     name:
@@ -25,18 +25,18 @@
 
 - name: Create group docker
   become: true
-  group:
+  ansible.builtin.group:
     name: docker
 
 - name: Add docker user to docker group
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_env.USER }}"
     append: true
     groups: docker
 
 - name: Install docker-compose
   become: true
-  apt:
+  ansible.builtin.apt:
     name: docker-compose
     state: present

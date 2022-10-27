@@ -1,20 +1,20 @@
 - name: Install btrbk
   become: true
-  package:
+  ansible.builtin.package:
     name: btrbk
 
 - name: "Create snapshots directory: '{{ btrbk_snapshots_path }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ btrbk_snapshots_path }}"
     state: directory
 
-- include_tasks: tasks/config.yml
+- ansible.builtin.include_tasks: tasks/config.yml
   with_items: "{{ btrbk_subvolumes }}"
   loop_control:
     loop_var: subvolume
 
-- include_tasks: tasks/timer.yml
+- ansible.builtin.include_tasks: tasks/timer.yml
   with_items: "{{ btrbk_subvolumes }}"
   loop_control:
     loop_var: subvolume

@@ -1,6 +1,6 @@
 - name: Disable automatic package manager update
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest="/etc/apt/apt.conf.d/20auto-upgrades"
     line="{{ item.line }}"
     regexp="{{ item.regexp }}"
@@ -13,13 +13,13 @@
 
 - name: Get possible apt update process
   become: true
-  shell: "ps -ef | grep -v grep | grep -w 'apt' | awk '{print $2}'"
+  ansible.builtin.shell: "ps -ef | grep -v grep | grep -w 'apt' | awk '{print $2}'"
   changed_when: false
   register: apt_processes
 
 - name: Kill apt update process
   become: true
-  shell: "kill {{ item }}"
+  ansible.builtin.shell: "kill {{ item }}"
   ignore_errors: true
   failed_when: false
   with_items: "{{ apt_processes.stdout_lines }}"

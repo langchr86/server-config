@@ -2,18 +2,18 @@
 
 - name: "Install example files: movies"
   when: deploy_examples
-  synchronize:
+  ansible.builtin.synchronize:
     src: "files/movies/"
     dest: "/share/web/movies"
 
 - name: "Install example files: gallery"
   when: deploy_examples
-  synchronize:
+  ansible.builtin.synchronize:
     src: "files/gallery/"
     dest: "/share/web/gallery"
 
 - name: "Install example files: fileshare"
   when: deploy_examples
-  synchronize:
+  ansible.builtin.synchronize:
     src: "files/fileshare/"
     dest: "/share/web/fileshare"

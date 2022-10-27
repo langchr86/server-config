@@ -1,14 +1,14 @@
 - name: Install S.M.A.R.T tools
   become: true
-  package:
+  ansible.builtin.package:
     name: smartmontools
 
 - name: Install hddtemp
   become: true
-  package:
+  ansible.builtin.package:
     name: hddtemp
 
-- include_tasks: tasks/enable_smart.yml
+- ansible.builtin.include_tasks: tasks/enable_smart.yml
   with_items: "{{ disk_monitoring_devices }}"
   loop_control:
     loop_var: device
@@ -16,7 +16,7 @@
 
 - name: "Install helper scripts"
   become: true
-  template:
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: "/usr/bin/"
     owner: "root"
@@ -27,7 +27,7 @@
     - "smart-long-test"
     - "smart-short-test"
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "disk-status"
@@ -36,7 +36,7 @@
     sd_timer_OnBootSec: 15m
     sd_timer_user: root
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "smart-short-test"

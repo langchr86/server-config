@@ -1,6 +1,6 @@
 ---
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ bw_service_name }}"
@@ -10,25 +10,25 @@
 
 - name: "Create data backup folder: {{ bw_backup_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ bw_backup_folder }}"
     state: directory
 
 - name: "Create data restore folder: {{ bw_restore_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ bw_restore_folder }}"
     state: directory
 
 - name: "Create script folder: {{ bw_scripts_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ bw_scripts_folder }}"
     state: directory
 
 - name: "Copy scripts etc. for backup"
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ bw_scripts_folder }}"
     mode: "755"
@@ -38,20 +38,20 @@
 
 - name: "Create run script for backup"
   become: true
-  template:
+  ansible.builtin.template:
     src: "templates/run_backup.sh"
     dest: "{{ bw_scripts_folder }}/run_backup.sh"
     mode: "755"
 
 - name: "Create run script for restore"
   become: true
-  template:
+  ansible.builtin.template:
     src: "templates/run_restore.sh"
     dest: "{{ bw_scripts_folder }}/run_restore.sh"
     mode: "755"
 
 - name: "Install backup timer task for {{ bw_service_name }}"
-  include_role:
+  ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "{{ bw_service_name }}_backup"

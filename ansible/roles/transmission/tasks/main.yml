@@ -2,7 +2,7 @@
 
 - name: Create folders
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ transmission_user }}"
@@ -13,15 +13,15 @@
     - "{{ transmission_download_folder }}/incomplete"
     - "{{ transmission_watch_folder }}"
 
-- import_tasks: tasks/evaluate_uid.yml
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
   vars:
     user_name: "{{ transmission_user }}"
 
-- import_tasks: tasks/evaluate_gid.yml
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
   vars:
     group_name: "{{ transmission_group }}"
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ transmission_service_name }}"

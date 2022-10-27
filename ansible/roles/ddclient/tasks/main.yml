@@ -2,19 +2,19 @@
 
 - name: "Create app folder: {{ app_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ app_folder }}"
     state: directory
     mode: "744"
 
 - name: "Copy config file to {{ app_folder }}"
   become: true
-  template:
+  ansible.builtin.template:
     src: "templates/ddclient.conf"
     dest: "{{ config_file }}"
   register: config
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "ddclient"

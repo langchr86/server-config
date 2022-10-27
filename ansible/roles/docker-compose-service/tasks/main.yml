@@ -2,47 +2,47 @@
 
 - name: "Create systemd service file: {{ service_file_path }}"
   become: true
-  template:
+  ansible.builtin.template:
     src: "templates/template.service"
     dest: "{{ service_file_path }}"
   register: service_file
 
 - name: Reload systemd config files
   become: true
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
   when: service_file.changed
 
 - name: "Create docker compose folder: {{ compose_service_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ compose_service_folder }}"
     state: directory
     recurse: true
 
 - name: "Create docker compose file: {{ compose_file_path }}"
   become: true
-  template:
+  ansible.builtin.template:
     src: "{{ compose_template }}"
     dest: "{{ compose_file_path }}"
   register: compose
 
 - name: "Set enabled={{ service_enabled }} for: {{ service_name }}"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ service_name }}"
     enabled: "{{ service_enabled }}"
 
 - name: "Start service: {{ service_name }}"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ service_name }}"
     state: started
   register: start
 
 - name: "Restart service: {{ service_name }}"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ service_name }}"
     state: restarted
   when: not start.changed and (compose.changed or force_restart)

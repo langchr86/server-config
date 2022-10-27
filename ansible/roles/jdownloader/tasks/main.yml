@@ -2,7 +2,7 @@
 
 - name: "Create configuration folder: '{{ jdownloader_config_folder }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ jdownloader_config_folder }}"
     state: directory
     owner: "{{ jdownloader_user }}"
@@ -10,7 +10,7 @@
 
 - name: "Create download folder: '{{ jdownloader_download_folder }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ jdownloader_download_folder }}"
     state: directory
     mode: "775"
@@ -18,22 +18,22 @@
     group: "{{ jdownloader_group }}"
 
 - name: "Create MyJDownloader config file."
-  template:
+  ansible.builtin.template:
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"
     mode: "644"
     force: false
   register: config
 
-- import_tasks: tasks/evaluate_uid.yml
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
   vars:
     user_name: "{{ jdownloader_user }}"
 
-- import_tasks: tasks/evaluate_gid.yml
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
   vars:
     group_name: "{{ jdownloader_group }}"
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ jdownloader_service_name }}"

@@ -1,6 +1,6 @@
 ---
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "btrbk-{{ btrbk_pool_label }}-{{ subvolume.name }}"

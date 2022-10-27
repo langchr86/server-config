@@ -1,9 +1,9 @@
-- set_fact:
+- ansible.builtin.set_fact:
     subvolume_path: "{{ subvolumes_dir }}/{{ subvolume }}"
 
 - name: "Ensure subvolume: '{{ subvolume_path }}' not already existing"
   become: true
-  command: "btrfs subvolume list {{ subvolume_path }}"
+  ansible.builtin.command: "btrfs subvolume list {{ subvolume_path }}"
   register: subvolume_list
   changed_when: false
   failed_when: false
@@ -12,12 +12,12 @@
 
 - name: "Create subvolume: '{{ subvolume_path }}'"
   become: true
-  command: "btrfs subvolume create {{ subvolume_path }}"
+  ansible.builtin.command: "btrfs subvolume create {{ subvolume_path }}"
   when: subvolume_list.rc != 0
 
 - name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: '{{ subvolume_path }}'
     owner: '{{ ansible_env.USER }}'
     group: 'users'

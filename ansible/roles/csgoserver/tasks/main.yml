@@ -2,7 +2,7 @@
 
 - name: "Create folders"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: "777"
@@ -13,7 +13,7 @@
 
 - name: "Copy config files to {{ cs_config_folder }}/cfg"
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ cs_config_folder }}/cfg"
   with_items:
@@ -24,7 +24,7 @@
     - "gamemode_deathmatch_server.cfg"
   register: config
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ cs_service_name }}"

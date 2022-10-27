@@ -2,17 +2,17 @@
 
 - name: "Install helper to show volume status: '{{ lvm_status_helper_path }}'"
   become: true
-  template:
+  ansible.builtin.template:
     src: "lvm-status"
     dest: "{{ lvm_status_helper_path }}"
     owner: "root"
     group: "root"
     mode: 0755
 
-- set_fact:
+- ansible.builtin.set_fact:
     status_log_file: "{{ status_log_path }}/lvm-status.log"
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "lvm-status"

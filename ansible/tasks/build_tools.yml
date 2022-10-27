@@ -1,6 +1,6 @@
 - name: Install build tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - build-essential
       - gcc

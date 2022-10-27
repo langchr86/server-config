@@ -2,14 +2,14 @@
 
 - name: "Create app folder: {{ caddy_app_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ caddy_app_folder }}"
     state: directory
     mode: "744"
 
 - name: "Create config folder: {{ caddy_config_folder }}"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: "744"
@@ -19,12 +19,12 @@
 
 - name: "Copy Caddyfile to {{ caddy_app_folder }}"
   become: true
-  template:
+  ansible.builtin.template:
     src: "templates/Caddyfile"
     dest: "{{ caddy_app_folder }}/Caddyfile"
   register: config
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ caddy_service_name }}"

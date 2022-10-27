@@ -1,9 +1,9 @@
 ---
 
-- set_fact:
+- ansible.builtin.set_fact:
     status_log_file: "{{ volume.status_log_path }}/btrfs-status-{{ volume.label }}.log"
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "btrfs-status-{{ volume.label }}"

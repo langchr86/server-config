@@ -2,11 +2,11 @@
 
 - name: Install bash-completion
   become: true
-  package:
+  ansible.builtin.package:
     name: bash-completion
 
 - name: Add bash aliases
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest="{{ ansible_env.HOME }}/.bash_aliases"
     line="{{ item.line }}"
     regexp="{{ item.regexp }}"
@@ -19,7 +19,7 @@
     - {regexp: "^alias bigdirs=", line: "alias bigdirs='du --max-depth=1 2> /dev/null | sort -n -r | head -n20'"}
 
 - name: Add bash exports
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest="{{ ansible_env.HOME }}/.bashrc"
     line="{{ item.line }}"
     regexp="{{ item.regexp }}"
@@ -32,7 +32,7 @@
     - {regexp: "^export LS_COLORS=", line: "export LS_COLORS='di=0;35'"}
 
 - name: Source usual bash definitions
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: usual bash definitions"
     block: |

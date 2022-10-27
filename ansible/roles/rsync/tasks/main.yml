@@ -2,17 +2,17 @@
 
 - name: Install rsync
   become: true
-  package:
+  ansible.builtin.package:
     name: rsync
 
 - name: "Create scripts folder: '{{ rsync_script_folder }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ rsync_script_folder }}"
     state: directory
     recurse: true
 
-- include_tasks: tasks/job.yml
+- ansible.builtin.include_tasks: tasks/job.yml
   with_items: "{{ rsync_jobs }}"
   loop_control:
     loop_var: job

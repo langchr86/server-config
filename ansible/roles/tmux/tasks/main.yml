@@ -2,11 +2,11 @@
 
 - name: Install tmux tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - tmux
 
 - name: Add tmux config
-  copy:
+  ansible.builtin.copy:
     src: .tmux.conf
     dest: "{{ ansible_env.HOME }}"

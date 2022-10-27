@@ -1,9 +1,9 @@
 ---
 
-- set_fact:
+- ansible.builtin.set_fact:
     script: "{{ rsync_script_folder }}/{{ job.name }}.bash"
 
-- include_role:
+- ansible.builtin.include_role:
     name: systemd-timer
   vars:
     sd_timer_name: "{{ job.name }}"
@@ -14,13 +14,13 @@
 
 - name: "Create job script: '{{ script }}'"
   become: true
-  template:
+  ansible.builtin.template:
     src: "job_script.j2"
     dest: "{{ script }}"
     mode: "755"
 
 - name: "Create jobs source folders (if no remote URL)"
-  file:
+  ansible.builtin.file:
     path: "{{ item.src }}"
     state: directory
     owner: "{{ job.user }}"
@@ -29,7 +29,7 @@
   with_items: "{{ job.steps }}"
 
 - name: "Create jobs destination folders (if no remote URL)"
-  file:
+  ansible.builtin.file:
     path: "{{ item.dest }}"
     state: directory
     owner: "{{ job.user }}"

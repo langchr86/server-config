@@ -1,16 +1,16 @@
 - hosts: all
 
   pre_tasks:
-    - include_vars:
-        file: passwords.yml
+    - ansible.builtin.include_vars:
+        ansible.builtin.file: passwords.yml
         name: passwords
       no_log: true
-    - set_fact:
+    - ansible.builtin.set_fact:
         main_user: "clang"
         main_password: "{{ passwords.clang }}"
 
-    - import_tasks: tasks/ubuntu_apt.yml
-    - import_tasks: tasks/basic_setup.yml
+    - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
+    - ansible.builtin.import_tasks: tasks/basic_setup.yml
 
   roles:
     - role: users
@@ -70,7 +70,7 @@
       vars:
         rsync_jobs:
           - name: "backups-{{ hostname_mini }}"
-            user: "{{ main_user }}"
+            ansible.builtin.user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* *:10:00"
             pre_sleep_seconds: 30
             steps:
@@ -81,7 +81,7 @@
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git"}
           - name: "synced-{{ hostname_mini }}"
-            user: "{{ main_user }}"
+            ansible.builtin.user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* 03:00:00"
             pre_sleep_seconds: 30
             steps:

@@ -1,5 +1,5 @@
 - name: "Ensure filesystem with label: '{{ filesystem.label }}' not already existing"
-  command: "blkid --label {{ filesystem.label }}"
+  ansible.builtin.command: "blkid --label {{ filesystem.label }}"
   register: blkid
   changed_when: false
   failed_when: false
@@ -16,13 +16,13 @@
 
 - name: "Create mount point directory: '{{ filesystem.mount_path }}'"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ filesystem.mount_path }}"
     state: directory
 
 - name: "Mount filesystem with label: '{{ filesystem.label }}' at '{{ filesystem.mount_path }}'"
   become: true
-  mount:
+  ansible.posix.mount:
     src: "LABEL={{ filesystem.label }}"
     path: "{{ filesystem.mount_path }}"
     fstype: "{{ filesystem.type }}"

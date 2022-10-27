@@ -2,7 +2,7 @@
 
 - name: "Daemon settings: global"
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config_file }}"
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
@@ -14,7 +14,7 @@
 
 - name: "Daemon hardening: global"
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config_file }}"
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
@@ -28,7 +28,7 @@
 
 - name: "Daemon hardening: local network"
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: "{{ sshd_config_file }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Daemon hardening: local network"
     block: |

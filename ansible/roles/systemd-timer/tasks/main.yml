@@ -9,7 +9,7 @@
 
 # we have to create a dict out of a list to be able to use a variable as key
 # see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#items2dict-filter
-- set_fact:
+- ansible.builtin.set_fact:
     timer_tags:
       - key: "{{ sd_timer_name }}"
         value:
@@ -20,7 +20,7 @@
           # for definition of value in sd_timer_OnCalendar: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
   when: sd_timer_OnCalendar is defined
 
-- set_fact:
+- ansible.builtin.set_fact:
     timer_tags:
       - key: "{{ sd_timer_name }}"
         value:
@@ -33,7 +33,7 @@
 
 # see: https://github.com/vlcty/ansible-systemd-timers
 - name: "Install timer task: {{ sd_timer_name }}"
-  include_role:
+  ansible.builtin.include_role:
     name: ansible-systemd-timers
     apply:
       become: true

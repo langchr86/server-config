@@ -1,10 +1,10 @@
 ---
 
 - name: "Evaluate UID for '{{ user_name }}'"
-  command: "id -u {{ user_name }}"
+  ansible.builtin.command: "id -u {{ user_name }}"
   changed_when: false
   register: uid_stream
 
 - name: "UID for '{{ user_name }}' is '{{ uid_stream.stdout }}'"
-  set_fact:
+  ansible.builtin.set_fact:
     uid: "{{ uid_stream.stdout }}"

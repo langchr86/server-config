@@ -4,7 +4,7 @@ services:
   jdownloader:
     image: jaymoulin/jdownloader:2.0.3
     container_name: jdownloader
-    user: {{ uid }}:{{ gid }}
+    ansible.builtin.user: {{ uid }}:{{ gid }}
     volumes:
       - app_data:/opt/JDownloader/app
       - {{ jdownloader_config_folder }}:/opt/JDownloader/app/cfg

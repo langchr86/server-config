@@ -2,7 +2,7 @@
 
 - name: "Create wiki folder"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ wiki_web_folder }}"
     state: directory
     owner: "{{ ansible_env.USER }}"
@@ -10,7 +10,7 @@
     mode: "774"
 
 - name: "Install mdwiki framework"
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ wiki_web_folder }}"
   with_items:
@@ -19,7 +19,7 @@
 
 - name: "Install example index file"
   when: deploy_examples
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ wiki_web_folder }}"
   with_items:

@@ -2,7 +2,7 @@
 
 - name: "Create user directory"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: 0775

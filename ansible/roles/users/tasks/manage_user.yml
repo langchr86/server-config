@@ -2,19 +2,19 @@
 
 - name: "Create user: '{{ user.name }}'"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ user.name }}"
 
 - name: "Add user '{{ user.name }}' to group '{{ main_users_group_name }}'"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ user.name }}"
     groups: "{{ main_users_group_name }}"
     append: true
 
 - name: "Change password of user: '{{ user.name }}'"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ user.name }}"
     password: "{{ user.password | password_hash('sha512', passwords.salt) }}"
   when: user.password is defined

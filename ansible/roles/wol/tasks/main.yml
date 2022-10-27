@@ -2,19 +2,19 @@
 
 - name: Systemd service template file for WOL
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "wol@.service"
     dest: "{{ systemd_folder }}"
   register: service_template
 
 - name: Reload systemd config files
   become: true
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
   when: service_template.changed
 
 - name: "Set WOL enabled={{ enabled }} for: {{ device }}"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "wol@{{ device }}"
     enabled: "{{ enabled }}"

@@ -2,7 +2,7 @@
 
 - name: Create app config folder
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ user }}"
@@ -13,13 +13,13 @@
 
 - name: Create config subfolders
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
   with_items:
     - "{{ app_folder }}"
 
-- include_role:
+- ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
