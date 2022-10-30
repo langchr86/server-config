@@ -12,7 +12,10 @@ services:
       - TZ="{{ timezone }}"
     networks:
       - mosquitto_homeassistant_net
+      - caddy_homeassistant_net
 
 networks:
   mosquitto_homeassistant_net:
+    external: true
+  caddy_homeassistant_net:
     external: true

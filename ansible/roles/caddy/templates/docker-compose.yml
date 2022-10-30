@@ -19,6 +19,8 @@ services:
       - /share/web/wiki:/srv/wiki
     networks:
       - bitwarden_net
+      - homeassistant_net
 
 networks:
   bitwarden_net:
+  homeassistant_net:

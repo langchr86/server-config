@@ -14,6 +14,12 @@
   }
 }
 
+home.{{ domain }} {
+  reverse_proxy homeassistant:8123 {
+    header_up X-Real-IP {remote_host}
+  }
+}
+
 bitwarden.{{ domain }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.

@@ -27,3 +27,4 @@
     auto_restart_if_failing: true
     service_dependencies:
       - mosquitto.service
+      - caddy.service
