@@ -5,6 +5,7 @@ services:
     image: homeassistant/home-assistant:2022.11
     ports:
       - "8123:8123"
+      - "5683:5683"
     volumes:
       - /share/config/homeassistant:/config
     environment:
