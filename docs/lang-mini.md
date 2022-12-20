@@ -13,23 +13,6 @@ sudo apt-get purge whoopsie libwhoopsie0
 ~~~~~~
 
 
-Heimdall
---------
-
-If no configuration backup is available all relevant apps need to be configured manually:
-
-* bitwarden
-* logitech media server
-* homeassistant
-* transmission
-* myjdownloader
-* wiki
-* movies
-* etc.
-
-See [folder](./heimdall) for images of unknown apps.
-
-
 Vaultwarden / Bitwarden
 -----------------------
 

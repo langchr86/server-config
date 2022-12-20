@@ -19,8 +19,6 @@ services:
       - /share/web/wiki:/srv/wiki
     networks:
       - bitwarden_net
-      - heimdall_net
 
 networks:
   bitwarden_net:
-  heimdall_net:
