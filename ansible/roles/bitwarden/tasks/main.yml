@@ -9,21 +9,25 @@
       - caddy.service
 
 - name: "Create data backup folder: {{ bw_backup_folder }}"
+  become: yes
   file:
     path: "{{ bw_backup_folder }}"
     state: directory
 
 - name: "Create data restore folder: {{ bw_restore_folder }}"
+  become: yes
   file:
     path: "{{ bw_restore_folder }}"
     state: directory
 
 - name: "Create script folder: {{ bw_scripts_folder }}"
+  become: yes
   file:
     path: "{{ bw_scripts_folder }}"
     state: directory
 
 - name: "Copy scripts etc. for backup"
+  become: yes
   copy:
     src: "{{ item }}"
     dest: "{{ bw_scripts_folder }}"
@@ -33,12 +37,14 @@
     - Dockerfile
 
 - name: "Create run script for backup"
+  become: yes
   template:
     src: "templates/run_backup.sh"
     dest: "{{ bw_scripts_folder }}/run_backup.sh"
     mode: "755"
 
 - name: "Create run script for restore"
+  become: yes
   template:
     src: "templates/run_restore.sh"
     dest: "{{ bw_scripts_folder }}/run_restore.sh"
