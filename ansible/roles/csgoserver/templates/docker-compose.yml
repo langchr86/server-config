@@ -2,15 +2,15 @@
 
 # https://github.com/timche/docker-csgo
 # 0 casual / 1 competitive
-# https://steamcommunity.com/dev/managegameservers
-# https://developer.valvesoftware.com/wiki/CSGO_Workshop_For_Server_Operators
+# CSGO_GSLT: https://steamcommunity.com/dev/managegameservers
+# CSGO_WS_API_KEY: https://steamcommunity.com/dev/apikey
 # Domainname: langchr86.mooo.com
 
 version: "3.5"
 services:
   csgoserver:
     container_name: "csgoserver"
-    image: timche/csgo:sourcemod-3.0.15
+    image: timche/csgo:sourcemod-3.1.12
     network_mode: host
     volumes:
       - {{ cs_server_folder }}:/home/csgo/server
@@ -24,7 +24,7 @@ services:
       - CSGO_MAX_PLAYERS=24
       - CSGO_GAME_TYPE=0
       - CSGO_GAME_MODE=0
-      - CSGO_GSLT=01BA7A6250DB8F48DAF09870D82CC1C9
+      - CSGO_GSLT=C39B35DBD7D5DCE4B9539CEC95337649
       - CSGO_WS_API_KEY=A9AD79BD43FDBBFF75373A441237A1F4
       - SERVER_CONFIGS=true
       - SOURCEMOD_ADMINS="STEAM_1:0:8287216"
