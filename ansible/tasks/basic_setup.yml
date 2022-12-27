@@ -30,6 +30,7 @@
 
 - name: Set default locale to en_US.UTF-8
   become: true
-  ansible.builtin.lineinfile: dest=/etc/default/locale
-    regexp="LC_ALL"
-    line="LC_ALL=\"en_US.UTF-8\""
+  ansible.builtin.lineinfile:
+    dest: "/etc/default/locale"
+    regexp: "LC_ALL"
+    line: "LC_ALL=\"en_US.UTF-8\""
