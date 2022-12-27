@@ -1,7 +1,7 @@
 ---
 
 - ansible.builtin.set_fact:
-    device_list_string: "{{ vg.devices|join(' ') }}"
+    device_list_string: "{{ vg.devices | join(' ') }}"
 
 - name: "Ensure volume group with label: '{{ vg.label }}' not already existing"
   become: true

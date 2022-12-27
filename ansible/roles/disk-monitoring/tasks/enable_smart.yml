@@ -1,5 +1,5 @@
 - ansible.builtin.set_fact:
-    device_options: "-d {{ device.smart_type|default('auto') }} {{ device.path }}"
+    device_options: "-d {{ device.smart_type | default('auto') }} {{ device.path }}"
 
 - name: "Check S.M.A.R.T. info of: '{{ device.path }}'"
   become: true
@@ -20,7 +20,7 @@
     msg: >
       This role is only usable on devices that support S.M.A.R.T..
       Check with: 'sudo smartctl -i {{ device_options }}'.
-      Maybe you did specify the wrong device type: '{{ device.smart_type|default('auto') }}'?
+      Maybe you did specify the wrong device type: '{{ device.smart_type | default('auto') }}'?
   when: not smart_available
 
 - ansible.builtin.set_fact:

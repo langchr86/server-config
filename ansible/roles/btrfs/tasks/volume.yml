@@ -1,5 +1,5 @@
 - ansible.builtin.set_fact:
-    device_list_string: "{{ volume.devices|join(' ') }}"
+    device_list_string: "{{ volume.devices | join(' ') }}"
 
 - name: "Ensure filesystem with label: '{{ volume.label }}' not already existing"
   ansible.builtin.command: "blkid --label {{ volume.label }}"
@@ -14,7 +14,7 @@
   become: true
   ansible.builtin.command: >
     mkfs.btrfs
-    {{ volume.mkfs_options|default('--data single') }}
+    {{ volume.mkfs_options | default('--data single') }}
     --label {{ volume.label }} {{ device_list_string }}
   when: blkid.rc != 0
 
