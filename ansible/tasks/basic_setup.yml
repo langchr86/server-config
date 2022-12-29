@@ -8,6 +8,7 @@
       - unzip
       - tar
       - net-tools
+      - inxi
 
 - name: Install system statistics tools
   become: true
