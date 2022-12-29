@@ -20,11 +20,20 @@
   with_items:
     - "{{ app_folder }}"
 
+- name: Create basic config file
+  become: true
+  ansible.builtin.template:
+    src: "configuration.yaml"
+    dest: "{{ app_folder }}/configuration.yaml"
+    mode: "u+rw"
+  register: config
+
 - ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
     auto_restart_if_failing: true
+    force_restart: "{{ config.changed }}"
     service_dependencies:
       - mosquitto.service
       - caddy.service

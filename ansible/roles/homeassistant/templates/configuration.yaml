@@ -1,0 +1,21 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.0.0.0/8
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+template: !include templates.yaml
+sensor: !include sensors.yaml
+
+recorder:
+  purge_keep_days: 500
