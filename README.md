@@ -89,17 +89,6 @@ clang ALL=(ALL) NOPASSWD: ALL
 ~~~
 
 
-Network setup
--------------
-
-Hostname        IP
-------------    -----------
-
-lang-backup     192.168.0.5
-lang-main       192.168.0.6
-lang-mini       192.168.0.8
-
-
 ### set static IP on debian
 
 ~~~

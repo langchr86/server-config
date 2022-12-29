@@ -15,3 +15,54 @@ Ensure that the used listening ports are available from outside NAT to the corre
 | `27015-27016` |               | tcp + udp | `lang-main`   | cs16server, csgoserver |
 | `27020-27021` |               | udp       | `lang-main`   | cs16server, csgoserver |
 | `64738`       |               | tcp + udp | `lang-mini`   | mumble |
+
+
+IP Management
+-------------
+
+| IP range    | usage                |
+|-------------|----------------------|
+| .2   - .9   | servers              |
+| .10  - .19  | network              |
+| .20  - .29  | media                |
+| .30  - .39  | energy               |
+| .40  - .49  |                      |
+| .50  - .69  | smart home (sensors) |
+| .70  - .99  | smart home (actors)  |
+| .100 - .200 | DHCP                 |
+
+
+Device IPs
+----------
+
+| IP  | device name          |
+|-----|----------------------|
+| .5  | lang-backup          |
+| .6  | lang-main            |
+| .8  | lang-mini            |
+| .20 | tv-wohnen            |
+| .21 | tv-dispo             |
+| .30 | lang-pv-symo24       |
+| .31 | servicewelt          |
+| .32 | lf-zehnder           |
+| .50 | sensor-sitzplatz     |
+| .51 | sensor-schopf        |
+| .52 | sensor-wohnen        |
+| .53 | sensor-buero         |
+| .54 | sensor-schlafen      |
+| .55 | sensor-dispo         |
+| .70 | storen-dispo-west    |
+| .71 | storen-wohnen-ost    |
+| .72 | storen-sitzplatz-sud |
+| .73 | storen-essen-west    |
+| .74 | storen-kuche-west    |
+| .75 | storen-reduit-west   |
+| .76 | storen-wc-ost        |
+| .77 | storen-treppe-nord   |
+| .78 | storen-bad-ost       |
+| .79 | storen-buro-ost      |
+| .80 | storen-buro-sud      |
+| .81 | storen-schlafen-sud  |
+| .82 | storen-schlafen-west |
+| .83 | storen-ankleide-west |
+| .84 | storen-ankleide-nord |
