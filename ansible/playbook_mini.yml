@@ -2,7 +2,7 @@
 
   pre_tasks:
     - ansible.builtin.include_vars:
-        ansible.builtin.file: passwords.yml
+        file: passwords.yml
         name: passwords
       no_log: true
     - ansible.builtin.set_fact:
