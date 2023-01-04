@@ -1,0 +1,36 @@
+- scan_interval: 10
+  resource: http://192.168.0.87/report
+  method: GET
+  sensor:
+    - name: "Gefrierschrank power"
+      value_template: '{{ value_json.power }}'
+      unit_of_measurement: 'W'
+      device_class: power
+      state_class: measurement
+    - name: "Gefrierschrank energy"
+      value_template: '{{ value_json.Ws }}'
+      unit_of_measurement: 'W'
+      state_class: measurement
+      device_class: power
+    - name: "Gefrierschrank relay"
+      value_template: '{{ value_json.relay }}'
+    - name: "Gefrierschrank temperature"
+      value_template: '{{ value_json.temperature }}'
+- scan_interval: 10
+  resource: http://192.168.0.88/report
+  method: GET
+  sensor:
+    - name: "Kühlschrank power"
+      value_template: '{{ value_json.power }}'
+      unit_of_measurement: 'W'
+      device_class: power
+      state_class: measurement
+    - name: "Kühlschrank energy"
+      value_template: '{{ value_json.Ws }}'
+      unit_of_measurement: 'W'
+      state_class: measurement
+      device_class: power
+    - name: "Kühlschrank relay"
+      value_template: '{{ value_json.relay }}'
+    - name: "Kühlschrank temperature"
+      value_template: '{{ value_json.temperature }}'

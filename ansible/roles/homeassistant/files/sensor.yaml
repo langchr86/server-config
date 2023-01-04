@@ -18,6 +18,6 @@
   name: "Gefrierschrank energy total"
   method: left
 - platform: integration
-  source: sensor.Kuhlschrank_energy
+  source: sensor.kuhlschrank_energy
   name: "Kühlschrank energy total"
   method: left

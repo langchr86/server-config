@@ -1,0 +1,6 @@
+- name: Gefrierschrank
+  platform: mystrom
+  host: 192.168.0.87
+- name: Kühlschrank
+  platform: mystrom
+  host: 192.168.0.88

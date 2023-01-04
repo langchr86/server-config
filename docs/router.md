@@ -66,3 +66,5 @@ Device IPs
 | .82 | storen-schlafen-west |
 | .83 | storen-ankleide-west |
 | .84 | storen-ankleide-nord |
+| .87 | gefrierschrank       |
+| .88 | kühlschrank          |
