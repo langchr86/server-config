@@ -68,3 +68,4 @@ Device IPs
 | .84 | storen-ankleide-nord |
 | .87 | gefrierschrank       |
 | .88 | kühlschrank          |
+| .90 | licht-wohnen         |
