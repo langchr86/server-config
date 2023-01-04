@@ -10,13 +10,13 @@ http:
   trusted_proxies:
     - 172.0.0.0/8
 
-group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-template: !include templates.yaml
-sensor: !include sensors.yaml
+group: !include group.yaml
 modbus: !include modbus.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensor.yaml
+template: !include template.yaml
 
 recorder:
   purge_keep_days: 500

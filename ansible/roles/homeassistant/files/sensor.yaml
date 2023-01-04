@@ -1,0 +1,23 @@
+- platform: integration
+  source: sensor.battery_power_charging
+  name: "Total Battery Energy Charged"
+  unit_prefix: k
+  method: left
+- platform: integration
+  source: sensor.battery_power_discharging
+  name: "Total Battery Energy Discharged"
+  unit_prefix: k
+  method: left
+- platform: integration
+  source: sensor.power_photovoltaics
+  name: "Total Photovoltaics Energy"
+  unit_prefix: k
+  method: left
+- platform: integration
+  source: sensor.gefrierschrank_energy
+  name: "Gefrierschrank energy total"
+  method: left
+- platform: integration
+  source: sensor.Kuhlschrank_energy
+  name: "Kühlschrank energy total"
+  method: left
