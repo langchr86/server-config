@@ -1,0 +1,108 @@
+# Stiebel Eltron WPL17ICS Modbus Integration
+# Modbus address has offset 1.
+# Slave is always 1.
+- name: WPL17ICS
+  type: tcp
+  host: 192.168.0.31
+  port: 502
+  sensors:
+    - name: WPL17ICS Raum Ist-Temperatur
+      slave: 1
+      address: 583
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Raum Soll-Temperatur
+      slave: 1
+      address: 584
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Raum Feuchte
+      slave: 1
+      address: 585
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '%'
+      device_class: humidity
+    - name: WPL17ICS Aussentemperatur
+      slave: 1
+      address: 506
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS HK-1 Ist-Temperatur
+      slave: 1
+      address: 507
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS HK-1 Soll-Temperatur
+      slave: 1
+      address: 509
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Vorlauf Ist-Temperatur
+      slave: 1
+      address: 512
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Rücklauf Ist-Temperatur
+      slave: 1
+      address: 515
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Warmwasser Ist-Temperatur
+      slave: 1
+      address: 521
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Warmwasser Soll-Temperatur
+      slave: 1
+      address: 522
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Betriebsstatus
+      slave: 1
+      address: 2500
+      input_type: input
+      data_type: uint16
+    - name: WPL17ICS SG-Ready Betriebszustand
+      slave: 1
+      address: 5000
+      input_type: input
+      data_type: uint16

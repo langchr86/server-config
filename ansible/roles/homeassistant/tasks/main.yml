@@ -23,9 +23,12 @@
 - name: Create basic config file
   become: true
   ansible.builtin.template:
-    src: "configuration.yaml"
-    dest: "{{ app_folder }}/configuration.yaml"
+    src: "{{ item }}"
+    dest: "{{ app_folder }}"
     mode: "u+rw"
+  with_items:
+    - "configuration.yaml"
+    - "modbus.yaml"
   register: config
 
 - ansible.builtin.include_role:

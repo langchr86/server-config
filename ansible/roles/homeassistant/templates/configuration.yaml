@@ -16,6 +16,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
 sensor: !include sensors.yaml
+modbus: !include modbus.yaml
 
 recorder:
   purge_keep_days: 500
