@@ -5,6 +5,31 @@
   type: tcp
   host: 192.168.0.31
   port: 502
+  climates:
+    - name: WPL17ICS HK-1 Komfort-Temperatur
+      slave: 1
+      address: 1501
+      input_type: holding
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      temp_step: 0.1
+      min_temp: 5
+      max_temp: 30
+      target_temp_register: 1501
+      temperature_unit: C
+    - name: WPL17ICS HK-1 Eco-Temperatur
+      slave: 1
+      address: 1502
+      input_type: holding
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      temp_step: 0.1
+      min_temp: 5
+      max_temp: 30
+      target_temp_register: 1502
+      temperature_unit: C
   sensors:
     - name: WPL17ICS Aussentemperatur
       slave: 1
@@ -96,24 +121,6 @@
       precision: 1
       unit_of_measurement: '%'
       device_class: humidity
-    - name: WPL17ICS HK-1 Komfort-Temperatur
-      slave: 1
-      address: 1501
-      input_type: holding
-      data_type: int16
-      scale: 0.1
-      precision: 1
-      unit_of_measurement: '°C'
-      device_class: temperature
-    - name: WPL17ICS HK-1 Eco-Temperatur
-      slave: 1
-      address: 1502
-      input_type: holding
-      data_type: int16
-      scale: 0.1
-      precision: 1
-      unit_of_measurement: '°C'
-      device_class: temperature
     - name: WPL17ICS Betriebsstatus
       slave: 1
       address: 2500
