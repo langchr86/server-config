@@ -1,0 +1,237 @@
+modbus:
+  # Stiebel Eltron WPL17ICS Modbus Integration
+  # Modbus address has offset 1.
+  # Slave is always 1.
+  - name: WPL17ICS
+    type: tcp
+    host: 192.168.0.31
+    port: 502
+    climates:
+      - name: WPL17ICS HK-1 Komfort-Temperatur
+        slave: 1
+        address: 1501
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        temp_step: 0.1
+        min_temp: 5
+        max_temp: 30
+        target_temp_register: 1501
+        temperature_unit: C
+      - name: WPL17ICS HK-1 Eco-Temperatur
+        slave: 1
+        address: 1502
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        temp_step: 0.1
+        min_temp: 5
+        max_temp: 30
+        target_temp_register: 1502
+        temperature_unit: C
+    sensors:
+      - name: WPL17ICS Aussentemperatur
+        slave: 1
+        address: 506
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS HK-1 Ist-Temperatur
+        slave: 1
+        address: 507
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS HK-1 Soll-Temperatur
+        slave: 1
+        address: 509
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Vorlauf Ist-Temperatur
+        slave: 1
+        address: 512
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Rücklauf Ist-Temperatur
+        slave: 1
+        address: 515
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Warmwasser Ist-Temperatur
+        slave: 1
+        address: 521
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Warmwasser Soll-Temperatur
+        slave: 1
+        address: 522
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Raum Ist-Temperatur
+        slave: 1
+        address: 583
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Raum Soll-Temperatur
+        slave: 1
+        address: 584
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Raum Feuchte
+        slave: 1
+        address: 585
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '%'
+        device_class: humidity
+      - name: WPL17ICS Betriebsstatus
+        slave: 1
+        address: 2500
+        input_type: input
+        data_type: uint16
+      - name: WPL17ICS Wärmemenge Heizen Tag
+        slave: 1
+        address: 3500
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Wärmemenge Heizen Summe kWh
+        slave: 1
+        address: 3501
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Wärmemenge Heizen Summe MWh
+        slave: 1
+        address: 3502
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'MWh'
+        device_class: energy
+      - name: WPL17ICS Wärmemenge Warmwasser Tag
+        slave: 1
+        address: 3503
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Wärmemenge Warmwasser Summe kWh
+        slave: 1
+        address: 3504
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Wärmemenge Warmwasser Summe MWh
+        slave: 1
+        address: 3505
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'MWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Heizen Tag
+        slave: 1
+        address: 3510
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Heizen Summe kWh
+        slave: 1
+        address: 3511
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Heizen Summe MWh
+        slave: 1
+        address: 3512
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'MWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Warmwasser Tag
+        slave: 1
+        address: 3513
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Warmwasser Summe kWh
+        slave: 1
+        address: 3514
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'kWh'
+        device_class: energy
+      - name: WPL17ICS Leistungsaufnahme Warmwasser Summe MWh
+        slave: 1
+        address: 3515
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: 'MWh'
+        device_class: energy
+      - name: WPL17ICS SG-Ready Betriebszustand
+        slave: 1
+        address: 5000
+        input_type: input
+        data_type: uint16
+
+template:
+  - sensor:
+      - name: WPL17ICS Wärmemenge Heizen Summe
+        unit_of_measurement: 'kWh'
+        device_class: energy
+        state: "{{ states('sensor.wpl17ics_warmemenge_heizen_summe_kwh') | float + states('sensor.wpl17ics_warmemenge_heizen_summe_mwh') | float * 1000.0 }}"
+      - name: WPL17ICS Wärmemenge Warmwasser Summe
+        unit_of_measurement: 'kWh'
+        device_class: energy
+        state: "{{ states('sensor.wpl17ics_warmemenge_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_warmemenge_warmwasser_summe_mwh') | float * 1000.0 }}"
+      - name: WPL17ICS Leistungsaufnahme Heizen Summe
+        unit_of_measurement: 'kWh'
+        device_class: energy
+        state: "{{ states('sensor.wpl17ics_leistungsaufnahme_heizen_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_heizen_summe_mwh') | float * 1000.0 }}"
+      - name: WPL17ICS Leistungsaufnahme Warmwasser Summe
+        unit_of_measurement: 'kWh'
+        device_class: energy
+        state: "{{ states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_mwh') | float * 1000.0 }}"

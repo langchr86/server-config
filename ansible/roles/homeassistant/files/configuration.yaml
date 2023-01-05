@@ -20,5 +20,8 @@ sensor: !include sensor.yaml
 switch: !include switch.yaml
 template: !include template.yaml
 
+homeassistant:
+  packages: !include_dir_named packages
+
 recorder:
   purge_keep_days: 500

@@ -19,8 +19,9 @@
     mode: "u+rw"
   with_items:
     - "{{ app_folder }}"
+    - "{{ app_folder }}/packages"
 
-- name: Create basic config file
+- name: Create core config files
   become: true
   ansible.builtin.copy:
     src: "{{ item }}"
@@ -33,14 +34,24 @@
     - "rest.yaml"
     - "sensor.yaml"
     - "template.yaml"
-  register: config
+  register: core_config
+
+- name: Create package config files
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ app_folder }}/packages"
+    mode: "u+rw"
+  with_items:
+    - "packages/wpl17ics.yaml"
+  register: packages
 
 - ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
     auto_restart_if_failing: true
-    force_restart: "{{ config.changed }}"
+    force_restart: "{{ core_config.changed or packages.changed }}"
     service_dependencies:
       - mosquitto.service
       - caddy.service
