@@ -29,9 +29,6 @@
     mode: "u+rw"
   with_items:
     - "configuration.yaml"
-    - "group.yaml"
-    - "modbus.yaml"
-    - "rest.yaml"
     - "sensor.yaml"
     - "template.yaml"
   register: core_config
@@ -43,6 +40,7 @@
     dest: "{{ app_folder }}/packages"
     mode: "u+rw"
   with_items:
+    - "packages/mystrom.yaml"
     - "packages/wpl17ics.yaml"
   register: packages
 

@@ -11,13 +11,9 @@ http:
     - 172.0.0.0/8
 
 automation: !include automations.yaml
-group: !include group.yaml
-modbus: !include modbus.yaml
-rest: !include rest.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
 sensor: !include sensor.yaml
-switch: !include switch.yaml
 template: !include template.yaml
 
 homeassistant:

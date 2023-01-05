@@ -13,11 +13,3 @@
   name: "Total Photovoltaics Energy"
   unit_prefix: k
   method: left
-- platform: integration
-  source: sensor.gefrierschrank_energy
-  name: "Gefrierschrank energy total"
-  method: left
-- platform: integration
-  source: sensor.kuhlschrank_energy
-  name: "Kühlschrank energy total"
-  method: left
