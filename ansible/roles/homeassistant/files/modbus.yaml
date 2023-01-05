@@ -6,33 +6,6 @@
   host: 192.168.0.31
   port: 502
   sensors:
-    - name: WPL17ICS Raum Ist-Temperatur
-      slave: 1
-      address: 583
-      input_type: input
-      data_type: int16
-      scale: 0.1
-      precision: 1
-      unit_of_measurement: '°C'
-      device_class: temperature
-    - name: WPL17ICS Raum Soll-Temperatur
-      slave: 1
-      address: 584
-      input_type: input
-      data_type: int16
-      scale: 0.1
-      precision: 1
-      unit_of_measurement: '°C'
-      device_class: temperature
-    - name: WPL17ICS Raum Feuchte
-      slave: 1
-      address: 585
-      input_type: input
-      data_type: int16
-      scale: 0.1
-      precision: 1
-      unit_of_measurement: '%'
-      device_class: humidity
     - name: WPL17ICS Aussentemperatur
       slave: 1
       address: 506
@@ -96,11 +69,140 @@
       precision: 1
       unit_of_measurement: '°C'
       device_class: temperature
+    - name: WPL17ICS Raum Ist-Temperatur
+      slave: 1
+      address: 583
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Raum Soll-Temperatur
+      slave: 1
+      address: 584
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS Raum Feuchte
+      slave: 1
+      address: 585
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '%'
+      device_class: humidity
+    - name: WPL17ICS HK-1 Komfort-Temperatur
+      slave: 1
+      address: 1501
+      input_type: holding
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
+    - name: WPL17ICS HK-1 Eco-Temperatur
+      slave: 1
+      address: 1502
+      input_type: holding
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: '°C'
+      device_class: temperature
     - name: WPL17ICS Betriebsstatus
       slave: 1
       address: 2500
       input_type: input
       data_type: uint16
+    - name: WPL17ICS Wärmemenge Heizen Tag
+      slave: 1
+      address: 3500
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Wärmemenge Heizen Summe kWh
+      slave: 1
+      address: 3501
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Wärmemenge Heizen Summe MWh
+      slave: 1
+      address: 3502
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'MWh'
+      device_class: energy
+    - name: WPL17ICS Wärmemenge Warmwasser Tag
+      slave: 1
+      address: 3503
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Wärmemenge Warmwasser Summe kWh
+      slave: 1
+      address: 3504
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Wärmemenge Warmwasser Summe MWh
+      slave: 1
+      address: 3505
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'MWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Heizen Tag
+      slave: 1
+      address: 3510
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Heizen Summe kWh
+      slave: 1
+      address: 3511
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Heizen Summe MWh
+      slave: 1
+      address: 3512
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'MWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Warmwasser Tag
+      slave: 1
+      address: 3513
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Warmwasser Summe kWh
+      slave: 1
+      address: 3514
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'kWh'
+      device_class: energy
+    - name: WPL17ICS Leistungsaufnahme Warmwasser Summe MWh
+      slave: 1
+      address: 3515
+      input_type: input
+      data_type: uint16
+      unit_of_measurement: 'MWh'
+      device_class: energy
     - name: WPL17ICS SG-Ready Betriebszustand
       slave: 1
       address: 5000
