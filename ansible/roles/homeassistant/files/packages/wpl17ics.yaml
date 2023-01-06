@@ -222,16 +222,20 @@ template:
       - name: WPL17ICS Wärmemenge Heizen Summe
         unit_of_measurement: 'kWh'
         device_class: energy
+        state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_warmemenge_heizen_summe_kwh') | float + states('sensor.wpl17ics_warmemenge_heizen_summe_mwh') | float * 1000.0 }}"
       - name: WPL17ICS Wärmemenge Warmwasser Summe
         unit_of_measurement: 'kWh'
         device_class: energy
+        state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_warmemenge_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_warmemenge_warmwasser_summe_mwh') | float * 1000.0 }}"
       - name: WPL17ICS Leistungsaufnahme Heizen Summe
         unit_of_measurement: 'kWh'
         device_class: energy
+        state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_leistungsaufnahme_heizen_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_heizen_summe_mwh') | float * 1000.0 }}"
       - name: WPL17ICS Leistungsaufnahme Warmwasser Summe
         unit_of_measurement: 'kWh'
         device_class: energy
+        state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_mwh') | float * 1000.0 }}"
