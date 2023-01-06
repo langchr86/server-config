@@ -175,6 +175,32 @@ modbus:
         precision: 1
         unit_of_measurement: 'K'
         device_class: temperature
+      - name: WPL17ICS WP Rücklauf-Temperatur
+        slave: 1
+        address: 541
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS WP Vorlauf-Temperatur
+        slave: 1
+        address: 542
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS WP Volumenstrom
+        slave: 1
+        address: 547
+        input_type: input
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: 'l/min'
       - name: WPL17ICS Raum Ist-Temperatur
         slave: 1
         address: 583
