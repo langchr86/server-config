@@ -3,53 +3,53 @@ rest:
     resource: http://192.168.0.87/report
     method: GET
     sensor:
-      - name: Gefrierschrank power
+      - name: Enthärtung power
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Gefrierschrank energy
+      - name: Enthärtung energy
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Gefrierschrank relay
+      - name: Enthärtung relay
         value_template: '{{ value_json.relay }}'
-      - name: Gefrierschrank temperature
+      - name: Enthärtung temperature
         value_template: '{{ value_json.temperature }}'
   - scan_interval: 10
     resource: http://192.168.0.88/report
     method: GET
     sensor:
-      - name: Kühlschrank power
+      - name: Regenwasser power
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Kühlschrank energy
+      - name: Regenwasser energy
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Kühlschrank relay
+      - name: Regenwasser relay
         value_template: '{{ value_json.relay }}'
-      - name: Kühlschrank temperature
+      - name: Regenwasser temperature
         value_template: '{{ value_json.temperature }}'
 
 sensor:
-  - name: Gefrierschrank energy total
+  - name: Enthärtung energy total
     platform: integration
-    source: sensor.gefrierschrank_energy
+    source: sensor.enthartung_energy
     method: left
-  - name: Kühlschrank energy total
+  - name: Regenwasser energy total
     platform: integration
-    source: sensor.kuhlschrank_energy
+    source: sensor.regenwasser_energy
     method: left
 
 switch:
-  - name: Gefrierschrank
+  - name: Enthärtung
     platform: mystrom
     host: 192.168.0.87
-  - name: Kühlschrank
+  - name: Regenwasser
     platform: mystrom
     host: 192.168.0.88
