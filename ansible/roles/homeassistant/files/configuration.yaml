@@ -13,8 +13,6 @@ http:
 automation: !include automations.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
-sensor: !include sensor.yaml
-template: !include template.yaml
 
 homeassistant:
   packages: !include_dir_named packages

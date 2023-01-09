@@ -1,0 +1,31 @@
+sensor:
+  - platform: integration
+    source: sensor.battery_power_charging
+    name: "Total Battery Energy Charged"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.battery_power_discharging
+    name: "Total Battery Energy Discharged"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.power_photovoltaics
+    name: "Total Photovoltaics Energy"
+    unit_prefix: k
+    method: left
+
+template:
+  - sensor:
+      - name: "Battery Power Charging"
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ max(0, 0 - states('sensor.solarnet_power_battery') | float(default=0)) }}"
+      - name: "Battery Power Discharging"
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ max(0, states('sensor.solarnet_power_battery') | float(default=0)) }}"
+      - name: "Power Photovoltaics"
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ states('sensor.solarnet_power_photovoltaics') | float(default=0) }}"
