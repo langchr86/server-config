@@ -66,6 +66,8 @@ Device IPs
 | .82 | storen-schlafen-west |
 | .83 | storen-ankleide-west |
 | .84 | storen-ankleide-nord |
+| .85 | tumbler              |
+| .86 | waschmaschine        |
 | .87 | enthärtung           |
 | .88 | regenwasser          |
 | .90 | licht-wohnen         |

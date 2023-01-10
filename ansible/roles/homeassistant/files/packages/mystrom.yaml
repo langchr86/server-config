@@ -2,6 +2,52 @@
 
 rest:
   - scan_interval: 10
+    resource: http://192.168.0.85/report
+    method: GET
+    sensor:
+      - name: Tumbler Leistung
+        value_template: '{{ value_json.power }}'
+        unit_of_measurement: 'W'
+        device_class: power
+        state_class: measurement
+      - name: Tumbler Energie
+        value_template: '{{ value_json.Ws }}'
+        unit_of_measurement: 'W'
+        state_class: measurement
+        device_class: power
+      - name: Tumbler Temperatur
+        value_template: '{{ value_json.temperature }}'
+        unit_of_measurement: '°C'
+        state_class: measurement
+        device_class: temperature
+    binary_sensor:
+      - name: Tumbler Status
+        value_template: '{{ value_json.relay }}'
+        device_class: power
+  - scan_interval: 10
+    resource: http://192.168.0.86/report
+    method: GET
+    sensor:
+      - name: Waschmaschine Leistung
+        value_template: '{{ value_json.power }}'
+        unit_of_measurement: 'W'
+        device_class: power
+        state_class: measurement
+      - name: Waschmaschine Energie
+        value_template: '{{ value_json.Ws }}'
+        unit_of_measurement: 'W'
+        state_class: measurement
+        device_class: power
+      - name: Waschmaschine Temperatur
+        value_template: '{{ value_json.temperature }}'
+        unit_of_measurement: '°C'
+        state_class: measurement
+        device_class: temperature
+    binary_sensor:
+      - name: Waschmaschine Status
+        value_template: '{{ value_json.relay }}'
+        device_class: power
+  - scan_interval: 10
     resource: http://192.168.0.87/report
     method: GET
     sensor:
@@ -49,6 +95,14 @@ rest:
         device_class: power
 
 sensor:
+  - name: Tumbler Energie Total
+    platform: integration
+    source: sensor.tumbler_energie
+    method: left
+  - name: Waschmaschine Energie Total
+    platform: integration
+    source: sensor.waschmaschine_energie
+    method: left
   - name: Enthärtung Energie Total
     platform: integration
     source: sensor.enthartung_energie
@@ -59,6 +113,12 @@ sensor:
     method: left
 
 switch:
+  - name: Tumbler
+    platform: mystrom
+    host: 192.168.0.85
+  - name: Waschmaschine
+    platform: mystrom
+    host: 192.168.0.86
   - name: Enthärtung
     platform: mystrom
     host: 192.168.0.87
