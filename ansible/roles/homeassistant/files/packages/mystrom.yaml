@@ -5,47 +5,57 @@ rest:
     resource: http://192.168.0.87/report
     method: GET
     sensor:
-      - name: Enthärtung power
+      - name: Enthärtung Leistung
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Enthärtung energy
+      - name: Enthärtung Energie
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Enthärtung relay
-        value_template: '{{ value_json.relay }}'
-      - name: Enthärtung temperature
+      - name: Enthärtung Temperatur
         value_template: '{{ value_json.temperature }}'
+        unit_of_measurement: '°C'
+        state_class: measurement
+        device_class: temperature
+    binary_sensor:
+      - name: Enthärtung Status
+        value_template: '{{ value_json.relay }}'
+        device_class: power
   - scan_interval: 10
     resource: http://192.168.0.88/report
     method: GET
     sensor:
-      - name: Regenwasser power
+      - name: Regenwasser Leistung
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Regenwasser energy
+      - name: Regenwasser Energie
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Regenwasser relay
-        value_template: '{{ value_json.relay }}'
-      - name: Regenwasser temperature
+      - name: Regenwasser Temperatur
         value_template: '{{ value_json.temperature }}'
+        unit_of_measurement: '°C'
+        state_class: measurement
+        device_class: temperature
+    binary_sensor:
+      - name: Regenwasser Status
+        value_template: '{{ value_json.relay }}'
+        device_class: power
 
 sensor:
-  - name: Enthärtung energy total
+  - name: Enthärtung Energie Total
     platform: integration
-    source: sensor.enthartung_energy
+    source: sensor.enthartung_energie
     method: left
-  - name: Regenwasser energy total
+  - name: Regenwasser Energie Total
     platform: integration
-    source: sensor.regenwasser_energy
+    source: sensor.regenwasser_energie
     method: left
 
 switch:
