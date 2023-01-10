@@ -112,6 +112,21 @@ sensor:
     source: sensor.regenwasser_energie
     method: left
 
+template:
+  - binary_sensor:
+      - name: Tumbler Aktiv
+        state: "{{ states('sensor.tumbler_leistung') | float > 10.0 }}"
+        device_class: running
+      - name: Waschmaschine Aktiv
+        state: "{{ states('sensor.waschmaschine_leistung') | float > 10.0 }}"
+        device_class: running
+      - name: Enthärtung Aktiv
+        state: "{{ states('sensor.enthartung_leistung') | float > 10.0 }}"
+        device_class: running
+      - name: Regenwasser Aktiv
+        state: "{{ states('sensor.regenwasser_leistung') | float > 10.0 }}"
+        device_class: running
+
 switch:
   - name: Tumbler
     platform: mystrom
