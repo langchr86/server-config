@@ -374,27 +374,43 @@ template:
         device_class: energy
         state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_mwh') | float * 1000.0 }}"
+  - binary_sensor:
+      - name: WPL17ICS Betriebsstatus aktiv
+        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus HK-1 Pumpe aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(1) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus HK-2 Pumpe aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(2) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus Aufheizprogramm aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(4) > 0 }}"
+        device_class: heat
       - name: WPL17ICS Betriebsstatus Elektrische Heizung aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(8) > 0 }}"
+        device_class: heat
       - name: WPL17ICS Betriebsstatus Heizung aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(16) > 0 }}"
+        device_class: heat
       - name: WPL17ICS Betriebsstatus Warmwasser aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(32) > 0 }}"
+        device_class: heat
       - name: WPL17ICS Betriebsstatus Verdichter aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(64) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus Sommerbetrieb aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(128) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus Kühlbetrieb aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(256) > 0 }}"
+        device_class: cold
       - name: WPL17ICS Betriebsstatus Abtauen aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(512) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus Silentmode1 aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(1024) > 0 }}"
+        device_class: running
       - name: WPL17ICS Betriebsstatus Silentmode2 aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(2048) > 0 }}"
+        device_class: running
