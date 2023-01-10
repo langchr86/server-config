@@ -1,3 +1,5 @@
+# Fronius Symo Gen24 Plus Integrations
+
 sensor:
   - platform: integration
     source: sensor.battery_power_charging

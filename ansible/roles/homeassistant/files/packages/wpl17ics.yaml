@@ -1,5 +1,6 @@
+# Stiebel Eltron WPL17ICS Integrations
+
 modbus:
-  # Stiebel Eltron WPL17ICS Modbus Integration
   # Modbus address has offset 1.
   # Slave is always 1.
   - name: WPL17ICS

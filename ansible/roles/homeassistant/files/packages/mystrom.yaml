@@ -1,3 +1,5 @@
+# myStrom Switch Integrations
+
 rest:
   - scan_interval: 10
     resource: http://192.168.0.87/report
