@@ -31,3 +31,22 @@ template:
         unit_of_measurement: W
         device_class: power
         state: "{{ states('sensor.solarnet_power_photovoltaics') | float(default=0) }}"
+      - name: "SolarNet Power load inverted"
+        state: "{{ max(0, 0 - states('sensor.solarnet_power_load') | float(default=0)) }}"
+        unit_of_measurement: W
+        device_class: power
+      - name: "SolarNet Power grid consume"
+        state: "{{ max(0, states('sensor.solarnet_power_grid') | float(default=0)) }}"
+        unit_of_measurement: W
+        device_class: power
+      - name: "SolarNet Power grid feed"
+        state: "{{ max(0, 0 - states('sensor.solarnet_power_grid') | float(default=0)) }}"
+        unit_of_measurement: W
+        device_class: power
+  - binary_sensor:
+      - name: "Battery Charging Aktiv"
+        state: "{{ states('sensor.battery_power_charging') | int > 0 }}"
+        device_class: battery_charging
+      - name: "Battery Discharging Aktiv"
+        state: "{{ states('sensor.battery_power_discharging') | int > 0 }}"
+        device_class: battery
