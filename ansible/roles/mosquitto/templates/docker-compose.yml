@@ -2,7 +2,7 @@ version: '3'
 services:
   mosquitto:
     container_name: mosquitto
-    image: eclipse-mosquitto:1.6.14
+    image: eclipse-mosquitto:1.6.15
     ports:
       - "1883:1883"
       - "9001:9001"
