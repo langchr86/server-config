@@ -39,6 +39,7 @@
     mode: "u+rw"
   with_items:
     - "packages/mystrom.yaml"
+    - "packages/systemmonitor.yaml"
     - "packages/symogen24.yaml"
     - "packages/wpl17ics.yaml"
   register: packages

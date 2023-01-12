@@ -1,0 +1,37 @@
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_use
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: disk_use_percent
+        arg: /config
+      - type: disk_use
+        arg: /config
+      - type: disk_free
+        arg: /config
+      - type: memory_use_percent
+      - type: memory_use
+      - type: memory_free
+      - type: swap_use_percent
+      - type: swap_use
+      - type: swap_free
+      - type: load_1m
+      - type: load_5m
+      - type: load_15m
+      - type: processor_use
+      - type: processor_temperature
+      - type: last_boot
+
+binary_sensor:
+  - platform: ping
+    host: 192.168.0.5
+    name: lang-backup
+    scan_interval: 60
+  - platform: ping
+    host: 192.168.0.6
+    name: lang-main
+    scan_interval: 60

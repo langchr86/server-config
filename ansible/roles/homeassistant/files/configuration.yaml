@@ -16,6 +16,8 @@ script: !include scripts.yaml
 
 homeassistant:
   packages: !include_dir_named packages
+  allowlist_external_dirs:
+    - /config
 
 recorder:
   purge_keep_days: 500
