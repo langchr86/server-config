@@ -45,8 +45,8 @@ template:
         device_class: power
   - binary_sensor:
       - name: "Battery Charging Aktiv"
-        state: "{{ states('sensor.battery_power_charging') | int > 0 }}"
+        state: "{{ states('sensor.battery_power_charging') | int(default=0) > 0 }}"
         device_class: battery_charging
       - name: "Battery Discharging Aktiv"
-        state: "{{ states('sensor.battery_power_discharging') | int > 0 }}"
+        state: "{{ states('sensor.battery_power_discharging') | int(default=0) > 0 }}"
         device_class: battery
