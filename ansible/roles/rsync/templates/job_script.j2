@@ -8,7 +8,7 @@ printf "************************************************************************
 
 {% for step in job.steps %}
 echo "run rsync step: {{ step.src }}/ into {{ step.dest }}/"
-rsync -e "ssh -o StrictHostKeyChecking=no" --archive --delete --stats --itemize-changes "{{ step.src }}/" "{{ step.dest }}/"
+rsync -e "ssh -o StrictHostKeyChecking=no" --archive --delete --stats --itemize-changes {{ step.opts | default('') }} "{{ step.src }}/" "{{ step.dest }}/"
 printf "************************************************************************************\n\n"
 
 {% endfor %}

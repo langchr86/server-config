@@ -74,7 +74,7 @@
             timer_OnCalendar: "*-*-* *:10:00"
             pre_sleep_seconds: 30
             steps:
-              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config"}
+              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config", opts: '--rsync-path="sudo rsync"'}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/data", dest: "/share/backups/{{ hostname_mini }}/share-main/data"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/projects", dest: "/share/backups/{{ hostname_mini }}/share-main/projects"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp"}
