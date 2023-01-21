@@ -7,67 +7,6 @@ modbus:
     type: tcp
     host: 192.168.0.31
     port: 502
-    climates:
-      - name: WPL17ICS HK-1 Komfort-Temperatur
-        slave: 1
-        address: 583
-        input_type: input
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        temp_step: 0.5
-        min_temp: 5
-        max_temp: 30
-        target_temp_register: 1501
-        temperature_unit: C
-      - name: WPL17ICS HK-1 Eco-Temperatur
-        slave: 1
-        address: 1502
-        input_type: holding
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        temp_step: 0.5
-        min_temp: 5
-        max_temp: 30
-        target_temp_register: 1502
-        temperature_unit: C
-      - name: WPL17ICS Warmwasser Komfort-Temperatur
-        slave: 1
-        address: 521
-        input_type: input
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        temp_step: 1.0
-        min_temp: 10
-        max_temp: 60
-        target_temp_register: 1509
-        temperature_unit: C
-      - name: WPL17ICS Warmwasser Eco-Temperatur
-        slave: 1
-        address: 1510
-        input_type: holding
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        temp_step: 1.0
-        min_temp: 10
-        max_temp: 60
-        target_temp_register: 1510
-        temperature_unit: C
-      - name: WPL17ICS Kühlen Regel-Temperatur
-        slave: 1
-        address: 523
-        input_type: input
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        temp_step: 0.5
-        min_temp: 20
-        max_temp: 30
-        target_temp_register: 1515
-        temperature_unit: C
     sensors:
       - name: WPL17ICS Aussentemperatur
         slave: 1
@@ -229,6 +168,24 @@ modbus:
         precision: 1
         unit_of_measurement: '%'
         device_class: humidity
+      - name: WPL17ICS HK-1 Komfort-Temperatur
+        slave: 1
+        address: 1501
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS HK-1 Eco-Temperatur
+        slave: 1
+        address: 1502
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
       - name: WPL17ICS HK-1 Heizkurve
         slave: 1
         address: 1503
@@ -236,6 +193,33 @@ modbus:
         data_type: int16
         scale: 0.01
         precision: 2
+      - name: WPL17ICS Warmwasser Komfort-Temperatur
+        slave: 1
+        address: 1509
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Warmwasser Eco-Temperatur
+        slave: 1
+        address: 1510
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
+      - name: WPL17ICS Kühlen Regel-Temperatur
+        slave: 1
+        address: 1515
+        input_type: holding
+        data_type: int16
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: '°C'
+        device_class: temperature
       - name: WPL17ICS Betriebsstatus
         slave: 1
         address: 2500
