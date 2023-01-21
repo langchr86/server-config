@@ -360,7 +360,7 @@ template:
         state: "{{ states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_kwh') | float + states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_mwh') | float * 1000.0 }}"
   - binary_sensor:
       - name: WPL17ICS Betriebsstatus aktiv
-        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int > 0 }}"
+        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(16383) > 0 }}"
         device_class: running
       - name: WPL17ICS Betriebsstatus HK-1 Pumpe aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(1) > 0 }}"
@@ -398,3 +398,6 @@ template:
       - name: WPL17ICS Betriebsstatus Silentmode2 aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(2048) > 0 }}"
         device_class: running
+      - name: WPL17ICS Betriebsstatus EVU Sperre
+        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(16384) > 0 }}"
+        device_class: safety
