@@ -358,6 +358,30 @@ template:
         device_class: energy
         state_class: total_increasing
         state: "{{ states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_kwh') | float(default=0) + states('sensor.wpl17ics_leistungsaufnahme_warmwasser_summe_mwh') | float(default=0) * 1000.0 }}"
+      - name: WPL17ICS Real Power Notheizung
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_notheizung_aktiv', 'on') else 0 }}"
+      - name: WPL17ICS Real Power Heizung
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv', 'on') else 0 }}"
+      - name: WPL17ICS Real Power Warmwasser
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_warmwasser_aktiv', 'on') else 0 }}"
+      - name: WPL17ICS Real Power Kühlbetrieb
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_kuhlbetrieb_aktiv', 'on') else 0 }}"
+      - name: WPL17ICS Real Power Standby
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ max(0, (states('sensor.warmepumpe_channel_a_power') | float(default=0))
+                - (states('sensor.wpl17ics_real_power_notheizung') | float(default=0))
+                - (states('sensor.wpl17ics_real_power_heizung') | float(default=0))
+                - (states('sensor.wpl17ics_real_power_warmwasser') | float(default=0))
+                - (states('sensor.wpl17ics_real_power_kuhlbetrieb') | float(default=0)) ) }}"
   - binary_sensor:
       - name: WPL17ICS Betriebsstatus aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(16383) > 0 }}"
@@ -401,3 +425,35 @@ template:
       - name: WPL17ICS Betriebsstatus EVU Sperre
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(16384) > 0 }}"
         device_class: safety
+
+sensor:
+  - platform: integration
+    source: sensor.wpl17ics_real_power_notheizung
+    name: "WPL17ICS Real Total Energy Notheizung"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.wpl17ics_real_power_heizung
+    name: "WPL17ICS Real Total Energy Heizung"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.wpl17ics_real_power_warmwasser
+    name: "WPL17ICS Real Total Energy Warmwasser"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.wpl17ics_real_power_kuhlbetrieb
+    name: "WPL17ICS Real Total Energy Kühlbetrieb"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.wpl17ics_real_power_standby
+    name: "WPL17ICS Real Total Energy Standby"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.boiler_channel_a_power
+    name: "WPL17ICS Real Total Energy Boiler"
+    unit_prefix: k
+    method: left

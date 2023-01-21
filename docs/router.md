@@ -27,8 +27,7 @@ IP Management
 | .20  - .29  | media                |
 | .30  - .39  | energy               |
 | .40  - .49  |                      |
-| .50  - .69  | smart home (sensors) |
-| .70  - .99  | smart home (actors)  |
+| .50  - .99  | smart home |
 | .100 - .200 | DHCP                 |
 
 
@@ -51,6 +50,8 @@ Device IPs
 | .53 | sensor-buero         |
 | .54 | sensor-schlafen      |
 | .55 | sensor-dispo         |
+| .68 | boiler               |
+| .69 | warmepumpe           |
 | .70 | storen-dispo-west    |
 | .71 | storen-wohnen-ost    |
 | .72 | storen-sitzplatz-sud |
