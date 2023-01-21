@@ -385,19 +385,19 @@ template:
         device_class: running
       - name: WPL17ICS Betriebsstatus Sommerbetrieb aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(128) > 0 }}"
-        device_class: running
+        device_class: light
       - name: WPL17ICS Betriebsstatus Kühlbetrieb aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(256) > 0 }}"
         device_class: cold
       - name: WPL17ICS Betriebsstatus Abtauen aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(512) > 0 }}"
-        device_class: running
+        device_class: heat
       - name: WPL17ICS Betriebsstatus Silentmode1 aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(1024) > 0 }}"
-        device_class: running
+        device_class: sound
       - name: WPL17ICS Betriebsstatus Silentmode2 aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(2048) > 0 }}"
-        device_class: running
+        device_class: sound
       - name: WPL17ICS Betriebsstatus EVU Sperre
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int | bitwise_and(16384) > 0 }}"
         device_class: safety
