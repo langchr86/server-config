@@ -371,7 +371,7 @@ template:
       - name: WPL17ICS Betriebsstatus Aufheizprogramm aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(4) > 0 }}"
         device_class: heat
-      - name: WPL17ICS Betriebsstatus Elektrische Heizung aktiv
+      - name: WPL17ICS Betriebsstatus Notheizung aktiv
         state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(8) > 0 }}"
         device_class: heat
       - name: WPL17ICS Betriebsstatus Heizung aktiv
