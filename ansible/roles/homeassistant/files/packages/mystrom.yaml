@@ -142,7 +142,7 @@ sensor:
 template:
   - binary_sensor:
       - name: Tumbler Aktiv
-        state: "{{ states('sensor.tumbler_leistung') | float(default=0) > 5.0 }}"
+        state: "{{ states('sensor.tumbler_leistung') | float(default=0) > 20.0 }}"
         device_class: running
       - name: Waschmaschine Aktiv
         state: "{{ states('sensor.waschmaschine_leistung') | float(default=0) > 5.0 }}"
