@@ -16,6 +16,11 @@ sensor:
     name: "Total Photovoltaics Energy"
     unit_prefix: k
     method: left
+  - platform: integration
+    source: sensor.solarnet_power_load_others
+    name: "Total SolarNet Energy others"
+    unit_prefix: k
+    method: left
 
 template:
   - sensor:
@@ -41,6 +46,17 @@ template:
         device_class: power
       - name: "SolarNet Power grid feed"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_grid') | float(default=0)) }}"
+        unit_of_measurement: W
+        device_class: power
+      - name: "SolarNet Power load others"
+        state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
+                - (states('sensor.warmepumpe_channel_a_power') | float(default=0))
+                - (states('sensor.boiler_channel_a_power') | float(default=0))
+                - (states('sensor.tumbler_leistung') | float(default=0))
+                - (states('sensor.waschmaschine_leistung') | float(default=0))
+                - (states('sensor.enthartung_leistung') | float(default=0))
+                - (states('sensor.regenwasser_leistung') | float(default=0))
+                - (states('sensor.geschirrspuler_leistung') | float(default=0)) ) }}"
         unit_of_measurement: W
         device_class: power
   - binary_sensor:
