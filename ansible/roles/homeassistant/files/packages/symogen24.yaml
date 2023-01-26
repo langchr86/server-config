@@ -17,6 +17,16 @@ sensor:
     unit_prefix: k
     method: left
   - platform: integration
+    source: sensor.power_photovoltaics_string_1
+    name: "Total Photovoltaics String 1 Energy"
+    unit_prefix: k
+    method: left
+  - platform: integration
+    source: sensor.power_photovoltaics_string_2
+    name: "Total Photovoltaics String 2 Energy "
+    unit_prefix: k
+    method: left
+  - platform: integration
     source: sensor.solarnet_power_load_others
     name: "Total SolarNet Energy others"
     unit_prefix: k
@@ -36,6 +46,14 @@ template:
         unit_of_measurement: W
         device_class: power
         state: "{{ states('sensor.solarnet_power_photovoltaics') | float(default=0) }}"
+      - name: "Power Photovoltaics String 1"
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ states('sensor.lang_pv_symo24_current_dc') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc') | float(default=0) }}"
+      - name: "Power Photovoltaics String 2"
+        unit_of_measurement: W
+        device_class: power
+        state: "{{ states('sensor.lang_pv_symo24_current_dc_2') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc_2') | float(default=0) }}"
       - name: "SolarNet Power load inverted"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_load') | float(default=0)) }}"
         unit_of_measurement: W
