@@ -1,7 +1,7 @@
 # myStrom Switch Integrations
 
 rest:
-  - scan_interval: 10
+  - scan_interval: 30
     resource: http://192.168.0.85/report
     method: GET
     sensor:
@@ -24,7 +24,7 @@ rest:
       - name: Tumbler Status
         value_template: '{{ value_json.relay }}'
         device_class: power
-  - scan_interval: 10
+  - scan_interval: 30
     resource: http://192.168.0.86/report
     method: GET
     sensor:
@@ -47,7 +47,7 @@ rest:
       - name: Waschmaschine Status
         value_template: '{{ value_json.relay }}'
         device_class: power
-  - scan_interval: 10
+  - scan_interval: 30
     resource: http://192.168.0.87/report
     method: GET
     sensor:
@@ -70,7 +70,7 @@ rest:
       - name: Enthärtung Status
         value_template: '{{ value_json.relay }}'
         device_class: power
-  - scan_interval: 10
+  - scan_interval: 30
     resource: http://192.168.0.88/report
     method: GET
     sensor:
@@ -93,7 +93,7 @@ rest:
       - name: Regenwasser Status
         value_template: '{{ value_json.relay }}'
         device_class: power
-  - scan_interval: 10
+  - scan_interval: 30
     resource: http://192.168.0.89/report
     method: GET
     sensor:
