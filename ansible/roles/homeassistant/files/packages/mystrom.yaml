@@ -15,11 +15,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Tumbler Temperatur
-        value_template: '{{ value_json.temperature }}'
-        unit_of_measurement: '°C'
-        state_class: measurement
-        device_class: temperature
     binary_sensor:
       - name: Tumbler Status
         value_template: '{{ value_json.relay }}'
@@ -38,11 +33,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Waschmaschine Temperatur
-        value_template: '{{ value_json.temperature }}'
-        unit_of_measurement: '°C'
-        state_class: measurement
-        device_class: temperature
     binary_sensor:
       - name: Waschmaschine Status
         value_template: '{{ value_json.relay }}'
@@ -61,11 +51,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Enthärtung Temperatur
-        value_template: '{{ value_json.temperature }}'
-        unit_of_measurement: '°C'
-        state_class: measurement
-        device_class: temperature
     binary_sensor:
       - name: Enthärtung Status
         value_template: '{{ value_json.relay }}'
@@ -84,11 +69,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Regenwasser Temperatur
-        value_template: '{{ value_json.temperature }}'
-        unit_of_measurement: '°C'
-        state_class: measurement
-        device_class: temperature
     binary_sensor:
       - name: Regenwasser Status
         value_template: '{{ value_json.relay }}'
@@ -107,11 +87,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-      - name: Geschirrspüler Temperatur
-        value_template: '{{ value_json.temperature }}'
-        unit_of_measurement: '°C'
-        state_class: measurement
-        device_class: temperature
     binary_sensor:
       - name: Geschirrspüler Status
         value_template: '{{ value_json.relay }}'
