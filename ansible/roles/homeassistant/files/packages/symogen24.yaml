@@ -4,69 +4,84 @@ sensor:
   - platform: integration
     source: sensor.battery_power_charging
     name: "Total Battery Energy Charged"
+    unique_id: "symogen24_total_battery_energy_charged"
     unit_prefix: k
     method: left
   - platform: integration
     source: sensor.battery_power_discharging
     name: "Total Battery Energy Discharged"
+    unique_id: "symogen24_total_battery_energy_discharged"
     unit_prefix: k
     method: left
   - platform: integration
     source: sensor.power_photovoltaics
     name: "Total Photovoltaics Energy"
+    unique_id: "symogen24_total_photovoltaics_energy"
     unit_prefix: k
     method: left
   - platform: integration
     source: sensor.power_photovoltaics_string_1
     name: "Total Photovoltaics String 1 Energy"
+    unique_id: "symogen24_total_photovoltaics_string_1_energy"
     unit_prefix: k
     method: left
   - platform: integration
     source: sensor.power_photovoltaics_string_2
     name: "Total Photovoltaics String 2 Energy "
+    unique_id: "symogen24_total_photovoltaics_string_2_energy"
     unit_prefix: k
     method: left
   - platform: integration
     source: sensor.solarnet_power_load_others
     name: "Total SolarNet Energy others"
+    unique_id: "symogen24_total_solarnet_energy_others"
     unit_prefix: k
     method: left
 
 template:
   - sensor:
       - name: "Battery Power Charging"
+        unique_id: "symogen24_battery_power_charging"
         unit_of_measurement: W
         device_class: power
         state: "{{ max(0, 0 - states('sensor.solarnet_power_battery') | float(default=0)) }}"
       - name: "Battery Power Discharging"
+        unique_id: "symogen24_battery_power_discharging"
         unit_of_measurement: W
         device_class: power
         state: "{{ max(0, states('sensor.solarnet_power_battery') | float(default=0)) }}"
       - name: "Power Photovoltaics"
+        unique_id: "symogen24_power_photovoltaics"
         unit_of_measurement: W
         device_class: power
         state: "{{ states('sensor.solarnet_power_photovoltaics') | float(default=0) }}"
       - name: "Power Photovoltaics String 1"
+        unique_id: "symogen24_power_photovoltaics_string_1"
         unit_of_measurement: W
         device_class: power
         state: "{{ states('sensor.lang_pv_symo24_current_dc') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc') | float(default=0) }}"
       - name: "Power Photovoltaics String 2"
+        unique_id: "symogen24_power_photovoltaics_string_2"
         unit_of_measurement: W
         device_class: power
         state: "{{ states('sensor.lang_pv_symo24_current_dc_2') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc_2') | float(default=0) }}"
       - name: "SolarNet Power load inverted"
+        unique_id: "symogen24_solarnet_power_load_inverted"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_load') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
       - name: "SolarNet Power grid consume"
+        unique_id: "symogen24_solarnet_power_grid_consume"
         state: "{{ max(0, states('sensor.solarnet_power_grid') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
       - name: "SolarNet Power grid feed"
+        unique_id: "symogen24_solarnet_power_grid_feed"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_grid') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
       - name: "SolarNet Power load others"
+        unique_id: "symogen24_solarnet_power_load_others"
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
                 - (states('sensor.warmepumpe_channel_a_power') | float(default=0))
                 - (states('sensor.boiler_channel_a_power') | float(default=0))
@@ -79,8 +94,10 @@ template:
         device_class: power
   - binary_sensor:
       - name: "Battery Charging Aktiv"
+        unique_id: "symogen24_battery_charging_active"
         state: "{{ states('sensor.battery_power_charging') | int(default=0) > 10 }}"
         device_class: battery_charging
       - name: "Battery Discharging Aktiv"
+        unique_id: "symogen24_battery_discharging_active"
         state: "{{ states('sensor.battery_power_discharging') | int(default=0) > 10 }}"
         device_class: battery

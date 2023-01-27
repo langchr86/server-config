@@ -6,17 +6,20 @@ rest:
     method: GET
     sensor:
       - name: Tumbler Leistung
+        unique_id: "mystrom_tumbler_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
       - name: Tumbler Energie
+        unique_id: "mystrom_tumbler_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
       - name: Tumbler Status
+        unique_id: "mystrom_tumbler_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
@@ -24,17 +27,20 @@ rest:
     method: GET
     sensor:
       - name: Waschmaschine Leistung
+        unique_id: "mystrom_washingmachine_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
       - name: Waschmaschine Energie
+        unique_id: "mystrom_washingmachine_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
       - name: Waschmaschine Status
+        unique_id: "mystrom_washingmachine_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
@@ -42,17 +48,20 @@ rest:
     method: GET
     sensor:
       - name: Enthärtung Leistung
+        unique_id: "mystrom_softener_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
       - name: Enthärtung Energie
+        unique_id: "mystrom_softener_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
       - name: Enthärtung Status
+        unique_id: "mystrom_softener_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
@@ -60,17 +69,20 @@ rest:
     method: GET
     sensor:
       - name: Regenwasser Leistung
+        unique_id: "mystrom_rainwater_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
       - name: Regenwasser Energie
+        unique_id: "mystrom_rainwater_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
       - name: Regenwasser Status
+        unique_id: "mystrom_rainwater_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
@@ -78,38 +90,46 @@ rest:
     method: GET
     sensor:
       - name: Geschirrspüler Leistung
+        unique_id: "mystrom_dishwasher_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
       - name: Geschirrspüler Energie
+        unique_id: "mystrom_dishwasher_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
       - name: Geschirrspüler Status
+        unique_id: "mystrom_dishwasher_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
 
 sensor:
   - name: Tumbler Energie Total
+    unique_id: "mystrom_tumbler_total_energy"
     platform: integration
     source: sensor.tumbler_energie
     method: left
   - name: Waschmaschine Energie Total
+    unique_id: "mystrom_washingmachine_total_energy"
     platform: integration
     source: sensor.waschmaschine_energie
     method: left
   - name: Enthärtung Energie Total
+    unique_id: "mystrom_softener_total_energy"
     platform: integration
     source: sensor.enthartung_energie
     method: left
   - name: Regenwasser Energie Total
+    unique_id: "mystrom_rainwater_total_energy"
     platform: integration
     source: sensor.regenwasser_energie
     method: left
   - name: Geschirrspüler Energie Total
+    unique_id: "mystrom_dishwasher_total_energy"
     platform: integration
     source: sensor.geschirrspuler_energie
     method: left
@@ -117,18 +137,23 @@ sensor:
 template:
   - binary_sensor:
       - name: Tumbler Aktiv
+        unique_id: "mystrom_tumbler_active"
         state: "{{ states('sensor.tumbler_leistung') | float(default=0) > 20.0 }}"
         device_class: running
       - name: Waschmaschine Aktiv
+        unique_id: "mystrom_washingmachine_active"
         state: "{{ states('sensor.waschmaschine_leistung') | float(default=0) > 5.0 }}"
         device_class: running
       - name: Enthärtung Aktiv
+        unique_id: "mystrom_softener_active"
         state: "{{ states('sensor.enthartung_leistung') | float(default=0) > 5.0 }}"
         device_class: running
       - name: Regenwasser Aktiv
+        unique_id: "mystrom_rainwater_active"
         state: "{{ states('sensor.regenwasser_leistung') | float(default=0) > 5.0 }}"
         device_class: running
       - name: Geschirrspüler Aktiv
+        unique_id: "mystrom_dishwasher_active"
         state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 5.0 }}"
         device_class: running
 
