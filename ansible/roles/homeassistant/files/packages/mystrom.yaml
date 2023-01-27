@@ -154,7 +154,7 @@ template:
         device_class: running
       - name: Geschirrspüler Aktiv
         unique_id: "mystrom_dishwasher_active"
-        state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 5.0 }}"
+        state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 8.0 }}"
         device_class: running
 
 switch:
