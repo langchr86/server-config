@@ -50,6 +50,8 @@ Device IPs
 | .53 | sensor-buero         |
 | .54 | sensor-schlafen      |
 | .55 | sensor-dispo         |
+| .66 | 1pm-rack             |
+| .67 | 1pm-buro             |
 | .68 | boiler               |
 | .69 | warmepumpe           |
 | .70 | storen-dispo-west    |
