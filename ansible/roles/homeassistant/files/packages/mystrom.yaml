@@ -47,42 +47,42 @@ rest:
     resource: http://192.168.0.87/report
     method: GET
     sensor:
-      - name: Enthärtung Leistung
-        unique_id: "mystrom_softener_power"
+      - name: Kühlschrank Leistung
+        unique_id: "mystrom_refrigerator_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Enthärtung Energie
-        unique_id: "mystrom_softener_energy"
+      - name: Kühlschrank Energie
+        unique_id: "mystrom_refrigerator_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
-      - name: Enthärtung Status
-        unique_id: "mystrom_softener_state"
+      - name: Kühlschrank Status
+        unique_id: "mystrom_refrigerator_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
     resource: http://192.168.0.88/report
     method: GET
     sensor:
-      - name: Regenwasser Leistung
-        unique_id: "mystrom_rainwater_power"
+      - name: Gefrierschrank Leistung
+        unique_id: "mystrom_freezer_power"
         value_template: '{{ value_json.power }}'
         unit_of_measurement: 'W'
         device_class: power
         state_class: measurement
-      - name: Regenwasser Energie
-        unique_id: "mystrom_rainwater_energy"
+      - name: Gefrierschrank Energie
+        unique_id: "mystrom_freezer_energy"
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
     binary_sensor:
-      - name: Regenwasser Status
-        unique_id: "mystrom_rainwater_state"
+      - name: Gefrierschrank Status
+        unique_id: "mystrom_freezer_state"
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
@@ -118,15 +118,15 @@ sensor:
     platform: integration
     source: sensor.waschmaschine_energie
     method: left
-  - name: Enthärtung Energie Total
-    unique_id: "mystrom_softener_total_energy"
+  - name: Kühlschrank Energie Total
+    unique_id: "mystrom_refrigerator_total_energy"
     platform: integration
-    source: sensor.enthartung_energie
+    source: sensor.kuhlschrank_energie
     method: left
-  - name: Regenwasser Energie Total
-    unique_id: "mystrom_rainwater_total_energy"
+  - name: Gefrierschrank Energie Total
+    unique_id: "mystrom_freezer_total_energy"
     platform: integration
-    source: sensor.regenwasser_energie
+    source: sensor.gefrierschrank_energie
     method: left
   - name: Geschirrspüler Energie Total
     unique_id: "mystrom_dishwasher_total_energy"
@@ -144,14 +144,6 @@ template:
         unique_id: "mystrom_washingmachine_active"
         state: "{{ states('sensor.waschmaschine_leistung') | float(default=0) > 5.0 }}"
         device_class: running
-      - name: Enthärtung Aktiv
-        unique_id: "mystrom_softener_active"
-        state: "{{ states('sensor.enthartung_leistung') | float(default=0) > 5.0 }}"
-        device_class: running
-      - name: Regenwasser Aktiv
-        unique_id: "mystrom_rainwater_active"
-        state: "{{ states('sensor.regenwasser_leistung') | float(default=0) > 5.0 }}"
-        device_class: running
       - name: Geschirrspüler Aktiv
         unique_id: "mystrom_dishwasher_active"
         state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 8.0 }}"
@@ -164,10 +156,10 @@ switch:
   - name: Waschmaschine
     platform: mystrom
     host: 192.168.0.86
-  - name: Enthärtung
+  - name: Kühlschrank
     platform: mystrom
     host: 192.168.0.87
-  - name: Regenwasser
+  - name: Gefrierschrank
     platform: mystrom
     host: 192.168.0.88
   - name: Geschirrspüler

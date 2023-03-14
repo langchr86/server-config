@@ -73,7 +73,7 @@ Device IPs
 | .84 | storen-ankleide-nord |
 | .85 | tumbler              |
 | .86 | waschmaschine        |
-| .87 | enthartung           |
-| .88 | regenwasser          |
+| .87 | kuhlschrank          |
+| .88 | gefrierschrank       |
 | .89 | geschirrspuler       |
 | .90 | licht-wohnen         |
