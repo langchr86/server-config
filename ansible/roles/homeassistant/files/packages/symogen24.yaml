@@ -86,6 +86,7 @@ template:
                 - (states('sensor.warmepumpe_channel_a_power') | float(default=0))
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
+                - (states('sensor.outlet_tv_wohnen_power') | float(default=0))
                 - (states('sensor.boiler_channel_a_power') | float(default=0))
                 - (states('sensor.tumbler_leistung') | float(default=0))
                 - (states('sensor.waschmaschine_leistung') | float(default=0))
