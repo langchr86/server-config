@@ -376,6 +376,24 @@ modbus:
         address: 5000
         input_type: input
         data_type: uint16
+    switches:
+        # SG-Ready State | weak bit | strong bit
+        #            1   |     0    |     1
+        #            2   |     0    |     0
+        #            3   |     1    |     0
+        #            4   |     1    |     1
+      - name: WPL17ICS SG-Ready Force Weak
+        unique_id: "wpl17ics_sg_ready_force_weak"
+        slave: 1
+        address: 4001
+        write_type: holding
+        verify:
+      - name: WPL17ICS SG-Ready Force Strong
+        unique_id: "wpl17ics_sg_ready_force_strong"
+        slave: 1
+        address: 4002
+        write_type: holding
+        verify:
 
 template:
   - sensor:
