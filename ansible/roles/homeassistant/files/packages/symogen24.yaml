@@ -89,8 +89,10 @@ template:
                 - (states('sensor.boiler_channel_a_power') | float(default=0))
                 - (states('sensor.tumbler_leistung') | float(default=0))
                 - (states('sensor.waschmaschine_leistung') | float(default=0))
-                - (states('sensor.enthartung_leistung') | float(default=0))
-                - (states('sensor.regenwasser_leistung') | float(default=0))
+                - (states('sensor.entharter_power') | float(default=0))
+                - (states('sensor.regenwasser_power') | float(default=0))
+                - (states('sensor.kuhlschrank_leistung') | float(default=0))
+                - (states('sensor.gefrierschrank_leistung') | float(default=0))
                 - (states('sensor.geschirrspuler_leistung') | float(default=0)) ) }}"
         unit_of_measurement: W
         device_class: power
