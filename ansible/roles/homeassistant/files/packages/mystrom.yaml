@@ -17,11 +17,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-    binary_sensor:
-      - name: Tumbler Status
-        unique_id: "mystrom_tumbler_state"
-        value_template: '{{ value_json.relay }}'
-        device_class: power
   - scan_interval: 30
     resource: http://192.168.0.86/report
     method: GET
@@ -37,11 +32,6 @@ rest:
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
-        device_class: power
-    binary_sensor:
-      - name: Waschmaschine Status
-        unique_id: "mystrom_washingmachine_state"
-        value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
     resource: http://192.168.0.87/report
@@ -59,11 +49,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-    binary_sensor:
-      - name: Kühlschrank Status
-        unique_id: "mystrom_refrigerator_state"
-        value_template: '{{ value_json.relay }}'
-        device_class: power
   - scan_interval: 30
     resource: http://192.168.0.88/report
     method: GET
@@ -80,11 +65,6 @@ rest:
         unit_of_measurement: 'W'
         state_class: measurement
         device_class: power
-    binary_sensor:
-      - name: Gefrierschrank Status
-        unique_id: "mystrom_freezer_state"
-        value_template: '{{ value_json.relay }}'
-        device_class: power
   - scan_interval: 30
     resource: http://192.168.0.89/report
     method: GET
@@ -100,11 +80,6 @@ rest:
         value_template: '{{ value_json.Ws }}'
         unit_of_measurement: 'W'
         state_class: measurement
-        device_class: power
-    binary_sensor:
-      - name: Geschirrspüler Status
-        unique_id: "mystrom_dishwasher_state"
-        value_template: '{{ value_json.relay }}'
         device_class: power
 
 sensor:
@@ -148,20 +123,3 @@ template:
         unique_id: "mystrom_dishwasher_active"
         state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 8.0 }}"
         device_class: running
-
-switch:
-  - name: Tumbler
-    platform: mystrom
-    host: 192.168.0.85
-  - name: Waschmaschine
-    platform: mystrom
-    host: 192.168.0.86
-  - name: Kühlschrank
-    platform: mystrom
-    host: 192.168.0.87
-  - name: Gefrierschrank
-    platform: mystrom
-    host: 192.168.0.88
-  - name: Geschirrspüler
-    platform: mystrom
-    host: 192.168.0.89
