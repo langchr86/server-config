@@ -108,18 +108,3 @@ sensor:
     platform: integration
     source: sensor.geschirrspuler_energie
     method: left
-
-template:
-  - binary_sensor:
-      - name: Tumbler Aktiv
-        unique_id: "mystrom_tumbler_active"
-        state: "{{ states('sensor.tumbler_leistung') | float(default=0) > 20.0 }}"
-        device_class: running
-      - name: Waschmaschine Aktiv
-        unique_id: "mystrom_washingmachine_active"
-        state: "{{ states('sensor.waschmaschine_leistung') | float(default=0) > 5.0 }}"
-        device_class: running
-      - name: Geschirrspüler Aktiv
-        unique_id: "mystrom_dishwasher_active"
-        state: "{{ states('sensor.geschirrspuler_leistung') | float(default=0) > 8.0 }}"
-        device_class: running
