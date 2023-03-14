@@ -1,0 +1,32 @@
+# Zehnder ComfoNET integration
+
+comfoconnect:
+  host: 192.168.0.116
+  name: ComfoAir
+  token: 38262c062914d735447188f83117a012
+  pin: 8597
+
+sensor:
+  - platform: comfoconnect
+    resources:
+      - air_flow_exhaust
+      - air_flow_supply
+      - bypass_state
+      - current_humidity
+      - current_rmot
+      - current_temperature
+      - days_to_replace_filter
+      - exhaust_humidity
+      - exhaust_temperature
+      - outside_humidity
+      - outside_temperature
+      - power_usage
+      - supply_humidity
+      - supply_temperature
+
+  - platform: integration
+    source: sensor.comfoair_power_usage
+    name: "ComfoAir Total Energy"
+    unique_id: "comfoair_total_energy"
+    unit_prefix: k
+    method: left

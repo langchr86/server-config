@@ -38,6 +38,7 @@
     dest: "{{ app_folder }}/packages"
     mode: "u+rw"
   with_items:
+    - "packages/comfonet.yaml"
     - "packages/mystrom.yaml"
     - "packages/systemmonitor.yaml"
     - "packages/symogen24.yaml"

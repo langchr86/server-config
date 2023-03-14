@@ -84,6 +84,7 @@ template:
         unique_id: "symogen24_solarnet_power_load_others"
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
                 - (states('sensor.warmepumpe_channel_a_power') | float(default=0))
+                - (states('sensor.comfoair_power_usage') | float(default=0))
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
                 - (states('sensor.outlet_tv_wohnen_power') | float(default=0))
