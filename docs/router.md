@@ -44,6 +44,8 @@ Device IPs
 | .30 | lang-pv-symo24       |
 | .31 | servicewelt          |
 | .32 | lf-zehnder           |
+| .48 | button-buro          |
+| .49 | button-wohnen        |
 | .50 | sensor-sitzplatz     |
 | .51 | sensor-schopf        |
 | .52 | sensor-wohnen        |
