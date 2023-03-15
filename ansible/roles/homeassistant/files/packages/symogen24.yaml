@@ -96,12 +96,3 @@ template:
                 - (states('sensor.geschirrspuler_leistung') | float(default=0)) ) }}"
         unit_of_measurement: W
         device_class: power
-  - binary_sensor:
-      - name: "Battery Charging Aktiv"
-        unique_id: "symogen24_battery_charging_active"
-        state: "{{ states('sensor.battery_power_charging') | int(default=0) > 10 }}"
-        device_class: battery_charging
-      - name: "Battery Discharging Aktiv"
-        unique_id: "symogen24_battery_discharging_active"
-        state: "{{ states('sensor.battery_power_discharging') | int(default=0) > 10 }}"
-        device_class: battery
