@@ -96,3 +96,15 @@ template:
                 - (states('sensor.geschirrspuler_leistung') | float(default=0)) ) }}"
         unit_of_measurement: W
         device_class: power
+      - name: "SolarNet Power self usage"
+        unique_id: "symogen24_solarnet_power_self_usage"
+        # 0 < SelfUsage < TotalPV
+        state: "{{ max(0,
+                  min(states('sensor.solarnet_power_photovoltaics') | float(default=0),
+                    (states('sensor.solarnet_power_load_inverted') | float(default=0))
+                    - (states('sensor.solarnet_power_battery') | float(default=0))
+                    - (states('sensor.solarnet_power_grid_consume') | float(default=0))
+                  )
+                ) }}"
+        unit_of_measurement: W
+        device_class: power
