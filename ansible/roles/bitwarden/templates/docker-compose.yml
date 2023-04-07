@@ -3,7 +3,7 @@ version: "3.5"
 services:
   bitwarden:
     container_name: "bitwarden"
-    image: vaultwarden/server:1.27.0
+    image: vaultwarden/server:1.28.1
     environment:
       - WEBSOCKET_ENABLED=true
       - ADMIN_TOKEN={{ passwords.bitwarden_admin }}
