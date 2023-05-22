@@ -453,7 +453,7 @@ template:
   - binary_sensor:
       - name: WPL17ICS Betriebsstatus aktiv
         unique_id: "wpl17ics_system_state_active"
-        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(16383) > 0 }}"
+        state: "{{ states('sensor.wpl17ics_betriebsstatus') | int(default=0) | bitwise_and(16255) > 0 }}"
         device_class: running
       - name: WPL17ICS Betriebsstatus HK-1 Pumpe aktiv
         unique_id: "wpl17ics_system_state_hk1_pump"
