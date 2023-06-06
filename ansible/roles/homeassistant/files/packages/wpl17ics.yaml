@@ -234,16 +234,6 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
-      - name: WPL17ICS Kühlen Regel-Temperatur
-        unique_id: "wpl17ics_comfort_temperature_cooling"
-        slave: 1
-        address: 1515
-        input_type: holding
-        data_type: int16
-        scale: 0.1
-        precision: 1
-        unit_of_measurement: '°C'
-        device_class: temperature
       - name: WPL17ICS Betriebsstatus
         unique_id: "wpl17ics_system_state"
         slave: 1
