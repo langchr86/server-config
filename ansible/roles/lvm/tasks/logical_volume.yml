@@ -16,6 +16,7 @@
   become: true
   ansible.builtin.command: "lvcreate --name {{ lv.label }} {{ lv.size_options }} {{ vg.label }}"
   when: lvdisplay.rc != 0
+  changed_when: true
 
 - ansible.builtin.set_fact:
     lv_dir: "{{ vg.mount_path }}/{{ lv.label }}"

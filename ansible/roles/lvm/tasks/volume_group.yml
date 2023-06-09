@@ -17,11 +17,13 @@
   become: true
   ansible.builtin.command: "pvcreate {{ device_list_string }}"
   when: vgdisplay.rc != 0
+  changed_when: true
 
 - name: "Create volume_group {{ vg.label }} on devices: '{{ device_list_string }}'."
   become: true
   ansible.builtin.command: "vgcreate {{ vg.label }} {{ device_list_string }}"
   when: vgdisplay.rc != 0
+  changed_when: true
 
 - name: "Create volume group directory: '{{ vg.mount_path }}' and set group 'users'"
   become: true

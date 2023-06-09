@@ -1,10 +1,6 @@
-skip_list:
-  - line-length
-  - unnamed-task
-
-
 exclude_paths:
   - roles/swapfile
+  - roles/homeassistant/files/
 
 skip_list:
   - command-instead-of-module
@@ -12,10 +8,13 @@ skip_list:
   - deprecated-command-syntax
   - experimental
   - ignore-errors
+  - line-length
   - name[casing]
   - name[missing]
   - name[play]
   - name[template]
   - no-handler
   - risky-shell-pipe
+  - unnamed-task
+  - var-naming
   - yaml[line-length]

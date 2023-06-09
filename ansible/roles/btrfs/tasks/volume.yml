@@ -17,6 +17,7 @@
     {{ volume.mkfs_options | default('--data single') }}
     --label {{ volume.label }} {{ device_list_string }}
   when: blkid.rc != 0
+  changed_when: true
 
 - name: "Create mount point directory: '{{ volume.mount_path }}'"
   become: true

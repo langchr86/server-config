@@ -36,3 +36,4 @@
   become: true
   ansible.builtin.command: "smartctl -s on {{ device_options }}"
   when: smart_available and not smart_enabled
+  changed_when: true

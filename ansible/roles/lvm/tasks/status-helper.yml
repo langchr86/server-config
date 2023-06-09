@@ -7,7 +7,7 @@
     dest: "{{ lvm_status_helper_path }}"
     owner: "root"
     group: "root"
-    mode: 0755
+    mode: '0755'
 
 - ansible.builtin.set_fact:
     status_log_file: "{{ status_log_path }}/lvm-status.log"

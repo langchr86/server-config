@@ -11,3 +11,4 @@
   become: true
   ansible.builtin.command: "btrfs quota disable {{ volume.mount_path }}"
   when: qgroup_show.rc == 0
+  changed_when: true

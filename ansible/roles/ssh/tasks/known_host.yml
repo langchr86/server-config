@@ -9,3 +9,4 @@
 - name: "Add missing hash for host: '{{ host.real }}'"
   ansible.builtin.command: "/bin/bash -c 'ssh-keyscan -H {{ host.real }} >> {{ ssh_known_hosts_file }}'"
   when: search.rc == 1
+  changed_when: true

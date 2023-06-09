@@ -21,7 +21,7 @@
     dest: "/usr/bin/"
     owner: "root"
     group: "root"
-    mode: 0755
+    mode: '0755'
   with_items:
     - "disk-status"
     - "smart-long-test"

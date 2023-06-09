@@ -5,7 +5,7 @@
   ansible.builtin.file:
     path: "{{ share_source }}"
     state: directory
-    mode: 0775
+    mode: '0775'
     owner: "{{ ansible_env.USER }}"
     group: "users"
 

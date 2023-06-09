@@ -5,7 +5,7 @@
     dest: "{{ btrfs_quota_helper_path }}"
     owner: "root"
     group: "root"
-    mode: 0755
+    mode: '0755'
 
 - name: "Install helper to show volume status: '{{ btrfs_status_helper_path }}'"
   become: true
@@ -14,4 +14,4 @@
     dest: "{{ btrfs_status_helper_path }}"
     owner: "root"
     group: "root"
-    mode: 0755
+    mode: '0755'
