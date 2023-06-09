@@ -47,7 +47,7 @@ Device IPs
 | .48  | button-buro          |
 | .49  | button-wohnen        |
 | .50  | sensor-sitzplatz     |
-| .51  | sensor-schopf        |
+| .51  | sensor-technik       |
 | .52  | sensor-wohnen        |
 | .53  | sensor-buero         |
 | .54  | sensor-schlafen      |
