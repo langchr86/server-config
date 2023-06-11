@@ -20,12 +20,12 @@ Restart=always
 RestartSec=5sec
 {% endif %}
 
-ExecStart=/usr/bin/docker-compose up --build --remove-orphans
+ExecStart=/usr/bin/docker compose up --build --remove-orphans
 
-ExecStop=/usr/bin/docker-compose down --remove-orphans
+ExecStop=/usr/bin/docker compose down --remove-orphans
 
-ExecReload=/usr/bin/docker-compose pull --quiet --ignore-pull-failures
-ExecReload=/usr/bin/docker-compose build --pull
+ExecReload=/usr/bin/docker compose pull --quiet --ignore-pull-failures
+ExecReload=/usr/bin/docker compose build --pull
 
 [Install]
 WantedBy=multi-user.target

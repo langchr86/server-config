@@ -9,7 +9,6 @@
       - curl
       - software-properties-common
       - docker.io
-      - docker-compose
 
 - name: Create group docker
   become: true
@@ -22,3 +21,17 @@
     name: "{{ ansible_env.USER }}"
     append: true
     groups: docker
+
+- name: "Create docker plugins folder: {{ docker_plugins_folder }}"
+  become: true
+  ansible.builtin.file:
+    dest: "{{ docker_plugins_folder }}"
+    state: directory
+    mode: "755"
+
+- name: "Install docker compose V2 plugin"
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ docker_compose_url }}"
+    dest: "{{ docker_plugins_folder }}/docker-compose"
+    mode: "755"
