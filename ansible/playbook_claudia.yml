@@ -1,0 +1,119 @@
+- hosts: all
+
+  pre_tasks:
+    - include_vars:
+        file: passwords.yml
+        name: passwords
+      no_log: true
+    - set_fact:
+        main_user: "claudia"
+        main_password: "{{ passwords.claudia }}"
+        claudia_main_disk: "/dev/sdb2"
+        claudia_backup_disk: "/dev/sdb2"
+
+    - import_tasks: tasks/ubuntu_apt.yml
+    - import_tasks: tasks/basic_setup.yml
+
+  roles:
+    - role: users
+      vars:
+        users:
+          - { name: "{{ main_user }}", password: "{{ main_password }}" }
+
+    - role: ssh
+      vars:
+        ssh_evaluate_host_aliases: false
+        ssh_host_aliases: []
+
+    - role: git-tools
+      vars:
+        git_graphical_tools: false
+        git_aliases: true
+        git_rerere: true
+        git_editor_nano: true
+        git_prompt: true
+
+    - role: bash
+    - role: tmux
+
+    - role: btrfs
+      vars:
+        volumes:
+          - label: "pool-main"
+            mount_path: "/mnt/pool-main"
+            mkfs_options: "--data raid0 --metadata dup"
+            status_log_path: "/mnt/pool-main/subvolumes/daten-sicher"
+            devices:
+              - "{{ claudia_main_disk }}"
+            subvolumes:
+              - "daten-sicher"
+              - "daten-unsicher"
+
+    - role: filesystem
+      vars:
+        filesystems:
+          - label: "daten-backup"
+            device: "{{ claudia_backup_disk }}"
+            type: "ntfs"
+            mount_path: "/mnt/daten-backup"
+
+    - role: ansible-role-samba
+      become: true
+      vars:
+        samba_mitigate_cve_2017_7494: false
+        samba_global_include: "samba-global-include.conf"
+        samba_users:
+          - name: "{{ main_user }}"
+            password: "{{ main_password }}"
+        samba_shares:
+          - name: "daten-sicher"
+            path: "/mnt/pool-main/subvolumes/daten-sicher"
+            browseable: true
+            owner: "{{ main_user }}"
+            group: "users"
+            write_list: "{{ main_user }}"
+          - name: "daten-unsicher"
+            path: "/mnt/pool-main/subvolumes/daten-unsicher"
+            browseable: true
+            owner: "{{ main_user }}"
+            group: "users"
+            write_list: "{{ main_user }}"
+          - name: "daten-backup"
+            path: "/mnt/daten-backup"
+            browseable: true
+            owner: "{{ main_user }}"
+            group: "users"
+
+    - role: disk-monitoring
+      vars:
+        disk_monitoring_status_log_path: "/mnt/pool-main/subvolumes/daten-sicher"
+        disk_monitoring_devices:
+          - path: '/dev/sda'
+          - path: '/dev/sdb'
+
+    - role: rsync
+      vars:
+        rsync_jobs:
+          - name: "backups-{{ hostname_claudia }}"
+            user: "{{ main_user }}"
+            timer_OnCalendar: "*-*-* 03:00:00"
+            pre_sleep_seconds: 1
+            steps:
+              - {src: "/mnt/pool-main/subvolumes/daten-sicher", dest: "/mnt/daten-backup"}
+
+    - role: rsync-daemon
+      vars:
+        rsyncd_destination_modules_path: "/mnt/pool-main/subvolumes/daten-sicher/Backups"
+        rsyncd_destination_modules:
+          - user_name: "{{ main_user }}"
+            user_password: "{{ main_password }}"
+            subfolders:
+              - 'claudia-pc'
+              - 'claudia-laptop'
+
+    - role: dockerio
+
+    - role: plex
+      vars:
+        plex_config_folder: "/mnt/pool-main/subvolumes/daten-sicher/Server/plex/"
+        plex_movies_folder: "/mnt/pool-main/subvolumes/daten-unsicher/Videos/"

@@ -15,3 +15,4 @@ ssh_host_aliases:
   - {name: '{{ hostname_mini }}', real: '{{ ip_address_mini }}'}
   - {name: '{{ hostname_main }}', real: '{{ ip_address_main }}'}
   - {name: '{{ hostname_backup }}', real: '{{ ip_address_backup }}'}
+  - {name: '{{ hostname_claudia }}', real: '{{ ip_address_claudia }}'}

@@ -5,11 +5,14 @@
   "ip_address_mini": "192.168.10.8",
   "ip_address_main": "192.168.10.6",
   "ip_address_backup": "192.168.10.5",
+  "ip_address_claudia": "192.168.10.11",
   "ssh_evaluate_host_aliases": false,
   "disk_monitoring_enable_smart": false,
   "deploy_examples": true,
   "domain": "localhost",
   "cert_authority": "local",
+  "claudia_main_disk": "/dev/sdc",
+  "claudia_backup_disk": "/dev/sdd",
   "main_user": "vagrant",
   "main_password": "vagrant"
 }
