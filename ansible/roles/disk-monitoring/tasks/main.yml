@@ -3,11 +3,6 @@
   ansible.builtin.package:
     name: smartmontools
 
-- name: Install hddtemp
-  become: true
-  ansible.builtin.package:
-    name: hddtemp
-
 - ansible.builtin.include_tasks: tasks/enable_smart.yml
   with_items: "{{ disk_monitoring_devices }}"
   loop_control:
