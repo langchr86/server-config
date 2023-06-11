@@ -170,6 +170,7 @@ Detail or manual steps
 ----------------------
 
 * [router](docs/router.md)
+* [vagrant](docs/vagrant.md)
 
 * [lang-backup](docs/lang-backup.md)
 * [lang-main](docs/lang-main.md)
