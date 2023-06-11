@@ -6,13 +6,25 @@
   ignore_errors: true
   no_log: true
 
+- block:
+    - name: "Install NTFS filesystem package"
+      ansible.builtin.package:
+        name: ntfs-3g
+
+    - name: "Create NTFS filesystem on device: {{ filesystem.device }}"
+      ansible.builtin.shell: "mkfs.ntfs --fast --force --label {{ filesystem.label }} {{ filesystem.device }}"
+      changed_when: true
+      when: blkid.rc != 0
+  become: true
+  when: filesystem.type is regex('ntfs')
+
 - name: "Create {{ filesystem.type }} filesystem on device: {{ filesystem.device }}"
   become: true
   filesystem:
     dev: "{{ filesystem.device }}"
     fstype: "{{ filesystem.type }}"
     opts: "-L {{ filesystem.label }}"
-  when: blkid.rc != 0
+  when: blkid.rc != 0 and filesystem.type is not regex('ntfs')
 
 - name: "Create mount point directory: '{{ filesystem.mount_path }}'"
   become: true
