@@ -1,0 +1,14 @@
+---
+version: "3.5"
+services:
+  logitechmediaserver:
+    container_name: "plex"
+    image: lscr.io/linuxserver/plex:1.32.3
+    network_mode: host
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ plex_config_folder }}:/config
+      - {{ plex_movies_folder }}:/movies:ro

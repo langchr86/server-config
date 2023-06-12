@@ -1,0 +1,7 @@
+---
+
+plex_user: "{{ ansible_env.USER }}"
+plex_group: "users"
+plex_config_folder: "/share/config/plex/"
+plex_movies_folder: "/share/synced/movies/"
+plex_service_name: "plex"

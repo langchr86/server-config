@@ -1,0 +1,27 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ plex_user }}"
+    group: "{{ plex_group }}"
+    mode: "775"
+    recurse: true
+  with_items:
+    - "{{ plex_config_folder }}"
+    - "{{ plex_movies_folder }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ plex_user }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ plex_group }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ plex_service_name }}"
