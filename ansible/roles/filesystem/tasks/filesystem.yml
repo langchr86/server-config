@@ -39,3 +39,11 @@
     path: "{{ filesystem.mount_path }}"
     fstype: "{{ filesystem.type }}"
     state: mounted
+
+- name: "Ensure filesystem '{{ filesystem.mount_path }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
+  become: true
+  ansible.builtin.file:
+    path: '{{ filesystem.mount_path }}'
+    owner: '{{ ansible_env.USER }}'
+    group: 'users'
+    mode: '0775'
