@@ -1,0 +1,7 @@
+---
+
+dockerio_arch_map:
+  armv7l: 'armv7'
+  armv6l: 'armv6'
+
+dockerio_arch_map_arch: "{{ dockerio_arch_map[ansible_architecture] | default(ansible_architecture) }}"
