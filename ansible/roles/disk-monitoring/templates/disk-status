@@ -9,7 +9,7 @@ function smart_get_overall_health_report {
 	local DEVICE=${1}
 	local TYPE=${2}
 	printf "health report: ${DEVICE} \n==============================\n"
-	smartctl -d ${TYPE} -A "${DEVICE}" | grep "Temperature_Celsius" | awk '{print $10}'
+	smartctl -d ${TYPE} -A "${DEVICE}" | grep "Temperature_Celsius" | awk '{printf $10}'
 	printf "°C\n"
 	smartctl -d ${TYPE} --health "${DEVICE}" | grep "SMART Health Status"
 	smartctl -d ${TYPE} --health "${DEVICE}" | grep "overall-health self-assessment test result"
