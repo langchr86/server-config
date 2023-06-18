@@ -63,7 +63,7 @@
             steps:
               - {src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main"}
 
-    - role: ansible-role-samba
+    - role: ansible-collection-vladgh-samba
       become: true
       vars:
         samba_mitigate_cve_2017_7494: false

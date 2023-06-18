@@ -51,7 +51,7 @@
           - "/share/web/gallery/"
           - "/share/web/movies/"
 
-    - role: ansible-role-samba
+    - role: ansible-collection-vladgh-samba
       become: true
       vars:
         samba_mitigate_cve_2017_7494: false

@@ -103,7 +103,7 @@
             subfolders:
               - 'lang-zen11'
 
-    - role: ansible-role-samba
+    - role: ansible-collection-vladgh-samba
       become: true
       vars:
         samba_mitigate_cve_2017_7494: false
