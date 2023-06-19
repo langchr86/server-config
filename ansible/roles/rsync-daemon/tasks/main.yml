@@ -24,6 +24,7 @@
     path: "{{ rsyncd_destination_modules_path }}"
     state: directory
     mode: "755"
+    owner: "{{ ansible_env.USER }}"
     group: "users"
 
 - ansible.builtin.include_tasks: tasks/destination_modules.yml
