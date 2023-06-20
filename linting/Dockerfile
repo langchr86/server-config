@@ -14,6 +14,7 @@ RUN apt-get update \
 RUN pip3 install \
   ansible \
   ansible_lint==6.14.0 \
+  passlib \
   yamllint==1.32.0
 
 WORKDIR /ansible
