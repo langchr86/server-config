@@ -1,18 +1,18 @@
 - hosts: all
 
   pre_tasks:
-    - include_vars:
+    - ansible.builtin.include_vars:
         file: passwords.yml
         name: passwords
       no_log: true
-    - set_fact:
+    - ansible.builtin.set_fact:
         main_user: "claudia"
         main_password: "{{ passwords.claudia }}"
         claudia_main_disk: "/dev/sdb2"
         claudia_backup_disk: "/dev/sdb2"
 
-    - import_tasks: tasks/ubuntu_apt.yml
-    - import_tasks: tasks/basic_setup.yml
+    - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
+    - ansible.builtin.import_tasks: tasks/basic_setup.yml
 
   roles:
     - role: users
