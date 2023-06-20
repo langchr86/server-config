@@ -1,7 +1,9 @@
 ---
 
 - name: Include ubuntu version specific variables
-  ansible.builtin.include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ platform_vars }}"
+  loop_control:
+    loop_var: platform_vars
   with_first_found:
     - "ubuntu_{{ ansible_distribution_release }}.yml"
     - "unknown_distro.yml"
