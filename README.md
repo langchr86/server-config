@@ -169,9 +169,4 @@ and run specific ansible playbook launcher script, e.g.:
 Detail or manual steps
 ----------------------
 
-* [router](docs/router.md)
-* [vagrant](docs/vagrant.md)
-
-* [lang-backup](docs/lang-backup.md)
-* [lang-main](docs/lang-main.md)
-* [lang-mini](docs/lang-mini.md)
+[Documentation](/docs)
