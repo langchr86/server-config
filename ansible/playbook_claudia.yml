@@ -9,7 +9,7 @@
         main_user: "claudia"
         main_password: "{{ passwords.claudia }}"
         claudia_main_disk: "/dev/sdb2"
-        claudia_backup_disk: "/dev/sdb2"
+        claudia_backup_disk: "/dev/sda"
 
     - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
     - ansible.builtin.import_tasks: tasks/basic_setup.yml
