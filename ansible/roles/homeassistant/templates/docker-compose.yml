@@ -2,7 +2,7 @@ version: '3'
 services:
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:2023.6
+    image: homeassistant/home-assistant:2023.7
     ports:
       - "8123:8123"
       - "5683:5683/udp"
