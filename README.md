@@ -56,16 +56,18 @@ The whole setup can be emulated by using virtual machines managed by [Vagrant](h
 Some of the usual commands are as follows:
 
 ~~~~~~
-vagrant up
-vagrant up mini
+vagrant up              # create all VMs
+vagrant up mini         # create only the `mini` VM specified in the `Vagrantfile`
 vagrant provision mini
 ~~~~~~
 
 See the [Vagrantfile](./Vagrantfile) for more information.
 
 
-Common setup
-------------
+Real deployment
+---------------
+
+### Common setup
 
 * Download corresponding minimal ubuntu LTS server image
 * Flash USB stick with [`rufus`](https://rufus.ie/)
@@ -78,8 +80,7 @@ Common setup
 * Remove not working apt sources: `sudo nano /etc/apt/sources.list`
 
 
-Setup sudo
-----------
+###  Setup sudo
 
 ~~~
 sudo visudo -f /etc/sudoers.d/clang
