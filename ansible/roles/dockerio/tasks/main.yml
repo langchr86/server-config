@@ -22,6 +22,12 @@
     append: true
     groups: docker
 
+- name: Ensure old docker-compose is not installed
+  become: true
+  ansible.builtin.apt:
+    name: docker-compose
+    state: absent
+
 - name: "Create docker plugins folder: {{ docker_plugins_folder }}"
   become: true
   ansible.builtin.file:
