@@ -25,7 +25,7 @@
 
 - name: Add technical users private RSA key
   ansible.builtin.copy:
-    src: "technical_user_rsa"
+    src: "eddsa-key-technical-user-20230806"
     dest: "{{ ssh_user_config_folder }}/id_rsa"
     mode: "600"
 
