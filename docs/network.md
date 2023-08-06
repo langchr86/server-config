@@ -2,6 +2,23 @@ network
 =======
 
 
+WOL
+---
+
+Check if enabled:
+
+~~~
+sudo ethtool <interface>
+~~~
+
+Expected output:
+
+~~~
+Supports Wake-on: pumbg
+Wake-on: g
+~~~
+
+
 2.5Gb Ethernet
 --------------
 
