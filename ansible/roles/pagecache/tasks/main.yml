@@ -1,0 +1,7 @@
+---
+
+- name: "Use 80% of main RAM for page caching (relevant for big/fast disc writes)"
+  become: yes
+  ansible.posix.sysctl:
+    name: vm.dirty_ratio
+    value: '80'
