@@ -19,6 +19,8 @@
     mode: "u+rw"
   with_items:
     - "{{ app_folder }}"
+    - "{{ app_folder }}/custom_components"
+    - "{{ app_folder }}/custom_components_download"
     - "{{ app_folder }}/packages"
 
 - name: Create core config files
@@ -53,12 +55,29 @@
     creates: "{{ app_folder }}/custom_components/hacs/manifest.json"
   register: hacs
 
+- name: Download Wattpilot integration
+  become: true
+  ansible.builtin.unarchive:
+    src: "https://github.com/mk-maddin/wattpilot-HA/archive/refs/tags/v{{ wattpilot_version }}.tar.gz"
+    remote_src: true
+    dest: "{{ app_folder }}/custom_components_download"
+    creates: "{{ app_folder }}/custom_components2/wattpilot/manifest.json"
+
+- name: Install Wattpilot integration
+  become: true
+  ansible.builtin.copy:
+    src: "{{ app_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/custom_components/wattpilot"
+    remote_src: true
+    dest: "{{ app_folder }}/custom_components"
+    mode: "u+rw"
+  register: wattpilot_install
+
 - ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "homeassistant"
     auto_restart_if_failing: true
-    force_restart: "{{ core_config.changed or packages.changed or hacs.changed }}"
+    force_restart: "{{ core_config.changed or packages.changed or hacs.changed or wattpilot_install.changed }}"
     service_dependencies:
       - mosquitto.service
       - caddy.service
