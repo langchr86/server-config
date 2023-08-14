@@ -75,6 +75,7 @@ Device IPs
 | .84  | storen-ankleide-nord |
 | .85  | tumbler              |
 | .86  | waschmaschine        |
+| .87  | entfeuchter          |
 | .89  | geschirrspuler       |
 | .90  | licht-wohnen         |
 | .116 | ComfoNET (MAC-Fix)   |

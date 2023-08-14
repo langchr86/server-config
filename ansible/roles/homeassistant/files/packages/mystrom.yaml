@@ -34,6 +34,27 @@ rest:
         state_class: measurement
         device_class: power
   - scan_interval: 30
+    resource: http://192.168.0.87/report
+    method: GET
+    sensor:
+      - name: Entfeuchter Leistung
+        unique_id: "mystrom_dehumidifier_power"
+        value_template: '{{ value_json.power }}'
+        unit_of_measurement: 'W'
+        device_class: power
+        state_class: measurement
+      - name: Entfeuchter Energie
+        unique_id: "mystrom_dehumidifier_energy"
+        value_template: '{{ value_json.Ws }}'
+        unit_of_measurement: 'W'
+        state_class: measurement
+        device_class: power
+    binary_sensor:
+      - name: Entfeuchter Status
+        unique_id: "mystrom_dehumidifier_state"
+        value_template: '{{ value_json.relay }}'
+        device_class: power
+  - scan_interval: 30
     resource: http://192.168.0.89/report
     method: GET
     sensor:
@@ -60,6 +81,11 @@ sensor:
     unique_id: "mystrom_washingmachine_total_energy"
     platform: integration
     source: sensor.waschmaschine_energie
+    method: left
+  - name: Entfeuchter Energie Total
+    unique_id: "mystrom_dehumidifier_total_energy"
+    platform: integration
+    source: sensor.entfeuchter_energie
     method: left
   - name: Geschirrspüler Energie Total
     unique_id: "mystrom_dishwasher_total_energy"
