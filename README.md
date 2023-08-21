@@ -83,11 +83,9 @@ Real deployment
 ###  Setup sudo
 
 ~~~
-sudo visudo -f /etc/sudoers.d/clang
-~~~
-
-~~~
-clang ALL=(ALL) NOPASSWD: ALL
+sudo su
+printf "clang ALL=(ALL) NOPASSWD: ALL\n" >> /etc/sudoers.d/clang
+exit
 ~~~
 
 
@@ -95,6 +93,7 @@ clang ALL=(ALL) NOPASSWD: ALL
 
 ~~~
 sudo nano /etc/netplan/00-installer-config.yaml
+sudo netplan apply
 ~~~
 
 ~~~
@@ -111,16 +110,12 @@ network:
         addresses: [192.168.0.1, 8.8.8.8, 1.1.1.1]
 ~~~
 
-and then
-
-~~~~~~
-netplan apply
-~~~~~~
 
 or
 
 ~~~
 sudo nano /etc/network/interfaces
+sudo reboot
 ~~~
 
 ~~~
@@ -132,10 +127,11 @@ gateway 192.168.0.1
 dns-nameservers 192.168.0.1 8.8.8.8 1.1.1.1
 ~~~
 
-and then
+
+### SSH Key
 
 ~~~
-sudo reboot
+ssh-copy-id clang@192.168.0.7
 ~~~
 
 
