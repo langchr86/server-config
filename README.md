@@ -159,7 +159,8 @@ Install Ansible:
 
 ~~~
 sudo apt-get update
-sudo apt-get install ansible -y
+sudo apt-get install -y python3 python3-pip
+sudo pip3 install passlib ansible
 ~~~
 
 Create ansible vault PW file: `infra_pw`
