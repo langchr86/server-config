@@ -4,7 +4,7 @@
     name: systemd-timer
   vars:
     sd_timer_name: "btrbk-{{ btrbk_pool_label }}-{{ subvolume.name }}"
-    sd_timer_command: "/usr/sbin/btrbk -c {{ btrbk_config_path }}/{{ subvolume.name }}.conf run"
+    sd_timer_command: "/usr/bin/btrbk -c {{ btrbk_config_path }}/{{ subvolume.name }}.conf run"
     sd_timer_OnCalendar: "{{ subvolume.timer_OnCalendar | default('*-*-* 03:00:00') }}"
     sd_timer_user: root
     sd_timer_persistent: true
