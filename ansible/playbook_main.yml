@@ -42,9 +42,9 @@
             mkfs_options: "--data raid1 --metadata raid1"
             status_log_path: "/mnt/pool-main/subvolumes/share-main"
             devices:
+              - "/dev/sda"
               - "/dev/sdb"
               - "/dev/sdc"
-              - "/dev/sdd"
             subvolumes:
               - "share-main"
 
@@ -97,7 +97,7 @@
           - user_name: 'velin'
             user_password: "{{ passwords.velin }}"
             subfolders:
-              - 'lang-zen11'
+              - 'lang-mate'
 
     - role: ansible-collection-vladgh-samba
       become: true
@@ -131,7 +131,6 @@
           - path: '/dev/sda'
           - path: '/dev/sdb'
           - path: '/dev/sdc'
-          - path: '/dev/sdd'
 
     - role: dockerio
     - role: jdownloader
@@ -140,5 +139,5 @@
         jdownloader_download_folder: "/share/downloads"
         myjd_password: "{{ passwords.myjd }}"
 
-    - role: cs16server
-    - role: csgoserver
+#   - role: cs16server
+#   - role: csgoserver
