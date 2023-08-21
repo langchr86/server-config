@@ -6,7 +6,13 @@ SCRIPT_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 cd ${SCRIPT_DIR}
 
 sudo apt-get update
-sudo apt-get install ansible -y
+sudo apt-get install -y \
+  python3 \
+  python3-pip
+
+sudo pip3 install \
+  passlib \
+  ansible
 
 ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
