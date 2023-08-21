@@ -67,6 +67,13 @@ See the [Vagrantfile](./Vagrantfile) for more information.
 Real deployment
 ---------------
 
+
+### BIOS/UEFI
+
+* Enable `Power On` after power loss
+* Disable unused LAN adapters
+* Enable WOL and allow to boot from USB device (if USB LAN adapter is used)(if this host is controlled by WOL)
+
 ### Common setup
 
 * Download corresponding minimal ubuntu LTS server image
