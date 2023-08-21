@@ -135,8 +135,7 @@
     - role: dockerio
     - role: jdownloader
       vars:
-        jdownloader_config_folder: "/etc/jdownloader"
-        jdownloader_download_folder: "/share/downloads"
+        jdownloader_config_folder: "/config/jdownloader"
         myjd_password: "{{ passwords.myjd }}"
 
 #   - role: cs16server
