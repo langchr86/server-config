@@ -36,3 +36,9 @@
     dest: "/etc/default/locale"
     regexp: "LC_ALL"
     line: "LC_ALL=\"en_US.UTF-8\""
+
+- name: Remove cloud-init
+  become: true
+  ansible.builtin.package:
+    name: cloud-init
+    state: absent
