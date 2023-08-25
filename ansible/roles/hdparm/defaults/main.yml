@@ -1,0 +1,7 @@
+---
+
+hdparm_devices: []
+hdparm_apm_level: 64        # smaller values are more aggressive (below 128 enables spindown)
+hdparm_spindown_time: 243   # 90min (below 241: real_time = x * 5s)(above 240: real_time = (x-240)*30min)
+hdparm_try_disable_smart_offline_data_collection: true
+hdparm_config_script: "/usr/bin/hdparm-config.sh"

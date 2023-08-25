@@ -1,0 +1,30 @@
+---
+
+- name: Install hdparm
+  become: true
+  ansible.builtin.package:
+    name: hdparm
+
+- ansible.builtin.include_tasks: tasks/disable_smart_offline_data_collection.yml
+  with_items: "{{ hdparm_devices }}"
+  loop_control:
+    loop_var: device
+  when: hdparm_try_disable_smart_offline_data_collection
+
+- name: "Install config script"
+  become: true
+  ansible.builtin.template:
+    src: "hdparm-config.sh"
+    dest: "{{ hdparm_config_script }}"
+    owner: "root"
+    group: "root"
+    mode: '0755'
+
+- ansible.builtin.include_role:
+    name: systemd-timer
+  vars:
+    sd_timer_name: "hdparm-config"
+    sd_timer_command: "{{ hdparm_config_script }}"
+    sd_timer_OnBootSec: 60s
+    sd_timer_OnUnitActiveSec: 30d
+    sd_timer_user: root

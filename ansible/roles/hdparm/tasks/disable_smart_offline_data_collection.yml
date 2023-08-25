@@ -1,0 +1,20 @@
+---
+
+- name: "Check S.M.A.R.T. info of: '{{ device }}'"
+  become: true
+  ansible.builtin.command: "smartctl -a {{ device }}"
+  register: smart_info
+  changed_when: false
+
+- ansible.builtin.set_fact:
+    offlineauto_enabled: false
+
+- name: "Check if S.M.A.R.T. offline data collection is enabled on: '{{ device }}'"
+  ansible.builtin.set_fact:
+    offlineauto_enabled: true
+  when: smart_info.stdout is regex('Auto Offline Data Collection.*Enabled')
+
+- name: "Disable S.M.A.R.T. offline data collection: {{ device }}"
+  become: true
+  ansible.builtin.command: "smartctl --offlineauto=off {{ device }}"
+  when: offlineauto_enabled
