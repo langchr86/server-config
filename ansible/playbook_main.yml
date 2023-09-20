@@ -132,14 +132,6 @@
           - path: '/dev/sdb'
           - path: '/dev/sdc'
 
-    - role: hdparm
-      become: true
-      vars:
-        hdparm_devices:
-          - '/dev/sda'
-          - '/dev/sdb'
-          - '/dev/sdc'
-
     - role: dockerio
     - role: jdownloader
       vars:
