@@ -1,6 +1,0 @@
-[Unit]
-Description=Startup backup server
-
-[Service]
-ExecStart=/opt/clang/backup-server.sh
-User=root

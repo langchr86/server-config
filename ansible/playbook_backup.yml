@@ -58,10 +58,11 @@
         rsync_jobs:
           - name: "backups-{{ hostname_main }}"
             user: "{{ main_user }}"
-            timer_OnCalendar: "*-*-* 03:00:00"
+            timer_OnCalendar: "*-*-* *:00:00"
             pre_sleep_seconds: 30
             steps:
               - {src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main"}
+            post_command: "sudo rtcwake -m mem -t \"$(date -d 'next Wed 23:00:00' '+%s')\""
 
     - role: ansible-collection-vladgh-samba
       become: true
