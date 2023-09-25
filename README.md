@@ -117,7 +117,6 @@ network:
         addresses: [192.168.0.1, 8.8.8.8, 1.1.1.1]
 ~~~
 
-
 or
 
 ~~~
@@ -149,6 +148,16 @@ Update system
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get autoremove
+~~~
+
+
+Wipe existing filesystems
+-------------------------
+
+~~~
+sudo wipefs -a /dev/sdX
+# or
+sudo dd if=/dev/zero of=/dev/sdX bs=512 count=1
 ~~~
 
 
