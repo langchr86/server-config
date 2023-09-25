@@ -32,10 +32,6 @@
     - role: bash
     - role: tmux
 
-    - role: wol
-      vars:
-        device: "ens130"
-
     - role: lvm
       vars:
         status_log_path: "/share"
