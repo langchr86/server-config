@@ -34,13 +34,13 @@
 
     - role: lvm
       vars:
-        status_log_path: "/share"
+        status_log_path: "/mnt/pool-main/subvolumes/share-main"
         volume_groups:
           - label: "pool-main"
             mount_path: "/mnt/pool-main/subvolumes"
             devices:
+              - "/dev/sda"
               - "/dev/sdb"
-              - "/dev/sdc"
             logical_volumes:
               - label: "share-main"
                 size_options: "-l 100%FREE"
