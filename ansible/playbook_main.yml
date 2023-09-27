@@ -87,6 +87,13 @@
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git"}
+          - name: "backups-{{ hostname_main }}"
+            user: "{{ main_user }}"
+            timer_OnCalendar: "*-*-* *:20:00"
+            steps:
+              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--rsync-path="sudo rsync"' }
+              - { src: "/temp", dest: "/share/backups/{{ hostname_main }}/share-temp" }
+              - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
 
     - role: rsync-daemon
       vars:
