@@ -142,6 +142,7 @@
           - path: '/dev/sdc'
 
     - role: dockerio
+    - role: transmission
     - role: jdownloader
       vars:
         jdownloader_config_folder: "/config/jdownloader"
