@@ -83,10 +83,7 @@
             steps:
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/config", dest: "/share/backups/{{ hostname_mini }}/share-main/config", opts: '--rsync-path="sudo rsync"'}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/data", dest: "/share/backups/{{ hostname_mini }}/share-main/data"}
-              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/projects", dest: "/share/backups/{{ hostname_mini }}/share-main/projects"}
-              - {src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web"}
-              - {src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git"}
           - name: "backups-{{ hostname_main }}"
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* *:20:00"
