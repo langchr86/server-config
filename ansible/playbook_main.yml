@@ -134,6 +134,12 @@
             browseable: true
             owner: "{{ main_user }}"
             group: "users"
+          - name: "share-temp"
+            path: "/temp"
+            browseable: true
+            owner: "{{ main_user }}"
+            group: "users"
+            write_list: "{{ main_user }} velin"
 
     - role: disk-monitoring
       vars:
