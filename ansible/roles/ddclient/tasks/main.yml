@@ -7,7 +7,7 @@
     state: directory
     mode: "744"
 
-- name: "Copy config file to {{ app_folder }}"
+- name: "Copy config file {{ config_file }}"
   become: true
   ansible.builtin.template:
     src: "templates/ddclient.conf"

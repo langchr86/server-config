@@ -6,4 +6,4 @@ services:
     environment:
       - TZ="{{ timezone }}"
     volumes:
-      - {{ config_file }}:/config/ddclient.conf:ro
+      - {{ app_folder }}:/config/
