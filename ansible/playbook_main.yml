@@ -87,14 +87,6 @@
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/temp", dest: "/share/backups/{{ hostname_mini }}/share-main/temp"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/share/web", dest: "/share/backups/{{ hostname_mini }}/share-main/web"}
               - {src: "{{ main_user }}@{{ hostname_mini }}:/git", dest: "/share/backups/{{ hostname_mini }}/share-main/git"}
-          - name: "synced-{{ hostname_mini }}"
-            user: "{{ main_user }}"
-            timer_OnCalendar: "*-*-* 03:00:00"
-            pre_sleep_seconds: 30
-            steps:
-              - {src: "/share/Audios", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/audios"}
-              - {src: "/share/Bücher/technology", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/technology"}
-              - {src: "/share/Bücher/magazines", dest: "{{ main_user }}@{{ hostname_mini }}:/share/synced/books/magazines"}
 
     - role: rsync-daemon
       vars:
