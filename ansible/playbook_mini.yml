@@ -83,7 +83,6 @@
     - role: caddy
     - role: bitwarden
     - role: transmission
-    - role: logitechmediaserver
     - role: kodidb
     - role: mumble
     - role: mosquitto

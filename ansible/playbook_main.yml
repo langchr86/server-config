@@ -154,6 +154,11 @@
       vars:
         jdownloader_config_folder: "/config/jdownloader"
         myjd_password: "{{ passwords.myjd }}"
+    - role: logitechmediaserver
+      vars:
+        lms_config_folder: "/config/lms"
+        lms_music_folder: "/share/Audios/"
+        lms_additional_music_folder: "/temp/"
 
 #   - role: cs16server
 #   - role: csgoserver
