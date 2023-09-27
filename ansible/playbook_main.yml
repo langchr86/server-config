@@ -62,6 +62,17 @@
       vars:
         share_source: "/mnt/pool-main/subvolumes/share-main"
 
+    - role: user_folders
+      vars:
+        folders:
+          - "/git"
+          - "/temp"
+          - "/config"
+          - "/share/web/"
+          - "/share/web/fileshare/"
+          - "/share/web/gallery/"
+          - "/share/web/movies/"
+
     - role: rsync
       vars:
         rsync_jobs:
