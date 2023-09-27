@@ -142,6 +142,7 @@
           - path: '/dev/sdc'
 
     - role: dockerio
+    - role: ddclient
     - role: transmission
     - role: jdownloader
       vars:
