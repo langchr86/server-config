@@ -162,6 +162,7 @@
       vars:
         kodidb_base_folder: "/config/kodidb"
 
+    - role: caddy
     - role: mumble
       vars:
         mb_app_folder: "/config/mumble"
