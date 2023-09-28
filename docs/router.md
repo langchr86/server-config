@@ -9,7 +9,7 @@ Ensure that the used listening ports are available from outside NAT to the corre
 
 | external port | internal port | protocol  | host          | service |
 | ------------- | ------------- |-----------| ------------- | ------- |
-| `23722`       | `22`          | tcp       | `lang-mini`   | ssh |
+| `23722`       | `22`          | tcp       | `lang-main`   | ssh |
 | `80`          |               | tcp       | `lang-main`   | http: caddy2 |
 | `443`         |               | tcp       | `lang-main`   | https: caddy2 |
 | `27015-27016` |               | tcp + udp | `lang-main`   | cs16server, csgoserver |
@@ -38,7 +38,6 @@ Device IPs
 |------|----------------------|
 | .5   | lang-backup          |
 | .6   | lang-main            |
-| .8   | lang-mini            |
 | .20  | tv-wohnen            |
 | .21  | tv-dispo             |
 | .30  | lang-pv-symo24       |

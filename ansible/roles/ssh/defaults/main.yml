@@ -12,6 +12,5 @@ ssh_known_hosts_file: "{{ ssh_user_config_folder }}/known_hosts"
 
 ssh_evaluate_host_aliases: true
 ssh_host_aliases:
-  - {name: '{{ hostname_mini }}', real: '{{ ip_address_mini }}'}
   - {name: '{{ hostname_main }}', real: '{{ ip_address_main }}'}
   - {name: '{{ hostname_backup }}', real: '{{ ip_address_backup }}'}

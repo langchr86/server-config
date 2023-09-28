@@ -20,15 +20,6 @@ Vagrant.configure("2") do |config|
   end
 
 
-  config.vm.define "mini" do |mini|
-    mini.vm.hostname = "vm-mini"
-    mini.vm.network "private_network", ip: "192.168.10.8"
-
-    mini.vm.provision "shell",
-        inline: "/vagrant/vagrant-ansible.sh playbook_mini.yml",
-        privileged: false
-  end
-
   config.vm.define "main" do |main|
     main.vm.hostname = "vm-main"
     main.vm.network "private_network", ip: "192.168.10.6"

@@ -57,8 +57,8 @@ Some of the usual commands are as follows:
 
 ~~~~~~
 vagrant up              # create all VMs
-vagrant up mini         # create only the `mini` VM specified in the `Vagrantfile`
-vagrant provision mini
+vagrant up main         # create only the `main` VM specified in the `Vagrantfile`
+vagrant provision main
 ~~~~~~
 
 See the [Vagrantfile](./Vagrantfile) for more information.

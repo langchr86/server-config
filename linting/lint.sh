@@ -12,5 +12,4 @@ docker run \
   ansible-lint --exclude /root/.cache \
     /ansible/playbook_backup.yml \
     /ansible/playbook_claudia.yml \
-    /ansible/playbook_main.yml \
-    /ansible/playbook_mini.yml
+    /ansible/playbook_main.yml

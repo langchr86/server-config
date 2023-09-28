@@ -4,12 +4,10 @@ timezone: "Europe/Zurich"
 domain: "langchr86.mooo.com"
 cert_authority: "acme-v02.api.letsencrypt.org-directory"
 
-hostname_mini: "lang-mini"
 hostname_main: "lang-main"
 hostname_backup: "lang-backup"
 hostname_claudia: "claudia-server"
 
-ip_address_mini: "192.168.0.8"
 ip_address_main: "192.168.0.6"
 ip_address_backup: "192.168.0.5"
 ip_address_claudia: "192.168.0.124"
