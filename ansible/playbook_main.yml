@@ -171,6 +171,10 @@
     - role: bitwarden
       vars:
         bw_config_folder: "/config/bitwarden"
+    - role: mosquitto
+    - role: homeassistant
+      vars:
+        app_folder: "/config/homeassistant"
 
 #   - role: cs16server
 #   - role: csgoserver
