@@ -18,8 +18,6 @@ script: !include scripts.yaml
 homeassistant:
   external_url: "https://home.langchr86.mooo.com"
   packages: !include_dir_named packages
-  allowlist_external_dirs:
-    - /config
 
 recorder:
   purge_keep_days: 30
@@ -30,6 +28,5 @@ recorder:
     entity_globs:
       - sensor.*_akkuspannung
       - sensor.button_*_battery
-      - sensor.disk_use_*
       - sensor.energy_next_*
       - sensor.sun_next_*
