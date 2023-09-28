@@ -107,7 +107,7 @@ If the samba role fails to create the user do it manually:
 
 ## Configure RSync backups on host
 
-See: [rsync-daemon role](../ansible/roles/rsync-daemon/README.md)
+See: [rsync-daemon role](rsync-daemon.md)
 
 
 ## Plex
