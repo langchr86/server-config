@@ -58,5 +58,5 @@
     name: systemd-timer
   vars:
     sd_timer_name: "{{ bw_service_name }}_backup"
-    sd_timer_command: "/share/config/{{ bw_service_name }}/backup_scripts/run_backup.sh"
+    sd_timer_command: "{{ bw_config_folder }}/backup_scripts/run_backup.sh"
     sd_timer_OnCalendar: "*-*-* 04:00:00"
