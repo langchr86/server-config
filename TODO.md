@@ -17,16 +17,6 @@ General
 * clean older roles and mechanisms
 
 
-hostcontrold
-------------
-
-* role or docker or package?
-* use host network in docker
-* stdout no journal
-* docker for build and docker for run
-* x86, arm, etc.
-
-
 Before make public
 ------------------
 
