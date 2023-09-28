@@ -80,6 +80,5 @@
       vars:
         myjd_password: "{{ passwords.myjd }}"
 
-    - role: bitwarden
     - role: mosquitto
     - role: homeassistant

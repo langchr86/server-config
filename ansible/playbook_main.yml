@@ -168,6 +168,9 @@
     - role: mumble
       vars:
         mb_app_folder: "/config/mumble"
+    - role: bitwarden
+      vars:
+        bw_config_folder: "/config/bitwarden"
 
 #   - role: cs16server
 #   - role: csgoserver
