@@ -3,7 +3,7 @@ version: '3.1'
 services:
   kodidb:
     container_name: kodidb
-    image: yobasystems/alpine-mariadb:10.5.11
+    image: yobasystems/alpine-mariadb:10.11.5
     ports:
       - "3306:3306"
     volumes:
