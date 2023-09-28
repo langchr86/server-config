@@ -83,5 +83,3 @@
     - role: bitwarden
     - role: mosquitto
     - role: homeassistant
-    - role: web_examples
-    - role: wiki

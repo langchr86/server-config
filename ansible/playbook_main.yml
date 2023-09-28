@@ -163,6 +163,8 @@
         kodidb_base_folder: "/config/kodidb"
 
     - role: caddy
+    - role: web_examples
+    - role: wiki
     - role: mumble
       vars:
         mb_app_folder: "/config/mumble"
