@@ -14,7 +14,7 @@ Ensure that the used listening ports are available from outside NAT to the corre
 | `443`         |               | tcp       | `lang-mini`   | https: caddy2 |
 | `27015-27016` |               | tcp + udp | `lang-main`   | cs16server, csgoserver |
 | `27020-27021` |               | udp       | `lang-main`   | cs16server, csgoserver |
-| `64738`       |               | tcp + udp | `lang-mini`   | mumble |
+| `64738`       |               | tcp + udp | `lang-main`   | mumble |
 
 
 IP Management

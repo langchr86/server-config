@@ -82,7 +82,6 @@
 
     - role: caddy
     - role: bitwarden
-    - role: mumble
     - role: mosquitto
     - role: homeassistant
     - role: web_examples
