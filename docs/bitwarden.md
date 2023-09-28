@@ -1,20 +1,5 @@
-lang-mini
-=========
-
-
-Remove all things of whoopsie
------------------------------
-
-~~~~~~
-sudo nano /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf
-
-// remove policy for whoopsie
-sudo apt-get purge whoopsie libwhoopsie0
-~~~~~~
-
-
 Vaultwarden / Bitwarden
------------------------
+=======================
 
 Vault: [bitwarden.langchr86.mooo.com](https://bitwarden.langchr86.mooo.com/)
 Admin: [bitwarden.langchr86.mooo.com/admin](https://bitwarden.langchr86.mooo.com/admin)
