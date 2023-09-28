@@ -3,7 +3,3 @@ binary_sensor:
     host: 192.168.0.5
     name: lang-backup
     scan_interval: 60
-  - platform: ping
-    host: 192.168.0.6
-    name: lang-main
-    scan_interval: 60
