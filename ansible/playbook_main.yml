@@ -158,6 +158,9 @@
         lms_config_folder: "/config/lms"
         lms_music_folder: "/share/Audios/"
         lms_additional_music_folder: "/share-common/Temp"
+    - role: kodidb
+      vars:
+        kodidb_base_folder: "/config/kodidb"
 
 #   - role: cs16server
 #   - role: csgoserver
