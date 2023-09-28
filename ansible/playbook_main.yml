@@ -65,9 +65,10 @@
     - role: user_folders
       vars:
         folders:
-          - "/git"
-          - "/temp"
           - "/config"
+          - "/git"
+          - "/share-common"
+          - "/share-common/Temp/"
           - "/share/web/"
           - "/share/web/fileshare/"
           - "/share/web/gallery/"
@@ -89,8 +90,8 @@
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
               - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--rsync-path="sudo rsync"' }
-              - { src: "/temp", dest: "/share/backups/{{ hostname_main }}/share-temp" }
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
+              - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common" }
 
     - role: rsync-daemon
       vars:
@@ -130,8 +131,8 @@
             browseable: true
             owner: "{{ main_user }}"
             group: "users"
-          - name: "share-temp"
-            path: "/temp"
+          - name: "share-common"
+            path: "/share-common"
             browseable: true
             owner: "{{ main_user }}"
             group: "users"
@@ -156,7 +157,7 @@
       vars:
         lms_config_folder: "/config/lms"
         lms_music_folder: "/share/Audios/"
-        lms_additional_music_folder: "/temp/"
+        lms_additional_music_folder: "/share-common/Temp"
 
 #   - role: cs16server
 #   - role: csgoserver
