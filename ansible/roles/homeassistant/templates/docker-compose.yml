@@ -7,7 +7,7 @@ services:
       - "8123:8123"
       - "5683:5683/udp"
     volumes:
-      - /share/config/homeassistant:/config
+      - {{ ha_config_folder }}:/config
     environment:
       - TZ="{{ timezone }}"
     networks:

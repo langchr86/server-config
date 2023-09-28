@@ -174,7 +174,7 @@
     - role: mosquitto
     - role: homeassistant
       vars:
-        app_folder: "/config/homeassistant"
+        ha_config_folder: "/config/homeassistant"
 
 #   - role: cs16server
 #   - role: csgoserver

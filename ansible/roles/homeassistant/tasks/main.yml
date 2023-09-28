@@ -9,7 +9,7 @@
     group: "{{ group }}"
     mode: "775"
   with_items:
-    - "{{ app_folder }}"
+    - "{{ ha_config_folder }}"
 
 - name: Create config subfolders
   become: true
@@ -18,16 +18,16 @@
     state: directory
     mode: "u+rw"
   with_items:
-    - "{{ app_folder }}"
-    - "{{ app_folder }}/custom_components"
-    - "{{ app_folder }}/custom_components_download"
-    - "{{ app_folder }}/packages"
+    - "{{ ha_config_folder }}"
+    - "{{ ha_config_folder }}/custom_components"
+    - "{{ ha_config_folder }}/custom_components_download"
+    - "{{ ha_config_folder }}/packages"
 
 - name: Create core config files
   become: true
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ app_folder }}"
+    dest: "{{ ha_config_folder }}"
     mode: "u+rw"
   with_items:
     - "configuration.yaml"
@@ -37,7 +37,7 @@
   become: true
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ app_folder }}/packages"
+    dest: "{{ ha_config_folder }}/packages"
     mode: "u+rw"
   with_items:
     - "packages/comfonet.yaml"
@@ -51,8 +51,8 @@
   become: true
   ansible.builtin.shell:
     cmd: "wget -O - https://get.hacs.xyz | bash -"
-    chdir: "{{ app_folder }}"
-    creates: "{{ app_folder }}/custom_components/hacs/manifest.json"
+    chdir: "{{ ha_config_folder }}"
+    creates: "{{ ha_config_folder }}/custom_components/hacs/manifest.json"
   register: hacs
 
 - name: Download Wattpilot integration
@@ -60,15 +60,15 @@
   ansible.builtin.unarchive:
     src: "https://github.com/mk-maddin/wattpilot-HA/archive/refs/tags/v{{ wattpilot_version }}.tar.gz"
     remote_src: true
-    dest: "{{ app_folder }}/custom_components_download"
-    creates: "{{ app_folder }}/custom_components2/wattpilot/manifest.json"
+    dest: "{{ ha_config_folder }}/custom_components_download"
+    creates: "{{ ha_config_folder }}/custom_components2/wattpilot/manifest.json"
 
 - name: Install Wattpilot integration
   become: true
   ansible.builtin.copy:
-    src: "{{ app_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/custom_components/wattpilot"
+    src: "{{ ha_config_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/custom_components/wattpilot"
     remote_src: true
-    dest: "{{ app_folder }}/custom_components"
+    dest: "{{ ha_config_folder }}/custom_components"
     mode: "u+rw"
   register: wattpilot_install
 
