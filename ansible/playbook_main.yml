@@ -21,6 +21,12 @@
           - {name: "kodi", password: "{{ passwords.kodi }}"}
 
     - role: ssh
+      vars:
+        ssh_pub_files:
+          - 'eddsa-key-clang-privat-20220905.opub'
+          - 'eddsa-key-clang-scs-20220830.opub'
+          - 'eddsa-key-technical-user-20230806.opub'
+
     - role: git-tools
       vars:
         git_graphical_tools: false
