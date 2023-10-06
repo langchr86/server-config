@@ -20,7 +20,9 @@ services:
     networks:
       - bitwarden_net
       - homeassistant_net
+      - jellyfin_net
 
 networks:
   bitwarden_net:
   homeassistant_net:
+  jellyfin_net:

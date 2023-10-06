@@ -1,0 +1,29 @@
+---
+version: "3.5"
+services:
+  jellyfin:
+    container_name: "jellyfin"
+    image: lscr.io/linuxserver/jellyfin:10.8.11
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ jf_config_folder }}:/config
+      - /share/Audios/:/media/audios:ro
+      - /share/Bilder/:/media/images:ro
+      - /share/Bücher/:/media/books:rw
+      - /share/Videos/:/media/videos:ro
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    devices:
+      - /dev/dri:/dev/dri
+    networks:
+      - caddy_jellyfin_net
+
+networks:
+  caddy_jellyfin_net:
+    external: true

@@ -20,6 +20,10 @@ home.{{ domain }} {
   }
 }
 
+media.{{ domain }} {
+  reverse_proxy jellyfin:8096
+}
+
 bitwarden.{{ domain }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.

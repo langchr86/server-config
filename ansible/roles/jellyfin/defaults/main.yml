@@ -1,0 +1,6 @@
+---
+
+jf_user: "{{ ansible_env.USER }}"
+jf_group: "users"
+jf_service_name: "jellyfin"
+jf_config_folder: "/share/config/{{ jf_service_name }}/"
