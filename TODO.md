@@ -11,9 +11,3 @@ General
 * cross check all file/dir permissions. Not everything needs "become".
 * tmux plugins: https://github.com/tmux-plugins/list
 * clean older roles and mechanisms
-
-
-Before make public
-------------------
-
-* change passwords
