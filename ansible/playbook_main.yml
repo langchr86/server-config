@@ -143,6 +143,7 @@
           - path: '/dev/sda'
           - path: '/dev/sdb'
           - path: '/dev/sdc'
+          - path: '/dev/nvme0n1'
 
     - role: dockerio
     - role: ddclient
