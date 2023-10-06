@@ -17,10 +17,8 @@ The whole infrastructure has several purposes:
 * protection of private data
 * multiple services accessible only in local LAN or internet
 
-The infrastructure consists of multiple hosts that usually are powered off
-and only started if clients are available in the local LAN.
-One always-on low-power server controls the other servers
-and provides external available services through internet.
+The infrastructure consists of multiple hosts
+where one is responsible to provide access to internal services through the internet.
 The following diagram gives an overview of the relevant hosts and some data flows.
 
 ![infrastructure_overview](docs/images/infrastructure_overview.png)
