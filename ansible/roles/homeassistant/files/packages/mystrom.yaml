@@ -2,6 +2,7 @@
 
 rest:
   - scan_interval: 30
+    timeout: 2
     resource: http://192.168.0.85/report
     method: GET
     sensor:
@@ -18,6 +19,7 @@ rest:
         state_class: measurement
         device_class: power
   - scan_interval: 30
+    timeout: 2
     resource: http://192.168.0.86/report
     method: GET
     sensor:
@@ -34,6 +36,7 @@ rest:
         state_class: measurement
         device_class: power
   - scan_interval: 30
+    timeout: 2
     resource: http://192.168.0.87/report
     method: GET
     sensor:
@@ -55,6 +58,7 @@ rest:
         value_template: '{{ value_json.relay }}'
         device_class: power
   - scan_interval: 30
+    timeout: 2
     resource: http://192.168.0.89/report
     method: GET
     sensor:
