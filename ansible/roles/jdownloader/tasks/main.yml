@@ -18,7 +18,7 @@
     owner: "{{ jdownloader_user }}"
     group: "{{ jdownloader_group }}"
 
-- name: "Create MyJDownloader config file."
+- name: "Create MyJDownloader config file (this file and the docker volume needs to be manually deleted if config changes): {{ jdownloader_myjd_config_file }}"
   ansible.builtin.template:
     src: "MyJDownloaderSettings.json"
     dest: "{{ jdownloader_myjd_config_file }}"
