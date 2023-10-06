@@ -1,21 +1,21 @@
 name: vagrant-up
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   vagrant-up:
-    runs-on: macos-10.15
+    runs-on: macos-12
     env:
       VAGRANT_DISABLE_VBOXSYMLINKCREATE: "1"
-      VAGRANT_EXPERIMENTAL: "disks"
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    #- name: add more IP ranges for virtualbox
-    #  run: |
-    #    mkdir -p /etc/vbox/
-    #    echo "192.168.0.0/16" > /etc/vbox/networks.conf
+#    - name: add more IP ranges for virtualbox
+#      run: |
+#        mkdir -p /etc/vbox/
+#        echo "192.168.0.0/16" > /etc/vbox/networks.conf
 
     - name: Run vagrant up
       run: vagrant up
+      working-directory: .github/workflows

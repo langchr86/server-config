@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "main" do |main|
     main.vm.hostname = "vm-main"
-    main.vm.network "private_network", ip: "192.168.10.6"
+    main.vm.network "private_network", ip: "192.168.56.6"
     main.vm.network "forwarded_port", guest: 80, host: 80
     main.vm.network "forwarded_port", guest: 443, host: 443
     main.vm.disk :disk, size: "8GB", name: "share_1"
@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "backup" do |backup|
     backup.vm.hostname = "vm-backup"
-    backup.vm.network "private_network", ip: "192.168.10.5"
+    backup.vm.network "private_network", ip: "192.168.56.5"
     backup.vm.disk :disk, size: "6GB", name: "share_1"
     backup.vm.disk :disk, size: "6GB", name: "share_2"
 
@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
 
   #config.vm.define "claudia" do |claudia|
   #  claudia.vm.hostname = "vm-claudia"
-  #  claudia.vm.network "private_network", ip: "192.168.10.11"
+  #  claudia.vm.network "private_network", ip: "192.168.56.11"
   #  claudia.vm.network "forwarded_port", guest: 80, host: 80
   #  claudia.vm.network "forwarded_port", guest: 443, host: 443
   #  claudia.vm.disk :disk, size: "8GB", name: "pool-main"

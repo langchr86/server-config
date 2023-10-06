@@ -1,9 +1,9 @@
 {
   "hostname_main": "vm-main",
   "hostname_backup": "vm-backup",
-  "ip_address_main": "192.168.10.6",
-  "ip_address_backup": "192.168.10.5",
-  "ip_address_claudia": "192.168.10.11",
+  "ip_address_main": "192.168.56.6",
+  "ip_address_backup": "192.168.56.5",
+  "ip_address_claudia": "192.168.56.11",
   "ssh_evaluate_host_aliases": false,
   "disk_monitoring_enable_smart": false,
   "deploy_examples": true,
