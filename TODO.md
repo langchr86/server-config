@@ -11,3 +11,4 @@ General
 * cross check all file/dir permissions. Not everything needs "become".
 * tmux plugins: https://github.com/tmux-plugins/list
 * clean older roles and mechanisms
+* migrate to mosquitto 2.x: https://mosquitto.org/documentation/migrating-to-2-0/
