@@ -18,7 +18,6 @@
         users:
           - {name: "{{ main_user }}", password: "{{ main_password }}"}
           - {name: "velin", password: "{{ passwords.velin }}"}
-          - {name: "kodi", password: "{{ passwords.kodi }}"}
 
     - role: ssh
       vars:
@@ -115,8 +114,6 @@
             password: "{{ main_password }}"
           - name: "velin"
             password: "{{ passwords.velin }}"
-          - name: "kodi"
-            password: "{{ passwords.kodi }}"
         samba_shares:
           - name: "share-main"
             path: "/mnt/pool-main/subvolumes/share-main"
@@ -157,9 +154,6 @@
         lms_config_folder: "/config/lms"
         lms_music_folder: "/share/Audios/"
         lms_additional_music_folder: "/share-common/Temp"
-    - role: kodidb
-      vars:
-        kodidb_base_folder: "/config/kodidb"
 
     - role: caddy
     - role: web_examples

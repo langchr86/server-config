@@ -39,8 +39,6 @@ The following services are available:
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://go.bitwarden.com/)
 * multi-room audio system: [logitech media server](https://en.wikipedia.org/wiki/Logitech_Media_Server)
-* central kodi DB: [sharing the library](https://kodi.wiki/view/MySQL)
-  with [mariadb](https://mariadb.org/)
 * media server: [jellyfin](https://jellyfin.org/)
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
