@@ -1,5 +1,8 @@
 ---
 
+ssh_allowed_users:
+  - '{{ ansible_env.USER }}'
+
 ssh_pub_files:
   - 'eddsa-key-clang-privat-20220905.opub'
   - 'eddsa-key-technical-user-20230806.opub'

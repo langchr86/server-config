@@ -27,6 +27,7 @@
     - {regexp: "^PermitRootLogin", line: "PermitRootLogin yes"}
     - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}
     - {regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no"}
+    - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
 
 - name: "Daemon hardening: local network"
   become: true
