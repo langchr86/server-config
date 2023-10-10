@@ -43,3 +43,9 @@
   ansible.builtin.package:
     name: cloud-init
     state: absent
+
+- name: Remove snapd
+  become: true
+  ansible.builtin.package:
+    name: snapd
+    state: absent
