@@ -15,7 +15,6 @@ services:
       - {{ caddy_app_folder }}/Caddyfile:/etc/caddy/Caddyfile
       - /share/web/gallery:/srv/gallery
       - /share/web/fileshare:/srv/fileshare
-      - /share/web/movies:/srv/movies
       - /share/web/wiki:/srv/wiki
     networks:
       - bitwarden_net
