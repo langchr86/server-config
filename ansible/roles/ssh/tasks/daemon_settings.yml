@@ -11,7 +11,7 @@
     create: true
     mode: "u+rw"
   with_items:
-    - {regexp: "^X11Forwarding", line: "X11Forwarding yes"}
+    - {regexp: "^X11Forwarding", line: "X11Forwarding no"}
   notify: restart sshd
 
 - name: "Daemon hardening: global"
@@ -25,10 +25,15 @@
     create: true
     mode: "u+rw"
   with_items:
-    - {regexp: "^PermitRootLogin", line: "PermitRootLogin yes"}
+    - {regexp: "^PermitRootLogin", line: "PermitRootLogin no"}
+    - {regexp: "^PermitEmptyPasswords", line: "PermitEmptyPasswords no"}
     - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}
     - {regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no"}
+    - {regexp: "^KerberosAuthentication ", line: "KerberosAuthentication no"}
+    - {regexp: "^GSSAPIAuthentication ", line: "GSSAPIAuthentication no"}
     - {regexp: "^PasswordAuthentication", line: "PasswordAuthentication no"}
+    - {regexp: "^AllowTcpForwarding", line: "AllowTcpForwarding no"}
+    - {regexp: "^PermitTunnel", line: "PermitTunnel no"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
   notify: restart sshd
 
