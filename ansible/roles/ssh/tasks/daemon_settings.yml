@@ -28,6 +28,7 @@
     - {regexp: "^PermitRootLogin", line: "PermitRootLogin yes"}
     - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}
     - {regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no"}
+    - {regexp: "^PasswordAuthentication", line: "PasswordAuthentication no"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
   notify: restart sshd
 
@@ -37,7 +38,7 @@
     path: "{{ sshd_config_file }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Daemon hardening: local network"
     block: |
-      PasswordAuthentication no
-      Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-      PasswordAuthentication yes
+      Match Address 192.168.0.0/24
+        PasswordAuthentication yes
+      Match all
   notify: restart sshd
