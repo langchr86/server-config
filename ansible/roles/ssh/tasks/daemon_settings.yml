@@ -12,6 +12,7 @@
     mode: "u+rw"
   with_items:
     - {regexp: "^X11Forwarding", line: "X11Forwarding yes"}
+  notify: restart sshd
 
 - name: "Daemon hardening: global"
   become: true
@@ -28,6 +29,7 @@
     - {regexp: "^PubkeyAuthentication", line: "PubkeyAuthentication yes"}
     - {regexp: "^ChallengeResponseAuthentication", line: "ChallengeResponseAuthentication no"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
+  notify: restart sshd
 
 - name: "Daemon hardening: local network"
   become: true
@@ -38,3 +40,4 @@
       PasswordAuthentication no
       Match Address 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
       PasswordAuthentication yes
+  notify: restart sshd
