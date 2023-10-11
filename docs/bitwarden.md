@@ -12,3 +12,21 @@ Some services need to be enabled by configuring over the admin web UI.
 
 All these settings are stored in `config.json`.
 This file is part of the automatic backup.
+
+
+Restore Backup
+--------------
+
+~~~
+$ sudo systemctl stop bitwarden
+$ cd /config/bitwarden
+$ rm -rf restore/*
+$ cp -r backup/* restore/
+$ ./backup_scripts/run_restore.sh
+
+container$ rm -rf /data/*
+container$ cp -r /restore/* /data/
+container$ exit
+
+$ sudo systemctl restart bitwarden
+~~~
