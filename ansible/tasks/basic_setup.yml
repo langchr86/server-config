@@ -49,3 +49,10 @@
   ansible.builtin.package:
     name: snapd
     state: absent
+
+- name: Disable snap.lxd.activate.service
+  become: true
+  ansible.builtin.systemd_service:
+    name: snap.lxd.activate.service
+    state: 'stopped'
+    enabled: false
