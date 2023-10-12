@@ -83,7 +83,9 @@ Real deployment
 * Remove not working apt sources: `sudo nano /etc/apt/sources.list`
 
 
-###  Setup sudo
+###  Setup passwordless sudo
+
+This can be used for initial setup but should be removed afterward.
 
 ~~~
 sudo su
