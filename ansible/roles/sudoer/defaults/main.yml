@@ -1,0 +1,5 @@
+---
+
+sudoers_folder: "/etc/sudoers.d"
+user: "{{ ansible_env.USER }}"
+commands: []

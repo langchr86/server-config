@@ -1,0 +1,15 @@
+---
+
+- name: "Create sudoers folder: '{{ sudoers_folder }}'"
+  become: true
+  ansible.builtin.file:
+    path: "{{ sudoers_folder }}"
+    state: directory
+    mode: "720"
+
+- name: "Create NOPASSWD sudoer file for: '{{ user }}'"
+  become: true
+  ansible.builtin.template:
+    src: "sudoer.j2"
+    dest: "{{ sudoers_folder }}/{{ user }}"
+    mode: "440"

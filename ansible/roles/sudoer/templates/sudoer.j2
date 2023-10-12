@@ -1,0 +1,5 @@
+{% for command in commands %}
+
+{{ user }} ALL=(ALL) NOPASSWD: {{ command }}
+
+{% endfor %}
