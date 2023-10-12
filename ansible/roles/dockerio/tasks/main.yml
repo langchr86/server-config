@@ -10,18 +10,6 @@
       - software-properties-common
       - docker.io
 
-- name: Create group docker
-  become: true
-  ansible.builtin.group:
-    name: docker
-
-- name: Add docker user to docker group
-  become: true
-  ansible.builtin.user:
-    name: "{{ ansible_env.USER }}"
-    append: true
-    groups: docker
-
 - name: Ensure old docker-compose is not installed
   become: true
   ansible.builtin.apt:
