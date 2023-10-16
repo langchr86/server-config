@@ -12,7 +12,7 @@ services:
       - {{ jf_config_folder }}:/config
       - /share/Audios/:/media/audios:ro
       - /share/Bilder/:/media/images:ro
-      - /share/Bücher/:/media/books:rw
+      - /share/Bücher/:/media/books:ro
       - /share/Videos/:/media/videos:ro
     ports:
       - 8096:8096
