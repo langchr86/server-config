@@ -33,6 +33,7 @@
     - {regexp: "^GSSAPIAuthentication ", line: "GSSAPIAuthentication no"}
     - {regexp: "^PasswordAuthentication", line: "PasswordAuthentication no"}
     - {regexp: "^AllowTcpForwarding", line: "AllowTcpForwarding no"}
+    - {regexp: "^X11Forwarding", line: "X11Forwarding no"}
     - {regexp: "^PermitTunnel", line: "PermitTunnel no"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
   notify: restart sshd
