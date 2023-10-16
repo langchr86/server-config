@@ -35,6 +35,9 @@
     - {regexp: "^AllowTcpForwarding", line: "AllowTcpForwarding no"}
     - {regexp: "^X11Forwarding", line: "X11Forwarding no"}
     - {regexp: "^PermitTunnel", line: "PermitTunnel no"}
+    - {regexp: "^KexAlgorithms", line: "KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256"}
+    - {regexp: "^Ciphers", line: "Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr"}
+    - {regexp: "^MACs", line: "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users|join(' ') }}"}
   notify: restart sshd
 
@@ -47,4 +50,15 @@
       Match Address 192.168.0.0/24
         PasswordAuthentication yes
       Match all
+  notify: restart sshd
+
+- name: "Daemon hardening: protocol and host keys"
+  become: true
+  ansible.builtin.blockinfile:
+    path: "{{ sshd_config_file }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Daemon hardening: protocol and host keys"
+    block: |
+      Protocol 2
+      HostKey /etc/ssh/ssh_host_ed25519_key
+      HostKey /etc/ssh/ssh_host_rsa_key
   notify: restart sshd

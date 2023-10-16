@@ -26,6 +26,9 @@ The following diagram gives an overview of the relevant hosts and some data flow
 The following services are available:
 
 * local file access: [samba](https://www.samba.org/)
+* SSH access hardened by following:
+  * https://www.procustodibus.com/blog/2021/12/ssh-jumphost-vs-wireguard-jumphost/
+  * https://blog.stribik.technology/2015/01/04/secure-secure-shell.html
 * RAID1 and change history: [btrfs](https://btrfs.wiki.kernel.org/index.php/Main_Page)
   and [btrbk](https://github.com/digint/btrbk)
 * automatic server and client backups: [rsync and rsync-daemon](https://en.wikipedia.org/wiki/Rsync)
