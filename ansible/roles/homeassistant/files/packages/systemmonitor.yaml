@@ -1,3 +1,13 @@
+sensor:
+  - platform: systemmonitor
+    scan_interval: 60
+    resources:
+      - type: disk_use_percent
+        arg: /config
+      - type: memory_use_percent
+      - type: processor_use
+      - type: processor_temperature
+
 binary_sensor:
   - platform: ping
     host: 192.168.0.5
