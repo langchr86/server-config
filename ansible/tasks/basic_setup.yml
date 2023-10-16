@@ -44,6 +44,12 @@
     name: cloud-init
     state: absent
 
+- name: Remove cloud-init SSH config
+  become: true
+  ansible.builtin.file:
+    path: "/etc/ssh/sshd_config.d/50-cloud-init.conf"
+    state: absent
+
 - name: Remove snapd
   become: true
   ansible.builtin.package:
