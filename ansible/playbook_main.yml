@@ -77,7 +77,6 @@
           - "/share/web/"
           - "/share/web/fileshare/"
           - "/share/web/gallery/"
-          - "/share/web/movies/"
 
     - role: rsync
       vars:
