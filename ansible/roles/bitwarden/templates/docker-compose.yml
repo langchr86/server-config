@@ -11,6 +11,8 @@ services:
       - data:/data
     networks:
       - caddy_bitwarden_net
+    ports:
+      - 8088:80
 
 volumes:
   data:
