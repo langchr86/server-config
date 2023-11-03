@@ -1,0 +1,20 @@
+---
+version: "3.5"
+services:
+  jellyseerr:
+    container_name: "jellyseerr"
+    image: fallenbagel/jellyseerr:1.7.0
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ js_config_folder }}:/app/config
+    ports:
+      - 5055:5055
+    networks:
+      - caddy_jellyfin_net
+
+networks:
+  caddy_jellyfin_net:
+    external: true

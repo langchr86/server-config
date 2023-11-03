@@ -1,0 +1,6 @@
+---
+
+js_user: "{{ ansible_env.USER }}"
+js_group: "users"
+js_service_name: "jellyseerr"
+js_config_folder: "/share/config/{{ js_service_name }}/"

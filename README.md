@@ -43,6 +43,7 @@ The following services are available:
 * password manager: [bitwarden](https://go.bitwarden.com/)
 * multi-room audio system: [logitech media server](https://en.wikipedia.org/wiki/Logitech_Media_Server)
 * media server: [jellyfin](https://jellyfin.org/)
+* media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)

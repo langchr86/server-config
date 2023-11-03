@@ -170,6 +170,9 @@
     - role: jellyfin
       vars:
         jf_config_folder: "/config/jellyfin"
+    - role: jellyseerr
+      vars:
+        js_config_folder: "/config/jellyseerr"
 
 #   - role: cs16server
 #   - role: csgoserver

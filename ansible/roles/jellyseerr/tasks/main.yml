@@ -1,0 +1,29 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ js_user }}"
+    group: "{{ js_group }}"
+    mode: "u+rw"
+    recurse: true
+  with_items:
+    - "{{ js_config_folder }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ js_user }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ js_group }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ js_service_name }}"
+    auto_restart_if_failing: true
+    service_dependencies:
+      - caddy.service
