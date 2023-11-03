@@ -3,7 +3,7 @@ version: "3.5"
 services:
   caddy:
     container_name: "caddy"
-    image: caddy:2.7.4
+    image: caddy:2.7.5
     environment:
       - EMAIL="lang.chr86@gmail.com"
     ports:
