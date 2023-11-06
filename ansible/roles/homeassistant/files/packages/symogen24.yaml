@@ -95,7 +95,7 @@ template:
                 - (states('sensor.regenwasser_power') | float(default=0))
                 - (states('sensor.wattpilot_charging_energy') | float(default=0))
                 - (states('sensor.geschirrspuler_leistung') | float(default=0))
-                - (states('sensor.entfeuchter_leistung') | float(default=0)) ) }}"
+                - (states('sensor.entfeuchter_leistung') | float(default=0)) ) | int(default=0) }}"
         unit_of_measurement: W
         device_class: power
       - name: "SolarNet Power self usage"
