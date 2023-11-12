@@ -32,3 +32,4 @@ recorder:
       - sensor.button_*_battery
       - sensor.energy_next_*
       - sensor.sun_next_*
+      - media_player*
