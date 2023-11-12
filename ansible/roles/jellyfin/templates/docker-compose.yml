@@ -3,7 +3,7 @@ version: "3.5"
 services:
   jellyfin:
     container_name: "jellyfin"
-    image: lscr.io/linuxserver/jellyfin:10.8.11
+    image: lscr.io/linuxserver/jellyfin:10.8.12
     environment:
       - PUID={{ uid }}
       - PGID={{ gid }}
