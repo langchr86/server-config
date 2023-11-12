@@ -110,3 +110,93 @@ template:
                 ) }}"
         unit_of_measurement: W
         device_class: power
+
+  - binary_sensor:
+    - name: warmepumpe_combined
+      unique_id: warmepumpe_combined
+      icon: mdi:heat-pump
+      state: "{{ states('binary_sensor.wpl17ics_betriebsstatus_verdichter_aktiv') }}"
+      attributes:
+        power: "{{ states('sensor.warmepumpe_channel_a_power') | int(default=0) }} W"
+        sgready: " SG-Ready {{ states('sensor.wpl17ics_sg_ready_betriebszustand') | int(default=0) }}"
+        mode: "
+          {% if states('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv') | bool(default=false ) %}
+            Heizen
+          {% elif states('binary_sensor.wpl17ics_betriebsstatus_warmwasser_aktiv') | bool(default=false ) %}
+            Warmwasser
+          {% elif states('binary_sensor.wpl17ics_betriebsstatus_kuhlbetrieb_aktiv') | bool(default=false ) %}
+            Kühlen
+          {% endif %}
+        "
+    - name: comfoair_combined
+      unique_id: comfoair_combined
+      icon: mdi:air-conditioner
+      state: "{{ states('fan.comfoair') }}"
+      attributes:
+        power: "{{ states('sensor.comfoair_power_usage') | int(default=0) }} W"
+        percentage: "{{ state_attr('fan.comfoair','percentage') }} %"
+        bypass: "{{ states('sensor.comfoair_bypass_state') }} %"
+    - name: entfeuchter_combined
+      unique_id: entfeuchter_combined
+      icon: mdi:air-humidifier
+      state: "{{ states('binary_sensor.entfeuchter_active') }}"
+      attributes:
+        power: "{{ states('sensor.entfeuchter_leistung') | int(default=0) }} W"
+    - name: tumbler_combined
+      unique_id: tumbler_combined
+      icon: mdi:tumble-dryer
+      state: "{{ states('binary_sensor.tumbler_active') }}"
+      attributes:
+        power: "{{ states('sensor.tumbler_leistung') | int(default=0) }} W"
+    - name: waschmaschine_combined
+      unique_id: waschmaschine_combined
+      icon: mdi:washing-machine
+      state: "{{ states('binary_sensor.waschmaschine_active') }}"
+      attributes:
+        power: "{{ states('sensor.waschmaschine_leistung') | int(default=0) }} W"
+    - name: geschirrspuler_combined
+      unique_id: geschirrspuler_combined
+      icon: mdi:dishwasher
+      state: "{{ states('binary_sensor.geschirrspuler_active') }}"
+      attributes:
+        power: "{{ states('sensor.geschirrspuler_leistung') | int(default=0) }} W"
+    - name: wattpilot_combined
+      unique_id: wattpilot_combined
+      icon: mdi:ev-station
+      state: "{{ states('binary_sensor.wattpilot_active') }}"
+      attributes:
+        power: "{{ states('sensor.wattpilot_charging_energy') | int(default=0) }} W"
+        current: "{{ states('number.wattpilot_charging_power') | int(default=0) }} A"
+        mode: "{{ states('select.wattpilot_charging_mode') }}"
+        phases: "{{ states('select.wattpilot_phase_switch') }}"
+    - name: cupra_born_combined
+      unique_id: cupra_born_combined
+      icon: mdi:car-electric
+      state: "{{ states('binary_sensor.cupra_born_engine_status') }}"
+      attributes:
+        charge: "{{ states('sensor.cupra_born_state_of_charge') | int(default=0) }} %"
+        range: "{{ states('sensor.cupra_born_range_in_kilometers') | int(default=0) }} km"
+    - name: tv_wohnen_combined
+      unique_id: tv_wohnen_combined
+      icon: mdi:youtube-tv
+      state: "{{ states('switch.outlet_tv_wohnen') }}"
+      attributes:
+        power: "{{ states('sensor.outlet_tv_wohnen_power') | int(default=0) }} W"
+    - name: entharter_combined
+      unique_id: entharter_combined
+      icon: mdi:waves
+      state: "{{ states('binary_sensor.entharter_active') }}"
+      attributes:
+        power: "{{ states('sensor.entharter_power') | int(default=0) }} W"
+    - name: regenwasser_combined
+      unique_id: regenwasser_combined
+      icon: mdi:weather-pouring
+      state: "{{ states('binary_sensor.regenwasser_active') }}"
+      attributes:
+        power: "{{ states('sensor.regenwasser_power') | int(default=0) }} W"
+    - name: boiler_combined
+      unique_id: boiler_combined
+      icon: mdi:water-boiler
+      state: "{{ states('switch.boiler') }}"
+      attributes:
+        power: "{{ states('sensor.boiler_channel_a_power') | int(default=0) }} W"
