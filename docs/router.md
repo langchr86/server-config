@@ -77,4 +77,5 @@ Device IPs
 | .87  | entfeuchter          |
 | .89  | geschirrspuler       |
 | .90  | licht-wohnen         |
+| .91  | licht-schlafen       |
 | .116 | ComfoNET (MAC-Fix)   |
