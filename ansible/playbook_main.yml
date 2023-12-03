@@ -174,5 +174,4 @@
       vars:
         js_config_folder: "/config/jellyseerr"
 
-#   - role: cs16server
-#   - role: csgoserver
+#    - role: cs2server

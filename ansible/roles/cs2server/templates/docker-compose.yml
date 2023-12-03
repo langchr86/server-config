@@ -1,0 +1,40 @@
+---
+
+# Domainname: langchr86.mooo.com
+# Game mode and type: https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers
+
+services:
+  cs2server:
+    container_name: "cs2server"
+    image: joedwards32/cs2
+    ports:
+      - "27016:27016/tcp"
+      - "27016:27016/udp"
+      - "27021:27021/udp"
+    volumes:
+      - cs2_dedicated:/home/steam/cs2-dedicated/
+      - {{ cs2_config_folder }}/cfg/gamemode_casual_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_casual_server.cfg:ro
+      - {{ cs2_config_folder }}/cfg/gamemode_competitive2v2_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive2v2_server.cfg:ro
+      - {{ cs2_config_folder }}/cfg/gamemode_competitive_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive_server.cfg:ro
+      - {{ cs2_config_folder }}/cfg/gamemode_deathmatch_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_deathmatch_server.cfg:ro
+    environment:
+      - STEAMUSER=langchr
+      - SRCDS_TOKEN=61DEE3885DC46F111DA93BB981C750E0    # https://steamcommunity.com/dev/managegameservers
+      - CS2_SERVERNAME=clang_cs2
+      - CS2_PORT=27016
+      - CS2_LAN=0
+      - CS2_PW=clang
+      - CS2_RCONPW=clang237
+      - CS2_STARTMAP=de_dust2
+      - CS2_MAPGROUP=mg_active
+      - CS2_MAXPLAYERS=24
+      - CS2_GAMETYPE=0
+      - CS2_GAMEMODE=0
+      - CS2_BOT_DIFFICULTY=3
+      - CS2_BOT_QUOTA=10
+      - CS2_BOT_QUOTA_MODE=fill
+      - TV_ENABLE=0
+      - TV_PORT=27021
+
+volumes:
+  cs2_dedicated:

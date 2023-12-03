@@ -1,0 +1,31 @@
+---
+
+- name: "Create folders"
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "544"
+  with_items:
+    - "{{ cs2_config_folder }}"
+    - "{{ cs2_config_folder }}/cfg"
+
+- name: "Copy config files to {{ cs2_config_folder }}/cfg"
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ cs2_config_folder }}/cfg"
+    mode: "u+rw"
+  with_items:
+    - "gamemode_casual_server.cfg"
+    - "gamemode_competitive2v2_server.cfg"
+    - "gamemode_competitive_server.cfg"
+    - "gamemode_deathmatch_server.cfg"
+  register: config
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ cs2_service_name }}"
+    service_enabled: false
+    force_restart: "{{ config.changed }}"
