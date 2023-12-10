@@ -22,7 +22,7 @@ homeassistant:
     - /config
 
 recorder:
-  purge_keep_days: 30
+  purge_keep_days: 14
   exclude:
     entities:
       - sun.sun
