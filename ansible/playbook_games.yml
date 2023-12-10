@@ -1,0 +1,7 @@
+- hosts: all
+
+  pre_tasks:
+
+  roles:
+    - role: dockerio
+    - role: cs2server
