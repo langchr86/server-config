@@ -61,7 +61,7 @@
     src: "https://github.com/mk-maddin/wattpilot-HA/archive/refs/tags/v{{ wattpilot_version }}.tar.gz"
     remote_src: true
     dest: "{{ ha_config_folder }}/custom_components_download"
-    creates: "{{ ha_config_folder }}/custom_components2/wattpilot/manifest.json"
+    creates: "{{ ha_config_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/hacs.json"
 
 - name: Install Wattpilot integration
   become: true
