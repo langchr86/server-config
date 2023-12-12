@@ -37,7 +37,6 @@ The following services are available:
 * download manager: [jdownloader](https://jdownloader.org/)
 * torrent manager: [transmission](https://transmissionbt.com/)
 * dyn-dns updater: [ddclient](https://github.com/ddclient/ddclient)
-* counter strike dedicated server: CS:GO and CS 1.6
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://go.bitwarden.com/)

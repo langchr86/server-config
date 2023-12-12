@@ -173,5 +173,3 @@
     - role: jellyseerr
       vars:
         js_config_folder: "/config/jellyseerr"
-
-#    - role: cs2server
