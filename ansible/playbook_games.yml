@@ -5,3 +5,4 @@
   roles:
     - role: dockerio
     - role: cs2server
+    - role: csrcon

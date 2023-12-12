@@ -1,0 +1,5 @@
+---
+
+csrcon_release: "0.10.3"
+csrcon_folder: "rcon-{{ csrcon_release }}-amd64_linux"
+csrcon_url: "https://github.com/gorcon/rcon-cli/releases/download/v{{ csrcon_release }}/{{ csrcon_folder }}.tar.gz"
