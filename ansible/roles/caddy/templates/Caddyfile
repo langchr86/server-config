@@ -38,10 +38,7 @@ bitwarden.{{ domain }}:443 {
   }
   redir @insecureadmin /
 
-  # Notifications redirected to the websockets server
-  reverse_proxy /notifications/hub bitwarden:3012
-
-  # Proxy everything else to Rocket
+  # Proxy everything to Rocket
   reverse_proxy bitwarden:80 {
     # Send the true remote IP to Rocket, so that vaultwarden can put this in the
     # log, so that fail2ban can ban the correct IP.
