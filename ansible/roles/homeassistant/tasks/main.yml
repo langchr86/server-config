@@ -42,7 +42,6 @@
   with_items:
     - "packages/comfonet.yaml"
     - "packages/mystrom.yaml"
-    - "packages/systemmonitor.yaml"
     - "packages/symogen24.yaml"
     - "packages/wpl17ics.yaml"
   register: packages
