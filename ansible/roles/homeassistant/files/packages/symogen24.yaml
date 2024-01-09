@@ -44,42 +44,50 @@ template:
         unique_id: "symogen24_battery_power_charging"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ max(0, 0 - states('sensor.solarnet_power_battery') | float(default=0)) }}"
       - name: "Battery Power Discharging"
         unique_id: "symogen24_battery_power_discharging"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ max(0, states('sensor.solarnet_power_battery') | float(default=0)) }}"
       - name: "Power Photovoltaics"
         unique_id: "symogen24_power_photovoltaics"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ states('sensor.solarnet_power_photovoltaics') | float(default=0) }}"
       - name: "Power Photovoltaics String 1"
         unique_id: "symogen24_power_photovoltaics_string_1"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ states('sensor.lang_pv_symo24_current_dc') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc') | float(default=0) }}"
       - name: "Power Photovoltaics String 2"
         unique_id: "symogen24_power_photovoltaics_string_2"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ states('sensor.lang_pv_symo24_current_dc_2') | float(default=0) * states('sensor.lang_pv_symo24_voltage_dc_2') | float(default=0) }}"
       - name: "SolarNet Power load inverted"
         unique_id: "symogen24_solarnet_power_load_inverted"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_load') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
       - name: "SolarNet Power grid consume"
         unique_id: "symogen24_solarnet_power_grid_consume"
         state: "{{ max(0, states('sensor.solarnet_power_grid') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
       - name: "SolarNet Power grid feed"
         unique_id: "symogen24_solarnet_power_grid_feed"
         state: "{{ max(0, 0 - states('sensor.solarnet_power_grid') | float(default=0)) }}"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
       - name: "SolarNet Power load others"
         unique_id: "symogen24_solarnet_power_load_others"
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
@@ -98,6 +106,7 @@ template:
                 - (states('sensor.entfeuchter_leistung') | float(default=0)) ) | int(default=0) }}"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
       - name: "SolarNet Power self usage"
         unique_id: "symogen24_solarnet_power_self_usage"
         # 0 < SelfUsage < TotalPV
@@ -110,6 +119,7 @@ template:
                 ) }}"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
 
   - binary_sensor:
     - name: warmepumpe_combined

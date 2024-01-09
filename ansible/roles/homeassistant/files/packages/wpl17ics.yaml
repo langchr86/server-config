@@ -18,6 +18,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS HK-1 Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_hk1"
         slave: 1
@@ -28,6 +29,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS HK-1 Soll-Temperatur
         unique_id: "wpl17ics_target_temperature_hk1"
         slave: 1
@@ -38,6 +40,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Vorlauf Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_flow"
         slave: 1
@@ -48,6 +51,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Rücklauf Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_return"
         slave: 1
@@ -58,6 +62,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Puffer Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_buffer"
         slave: 1
@@ -68,6 +73,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Puffer Soll-Temperatur
         unique_id: "wpl17ics_target_temperature_buffer"
         slave: 1
@@ -78,6 +84,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Volumenstrom
         unique_id: "wpl17ics_volume_flow"
         slave: 1
@@ -87,6 +94,7 @@ modbus:
         scale: 0.1
         precision: 1
         unit_of_measurement: 'l/min'
+        state_class: measurement
       - name: WPL17ICS Warmwasser Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_hotwater"
         slave: 1
@@ -97,6 +105,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Warmwasser Soll-Temperatur
         unique_id: "wpl17ics_target_temperature_hotwater"
         slave: 1
@@ -107,6 +116,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Kühlen Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_cooling"
         slave: 1
@@ -117,6 +127,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Kühlen Soll-Temperatur
         unique_id: "wpl17ics_target_temperature_cooling"
         slave: 1
@@ -127,6 +138,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS WP Rücklauf-Temperatur
         unique_id: "wpl17ics_return_temperature_wp"
         slave: 1
@@ -137,6 +149,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS WP Vorlauf-Temperatur
         unique_id: "wpl17ics_flow_temperature_wp"
         slave: 1
@@ -147,6 +160,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS WP Volumenstrom
         unique_id: "wpl17ics_volume_flow_wp"
         slave: 1
@@ -156,6 +170,7 @@ modbus:
         scale: 0.1
         precision: 1
         unit_of_measurement: 'l/min'
+        state_class: measurement
       - name: WPL17ICS Raum Ist-Temperatur
         unique_id: "wpl17ics_actual_temperature_room"
         slave: 1
@@ -166,6 +181,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Raum Soll-Temperatur
         unique_id: "wpl17ics_target_temperature_room"
         slave: 1
@@ -176,6 +192,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Raum Feuchte
         unique_id: "wpl17ics_actual_humidity_room"
         slave: 1
@@ -186,6 +203,7 @@ modbus:
         precision: 1
         unit_of_measurement: '%'
         device_class: humidity
+        state_class: measurement
       - name: WPL17ICS HK-1 Komfort-Temperatur
         unique_id: "wpl17ics_comfort_temperature_hk1"
         slave: 1
@@ -196,6 +214,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS HK-1 Eco-Temperatur
         unique_id: "wpl17ics_eco_temperature_hk1"
         slave: 1
@@ -206,6 +225,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS HK-1 Heizkurve
         unique_id: "wpl17ics_heatcurve_hk1"
         slave: 1
@@ -224,6 +244,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Warmwasser Eco-Temperatur
         unique_id: "wpl17ics_eco_temperature_hotwater"
         slave: 1
@@ -234,6 +255,7 @@ modbus:
         precision: 1
         unit_of_measurement: '°C'
         device_class: temperature
+        state_class: measurement
       - name: WPL17ICS Betriebsstatus
         unique_id: "wpl17ics_system_state"
         slave: 1
@@ -271,26 +293,31 @@ template:
         unique_id: "wpl17ics_real_power_emergencyheater"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_notheizung_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Heizung
         unique_id: "wpl17ics_real_power_heating"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Warmwasser
         unique_id: "wpl17ics_real_power_hotwater"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_warmwasser_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Kühlbetrieb
         unique_id: "wpl17ics_real_power_cooling"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_kuhlbetrieb_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Standby
         unique_id: "wpl17ics_real_power_standby"
         unit_of_measurement: W
         device_class: power
+        state_class: measurement
         state: "{{ max(0, (states('sensor.warmepumpe_channel_a_power') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_notheizung') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_heizung') | float(default=0))
