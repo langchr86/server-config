@@ -262,6 +262,12 @@ modbus:
         address: 2500
         input_type: input
         data_type: uint16
+      - name: WPL17ICS Error State
+        unique_id: "wpl17ics_error_state"
+        slave: 1
+        address: 2503
+        input_type: input
+        data_type: uint16
       - name: WPL17ICS SG-Ready Betriebszustand
         unique_id: "wpl17ics_sg_ready_state"
         slave: 1
