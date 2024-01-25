@@ -289,36 +289,42 @@ modbus:
 
 template:
   - sensor:
+      - name: WPL17ICS Real Power All Modes
+        unique_id: "wpl17ics_real_power_all_modes"
+        unit_of_measurement: W
+        device_class: power
+        state_class: measurement
+        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) + (states('sensor.warmepumpe_channel_b_power') | float(default=0)) + (states('sensor.warmepumpe_channel_c_power') | float(default=0)) }}"
       - name: WPL17ICS Real Power Notheizung
         unique_id: "wpl17ics_real_power_emergencyheater"
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_notheizung_aktiv', 'on') else 0 }}"
+        state: "{{ (states('sensor.wpl17ics_real_power_all_modes') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_notheizung_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Heizung
         unique_id: "wpl17ics_real_power_heating"
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv', 'on') else 0 }}"
+        state: "{{ (states('sensor.wpl17ics_real_power_all_modes') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Warmwasser
         unique_id: "wpl17ics_real_power_hotwater"
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_warmwasser_aktiv', 'on') else 0 }}"
+        state: "{{ (states('sensor.wpl17ics_real_power_all_modes') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_warmwasser_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Kühlbetrieb
         unique_id: "wpl17ics_real_power_cooling"
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        state: "{{ (states('sensor.warmepumpe_channel_a_power') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_kuhlbetrieb_aktiv', 'on') else 0 }}"
+        state: "{{ (states('sensor.wpl17ics_real_power_all_modes') | float(default=0)) if is_state('binary_sensor.wpl17ics_betriebsstatus_kuhlbetrieb_aktiv', 'on') else 0 }}"
       - name: WPL17ICS Real Power Standby
         unique_id: "wpl17ics_real_power_standby"
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        state: "{{ max(0, (states('sensor.warmepumpe_channel_a_power') | float(default=0))
+        state: "{{ max(0, (states('sensor.wpl17ics_real_power_all_modes') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_notheizung') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_heizung') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_warmwasser') | float(default=0))

@@ -91,7 +91,7 @@ template:
       - name: "SolarNet Power load others"
         unique_id: "symogen24_solarnet_power_load_others"
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
-                - (states('sensor.warmepumpe_channel_a_power') | float(default=0))
+                - (states('sensor.wpl17ics_real_power_all_modes') | float(default=0))
                 - (states('sensor.comfoair_power_usage') | float(default=0))
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
@@ -127,7 +127,7 @@ template:
       icon: mdi:heat-pump
       state: "{{ states('binary_sensor.wpl17ics_betriebsstatus_verdichter_aktiv') }}"
       attributes:
-        power: "{{ states('sensor.warmepumpe_channel_a_power') | int(default=0) }} W"
+        power: "{{ states('sensor.wpl17ics_real_power_all_modes') | int(default=0) }} W"
         sgready: " SG-Ready {{ states('sensor.wpl17ics_sg_ready_betriebszustand') | int(default=0) }}"
         mode: "
           {% if states('binary_sensor.wpl17ics_betriebsstatus_heizung_aktiv') | bool(default=false ) %}
