@@ -1,0 +1,9 @@
+---
+
+ddns_user: "{{ ansible_env.USER }}"
+ddns_group: "users"
+ddns_config_folder: "/config/duckdns"
+ddns_script_folder: "/opt/duckdns_scripts"
+ddns_script: "{{ ddns_script_folder }}/duckdns-update.sh"
+ddns_token: ""
+ddns_subdomain: "langchr86"

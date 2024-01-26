@@ -1,0 +1,40 @@
+---
+
+- name: "Install duckdns updater dependencies"
+  become: true
+  ansible.builtin.apt:
+    name:
+      - dnsutils
+      - curl
+
+- name: "Create config folder: '{{ ddns_config_folder }}'"
+  become: true
+  ansible.builtin.file:
+    path: "{{ ddns_config_folder }}"
+    state: directory
+    mode: "u+rw"
+    owner: "{{ ddns_user }}"
+    group: "{{ ddns_group }}"
+
+- name: "Create scripts folder: '{{ ddns_script_folder }}'"
+  become: true
+  ansible.builtin.file:
+    path: "{{ ddns_script_folder }}"
+    state: directory
+    mode: "u+rw"
+    recurse: true
+
+- name: "Create update script: '{{ ddns_script }}'"
+  become: true
+  ansible.builtin.template:
+    src: "duckdns-update.sh"
+    dest: "{{ ddns_script }}"
+    mode: "755"
+
+- name: "Install periodic duckdns timer task"
+  ansible.builtin.include_role:
+    name: systemd-timer
+  vars:
+    sd_timer_name: "duckdns_update"
+    sd_timer_command: "{{ ddns_script }}"
+    sd_timer_OnCalendar: "*:0,15,30,45"

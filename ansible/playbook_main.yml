@@ -143,6 +143,9 @@
 
     - role: dockerio
     - role: ddclient
+    - role: duckdns
+      vars:
+        ddns_token: "{{ passwords.duckdns }}"
     - role: transmission
     - role: jdownloader
       vars:
