@@ -16,7 +16,7 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 
 homeassistant:
-  external_url: "https://home.langchr86.mooo.com"
+  external_url: "https://home.langchr86.ch"
   packages: !include_dir_named packages
   allowlist_external_dirs:
     - /config
