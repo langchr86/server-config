@@ -2,6 +2,7 @@ server-config
 =============
 
 [![ansible-lint](https://github.com/langchr86/server-config/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/langchr86/server-config/actions/workflows/ansible-lint.yml)
+[![subdomain-check](https://github.com/langchr86/server-config/actions/workflows/subdomain-check.yml/badge.svg)](https://github.com/langchr86/server-config/actions/workflows/subdomain-check.yml)
 
 Configuration of my private server infrastructure.
 Completely managed by ansible and linux containers.
