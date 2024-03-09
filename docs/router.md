@@ -51,6 +51,7 @@ Device IPs
 | .53  | sensor-buero         |
 | .54  | sensor-schlafen      |
 | .55  | sensor-dispo         |
+| .56  | sensor-garage        |
 | .60  | technik-wasser       |
 | .65  | 1pm-tv-wohnen        |
 | .66  | 1pm-rack             |
