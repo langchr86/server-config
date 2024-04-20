@@ -8,7 +8,6 @@
   "disk_monitoring_enable_smart": false,
   "deploy_examples": true,
   "domain": "localhost",
-  "domain2": "localhost",
   "cert_authority": "local",
   "claudia_main_disk": "/dev/sdc",
   "claudia_backup_disk": "/dev/sdd",

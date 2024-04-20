@@ -37,7 +37,7 @@ The following services are available:
 * disk monitoring: [smartctl](https://www.smartmontools.org/)
 * download manager: [jdownloader](https://jdownloader.org/)
 * torrent manager: [transmission](https://transmissionbt.com/)
-* dyn-dns updater: [ddclient](https://github.com/ddclient/ddclient)
+* dyn-dns: [duckdns](https://duckdns.org)
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://go.bitwarden.com/)

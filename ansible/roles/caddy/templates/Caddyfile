@@ -1,17 +1,3 @@
-{{ domain2 }} {
-  @staticServer {
-    path /fileshare* /gallery* /wiki*
-  }
-  handle @staticServer {
-    root * /srv/
-    file_server
-  }
-
-  handle {
-    respond 403
-  }
-}
-
 # needed for certificate
 mumble.{{ domain }} {
   respond 204
@@ -32,21 +18,21 @@ gallery.{{ domain }} {
   file_server
 }
 
-home.{{ domain }} home.{{ domain2 }} {
+home.{{ domain }} {
   reverse_proxy homeassistant:8123 {
     header_up X-Real-IP {remote_host}
   }
 }
 
-media.{{ domain }} media.{{ domain2 }} {
+media.{{ domain }} {
   reverse_proxy jellyfin:8096
 }
 
-mediarequest.{{ domain }} mediarequest.{{ domain2 }} {
+mediarequest.{{ domain }} {
   reverse_proxy jellyseerr:5055
 }
 
-bitwarden.{{ domain }}:443 bitwarden.{{ domain2 }}:443 {
+bitwarden.{{ domain }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.
   encode gzip

@@ -1,9 +1,0 @@
-version: '3'
-services:
-  ddclient:
-    container_name: ddclient
-    image: linuxserver/ddclient:3.9.1
-    environment:
-      - TZ="{{ timezone }}"
-    volumes:
-      - {{ app_folder }}:/config/
