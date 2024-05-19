@@ -1,0 +1,27 @@
+# Robots
+
+template:
+  - binary_sensor:
+    - name: crawli_combined
+      unique_id: crawli_combined
+      icon: mdi:robot-mower
+      state: "{{ states('lawn_mower.crawli') != 'docked' and states('lawn_mower.crawli') != 'rain_delay' }}"
+      attributes:
+        battery: "{{ states('sensor.crawli_battery') | int(default=0) }} %"
+        charging: "{{ states('binary_sensor.crawli_battery_charging') }}"
+        next_start: "{{ states('sensor.crawli_next_scheduled_start') }}"
+        status: "
+          {% if states('binary_sensor.crawli_battery_charging') | bool(default=false ) %}
+            charging
+          {% else %}
+            {{ states('lawn_mower.crawli') }}
+          {% endif %}
+        "
+    - name: rabbit_combined
+      unique_id: rabbit_combined
+      icon: mdi:robot-vacuum
+      state: "{{ states('sensor.white_rabbit_status') == 'cleaning' }}"
+      attributes:
+        battery: "{{ states('sensor.white_rabbit_batterie') | int(default=0) }} %"
+        status: "{{ states('sensor.white_rabbit_status') }}"
+
