@@ -3,4 +3,4 @@
 user: "{{ ansible_env.USER }}"
 group: "users"
 ha_config_folder: "/share/config/homeassistant"
-wattpilot_version: "0.1.9"
+wattpilot_version: "0.2.1"
