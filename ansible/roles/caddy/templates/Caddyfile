@@ -3,6 +3,11 @@ mumble.{{ domain }} {
   respond 204
 }
 
+# needed for SSH access
+ssh.{{ domain }} {
+  respond 204
+}
+
 wiki.{{ domain }} {
   root * /srv/wiki
   file_server
