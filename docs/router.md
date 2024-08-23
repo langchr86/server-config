@@ -42,7 +42,7 @@ Device IPs
 | .21  | tv-dispo             |
 | .30  | lang-pv-symo24       |
 | .31  | servicewelt          |
-| .32  | lf-zehnder           |
+| .33  | 1pm-motorrad         |
 | .48  | button-buro          |
 | .49  | button-wohnen        |
 | .50  | sensor-sitzplatz     |
@@ -80,3 +80,4 @@ Device IPs
 | .90  | licht-wohnen         |
 | .91  | licht-schlafen       |
 | .116 | ComfoNET (MAC-Fix)   |
+| .117 | Wattpilot (MAC-Fix)  |
