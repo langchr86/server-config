@@ -62,3 +62,4 @@
     name: snap.lxd.activate.service
     state: 'stopped'
     enabled: false
+  ignore_errors: true
