@@ -79,5 +79,6 @@ Device IPs
 | .89  | geschirrspuler       |
 | .90  | licht-wohnen         |
 | .91  | licht-schlafen       |
+| .92  | licht-dispo-ost      |
 | .116 | ComfoNET (MAC-Fix)   |
 | .117 | Wattpilot (MAC-Fix)  |
