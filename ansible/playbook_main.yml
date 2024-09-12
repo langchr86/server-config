@@ -157,6 +157,7 @@
         lms_additional_music_folder: "/share-common/Temp"
 
     - role: caddy
+    - role: immich
     - role: web_examples
     - role: wiki
     - role: mumble

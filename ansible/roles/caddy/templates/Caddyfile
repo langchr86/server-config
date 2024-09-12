@@ -37,6 +37,10 @@ mediarequest.{{ domain }} {
   reverse_proxy jellyseerr:5055
 }
 
+immich.{{ domain }} {
+  reverse_proxy immich_server:3001
+}
+
 bitwarden.{{ domain }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.

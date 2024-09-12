@@ -1,0 +1,12 @@
+---
+
+im_user: "{{ ansible_env.USER }}"
+im_group: "users"
+im_service_name: "immich"
+im_config_folder: "/config/{{ im_service_name }}"
+im_env_folder: "/etc/docker-compose/{{ im_service_name }}"
+im_env_path: "{{ im_env_folder }}/.env"
+im_transcoding_path: "{{ im_env_folder }}/hwaccel.transcoding.yml"
+im_image_path: "/share/Bilder"
+im_upload_path: "{{ im_config_folder }}/upload"
+im_postgres_path: "{{ im_config_folder }}/postgres"

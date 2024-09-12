@@ -1,0 +1,56 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ im_user }}"
+    group: "{{ im_group }}"
+    mode: "u+rw"
+    recurse: true
+  with_items:
+    - "{{ im_config_folder }}"
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ im_user }}"
+    group: "{{ im_group }}"
+    mode: "775"
+    recurse: true
+  with_items:
+    - "{{ im_image_path }}"
+    - "{{ im_upload_path }}"
+    - "{{ im_postgres_path }}"
+
+- name: "Create docker compose folder: {{ im_env_folder }}"
+  become: true
+  ansible.builtin.file:
+    path: "{{ im_env_folder }}"
+    state: directory
+    recurse: true
+
+- name: "Create transcoding file: {{ im_transcoding_path }}"
+  become: true
+  ansible.builtin.copy:
+    src: "hwaccel.transcoding.yml"
+    dest: "{{ im_transcoding_path }}"
+  register: compose
+
+- name: "Create ENV file: {{ im_env_path }}"
+  become: true
+  ansible.builtin.template:
+    src: "immich.env"
+    dest: "{{ im_env_path }}"
+  register: compose
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ im_service_name }}"
+    auto_restart_if_failing: true
+    service_dependencies:
+      - caddy.service
