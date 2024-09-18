@@ -1,43 +1,43 @@
 # needed for certificate
-mumble.{{ domain }} {
+mumble.{{ domain }} mumble.{{ domain2 }} {
   respond 204
 }
 
 # needed for SSH access
-ssh.{{ domain }} {
+ssh.{{ domain }} ssh.{{ domain2 }} {
   respond 204
 }
 
-wiki.{{ domain }} {
+wiki.{{ domain }} wiki.{{ domain2 }} {
   root * /srv/wiki
   file_server
 }
 
-fileshare.{{ domain }} {
+fileshare.{{ domain }} fileshare.{{ domain2 }} {
   root * /srv/fileshare
   file_server
 }
 
-gallery.{{ domain }} {
+gallery.{{ domain }} gallery.{{ domain2 }} {
   root * /srv/gallery
   file_server
 }
 
-home.{{ domain }} {
+home.{{ domain }} home.{{ domain2 }} {
   reverse_proxy homeassistant:8123 {
     header_up X-Real-IP {remote_host}
   }
 }
 
-media.{{ domain }} {
+media.{{ domain }} media.{{ domain2 }} {
   reverse_proxy jellyfin:8096
 }
 
-mediarequest.{{ domain }} {
+mediarequest.{{ domain }} mediarequest.{{ domain2 }} {
   reverse_proxy jellyseerr:5055
 }
 
-bitwarden.{{ domain }}:443 {
+bitwarden.{{ domain }}:443 bitwarden.{{ domain2 }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.
   encode gzip
