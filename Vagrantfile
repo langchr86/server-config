@@ -44,17 +44,4 @@ Vagrant.configure("2") do |config|
         inline: "/vagrant/vagrant-ansible.sh playbook_backup.yml",
         privileged: false
   end
-
-  #config.vm.define "claudia" do |claudia|
-  #  claudia.vm.hostname = "vm-claudia"
-  #  claudia.vm.network "private_network", ip: "192.168.10.11"
-  #  claudia.vm.network "forwarded_port", guest: 80, host: 80
-  #  claudia.vm.network "forwarded_port", guest: 443, host: 443
-  #  claudia.vm.disk :disk, size: "8GB", name: "pool-main"
-  #  claudia.vm.disk :disk, size: "8GB", name: "daten-backup"
-  #
-  #  claudia.vm.provision "shell",
-  #      inline: "/vagrant/vagrant-ansible.sh playbook_claudia.yml",
-  #      privileged: false
-  #end
 end
