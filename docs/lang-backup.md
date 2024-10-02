@@ -2,6 +2,13 @@ lang-backup
 ===========
 
 
+Common steps
+------------
+
+Find the common steps needed for this host here:
+[Deployment on Ubuntu Host](/docs/deployment-ubuntu.md)
+
+
 Prepare lvm pool and share
 --------------------------
 
