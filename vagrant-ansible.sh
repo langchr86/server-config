@@ -18,6 +18,8 @@ ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
 cat ${SCRIPT_DIR}/infra_pw > /tmp/infra_pw
 
+export ANSIBLE_CONFIG=${SCRIPT_DIR}/ansible/ansible.cfg
+
 ansible-playbook \
   --connection=local \
   --inventory 127.0.0.1, \
