@@ -142,6 +142,7 @@
           - path: '/dev/nvme0n1'
 
     - role: dockerio
+    - role: ddclient
     - role: duckdns
       vars:
         ddns_token: "{{ passwords.duckdns }}"
