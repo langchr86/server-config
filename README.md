@@ -41,7 +41,7 @@ The following services are available:
 * dyn-dns: [duckdns](https://duckdns.org)
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
-* password manager: [bitwarden](https://go.bitwarden.com/)
+* password manager: [bitwarden](https://bitwarden.com/)
 * multi-room audio system: [logitech media server](https://en.wikipedia.org/wiki/Logitech_Media_Server)
 * media server: [jellyfin](https://jellyfin.org/)
 * media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
