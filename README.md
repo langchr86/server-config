@@ -42,6 +42,7 @@ The following services are available:
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://bitwarden.com/)
+  with free backend: [vaultwarden](https://github.com/dani-garcia/vaultwarden)
 * multi-room audio system: [logitech media server](https://en.wikipedia.org/wiki/Logitech_Media_Server)
 * media server: [jellyfin](https://jellyfin.org/)
 * media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
