@@ -33,6 +33,17 @@
     - "configuration.yaml"
   register: core_config
 
+- name: Create empty specific config files if they do not exist
+  ansible.builtin.include_tasks: tasks/ensure_file_exists.yml
+  vars:
+    file_path: "{{ ha_config_folder }}/{{ item }}"
+    file_mode: "u+rw"
+  with_items:
+    - "automations.yaml"
+    - "scenes.yaml"
+    - "scripts.yaml"
+  register: core_config
+
 - name: Create package config files
   become: true
   ansible.builtin.copy:
