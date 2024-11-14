@@ -1,9 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Activate the experimental disk feature:
-ENV["VAGRANT_EXPERIMENTAL"] = "disks"
-
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/jammy64"
