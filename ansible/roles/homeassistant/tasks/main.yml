@@ -58,6 +58,13 @@
     - "packages/wpl17ics.yaml"
   register: packages
 
+- name: "Simulate .HA_VERSION file for HACS installation"
+  ansible.builtin.copy:
+    content: "{{ ha_version }}.0"
+    dest: "{{ ha_config_folder }}/.HA_VERSION"
+    force: false
+    mode: "u+rw"
+
 - name: Install HACS
   become: true
   ansible.builtin.shell:
