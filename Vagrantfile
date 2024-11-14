@@ -20,8 +20,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "main" do |main|
     main.vm.hostname = "vm-main"
     main.vm.network "private_network", ip: "192.168.10.6"
-    main.vm.network "forwarded_port", guest: 80, host: 80
-    main.vm.network "forwarded_port", guest: 443, host: 443
+    main.vm.network "forwarded_port", guest: 80, host: 80       # caddy
+    main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
     main.vm.disk :disk, size: "8GB", name: "share_1"
     main.vm.disk :disk, size: "8GB", name: "share_2"
     main.vm.disk :disk, size: "8GB", name: "share_3"
