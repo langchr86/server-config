@@ -1,7 +1,7 @@
 ---
 
 - name: 'Check mandatory variables are defined'
-  assert:
+  ansible.builtin.assert:
     that:
       - sd_timer_name is defined
       - sd_timer_command is defined
@@ -14,7 +14,7 @@
       - key: "{{ sd_timer_name }}"
         value:
           timer_command: "{{ sd_timer_command }}"
-          timer_user: "{{ sd_timer_user | default('root')}}"
+          timer_user: "{{ sd_timer_user | default('root') }}"
           timer_persistent: "{{ sd_timer_persistent | default('no') }}"
           timer_OnCalendar: "{{ sd_timer_OnCalendar }}"
           # for definition of value in sd_timer_OnCalendar: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
@@ -25,7 +25,7 @@
       - key: "{{ sd_timer_name }}"
         value:
           timer_command: "{{ sd_timer_command }}"
-          timer_user: "{{ sd_timer_user | default('root')}}"
+          timer_user: "{{ sd_timer_user | default('root') }}"
           timer_persistent: "{{ sd_timer_persistent | default('no') }}"
           timer_OnUnitActiveSec: "{{ sd_timer_OnUnitActiveSec }}"
           timer_OnBootSec: "{{ sd_timer_OnBootSec }}"

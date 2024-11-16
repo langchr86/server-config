@@ -1,6 +1,5 @@
 exclude_paths:
-  - roles/swapfile
-  - roles/homeassistant/files/
+  - roles/homeassistant/files/configuration.yaml
 
 skip_list:
   - command-instead-of-module
@@ -13,5 +12,6 @@ skip_list:
   - name[template]
   - no-handler
   - risky-shell-pipe
+  - role-name
   - var-naming
   - yaml[line-length]

@@ -2,12 +2,13 @@
 
 - name: Add Docker CE GPG key
   become: true
-  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+  ansible.builtin.apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
 
 - name: Add Docker CE APT repository
   become: true
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
 - name: Install Docker CE and dependencies
   become: true

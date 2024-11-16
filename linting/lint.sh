@@ -9,8 +9,4 @@ docker run \
   --rm \
   -v ${SCRIPT_DIR}/../ansible:/ansible:ro \
   ansible-lint \
-  ansible-lint --exclude /root/.cache \
-    /ansible/playbook_backup.yml \
-    /ansible/playbook_claudia.yml \
-    /ansible/playbook_kevin.yml \
-    /ansible/playbook_main.yml
+  /bin/bash -c "cd /ansible && cp -r tasks /tmp && ansible-lint -v --exclude /root/.cache"

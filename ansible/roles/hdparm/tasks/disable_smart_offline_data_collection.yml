@@ -17,4 +17,5 @@
 - name: "Disable S.M.A.R.T. offline data collection: {{ device }}"
   become: true
   ansible.builtin.command: "smartctl --offlineauto=off {{ device }}"
+  changed_when: true
   when: offlineauto_enabled

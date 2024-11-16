@@ -1,8 +1,8 @@
 ---
 
 - name: "Install realtek udev rules"
-  become: yes
-  copy:
+  become: true
+  ansible.builtin.copy:
     src: "50-usb-realtek-net.rules"
     dest: "/etc/udev/rules.d/"
     mode: "755"
