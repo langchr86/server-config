@@ -9,7 +9,7 @@ Cloudflare
 
 See: [Configure ddclient for Cloudflare Dynamic DNS](https://www.davidschlachter.com/misc/cloudflare-ddclient)
 
-We need at least the root `A` entry and a `CNAME` per subdomain.
+We need at least the root `A` entry and a `CNAME` per subdomain or a wildcard for all subdomains.
 Only the root (`@`) needs to point to the real IP and needs to be updated by `ddclient`.
 The `CNAME` entry can be redirected to the root (`@`).
 All entries must not use cloudflare proxy but `DNS only`!
@@ -19,7 +19,6 @@ All entries must not use cloudflare proxy but `DNS only`!
 langchr86.ch.	1	IN	A	11.222.333.444
 
 ;; CNAME Records
-bitwarden.langchr86.ch.	1	IN	CNAME	langchr86.ch.
-fileshare.langchr86.ch.	1	IN	CNAME	langchr86.ch.
+*.langchr86.ch.	1	IN	CNAME	langchr86.ch.
 ...
 ~~~
