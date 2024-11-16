@@ -1,7 +1,7 @@
 ---
 
 bw_service_name: "bitwarden"
-bw_config_folder: "/share/config/{{ bw_service_name }}"
+bw_config_folder: "/config/bitwarden"
 bw_backup_folder: "{{ bw_config_folder }}/backup"
 bw_restore_folder: "{{ bw_config_folder }}/restore"
 bw_scripts_folder: "{{ bw_config_folder }}/backup_scripts"

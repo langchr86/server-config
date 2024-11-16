@@ -151,11 +151,9 @@
     - role: transmission
     - role: jdownloader
       vars:
-        jdownloader_config_folder: "/config/jdownloader"
         myjd_password: "{{ passwords.myjd }}"
     - role: logitechmediaserver
       vars:
-        lms_config_folder: "/config/lms"
         lms_music_folder: "/share/Audios/"
         lms_additional_music_folder: "/share-common/Temp"
 
@@ -163,18 +161,8 @@
     - role: web_examples
     - role: wiki
     - role: mumble
-      vars:
-        mb_app_folder: "/config/mumble"
     - role: bitwarden
-      vars:
-        bw_config_folder: "/config/bitwarden"
     - role: mosquitto
     - role: homeassistant
-      vars:
-        ha_config_folder: "/config/homeassistant"
     - role: jellyfin
-      vars:
-        jf_config_folder: "/config/jellyfin"
     - role: jellyseerr
-      vars:
-        js_config_folder: "/config/jellyseerr"

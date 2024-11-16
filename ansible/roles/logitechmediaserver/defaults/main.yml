@@ -2,7 +2,7 @@
 
 lms_user: "{{ ansible_env.USER }}"
 lms_group: "users"
-lms_config_folder: "/share/config/lms/"
+lms_config_folder: "/config/lms"
 lms_music_folder: "/share/synced/audios/"
 lms_additional_music_folder: "/share/temp/"
 lms_service_name: "logitechmediaserver"
