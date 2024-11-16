@@ -143,6 +143,8 @@
 
     - role: dockerio
     - role: ddclient
+      vars:
+        cloudflare_api_token: "{{ passwords.cloudflare_api_token }}"
     - role: duckdns
       vars:
         ddns_token: "{{ passwords.duckdns }}"
