@@ -53,3 +53,9 @@ sudo btrfs filesystem df /mnt/pool-main
 sudo btrfs filesystem show /dev/sda
 ll /mnt/pool-main/subvolumes
 ~~~
+
+
+Additionals
+-----------
+
+Setup all related things like the local router etc.

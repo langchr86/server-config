@@ -41,6 +41,7 @@ The following services are available:
 * domain management: [cloudflare](https://cloudflare.com/)
 * dyn-dns updater: [ddclient](https://github.com/ddclient/ddclient)
 * static web-server and reverse-proxy: [caddy2](https://caddyserver.com/)
+* local DNS and request filter: [AdGuard Home](https://adguard.com/de/adguard-home/overview.html)
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://bitwarden.com/)
   with free backend: [vaultwarden](https://github.com/dani-garcia/vaultwarden)

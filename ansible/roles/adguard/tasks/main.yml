@@ -1,0 +1,72 @@
+---
+
+- name: "Install htpasswd for password hash generation"
+  become: true
+  ansible.builtin.package:
+    name: apache2-utils
+
+- name: "Create folders"
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ adguard_user }}"
+    group: "{{ adguard_group }}"
+    mode: "u+rwx"
+    recurse: true
+  with_items:
+    - "{{ adguard_config_folder }}"
+    - "{{ adguard_work_folder }}"
+    - "/etc/systemd/resolved.conf.d"
+
+- name: "Prepare configuration template. Only if no file exist."
+  become: true
+  ansible.builtin.template:
+    src: "AdGuardHome.yaml"
+    dest: "{{ adguard_config_folder }}"
+    mode: "u+rw"
+    force: false
+  register: config_template
+
+- name: "Generate hash for Adguard admin password"
+  ansible.builtin.command: "htpasswd -B -C 10 -n -b {{ adguard_user }} {{ adguard_password }}"
+  changed_when: false
+  register: htpasswd_generate
+  when: config_template.changed
+
+- name: "Update Admin password in AdGuardHome.yaml"
+  ansible.builtin.replace:
+    path: "{{ adguard_config_folder }}/AdGuardHome.yaml"
+    regexp: "adguardwebpassword"
+    replace: "{{ htpasswd_generate.stdout.split(':')[1] }}"
+  when: config_template.changed
+
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ adguard_user }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ adguard_group }}"
+
+- name: "Ensure systemd-resolved DNSStubListener is not listening on port 53"
+  become: true
+  ansible.builtin.copy:
+    src: "resolved-adguardhome.conf"
+    dest: "/etc/systemd/resolved.conf.d/adguardhome.conf"
+    mode: "u+rw"
+  register: resolved_config
+
+- name: "Restart systemd-resolved if config has changed"
+  become: true
+  ansible.builtin.systemd:
+    name: "systemd-resolved"
+    enabled: true
+    state: restarted
+  when: resolved_config.changed
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ adguard_service_name }}"
+    auto_restart_if_failing: true

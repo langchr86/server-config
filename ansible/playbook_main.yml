@@ -142,12 +142,19 @@
           - path: '/dev/nvme0n1'
 
     - role: dockerio
+
     - role: ddclient
       vars:
         cloudflare_api_token: "{{ passwords.cloudflare_api_token }}"
     - role: duckdns
       vars:
         ddns_token: "{{ passwords.duckdns }}"
+
+    - role: adguard
+      vars:
+        adguard_user: "{{ main_user }}"
+        adguard_password: "{{ main_password }}"
+
     - role: transmission
     - role: jdownloader
       vars:

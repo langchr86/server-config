@@ -17,6 +17,20 @@ Ensure that the used listening ports are available from outside NAT to the corre
 | `64738`       |               | tcp + udp | `lang-main`   | mumble |
 
 
+DNS
+---
+
+The DHCP server used on the router is also responsible to distribute the local DNS address.
+
+We need to specify our own DNS server as the primary and something else
+(e.g. cloudflare, see: https://adguard-dns.io/kb/general/dns-providers/) as a fallback.
+
+Either you can directly configure the two distributed DNS in the DHCP setup
+or you define the router itself as DNS server in the DHCP setup and configure the routers DNS servers.
+
+![router_dns](images/router_dns.png)
+
+
 IP Management
 -------------
 

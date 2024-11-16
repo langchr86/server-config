@@ -1,0 +1,25 @@
+http:
+  address: 0.0.0.0:3000
+users:
+  - name: "{{ adguard_user }}"
+    password: adguardwebpassword
+dns:
+  bind_hosts:
+    - 0.0.0.0
+  port: 53
+  upstream_dns:
+    - https://security.cloudflare-dns.com/dns-query
+    - https://dns10.quad9.net/dns-query
+  fallback_dns:
+    - https://dns.cloudflare.com/dns-query
+  upstream_mode: load_balance
+filters:
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+    name: AdGuard DNS filter
+    id: 1
+  - enabled: false
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+    name: AdAway Default Blocklist
+    id: 2
+schema_version: 29

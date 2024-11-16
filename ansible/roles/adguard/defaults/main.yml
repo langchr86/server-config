@@ -1,0 +1,8 @@
+---
+
+adguard_user: "{{ ansible_env.USER }}"
+adguard_group: "users"
+adguard_service_name: "adguard"
+adguard_config_folder: "/config/{{ adguard_service_name }}/conf"
+adguard_work_folder: "/config/{{ adguard_service_name }}/work"
+adguard_password: ""

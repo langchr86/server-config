@@ -1,0 +1,17 @@
+---
+version: "3.5"
+services:
+  adguard:
+    container_name: "adguard"
+    image: adguard/adguardhome:v0.107.54
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ adguard_config_folder }}:/opt/adguardhome/conf/
+      - {{ adguard_work_folder }}:/opt/adguardhome/work/
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 3000:3000/tcp
