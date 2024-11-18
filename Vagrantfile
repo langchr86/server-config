@@ -24,6 +24,9 @@ Vagrant.configure("2") do |config|
     main.vm.network "forwarded_port", guest: 3000, host: 3000   # adguard
     main.vm.network "forwarded_port", guest: 80, host: 80       # caddy
     main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
+    main.vm.network "forwarded_port", guest: 8123, host: 8123   # homeassistant
+    main.vm.network "forwarded_port", guest: 9000, host: 9000   # LMS
+    main.vm.network "forwarded_port", guest: 9091, host: 9091   # transmission
     main.vm.disk :disk, size: "8GB", name: "share_1"
     main.vm.disk :disk, size: "8GB", name: "share_2"
     main.vm.disk :disk, size: "8GB", name: "share_3"
