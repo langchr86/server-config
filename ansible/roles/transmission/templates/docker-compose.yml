@@ -3,7 +3,7 @@ version: "3"
 services:
   transmission:
     container_name: transmission
-    image: lscr.io/linuxserver/transmission:4.0.4
+    image: lscr.io/linuxserver/transmission:4.0.6
     ports:
       - "9091:9091"
       - "51413:51413"
