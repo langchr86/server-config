@@ -2,7 +2,7 @@
 
 transmission_user: "{{ ansible_env.USER }}"
 transmission_group: "users"
-transmission_config_folder: "/var/local/transmission"
+transmission_service_name: "transmission"
+transmission_config_folder: "/config/{{ transmission_service_name }}"
 transmission_download_folder: "/share/downloads/transmission"
 transmission_watch_folder: "/share/downloads/transmission-watch"
-transmission_service_name: "transmission"
