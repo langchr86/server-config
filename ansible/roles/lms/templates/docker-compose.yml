@@ -1,8 +1,8 @@
 ---
 version: "2.3"
 services:
-  logitechmediaserver:
-    container_name: "logitechmediaserver"
+  lms:
+    container_name: "lms"
     image: toertel/logitech-media-server:v8.4.0-2
     volumes:
       - /etc/localtime:/etc/localtime:ro

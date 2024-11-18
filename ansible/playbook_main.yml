@@ -159,7 +159,7 @@
     - role: jdownloader
       vars:
         myjd_password: "{{ passwords.myjd }}"
-    - role: logitechmediaserver
+    - role: lms
       vars:
         lms_music_folder: "/share/Audios/"
         lms_additional_music_folder: "/share-common/Temp"
