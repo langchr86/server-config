@@ -15,3 +15,9 @@ services:
       - "3483:3483"
       - "3483:3483/udp"
     init: true
+    networks:
+      - caddy_lms_net
+
+networks:
+  caddy_lms_net:
+    external: true

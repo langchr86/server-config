@@ -20,8 +20,10 @@ services:
       - bitwarden_net
       - homeassistant_net
       - jellyfin_net
+      - lms_net
 
 networks:
   bitwarden_net:
   homeassistant_net:
   jellyfin_net:
+  lms_net:
