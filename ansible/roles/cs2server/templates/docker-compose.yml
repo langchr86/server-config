@@ -1,6 +1,6 @@
 ---
 
-# Domainname: langchr86.mooo.com
+# Domainname: ssh.langchr86.ch
 # Game mode and type: https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers
 
 services:
@@ -12,15 +12,20 @@ services:
       - "27016:27016/udp"
       - "27021:27021/udp"
     volumes:
-      - cs2_dedicated:/home/steam/cs2-dedicated/
-      - {{ cs2_config_folder }}/cfg/gamemode_casual_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_casual_server.cfg:ro
-      - {{ cs2_config_folder }}/cfg/gamemode_competitive2v2_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive2v2_server.cfg:ro
-      - {{ cs2_config_folder }}/cfg/gamemode_competitive_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive_server.cfg:ro
-      - {{ cs2_config_folder }}/cfg/gamemode_deathmatch_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_deathmatch_server.cfg:ro
+      - cs2_dedicated:/home/steam/cs2-dedicated/    # this is not working with bind mounts!
+      # the following mounts must only be enabled after the first start (else the folder /home/steam/cs2-dedicated/game is owned by root)
+#      - {{ cs2_app_folder }}/cfg/gamemode_casual_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_casual_server.cfg:ro
+#      - {{ cs2_app_folder }}/cfg/gamemode_competitive2v2_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive2v2_server.cfg:ro
+#      - {{ cs2_app_folder }}/cfg/gamemode_competitive_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive_server.cfg:ro
+#      - {{ cs2_app_folder }}/cfg/gamemode_competitive_unlimited.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_competitive_unlimited.cfg:ro
+#      - {{ cs2_app_folder }}/cfg/gamemode_deathmatch_server.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_deathmatch_server.cfg:ro
+#      - {{ cs2_app_folder }}/cfg/gamemode_flying_scoutsman.cfg:/home/steam/cs2-dedicated/game/csgo/cfg/gamemode_flying_scoutsman.cfg:ro
     environment:
+      # https://steamcommunity.com/dev/managegameservers
+      - SRCDS_TOKEN=D6E0CDA05356409BD700EC847B4FE7EA
       - STEAMUSER=langchr
-      - SRCDS_TOKEN=61DEE3885DC46F111DA93BB981C750E0    # https://steamcommunity.com/dev/managegameservers
       - CS2_SERVERNAME=clang_cs2
+      - CS2_SERVER_HIBERNATE=0
       - CS2_PORT=27016
       - CS2_LAN=0
       - CS2_PW=clang
@@ -33,8 +38,10 @@ services:
       - CS2_BOT_DIFFICULTY=3
       - CS2_BOT_QUOTA=10
       - CS2_BOT_QUOTA_MODE=fill
+#      - CS2_HOST_WORKSHOP_COLLECTION="3368744492"
       - TV_ENABLE=0
       - TV_PORT=27021
+      - STEAMAPPVALIDATE=0
 
 volumes:
   cs2_dedicated:

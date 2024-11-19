@@ -1,5 +1,6 @@
 ---
 
+cs2_user: "{{ ansible_env.USER }}"
+cs2_group: "users"
 cs2_service_name: "cs2server"
 cs2_app_folder: "/config/{{ cs2_service_name }}"
-cs2_config_folder: "{{ cs2_app_folder }}/config"

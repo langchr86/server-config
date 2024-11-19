@@ -5,27 +5,31 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: "544"
+    owner: "{{ cs2_user }}"
+    group: "{{ cs2_group }}"
+    mode: "755"
   with_items:
-    - "{{ cs2_config_folder }}"
-    - "{{ cs2_config_folder }}/cfg"
+    - "{{ cs2_app_folder }}"
+    - "{{ cs2_app_folder }}/data"
+    - "{{ cs2_app_folder }}/cfg"
 
-- name: "Copy config files to {{ cs2_config_folder }}/cfg"
-  become: true
+- name: "Copy config files to {{ cs2_app_folder }}/cfg"
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ cs2_config_folder }}/cfg"
+    dest: "{{ cs2_app_folder }}/cfg"
     mode: "u+rw"
   with_items:
     - "gamemode_casual_server.cfg"
     - "gamemode_competitive2v2_server.cfg"
     - "gamemode_competitive_server.cfg"
+    - "gamemode_competitive_unlimited.cfg"
     - "gamemode_deathmatch_server.cfg"
+    - "gamemode_flying_scoutsman.cfg"
   register: config
 
 - ansible.builtin.include_role:
     name: docker-compose-service
   vars:
     service_name: "{{ cs2_service_name }}"
-    service_enabled: false
+    service_enabled: true
     force_restart: "{{ config.changed }}"
