@@ -1,14 +1,19 @@
-(abort_non_local) {
-  @non_local {
-    not remote_ip private_ranges
-  }
-  abort @non_local
-}
-
-lms.{{ domain }} lms.{{ domain2 }} {
-  import abort_non_local
-  reverse_proxy lms:9000
-}
+#(abort_non_local) {
+#  @non_local {
+#    not remote_ip private_ranges
+#  }
+#  abort @non_local
+#}
+#
+#lms.{{ domain }} lms.{{ domain2 }} {
+#  #log {
+#  #  output stderr
+#  #  level DEBUG
+#  #  format console
+#  #}
+#  import abort_non_local
+#  reverse_proxy lms:9000
+#}
 
 # needed for certificate
 mumble.{{ domain }} mumble.{{ domain2 }} {
