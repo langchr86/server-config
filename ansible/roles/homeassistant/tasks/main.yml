@@ -20,7 +20,6 @@
   with_items:
     - "{{ ha_config_folder }}"
     - "{{ ha_config_folder }}/custom_components"
-    - "{{ ha_config_folder }}/custom_components_download"
     - "{{ ha_config_folder }}/packages"
 
 - name: Create core config files
@@ -72,23 +71,6 @@
     chdir: "{{ ha_config_folder }}"
     creates: "{{ ha_config_folder }}/custom_components/hacs/manifest.json"
   register: hacs
-
-- name: Download Wattpilot integration
-  become: true
-  ansible.builtin.unarchive:
-    src: "https://github.com/mk-maddin/wattpilot-HA/archive/refs/tags/v{{ wattpilot_version }}.tar.gz"
-    remote_src: true
-    dest: "{{ ha_config_folder }}/custom_components_download"
-    creates: "{{ ha_config_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/hacs.json"
-
-- name: Install Wattpilot integration
-  become: true
-  ansible.builtin.copy:
-    src: "{{ ha_config_folder }}/custom_components_download/wattpilot-HA-{{ wattpilot_version }}/custom_components/wattpilot"
-    remote_src: true
-    dest: "{{ ha_config_folder }}/custom_components"
-    mode: "u+rw"
-  register: wattpilot_install
 
 - ansible.builtin.include_role:
     name: docker-compose-service
