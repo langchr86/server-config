@@ -60,7 +60,7 @@
         btrbk_subvolumes:
           - name: "share-main"
             snapshot_preserve_min: "1h"
-            snapshot_preserve: "24h 14d 5w 3m"
+            snapshot_preserve: "48h 28d"
             timer_OnCalendar: "*-*-* *:00,30:00"
 
     - role: share
