@@ -1,0 +1,21 @@
+---
+version: "3"
+services:
+  lyrion:
+    container_name: "lyrion"
+    image: lmscommunity/lyrionmusicserver:9.0.1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - {{ lyrion_config_folder }}:/config:rw
+      - {{ lyrion_playlist_folder }}:/playlist:rw
+      - {{ lyrion_music_folder }}:/music:ro
+    ports:
+      - 9000:9000/tcp
+      - 9090:9090/tcp
+      - 3483:3483/tcp
+      - 3483:3483/udp
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+      - HTTP_PORT=9000

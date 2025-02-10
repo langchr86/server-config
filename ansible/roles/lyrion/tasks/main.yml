@@ -1,0 +1,28 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ lyrion_user }}"
+    group: "{{ lyrion_group }}"
+    mode: "775"
+  with_items:
+    - "{{ lyrion_base_folder }}"
+    - "{{ lyrion_config_folder }}"
+    - "{{ lyrion_playlist_folder }}"
+    - "{{ lyrion_music_folder }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ lyrion_user }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ lyrion_group }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ lyrion_service_name }}"

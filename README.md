@@ -45,7 +45,7 @@ The following services are available:
 * static markdown wiki: [mdwiki](http://www.mdwiki.info)
 * password manager: [bitwarden](https://bitwarden.com/)
   with free backend: [vaultwarden](https://github.com/dani-garcia/vaultwarden)
-* multi-room audio system: [lyrion music server](https://en.wikipedia.org/wiki/Lyrion_Music_Server)
+* multi-room audio system: [lyrion music server](https://lyrion.org/)
 * media server: [jellyfin](https://jellyfin.org/)
 * media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
 * low-latency voice chat: [mumble](https://www.mumble.com/)

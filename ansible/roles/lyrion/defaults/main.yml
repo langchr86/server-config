@@ -1,0 +1,9 @@
+---
+
+lyrion_user: "{{ ansible_env.USER }}"
+lyrion_group: "users"
+lyrion_base_folder: "/config/lyrion"
+lyrion_config_folder: "{{ lyrion_base_folder }}/config"
+lyrion_playlist_folder: "{{ lyrion_base_folder }}/playlist"
+lyrion_music_folder: "/share/Audios/"
+lyrion_service_name: "lyrion"

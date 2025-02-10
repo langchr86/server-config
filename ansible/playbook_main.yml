@@ -73,7 +73,6 @@
           - "/config"
           - "/git"
           - "/share-common"
-          - "/share-common/Temp/"
           - "/share/web/"
           - "/share/web/fileshare/"
           - "/share/web/gallery/"
@@ -159,10 +158,6 @@
     - role: jdownloader
       vars:
         myjd_password: "{{ passwords.myjd }}"
-    - role: lms
-      vars:
-        lms_music_folder: "/share/Audios/"
-        lms_additional_music_folder: "/share-common/Temp"
 
     - role: caddy
     - role: web_examples
@@ -173,3 +168,4 @@
     - role: homeassistant
     - role: jellyfin
     - role: jellyseerr
+    - role: lyrion
