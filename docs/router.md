@@ -31,6 +31,16 @@ or you define the router itself as DNS server in the DHCP setup and configure th
 ![router_dns](images/router_dns.png)
 
 
+Security
+--------
+
+### Disable ICMP response from outside
+
+This can help against port scans.
+In AVM Fritzbox you can find this option under:
+`Internet` -> `Filter` -> `Listen` -> `Globale Filtereinstellungen` -> `Firewall im Stealth Mode`
+
+
 IP Management
 -------------
 
