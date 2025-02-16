@@ -4,7 +4,7 @@ Jellyfin
 Erstmalige Einrichtung
 ----------------------
 
-Einrichten unter `192.168.0.6:8096` oder `https://media.langchr86.mooo.com`
+Einrichten unter `192.168.0.6:8096` oder `https://media.langchr86.ch`
 
 * Deutsch, German, Switzerland.
 * User `admin` als Manager einrichten.

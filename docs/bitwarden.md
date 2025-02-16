@@ -1,7 +1,7 @@
 Vaultwarden / Bitwarden
 =======================
 
-Vault: [bitwarden.langchr86.mooo.com](https://bitwarden.langchr86.mooo.com/)
+Vault: [bitwarden.langchr86.ch](https://bitwarden.langchr86.ch)
 Admin: [http://<IP>:8088/admin](http://192.168.0.6:8088/admin)
 
 Most configuration is enabled by using docker-compose.
