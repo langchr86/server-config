@@ -51,6 +51,7 @@ The following services are available:
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)
+* service dashboard: [homepage](https://gethomepage.dev/)
 
 
 

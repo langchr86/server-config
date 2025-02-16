@@ -18,10 +18,12 @@ services:
       - /share/web/wiki:/srv/wiki
     networks:
       - bitwarden_net
+      - homepage_net
       - homeassistant_net
       - jellyfin_net
 
 networks:
   bitwarden_net:
+  homepage_net:
   homeassistant_net:
   jellyfin_net:

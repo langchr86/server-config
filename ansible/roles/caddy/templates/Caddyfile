@@ -23,6 +23,10 @@ gallery.{{ domain }} gallery.{{ domain2 }} {
   file_server
 }
 
+dashboard.{{ domain }} dashboard.{{ domain2 }} {
+  reverse_proxy homepage:3000
+}
+
 home.{{ domain }} home.{{ domain2 }} {
   reverse_proxy homeassistant:8123 {
     header_up X-Real-IP {remote_host}

@@ -173,3 +173,8 @@
     - role: jellyfin
     - role: jellyseerr
     - role: lyrion
+
+    - role: homepage
+      vars:
+        homepage_adguard_user: "{{ main_user }}"
+        homepage_adguard_password: "{{ main_password }}"

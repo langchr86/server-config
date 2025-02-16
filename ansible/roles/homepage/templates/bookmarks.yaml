@@ -1,0 +1,29 @@
+---
+- Development:
+    - My Github Profile:
+        - icon: github-light.svg
+          href: https://github.com/langchr86
+          description: github.com/langchr86
+    - This setup is managed by Ansible:
+        - icon: github-light.svg
+          href: https://github.com/langchr86/server-config
+          description: github.com/langchr86/server-config
+
+- Wiki:
+    - Lang Wiki:
+        - icon: si-markdown-#eeeeee
+          href: https://wiki.langchr86.ch
+
+- Local Access:
+    - Vaultwarden Admin:
+        - icon: bitwarden.svg
+          href: http://{{ ip_address_main }}:8088/admin
+          description: {{ ip_address_main }}:8088/admin
+    - Home Assistant:
+        - icon: home-assistant.svg
+          href: http://{{ ip_address_main }}:8123
+          description: {{ ip_address_main }}:8123
+    - Jellyfin:
+        - icon: jellyfin.svg
+          href: http://{{ ip_address_main }}:8096
+          description: {{ ip_address_main }}:8096

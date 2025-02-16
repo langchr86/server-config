@@ -1,0 +1,19 @@
+---
+- greeting:
+    text_size: 4xl
+    text: "{{ hostname_main }}"
+
+- resources:
+    expanded: true
+    cpu: true
+    memory: true
+
+- resources:
+    label: System Disk
+    expanded: true
+    disk: "/"
+
+- resources:
+    label: Storage Disks
+    expanded: true
+    disk: "/share"

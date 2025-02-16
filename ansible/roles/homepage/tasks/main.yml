@@ -1,0 +1,43 @@
+---
+
+- name: "Create app folder: {{ homepage_app_folder }}"
+  become: true
+  ansible.builtin.file:
+    path: "{{ homepage_app_folder }}"
+    state: directory
+    mode: "644"
+
+- name: "Create config folder: {{ homepage_config_folder }}"
+  become: true
+  ansible.builtin.file:
+    path: "{{ homepage_config_folder }}"
+    state: directory
+    mode: "644"
+
+- name: "Copy config files to {{ homepage_config_folder }}"
+  become: true
+  ansible.builtin.template:
+    src: "templates/{{ item }}"
+    dest: "{{ homepage_config_folder }}/"
+    mode: "u+rw"
+  with_items:
+    - "bookmarks.yaml"
+    - "docker.yaml"
+    - "services.yaml"
+    - "settings.yaml"
+    - "widgets.yaml"
+  register: config
+
+- name: "Prepare environment file. Only if no file exist. This needs to be enhanced with secrets. It is therefore only accessible by root."
+  become: true
+  ansible.builtin.template:
+    src: "homepage.env"
+    dest: "{{ homepage_config_folder }}/"
+    mode: "600"
+    force: false
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ homepage_service_name }}"
+    force_restart: "{{ config.changed }}"

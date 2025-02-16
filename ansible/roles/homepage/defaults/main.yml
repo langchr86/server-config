@@ -1,0 +1,8 @@
+---
+
+homepage_service_name: "homepage"
+homepage_app_folder: "/etc/{{ homepage_service_name }}"
+homepage_config_folder: "{{ homepage_app_folder }}/config"
+
+homepage_adguard_user: ""
+homepage_adguard_password: ""

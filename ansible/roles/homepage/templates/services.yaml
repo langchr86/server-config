@@ -1,0 +1,77 @@
+---
+- Media:
+    - Jellyfin:
+        icon: jellyfin.svg
+        href: https://media.{{ domain }}
+        server: local-docker
+        container: jellyfin
+        widget:
+          type: jellyfin
+          url: http://{{ ip_address_main }}:8096
+          key: {{ '{{' }}HOMEPAGE_VAR_JELLYFIN_API_KEY{{ '}}' }}
+          enableBlocks: true
+          enableNowPlaying: false
+    - Jellyseerr:
+        icon: jellyseerr.svg
+        href: https://mediarequest.{{ domain }}
+        server: local-docker
+        container: jellyseerr
+    - Lyrion:
+        icon: lyrion.svg
+        href: http://{{ ip_address_main }}:9000/
+        server: local-docker
+        container: lyrion
+
+- Network:
+    - AdGuard:
+        icon: adguard-home.svg
+        href: http://{{ ip_address_main }}:3000/
+        server: local-docker
+        container: adguard
+        widget:
+          type: adguard
+          url: http://{{ ip_address_main }}:3000/
+          username: {{ '{{' }}HOMEPAGE_VAR_ADGUARD_USER{{ '}}' }}
+          password: {{ '{{' }}HOMEPAGE_VAR_ADGUARD_PASSWORD{{ '}}' }}
+    - Caddy:
+        icon: caddy.svg
+        server: local-docker
+        container: caddy
+    - DDClient:
+        icon: ddclient.svg
+        server: local-docker
+        container: ddclient
+
+- Home:
+    - Home Assistant:
+        icon: home-assistant.svg
+        href: https://home.{{ domain }}
+        server: local-docker
+        container: homeassistant
+    - MQTT-Broker:
+        icon: mqtt.svg
+        server: local-docker
+        container: mosquitto
+
+- Downloads:
+    - JDownloader:
+        icon: jdownloader2.png
+        href: https://my.jdownloader.org
+        server: local-docker
+        container: jdownloader
+    - Transmission:
+        icon: si-transmission-#eeeeee
+        href: http://{{ ip_address_main }}:9091/
+        server: local-docker
+        container: transmission
+
+- Admin:
+    - Bitwarden:
+        icon: bitwarden.svg
+        href: https://bitwarden.{{ domain }}
+        server: local-docker
+        container: bitwarden
+    - Mumble:
+        icon: mumble.svg
+        server: local-docker
+        container: mumble

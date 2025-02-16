@@ -1,0 +1,18 @@
+---
+title: "{{ hostname_main }}"
+theme: dark
+color: neutral
+
+base: "https://dashboard.{{ domain }}"
+
+headerStyle: boxedWidgets
+
+layout:
+  Media:
+    useEqualHeights: true
+    style: row
+    columns: 3
+  Network:
+    useEqualHeights: true
+    style: row
+    columns: 3

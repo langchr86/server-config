@@ -1,0 +1,22 @@
+---
+version: "3.5"
+services:
+  homepage:
+    container_name: "homepage"
+    image: ghcr.io/gethomepage/homepage:v0.10.9
+    ports:
+      - "4000:3000"
+    env_file: "{{ homepage_config_folder }}/homepage.env"
+    volumes:
+      - {{ homepage_config_folder }}:/app/config
+      - /share:/share:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - caddy_homepage_net
+      - caddy_jellyfin_net
+
+networks:
+  caddy_homepage_net:
+    external: true
+  caddy_jellyfin_net:
+    external: true
