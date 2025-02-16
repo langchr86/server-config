@@ -20,6 +20,7 @@
     mode: "755"
 
 - name: "Create jobs source folders (if no remote URL)"
+  become: true
   ansible.builtin.file:
     path: "{{ item.src }}"
     state: directory
@@ -30,6 +31,7 @@
   with_items: "{{ job.steps }}"
 
 - name: "Create jobs destination folders (if no remote URL)"
+  become: true
   ansible.builtin.file:
     path: "{{ item.dest }}"
     state: directory
