@@ -41,3 +41,5 @@
   vars:
     service_name: "{{ homepage_service_name }}"
     force_restart: "{{ config.changed }}"
+    service_dependencies:
+      - caddy.service
