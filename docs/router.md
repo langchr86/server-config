@@ -40,6 +40,15 @@ This can help against port scans.
 In AVM Fritzbox you can find this option under:
 `Internet` -> `Filter` -> `Listen` -> `Globale Filtereinstellungen` -> `Firewall im Stealth Mode`
 
+### Disable UPnP
+
+If you do not use any services that wants to open ports automatically but configures all port forwarding manually
+you can disable UPnP.
+In AVM Fritzbox this not allowed by default and needs to be activated per device.
+If you want to disable all devices at once you can use:
+
+`Internet` -> `Freigaben` -> `Sie können die Einstellung "Selbstständige Portfreigabe" für alle Geräte deaktivieren, die bisher keine Portfreigabe angefordert haben.`
+
 
 IP Management
 -------------
