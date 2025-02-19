@@ -39,8 +39,8 @@
           - label: "pool-main"
             mount_path: "/mnt/pool-main/subvolumes"
             devices:
-              - "/dev/sda"
               - "/dev/sdb"
+              - "/dev/sdc"
             logical_volumes:
               - label: "share-main"
                 size_options: "-l 100%FREE"
