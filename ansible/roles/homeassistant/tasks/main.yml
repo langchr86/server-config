@@ -77,7 +77,7 @@
   vars:
     service_name: "homeassistant"
     auto_restart_if_failing: true
-    force_restart: "{{ core_config.changed or packages.changed or hacs.changed or wattpilot_install.changed }}"
+    force_restart: "{{ core_config.changed or packages.changed or hacs.changed }}"
     service_dependencies:
       - mosquitto.service
       - caddy.service
