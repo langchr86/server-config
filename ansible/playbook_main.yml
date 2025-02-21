@@ -88,7 +88,7 @@
             user: "{{ main_user }}"
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
-              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--rsync-path="sudo rsync"' }
+              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--rsync-path="sudo rsync" --exclude="home-assistant_v2.db*" --exclude="jellyfin" --exclude="lyrion/config/cache"' }
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
               - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common" }
 
