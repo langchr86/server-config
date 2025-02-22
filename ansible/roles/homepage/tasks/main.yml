@@ -40,6 +40,7 @@
     name: docker-compose-service
   vars:
     service_name: "{{ homepage_service_name }}"
+    auto_restart_if_failing: true
     force_restart: "{{ config.changed }}"
     service_dependencies:
       - caddy.service
