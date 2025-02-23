@@ -19,6 +19,9 @@
           - {name: "{{ main_user }}", password: "{{ main_password }}"}
 
     - role: ssh
+      vars:
+        ssh_add_technical_user_private_key: true
+
     - role: git-tools
       vars:
         git_graphical_tools: false

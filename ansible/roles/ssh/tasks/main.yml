@@ -28,6 +28,7 @@
     src: "eddsa-key-technical-user-20230806"
     dest: "{{ ssh_user_config_folder }}/id_rsa"
     mode: "600"
+  when: ssh_add_technical_user_private_key
 
 - ansible.builtin.include_tasks: tasks/ensure_file_exists.yml
   vars:
