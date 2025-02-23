@@ -50,6 +50,7 @@
               - "/dev/sda"
               - "/dev/sdb"
               - "/dev/sdc"
+              - "/dev/sdd"
             subvolumes:
               - "share-main"
 
@@ -142,6 +143,7 @@
           - path: '/dev/sda'
           - path: '/dev/sdb'
           - path: '/dev/sdc'
+          - path: '/dev/sdd'
           - path: '/dev/nvme0n1'
 
     - role: dockerio
