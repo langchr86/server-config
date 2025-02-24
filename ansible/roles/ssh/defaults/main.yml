@@ -7,8 +7,6 @@ ssh_pub_files:
   - 'eddsa-key-clang-privat-20220905.opub'
   - 'eddsa-key-technical-user-20230806.opub'
 
-ssh_add_technical_user_private_key: false
-
 sshd_config_file: "/etc/ssh/sshd_config"
 
 ssh_user_config_folder: "{{ ansible_env.HOME }}/.ssh"

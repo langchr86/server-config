@@ -12,6 +12,13 @@
     - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
     - ansible.builtin.import_tasks: tasks/basic_setup.yml
 
+    - name: Add technical users private RSA key for root
+      become: true
+      ansible.builtin.copy:
+        src: "eddsa-key-technical-user-20230806"
+        dest: "/root/.ssh/id_rsa"
+        mode: "600"
+
   roles:
     - role: users
       vars:
@@ -19,11 +26,13 @@
           - {name: "{{ main_user }}", password: "{{ main_password }}"}
 
     - role: ssh
-      vars:
-        ssh_add_technical_user_private_key: true
     - role: ssh-known-hosts
       vars:
         ssh_known_hosts_user_home: "/home/{{ main_user }}"
+    - role: ssh-known-hosts
+      become: true
+      vars:
+        ssh_known_hosts_user_home: "/root"
 
     - role: git-tools
       vars:
@@ -59,12 +68,12 @@
       vars:
         rsync_jobs:
           - name: "backups-{{ hostname_main }}"
-            user: "{{ main_user }}"
+            user: "root"
             timer_OnCalendar: "*-*-* *:00:00"
             pre_sleep_seconds: 30
             steps:
               - {src: "{{ main_user }}@{{ hostname_main }}:/share", dest: "/share/backups/{{ hostname_main }}/share-main"}
-            post_command: "sudo rtcwake -m mem -t \"$(date -d 'next Wed 23:00:00' '+%s')\""
+            post_command: "rtcwake -m mem -t \"$(date -d 'next Wed 23:00:00' '+%s')\""
             # you can read out the current RTC with: timedatectl
 
     - role: ansible-collection-vladgh-samba
