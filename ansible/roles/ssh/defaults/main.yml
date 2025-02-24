@@ -5,7 +5,6 @@ ssh_allowed_users:
 
 ssh_pub_files:
   - 'eddsa-key-clang-privat-20220905.opub'
-  - 'eddsa-key-technical-user-20230806.opub'
 
 sshd_config_file: "/etc/ssh/sshd_config"
 

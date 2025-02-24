@@ -26,6 +26,10 @@
           - {name: "{{ main_user }}", password: "{{ main_password }}"}
 
     - role: ssh
+      vars:
+        ssh_pub_files:
+          - 'eddsa-key-clang-privat-20220905.opub'
+
     - role: ssh-known-hosts
       vars:
         ssh_known_hosts_user_home: "/home/{{ main_user }}"
