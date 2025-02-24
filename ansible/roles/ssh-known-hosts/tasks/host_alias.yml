@@ -1,10 +1,10 @@
 ---
 
 - ansible.builtin.set_fact:
-    content: "{{ lookup('template', 'templates/host.j2') }}"
+    ssh_known_hosts_content: "{{ lookup('template', 'templates/host.j2') }}"
 
 - name: "Add host aliases for: '{{ host.name }}' -> '{{ host.real }}'"
   ansible.builtin.blockinfile:
-    path: "{{ ssh_user_config_file }}"
+    path: "{{ ssh_known_hosts_user_config_file }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: host alias: {{ host.name }}"
-    block: "{{ content }}"
+    block: "{{ ssh_known_hosts_content }}"

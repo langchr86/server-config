@@ -2,12 +2,13 @@
 
 - name: "Search for host hash for: '{{ host.real }}'"
   ansible.builtin.command: "ssh-keygen -F {{ host.real }}"
+  when: host.eval
   failed_when: false
   changed_when: false
   register: search
 
 - name: "Add missing hash for host: '{{ host.real }}'"
-  ansible.builtin.command: "/bin/bash -c 'ssh-keyscan -H {{ host.real }} >> {{ ssh_known_hosts_file }}'"
-  when: search.rc == 1
+  ansible.builtin.command: "/bin/bash -c 'ssh-keyscan -H {{ host.real }} >> {{ ssh_known_hosts_known_hosts_file }}'"
+  when: host.eval and search.rc == 1
   changed_when: true
   failed_when: false

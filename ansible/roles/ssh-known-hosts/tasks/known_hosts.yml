@@ -2,10 +2,10 @@
 
 - ansible.builtin.include_tasks: tasks/ensure_file_exists.yml
   vars:
-    file_path: "{{ ssh_known_hosts_file }}"
+    file_path: "{{ ssh_known_hosts_known_hosts_file }}"
     file_mode: "600"
 
 - ansible.builtin.include_tasks: tasks/known_host.yml
-  with_items: "{{ ssh_host_aliases }}"
+  with_items: "{{ ssh_known_hosts_aliases }}"
   loop_control:
     loop_var: host

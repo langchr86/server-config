@@ -1,0 +1,20 @@
+---
+
+- name: Install openssh-client
+  become: true
+  ansible.builtin.package:
+    name: openssh-client
+
+- name: Create users local ssh config folder
+  ansible.builtin.file:
+    path: "{{ ssh_known_hosts_user_config_folder }}"
+    state: directory
+    mode: "700"
+
+- ansible.builtin.include_tasks: tasks/ensure_file_exists.yml
+  vars:
+    file_path: "{{ ssh_known_hosts_user_config_file }}"
+
+- ansible.builtin.include_tasks: tasks/host_aliases.yml
+
+- ansible.builtin.include_tasks: tasks/known_hosts.yml

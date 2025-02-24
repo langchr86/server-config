@@ -1,0 +1,6 @@
+---
+
+- ansible.builtin.include_tasks: tasks/host_alias.yml
+  with_items: "{{ ssh_known_hosts_aliases }}"
+  loop_control:
+    loop_var: host

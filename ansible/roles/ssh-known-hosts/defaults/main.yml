@@ -1,0 +1,10 @@
+---
+
+ssh_known_hosts_user_home: '{{ ansible_env.HOME }}'
+
+ssh_known_hosts_user_config_folder: "{{ ssh_known_hosts_user_home }}/.ssh"
+ssh_known_hosts_user_config_file: "{{ ssh_known_hosts_user_config_folder }}/config"
+ssh_known_hosts_known_hosts_file: "{{ ssh_known_hosts_user_config_folder }}/known_hosts"
+
+ssh_known_hosts_aliases:
+  - {name: '{{ hostname_main }}', real: '{{ ip_address_main }}', eval: true}

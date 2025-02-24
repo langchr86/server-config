@@ -21,6 +21,9 @@
     - role: ssh
       vars:
         ssh_add_technical_user_private_key: true
+    - role: ssh-known-hosts
+      vars:
+        ssh_known_hosts_user_home: "/home/{{ main_user }}"
 
     - role: git-tools
       vars:
