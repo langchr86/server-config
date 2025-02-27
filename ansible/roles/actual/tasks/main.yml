@@ -1,0 +1,21 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ actual_user }}"
+    group: "{{ actual_group }}"
+    mode: "ug+rw"
+    recurse: true
+  with_items:
+    - "{{ actual_data_folder }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ actual_service_name }}"
+    auto_restart_if_failing: true
+    service_dependencies:
+      - caddy.service

@@ -16,12 +16,14 @@ services:
       - /share/web/fileshare:/srv/fileshare
       - /share/web/wiki:/srv/wiki
     networks:
+      - actual_net
       - bitwarden_net
       - homepage_net
       - homeassistant_net
       - jellyfin_net
 
 networks:
+  actual_net:
   bitwarden_net:
   homepage_net:
   homeassistant_net:

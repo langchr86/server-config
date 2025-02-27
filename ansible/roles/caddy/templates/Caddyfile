@@ -41,6 +41,11 @@ mediarequest.{{ domain }} mediarequest.{{ domain2 }} {
   reverse_proxy jellyseerr:5055
 }
 
+budget.{{ domain }} budget.{{ domain2 }} {
+  encode gzip zstd
+  reverse_proxy actual:5006
+}
+
 bitwarden.{{ domain }}:443 bitwarden.{{ domain2 }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.

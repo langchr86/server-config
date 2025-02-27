@@ -166,6 +166,7 @@
     - role: jellyfin
     - role: jellyseerr
     - role: lyrion
+    - role: actual
 
     - role: homepage
       vars:

@@ -71,6 +71,11 @@
         href: https://bitwarden.{{ domain }}
         server: local-docker
         container: bitwarden
+    - Actual Budget:
+        icon: actual-budget.svg
+        href: https://budget.{{ domain }}
+        server: local-docker
+        container: actual
     - Mumble:
         icon: mumble.svg
         server: local-docker
