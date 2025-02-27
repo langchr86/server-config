@@ -1,0 +1,6 @@
+---
+
+actual_user: "{{ ansible_env.USER }}"
+actual_group: "users"
+actual_service_name: "actual"
+actual_data_folder: "/config/actual"
