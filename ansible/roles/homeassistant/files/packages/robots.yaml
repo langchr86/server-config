@@ -5,7 +5,7 @@ template:
       - name: crawli_combined
         unique_id: crawli_combined
         icon: mdi:robot-mower
-        state: "{{ states('lawn_mower.crawli') != 'docked' and states('lawn_mower.crawli') != 'rain_delay' and states('lawn_mower.crawli') != 'error' and states('lawn_mower.crawli') != 'offline' }}"
+        state: "{{ states('lawn_mower.crawli') != 'docked' and states('lawn_mower.crawli') != 'rain_delay' and states('lawn_mower.crawli') != 'error' and states('lawn_mower.crawli') != 'offline' and states('lawn_mower.crawli') != 'unavailable' }}"
         attributes:
           battery: "{{ states('sensor.crawli_battery') | int(default=0) }} %"
           charging: "{{ states('binary_sensor.crawli_battery_charging') }}"
