@@ -86,10 +86,10 @@
       vars:
         rsync_jobs:
           - name: "backups-{{ hostname_main }}"
-            user: "{{ main_user }}"
+            user: "root"
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
-              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--rsync-path="sudo rsync" --exclude="home-assistant_v2.db*" --exclude="jellyfin" --exclude="lyrion/config/cache"' }
+              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--exclude="home-assistant_v2.db*" --exclude="jellyfin" --exclude="lyrion/config/cache"' }
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
               - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common" }
 
