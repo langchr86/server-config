@@ -42,6 +42,7 @@ mediarequest.{{ domain }} mediarequest.{{ domain2 }} {
 }
 
 budget.{{ domain }} budget.{{ domain2 }} {
+  encode gzip zstd
   reverse_proxy actual:5006
 }
 

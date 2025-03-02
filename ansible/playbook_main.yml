@@ -93,6 +93,8 @@
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
               - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common" }
 
+# TODO(clang): prepare a separate task that "prepares" all files from /config that should go into backup. Maybe tarball. And first change all files to be readable by users.
+
     - role: rsync-daemon
       vars:
         rsyncd_destination_modules_path: "/share/backups"

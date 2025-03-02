@@ -7,7 +7,7 @@
     state: directory
     owner: "{{ actual_user }}"
     group: "{{ actual_group }}"
-    mode: "600"
+    mode: "ug+rw"
     recurse: true
   with_items:
     - "{{ actual_data_folder }}"
@@ -19,3 +19,5 @@
     auto_restart_if_failing: true
     service_dependencies:
       - caddy.service
+
+# TODO(clang): implement similar backup as in bitwarden
