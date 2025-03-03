@@ -96,3 +96,9 @@ Similar projects
 Check out my "prototype" project for this setup: [langchr86/mini-nas](https://github.com/langchr86/mini-nas).
 This is smaller and therefore easier to understand.
 It also has much explanation and documentation about the core concepts used.
+
+And here are some other links related to the topic of self-hosting etc.:
+
+* [awesome-selfhosted](https://awesome-selfhosted.net)
+* [selfh.st](https://selfh.st/)
+* [noted.lol](https://noted.lol/)
