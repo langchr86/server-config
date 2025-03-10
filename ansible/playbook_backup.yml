@@ -57,9 +57,7 @@
         volume_groups:
           - label: "pool-main"
             mount_path: "/mnt/pool-main/subvolumes"
-            devices:
-              - "/dev/sdb"
-              - "/dev/sdc"
+            devices: "{{ storage_disks_backup }}"
             logical_volumes:
               - label: "share-main"
                 size_options: "-l 100%FREE"
@@ -98,7 +96,4 @@
     - role: disk-monitoring
       vars:
         disk_monitoring_status_log_path: "/share"
-        disk_monitoring_devices:
-          - path: '/dev/sda'
-          - path: '/dev/sdb'
-          - path: '/dev/sdc'
+        disk_monitoring_devices: "{{ all_disks_backup }}"

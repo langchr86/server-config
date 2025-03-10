@@ -15,4 +15,25 @@ ip_address_backup: "192.168.0.5"
 ip_address_claudia: "192.168.0.124"
 ip_address_kevin: "192.168.0.121"
 
+storage_disks_main:
+  - "/dev/sda"
+  - "/dev/sdb"
+  - "/dev/sdc"
+  - "/dev/sdd"
+storage_disks_backup:
+  - "/dev/sdb"
+  - "/dev/sdc"
+
+all_disks_main:
+  - path: '/dev/sda'
+  - path: '/dev/sdb'
+  - path: '/dev/sdc'
+  - path: '/dev/sdd'
+  - path: '/dev/nvme0n1'
+
+all_disks_backup:
+  - path: "/dev/sda"
+  - path: "/dev/sdb"
+  - path: "/dev/sdc"
+
 deploy_examples: false

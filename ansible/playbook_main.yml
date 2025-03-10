@@ -46,11 +46,7 @@
             mount_path: "/mnt/pool-main"
             mkfs_options: "--data raid1 --metadata raid1"
             status_log_path: "/mnt/pool-main/subvolumes/share-main"
-            devices:
-              - "/dev/sda"
-              - "/dev/sdb"
-              - "/dev/sdc"
-              - "/dev/sdd"
+            devices: "{{ storage_disks_main }}"
             subvolumes:
               - "share-main"
 
@@ -139,12 +135,7 @@
     - role: disk-monitoring
       vars:
         disk_monitoring_status_log_path: "/share"
-        disk_monitoring_devices:
-          - path: '/dev/sda'
-          - path: '/dev/sdb'
-          - path: '/dev/sdc'
-          - path: '/dev/sdd'
-          - path: '/dev/nvme0n1'
+        disk_monitoring_devices: "{{ all_disks_main }}"
 
     - role: dockerio
 
