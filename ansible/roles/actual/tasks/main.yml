@@ -19,3 +19,5 @@
     auto_restart_if_failing: true
     service_dependencies:
       - caddy.service
+
+# TODO(clang): implement similar backup as in bitwarden

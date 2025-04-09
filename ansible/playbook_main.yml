@@ -1,5 +1,7 @@
 - hosts: all
 
+# TODO(clang): prepare a separate task that "prepares" all files from /config that should go into backup. Maybe tarball. And first change all files to be readable by users.
+
   pre_tasks:
     - ansible.builtin.include_vars:
         file: passwords.yml
