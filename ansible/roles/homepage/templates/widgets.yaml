@@ -4,11 +4,6 @@
     text: "{{ hostname_main }}"
 
 - resources:
-    expanded: true
-    cpu: true
-    memory: true
-
-- resources:
     label: System Disk
     expanded: true
     disk: "/"

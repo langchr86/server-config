@@ -16,3 +16,6 @@ layout:
     useEqualHeights: true
     style: row
     columns: 3
+
+hideVersion: true
+disableUpdateCheck: true
