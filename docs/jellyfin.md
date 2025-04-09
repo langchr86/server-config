@@ -21,6 +21,10 @@ Administration -> Server -> Allgemein:
 
 * Servername: `lang-main`
 
+Administration -> Erweitert -> Netzwerk:
+
+* Bekannte Proxys: `172.0.0.0/8,192.168.0.0/16`
+
 
 ### Plugins installieren
 
