@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ubuntu/jammy64"
-  config.vm.box_version = "20230608.0.0"
+  config.vm.box = "bento/ubuntu-24.04"
+  config.vm.box_version = "202502.21.0"
 
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true

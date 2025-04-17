@@ -10,14 +10,14 @@
   "domain2": "localhost",
   "cert_authority": "local",
   "storage_disks_main": [
+    "/dev/sdb",
     "/dev/sdc",
     "/dev/sdd",
-    "/dev/sde",
-    "/dev/sdf"
+    "/dev/sde"
   ],
   "storage_disks_backup": [
-    "/dev/sdc",
-    "/dev/sdd"
+    "/dev/sdb",
+    "/dev/sdc"
   ],
   "all_disks_main": [
     {"path": "/dev/sda"},
