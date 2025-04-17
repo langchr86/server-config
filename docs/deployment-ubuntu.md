@@ -106,8 +106,9 @@ Install Ansible:
 
 ~~~
 sudo apt-get update
-sudo apt-get install -y python3 python3-pip
-sudo pip3 install passlib ansible
+sudo apt-get install --yes software-properties-common python3 python3-passlib
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt-get install --yes ansible
 ~~~
 
 Run specific ansible playbook launcher script, e.g.:
