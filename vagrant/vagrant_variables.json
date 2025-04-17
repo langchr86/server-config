@@ -10,26 +10,24 @@
   "domain2": "localhost",
   "cert_authority": "local",
   "storage_disks_main": [
-    "/dev/sdc",
-    "/dev/sdd",
-    "/dev/sde"
-  ],
-  "storage_disks_backup": [
+    "/dev/sdb",
     "/dev/sdc",
     "/dev/sdd"
+  ],
+  "storage_disks_backup": [
+    "/dev/sdb",
+    "/dev/sdc"
   ],
   "all_disks_main": [
     {"path": "/dev/sda"},
     {"path": "/dev/sdb"},
     {"path": "/dev/sdc"},
-    {"path": "/dev/sdd"},
-    {"path": "/dev/sde"}
+    {"path": "/dev/sdd"}
   ],
   "all_disks_backup": [
     {"path": "/dev/sda"},
     {"path": "/dev/sdb"},
-    {"path": "/dev/sdc"},
-    {"path": "/dev/sdd"}
+    {"path": "/dev/sdc"}
   ],
   "main_user": "vagrant",
   "main_password": "vagrant"
