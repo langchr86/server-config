@@ -7,6 +7,6 @@
 
 - ansible.builtin.include_tasks: tasks/manage_user.yml
   no_log: true
-  with_items: "{{ users }}"
+  with_items: "{{ users_users }}"
   loop_control:
-    loop_var: user
+    loop_var: users_user

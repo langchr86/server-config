@@ -15,7 +15,7 @@
   roles:
     - role: users
       vars:
-        users:
+        users_users:
           - {name: "{{ main_user }}", password: "{{ main_password }}"}
           - {name: "velin", password: "{{ passwords.velin }}"}
 
