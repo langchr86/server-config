@@ -25,5 +25,6 @@
   vars:
     service_name: "{{ jf_service_name }}"
     auto_restart_if_failing: true
+    auto_update: true
     service_dependencies:
       - caddy.service

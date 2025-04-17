@@ -49,3 +49,12 @@
     name: "{{ service_name }}"
     state: restarted
   when: not start.changed and (compose.changed or force_restart)
+
+- name: "Install automatic docker image update task for {{ service_name }}"
+  ansible.builtin.include_role:
+    name: systemd-timer
+  vars:
+    sd_timer_name: "{{ service_name }}_auto_update"
+    sd_timer_command: "/usr/bin/bash -c \"/bin/systemctl reload {{ service_name }} && /bin/systemctl try-restart {{ service_name }}\""
+    sd_timer_OnCalendar: "Mon *-*-* 04:00:00"
+  when: auto_update

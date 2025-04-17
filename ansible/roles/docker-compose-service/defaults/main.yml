@@ -7,6 +7,7 @@ service_dependencies: []
 service_enabled: true
 force_restart: false
 auto_restart_if_failing: false
+auto_update: false
 
 # usually not needed to change
 systemd_folder: "/etc/systemd/system"
