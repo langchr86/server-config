@@ -17,9 +17,3 @@ services:
       - 1900:1900/udp
     devices:
       - /dev/dri:/dev/dri
-    networks:
-      - caddy_jellyfin_net
-
-networks:
-  caddy_jellyfin_net:
-    external: true
