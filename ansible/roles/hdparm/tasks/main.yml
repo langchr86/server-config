@@ -5,6 +5,11 @@
   ansible.builtin.package:
     name: hdparm
 
+- name: Install S.M.A.R.T tools
+  become: true
+  ansible.builtin.package:
+    name: smartmontools
+
 - ansible.builtin.include_tasks: tasks/disable_smart_offline_data_collection.yml
   with_items: "{{ hdparm_devices }}"
   loop_control:

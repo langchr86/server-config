@@ -5,6 +5,7 @@
   ansible.builtin.command: "smartctl -a {{ device }}"
   register: smart_info
   changed_when: false
+  failed_when: false
 
 - ansible.builtin.set_fact:
     offlineauto_enabled: false
