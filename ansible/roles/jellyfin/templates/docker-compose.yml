@@ -10,10 +10,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - {{ jf_config_folder }}:/config
-      - /share/Audios/:/media/audios:ro
-      - /share/Bilder/:/media/images:ro
-      - /share/Bücher/:/media/books:ro
-      - /share/Videos/:/media/videos:ro
+      - {{ jf_media_folder }}:/media:ro
     ports:
       - 8096:8096
       - 7359:7359/udp
