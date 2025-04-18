@@ -8,8 +8,14 @@ Einrichten unter `192.168.0.6:8096` oder `https://media.langchr86.ch`
 
 * Deutsch, German, Switzerland.
 * User `admin` als Manager einrichten.
-* Bibliothek momentan nur lesbar in den Container mounten.
+* Bibliothek nur lesbar in den Container mounten.
 * `Externe Verbindungen zu diesem Server zulassen` deaktivieren
+
+
+Medienbibliothek einrichten
+---------------------------
+
+* `Echtzeitüberwachung` nach Bedarf deaktivieren.
 
 
 Einstellungen
@@ -46,7 +52,9 @@ Administration -> Server -> Wiedergabe:
 
 * Hardwarebeschleunigung: `VAAPI`
 * VA-API-Gerät: `/dev/dri/renderD128`
-* Hardware-Dekodierung aktivieren für: `H264, HEVC, VC1, HEVC 10bit, VP9 10bit`
+* Hardware-Dekodierung aktivieren für: `H264, HEVC, VC1, HEVC 10bit, VP9 10bit, HEVC RExt 8/10bit, HEVC RExt 12bit`
+* `VPP-Tone-Mapping aktivieren`
+* `Tone-Mapping aktivieren`
 
 Weitere Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-on-linux-host
 
