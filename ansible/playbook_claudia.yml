@@ -8,8 +8,6 @@
     - ansible.builtin.set_fact:
         main_user: "claudia"
         main_password: "{{ passwords.claudia }}"
-        claudia_main_disk: "/dev/sdb2"
-        claudia_backup_disk: "/dev/sda"
 
     - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
     - ansible.builtin.import_tasks: tasks/basic_setup.yml
@@ -22,8 +20,8 @@
 
     - role: ssh
       vars:
-        ssh_evaluate_host_aliases: false
-        ssh_host_aliases: []
+        ssh_pub_files:
+          - 'eddsa-key-clang-privat-20220905.opub'
 
     - role: git-tools
       vars:
@@ -32,6 +30,8 @@
         git_rerere: true
         git_editor_nano: true
         git_prompt: true
+        git_user_name: "Christian Lang"
+        git_user_email: "lang.chr86@gmail.com"
 
     - role: bash
     - role: tmux
@@ -42,20 +42,46 @@
           - label: "pool-main"
             mount_path: "/mnt/pool-main"
             mkfs_options: "--data raid0 --metadata dup"
-            status_log_path: "/mnt/pool-main/subvolumes/daten-sicher"
+            status_log_path: "/mnt/pool-main/subvolumes/medien"
             devices:
-              - "{{ claudia_main_disk }}"
+              - "/dev/sdb"
             subvolumes:
-              - "daten-sicher"
-              - "daten-unsicher"
+              - "medien"
 
-    - role: filesystem
+    - role: share
       vars:
-        filesystems:
-          - label: "daten-backup"
-            device: "{{ claudia_backup_disk }}"
-            type: "ntfs"
-            mount_path: "/mnt/daten-backup"
+        share_path: "/medien"
+        share_source: "/mnt/pool-main/subvolumes/medien"
+
+    - role: user_folders
+      vars:
+        folders:
+          - "/config"
+          - "/daten"
+          - "/medien/Audios/"
+          - "/medien/Bilder/"
+          - "/medien/Bücher/"
+          - "/medien/Videos/"
+
+    - role: rsync
+      vars:
+        rsync_jobs:
+          - name: "backups-{{ hostname_claudia }}"
+            user: "{{ main_user }}"
+            timer_OnCalendar: "*-*-* 03:00:00"
+            pre_sleep_seconds: 1
+            steps:
+              - {src: "/daten", dest: "/medien/backups/{{ hostname_claudia }}/daten"}
+
+    - role: rsync-daemon
+      vars:
+        rsyncd_destination_modules_path: "/medien/backups"
+        rsyncd_destination_modules:
+          - user_name: "{{ main_user }}"
+            user_password: "{{ main_password }}"
+            subfolders:
+              - 'claudia-pc'
+              - 'claudia-laptop'
 
     - role: ansible-collection-vladgh-samba
       become: true
@@ -66,54 +92,25 @@
           - name: "{{ main_user }}"
             password: "{{ main_password }}"
         samba_shares:
-          - name: "daten-sicher"
-            path: "/mnt/pool-main/subvolumes/daten-sicher"
+          - name: "daten"
+            path: "/daten"
             browseable: true
             owner: "{{ main_user }}"
             group: "users"
             write_list: "{{ main_user }}"
-          - name: "daten-unsicher"
-            path: "/mnt/pool-main/subvolumes/daten-unsicher"
+          - name: "medien"
+            path: "/mnt/pool-main/subvolumes/medien"
             browseable: true
             owner: "{{ main_user }}"
             group: "users"
             write_list: "{{ main_user }}"
-          - name: "daten-backup"
-            path: "/mnt/daten-backup"
-            browseable: true
-            owner: "{{ main_user }}"
-            group: "users"
 
     - role: disk-monitoring
       vars:
-        disk_monitoring_status_log_path: "/mnt/pool-main/subvolumes/daten-sicher"
+        disk_monitoring_status_log_path: "/medien"
         disk_monitoring_devices:
           - path: '/dev/sda'
           - path: '/dev/sdb'
 
-    - role: rsync
-      vars:
-        rsync_jobs:
-          - name: "backups-{{ hostname_claudia }}"
-            user: "{{ main_user }}"
-            timer_OnCalendar: "*-*-* 03:00:00"
-            pre_sleep_seconds: 1
-            steps:
-              - {src: "/mnt/pool-main/subvolumes/daten-sicher", dest: "/mnt/daten-backup"}
-
-    - role: rsync-daemon
-      vars:
-        rsyncd_destination_modules_path: "/mnt/pool-main/subvolumes/daten-sicher/Backups"
-        rsyncd_destination_modules:
-          - user_name: "{{ main_user }}"
-            user_password: "{{ main_password }}"
-            subfolders:
-              - 'claudia-pc'
-              - 'claudia-laptop'
-
     - role: dockerio
-
-    - role: plex
-      vars:
-        plex_config_folder: "/mnt/pool-main/subvolumes/daten-sicher/Server/plex/"
-        plex_movies_folder: "/mnt/pool-main/subvolumes/daten-unsicher/Videos/"
+    - role: jellyfin
