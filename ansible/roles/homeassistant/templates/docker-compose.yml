@@ -8,6 +8,7 @@ services:
       - "5683:5683/udp"
     volumes:
       - {{ ha_config_folder }}:/config
+      - /share:/share:ro
     environment:
       - TZ="{{ timezone }}"
     networks:
