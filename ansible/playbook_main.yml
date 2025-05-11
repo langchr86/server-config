@@ -87,7 +87,7 @@
             steps:
               - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--exclude="home-assistant_v2.db*" --exclude="jellyfin" --exclude="lyrion/config/cache"' }
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
-              - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common" }
+              - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common", opts: '--exclude="downloads"' }
 
     - role: rsync-daemon
       vars:
@@ -152,9 +152,13 @@
         adguard_password: "{{ main_password }}"
 
     - role: transmission
+      vars:
+        transmission_download_folder: "/share-common/downloads/transmission"
+        transmission_watch_folder: "/share-common/downloads/transmission-watch"
     - role: jdownloader
       vars:
         myjd_password: "{{ passwords.myjd }}"
+        jdownloader_download_folder: "/share-common/downloads/jdownloader"
 
     - role: caddy
     - role: web_examples
