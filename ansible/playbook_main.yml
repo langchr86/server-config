@@ -81,6 +81,12 @@
     - role: archive
       vars:
         archive_jobs:
+          - name: "backup-git-{{ hostname_main }}"
+            user: "root"
+            dest: "/share/backups/{{ hostname_main }}/git/"
+            timer_OnCalendar: "*-*-* 04:20:00"
+            steps:
+              - { name: "git", src: "/git", }
           - name: "backup-config-{{ hostname_main }}"
             user: "root"
             dest: "/share/backups/{{ hostname_main }}/config/"
@@ -104,7 +110,6 @@
             user: "root"
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
-              - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
               - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common", opts: '--exclude="downloads"' }
 
     - role: rsync-daemon
