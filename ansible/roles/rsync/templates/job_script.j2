@@ -1,20 +1,27 @@
 #!/bin/bash
 
-{% if job.pre_sleep_seconds is defined%}
+{% if job.pre_sleep_seconds is defined %}
+
 echo "pre-sleep: {{ job.pre_sleep_seconds }} seconds"
 sleep {{ job.pre_sleep_seconds }}
 printf "************************************************************************************\n\n"
+
 {% endif %}
 
+
 {% for step in job.steps %}
+
 echo "run rsync step: {{ step.src }}/ into {{ step.dest }}/"
 rsync -e "ssh -o StrictHostKeyChecking=no" --archive --delete --ignore-errors --stats --itemize-changes {{ step.opts | default('') }} "{{ step.src }}/" "{{ step.dest }}/"
 printf "************************************************************************************\n\n"
 
-{% if job.post_command is defined%}
+{% endfor %}
+
+
+{% if job.post_command is defined %}
+
 echo "post-command: {{ job.post_command }}"
 {{ job.post_command }}
 printf "************************************************************************************\n\n"
-{% endif %}
 
-{% endfor %}
+{% endif %}
