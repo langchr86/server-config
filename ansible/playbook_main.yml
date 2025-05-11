@@ -78,6 +78,25 @@
           - "/share/web/fileshare/"
           - "/share/web/gallery/"
 
+    - role: archive
+      vars:
+        archive_jobs:
+          - name: "backup-config-{{ hostname_main }}"
+            user: "root"
+            dest: "/share/backups/{{ hostname_main }}/config/"
+            timer_OnCalendar: "*-*-* 04:30:00"
+            steps:
+              - { name: "actual", src: "/config/actual" }
+              - { name: "adguard", src: "/config/adguard" }
+              - { name: "bitwarden", src: "/config/bitwarden" }
+              - { name: "homeassistant", src: "/config/homeassistant", opts: '--exclude="home-assistant_v2.db*"' }
+              - { name: "jdownloader", src: "/config/jdownloader" }
+              - { name: "jellyfin", src: "/config/jellyfin", opts: '--exclude="cache" --exclude="data/metadata" --exclude="data/transcodes"' }
+              - { name: "jellyseerr", src: "/config/jellyseerr" }
+              - { name: "lyrion", src: "/config/lyrion", opts: '--exclude="config/cache"' }
+              - { name: "mumble", src: "/config/mumble" }
+              - { name: "transmission", src: "/config/transmission" }
+
     - role: rsync
       vars:
         rsync_jobs:
@@ -85,7 +104,6 @@
             user: "root"
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
-              - { src: "/config", dest: "/share/backups/{{ hostname_main }}/config", opts: '--exclude="home-assistant_v2.db*" --exclude="jellyfin" --exclude="lyrion/config/cache"' }
               - { src: "/git", dest: "/share/backups/{{ hostname_main }}/git" }
               - { src: "/share-common", dest: "/share/backups/{{ hostname_main }}/share-common", opts: '--exclude="downloads"' }
 

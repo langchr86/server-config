@@ -1,0 +1,14 @@
+---
+
+- name: "Create scripts folder: '{{ archive_script_folder }}'"
+  become: true
+  ansible.builtin.file:
+    path: "{{ archive_script_folder }}"
+    state: directory
+    mode: "u+rw"
+    recurse: true
+
+- ansible.builtin.include_tasks: tasks/job.yml
+  with_items: "{{ archive_jobs }}"
+  loop_control:
+    loop_var: archive_job

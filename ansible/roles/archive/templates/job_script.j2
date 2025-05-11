@@ -1,0 +1,34 @@
+#!/bin/bash
+
+{% if archive_job.pre_sleep_seconds is defined %}
+
+echo "pre-sleep: {{ archive_job.pre_sleep_seconds }} seconds"
+sleep {{ archive_job.pre_sleep_seconds }}
+printf "************************************************************************************\n\n"
+
+{% endif %}
+
+
+{% for step in archive_job.steps %}
+
+FILE="{{ archive_job.dest }}/{{ step.name }}.tar.gz"
+
+echo "run archive step: {{ step.src }} into '${FILE}'"
+tar -zcvf "${FILE}" {{ step.opts | default('') }} "{{ step.src }}"
+
+echo "make accessible for 'users' group '${FILE}'"
+chmod 644 "${FILE}"
+chown {{ archive_job.user }}:users "${FILE}"
+
+printf "************************************************************************************\n\n"
+
+{% endfor %}
+
+
+{% if archive_job.post_command is defined %}
+
+echo "post-command: {{ archive_job.post_command }}"
+{{ archive_job.post_command }}
+printf "************************************************************************************\n\n"
+
+{% endif %}

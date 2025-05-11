@@ -1,0 +1,39 @@
+---
+
+- ansible.builtin.set_fact:
+    script: "{{ archive_script_folder }}/{{ archive_job.name }}.bash"
+
+- ansible.builtin.include_role:
+    name: systemd-timer
+  vars:
+    sd_timer_name: "{{ archive_job.name }}"
+    sd_timer_command: "{{ script }}"
+    sd_timer_OnCalendar: "{{ archive_job.timer_OnCalendar | default('*-*-* 02:00:00') }}"
+    sd_timer_user: "{{ archive_job.user | default(ansible_env.USER) }}"
+    sd_timer_persistent: true
+
+- name: "Create job script: '{{ script }}'"
+  become: true
+  ansible.builtin.template:
+    src: "job_script.j2"
+    dest: "{{ script }}"
+    mode: "755"
+
+- name: "Create jobs source folders"
+  become: true
+  ansible.builtin.file:
+    path: "{{ item.src }}"
+    state: directory
+    mode: "ug+rw"
+    owner: "{{ archive_job.user }}"
+    group: 'users'
+  with_items: "{{ archive_job.steps }}"
+
+- name: "Create jobs destination folder"
+  become: true
+  ansible.builtin.file:
+    path: "{{ archive_job.dest }}"
+    state: directory
+    mode: "ug+rw"
+    owner: "{{ archive_job.user }}"
+    group: 'users'
