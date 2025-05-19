@@ -60,6 +60,8 @@
             snapshot_preserve: "48h 28d"
             timer_OnCalendar: "*-*-* *:00,30:00"
 
+    - role: pagecache
+
     - role: share
       vars:
         share_source: "/mnt/pool-main/subvolumes/share-main"
