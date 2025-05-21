@@ -57,15 +57,39 @@ Danach müssen manche der Plugins in den Bibliotheken aktiviert werden. Z.B. `Fa
 
 ### Hardwarebeschleunigung
 
+Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-on-linux-host
+
 Administration -> Server -> Wiedergabe:
 
-* Hardwarebeschleunigung: `VAAPI`
-* VA-API-Gerät: `/dev/dri/renderD128`
-* Hardware-Dekodierung aktivieren für: `H264, HEVC, VC1, HEVC 10bit, VP9 10bit, HEVC RExt 8/10bit, HEVC RExt 12bit`
-* `VPP-Tone-Mapping aktivieren`
-* `Tone-Mapping aktivieren`
+AsRock J5040:
 
-Weitere Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-on-linux-host
+~~~
+Hardwarebeschleunigung: VAAPI
+VA-API-Gerät: /dev/dri/renderD128
+Hardware-Dekodierung aktivieren für: H264, HEVC, VC1,      HEVC 10bit, VP9 10bit, HEVC RExt 8/10bit, HEVC RExt 12bit
+Hardwarekodierung aktivieren
+VPP-Tone-Mapping aktivieren
+NICHT Tone-Mapping aktivieren
+~~~
+
+![](images/jellyfin_transcoding_AsRock_J5040.png)
+
+Odroid H4 Ultra (N305):
+
+~~~
+Hardwarebeschleunigung: Intel QuickSync (QSV) (faster than VAAPI)
+VA-API-Gerät: /dev/dri/renderD128
+Hardware-Dekodierung aktivieren für: H264, HEVC, VC1, AV1, HEVC 10bit, VP9 10bit, HEVC RExt 8/10bit, HEVC RExt 12bit
+Hardwarekodierung aktivieren
+Intel Low-Power-Hardwarekodierer für H.264 aktivieren
+Intel Low-Power-Hardwarekodierer für HEVC aktivieren
+NICHT Kodierung im HEVC-Format zulassen
+NICHT Kodierung im AV1-Format erlauben
+VPP-Tone-Mapping aktivieren
+NICHT Tone-Mapping aktivieren (Funktioniert bei N305 nicht)
+~~~
+
+![](images/jellyfin_transcoding_Odroid_H4_Ultra.png)
 
 
 ### Normale User
