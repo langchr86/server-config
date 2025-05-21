@@ -1,0 +1,22 @@
+- name: Install powertop
+  become: true
+  ansible.builtin.package:
+    name: powertop
+
+- name: "Install helper scripts"
+  become: true
+  ansible.builtin.template:
+    src: "auto-script"
+    dest: "{{ powertop_auto_script }}"
+    owner: "root"
+    group: "root"
+    mode: '0755'
+
+- ansible.builtin.include_role:
+    name: systemd-timer
+  vars:
+    sd_timer_name: "powertop-auto-script"
+    sd_timer_command: "{{ powertop_auto_script }}"
+    sd_timer_OnBootSec: 60s
+    sd_timer_OnUnitActiveSec: 30d
+    sd_timer_user: root

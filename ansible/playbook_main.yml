@@ -61,6 +61,7 @@
             timer_OnCalendar: "*-*-* *:00,30:00"
 
     - role: pagecache
+    - role: powertop
 
     - role: share
       vars:
