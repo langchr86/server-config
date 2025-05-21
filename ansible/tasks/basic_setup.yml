@@ -17,7 +17,6 @@
       - iotop
       - htop
       - bashtop
-      - powertop
       - sysstat
       - dstat
 

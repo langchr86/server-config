@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ "$EUID" -ne 0 ]]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+
+# Disable wake on lan
+for i in /sys/class/net/enp*; do ethtool -s $(basename $i) wol d; done
+
+
+# Enable SATA link power management
+echo med_power_with_dipm | tee /sys/class/scsi_host/host*/link_power_management_policy
+# and check
+cat /sys/class/scsi_host/host*/link_power_management_policy
