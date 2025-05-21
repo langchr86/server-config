@@ -2,6 +2,12 @@ lang-main
 =========
 
 
+Prepare Hardware
+----------------
+
+See [Hardware](/docs/hardware.md).
+
+
 Common steps
 ------------
 
