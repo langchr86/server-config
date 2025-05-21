@@ -50,11 +50,13 @@ Danach müssen manche der Plugins in den Bibliotheken aktiviert werden. Z.B. `Fa
 
 Administration -> Server -> Wiedergabe:
 
-* Hardwarebeschleunigung: `VAAPI`
+* Hardwarebeschleunigung:
+  * AsRock J5040: `VAAPI`
+  * Odroid H4 Ultra (N305): `Intel QuickSync (QSV)`
 * VA-API-Gerät: `/dev/dri/renderD128`
 * Hardware-Dekodierung aktivieren für: `H264, HEVC, VC1, HEVC 10bit, VP9 10bit, HEVC RExt 8/10bit, HEVC RExt 12bit`
 * `VPP-Tone-Mapping aktivieren`
-* `Tone-Mapping aktivieren`
+* `Tone-Mapping aktivieren` (Funktioniert bei N305 nicht?)
 
 Weitere Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-on-linux-host
 
