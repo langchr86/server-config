@@ -50,7 +50,6 @@
     dest: "{{ ha_config_folder }}/packages"
     mode: "u+rw"
   with_items:
-    - "packages/comfonet.yaml"
     - "packages/mystrom.yaml"
     - "packages/robots.yaml"
     - "packages/symogen24.yaml"

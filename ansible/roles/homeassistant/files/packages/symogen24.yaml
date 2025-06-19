@@ -37,6 +37,12 @@ sensor:
     unique_id: "symogen24_total_solarnet_energy_others"
     unit_prefix: k
     method: left
+  - platform: integration
+    source: sensor.comfoairq_ventilation_current_power_usage
+    name: "ComfoAir Total Energy"
+    unique_id: "comfoair_total_energy"
+    unit_prefix: k
+    method: left
 
 template:
   - sensor:
@@ -92,7 +98,7 @@ template:
         unique_id: "symogen24_solarnet_power_load_others"
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_all_modes') | float(default=0))
-                - (states('sensor.comfoair_power_usage') | float(default=0))
+                - (states('sensor.comfoairq_ventilation_current_power_usage') | float(default=0))
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
                 - (states('sensor.outlet_tv_wohnen_power') | float(default=0))
@@ -144,9 +150,9 @@ template:
         icon: mdi:air-conditioner
         state: "{{ states('fan.comfoair') }}"
         attributes:
-          power: "{{ states('sensor.comfoair_power_usage') | int(default=0) }} W"
+          power: "{{ states('sensor.comfoairq_ventilation_current_power_usage') | int(default=0) }} W"
           percentage: "{{ state_attr('fan.comfoair','percentage') }} %"
-          bypass: "{{ states('sensor.comfoair_bypass_state') }} %"
+          bypass: "{{ states('sensor.comfoairq_bypass_state') }} %"
       - name: entfeuchter_combined
         unique_id: entfeuchter_combined
         icon: mdi:air-humidifier
