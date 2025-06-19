@@ -27,3 +27,11 @@ If you encounter the following errors in the HA log:
 ~~~
 
 You need the add the reported IP as trusted proxy in the main HA config file under `trusted_proxies:`
+
+
+My Custom Integrations
+----------------------
+
+* https://github.com/michaelarnauts/home-assistant-comfoconnect (this replaces the core integration: Comfoconnect)
+* https://github.com/mk-maddin/wattpilot-HA
+* https://github.com/SpangleLabs/history-explorer-card
