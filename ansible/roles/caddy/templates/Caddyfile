@@ -8,6 +8,11 @@ ssh.{{ domain }} ssh.{{ domain2 }} {
   respond 204
 }
 
+tools.{{ domain }} tools.{{ domain2 }} {
+  root * /srv/tools
+  file_server browse
+}
+
 wiki.{{ domain }} wiki.{{ domain2 }} {
   root * /srv/wiki
   file_server

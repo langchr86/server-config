@@ -12,8 +12,9 @@ services:
       - {{ caddy_config_folder }}:/config
       - {{ caddy_data_folder }}:/data
       - {{ caddy_app_folder }}/Caddyfile:/etc/caddy/Caddyfile
-      - /share/web/gallery:/srv/gallery
       - /share/web/fileshare:/srv/fileshare
+      - /share/web/gallery:/srv/gallery
+      - /share/web/tools:/srv/tools
       - /share/web/wiki:/srv/wiki
     networks:
       - actual_net
