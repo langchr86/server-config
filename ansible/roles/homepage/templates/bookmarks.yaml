@@ -9,10 +9,16 @@
           href: https://github.com/langchr86/server-config
           description: github.com/langchr86/server-config
 
-- Wiki:
+- Lang Services:
     - Lang Wiki:
         - icon: si-markdown-#eeeeee
-          href: https://wiki.langchr86.ch
+          href: https://wiki.{{ domain }}
+    - Lang Tools:
+        - icon: mdi-tools-#eeeeee
+          href: https://tools.{{ domain }}
+    - Lang Fileshare:
+        - icon: mdi-cloud-download-outline-#eeeeee
+          href: https://fileshare.{{ domain }}
 
 - Local Access:
     - Vaultwarden Admin:

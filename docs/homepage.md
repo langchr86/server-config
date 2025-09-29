@@ -24,3 +24,5 @@ Documentation
 This part was inspired by: [Techno Tim](https://technotim.live/posts/homepage-dashboard/)
 
 Main documentation can be found here: [gethomepage.dev](https://gethomepage.dev/)
+
+Reference for available icons: [gethomepage.dev/configs/services/#icons](https://gethomepage.dev/configs/services/#icons)
