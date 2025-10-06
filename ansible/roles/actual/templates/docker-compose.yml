@@ -3,7 +3,7 @@ version: "3.5"
 services:
   actual:
     container_name: "actual"
-    image: docker.io/actualbudget/actual-server:25.8.0
+    image: docker.io/actualbudget/actual-server:latest
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - {{ actual_data_folder }}:/data
