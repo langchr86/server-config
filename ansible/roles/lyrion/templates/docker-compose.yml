@@ -1,5 +1,5 @@
 ---
-version: "3"
+version: "3.9"
 services:
   lyrion:
     container_name: "lyrion"
@@ -10,12 +10,8 @@ services:
       - {{ lyrion_config_folder }}:/config:rw
       - {{ lyrion_playlist_folder }}:/playlist:rw
       - {{ lyrion_music_folder }}:/music:ro
-    ports:
-      - 9000:9000/tcp
-      - 9090:9090/tcp
-      - 3483:3483/tcp
-      - 3483:3483/udp
+    # We cannot use port forwardings anymore because of docker update 28.x.x. See: gateway_mode_ipv in https://github.com/moby/moby/discussions/49497
+    network_mode: host
     environment:
       - PUID={{ uid }}
       - PGID={{ gid }}
-      - HTTP_PORT=9000
