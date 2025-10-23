@@ -63,7 +63,7 @@ Weitere Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/admi
 
 Administration -> Server -> Benutzer:
 
-* User `kodi` als normaler User einrichten.
+* User `clang` als normaler User einrichten.
 * `Externe Verbindungen zu diesem Server zulassen` aktivieren
 
 
