@@ -12,7 +12,8 @@
   "storage_disks_main": [
     "/dev/sdc",
     "/dev/sdd",
-    "/dev/sde"
+    "/dev/sde",
+    "/dev/sdf"
   ],
   "storage_disks_backup": [
     "/dev/sdc",
