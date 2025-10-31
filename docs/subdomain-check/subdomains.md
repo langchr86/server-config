@@ -1,8 +1,8 @@
 https://bitwarden.langchr86.ch
 https://budget.langchr86.ch
 https://dashboard.langchr86.ch
-https://fileshare.langchr86.ch/link.txt
-https://gallery.langchr86.ch/gallery.html
+https://fileshare.langchr86.ch
+https://gallery.langchr86.ch
 https://home.langchr86.ch
 https://media.langchr86.ch/web/index.html
 https://mediarequest.langchr86.ch/login
