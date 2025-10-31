@@ -1,5 +1,11 @@
 ---
 
+- name: Define a high number of inotify watches
+  become: true
+  ansible.posix.sysctl:
+    name: fs.inotify.max_user_watches
+    value: "524288"
+
 - name: Create folders
   become: true
   ansible.builtin.file:
