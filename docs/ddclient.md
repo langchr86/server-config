@@ -14,6 +14,9 @@ Only the root (`@`) needs to point to the real IP and needs to be updated by `dd
 The `CNAME` entry can be redirected to the root (`@`).
 All entries must not use cloudflare proxy but `DNS only`!
 
+If the home router does not get IPv6 we need to delete any `AAAA` records.
+We can test this with [ready.chair6.net](https://ready.chair6.net)
+
 ~~~
 ;; A Records
 langchr86.ch.	1	IN	A	11.222.333.444
