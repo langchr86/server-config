@@ -36,12 +36,11 @@ Administration -> Erweitert -> Netzwerk:
 
 Administration -> Erweitert -> Plugins -> Katalog:
 
-* `Kodi Sync Queue`
-* `Open Subtitles`
-* `Fanart`
 * `Bookshelf`
+* `Fanart`
+* `Playback Reporting`
 
-Server neu starten: Administration -> Server -> Übersicht -> Herunterfahren
+Server neu starten: Administration -> Server -> Übersicht -> Neustart
 
 Danach müssen manche der Plugins in den Bibliotheken aktiviert werden. Z.B. `Fanart`.
 
@@ -69,7 +68,7 @@ Administration -> Server -> Benutzer:
 
 ### Fix Comic-Reader on Smartphone
 
-Als `admin` unter: Administration -> Server -> Allgemein -> Benutzerdefinierter CSS-Code:
+Als `admin` unter: Administration -> Server -> Branding -> Benutzerdefinierter CSS-Code:
 
 ~~~
 #comicsPlayer .swiper-slide-img {
