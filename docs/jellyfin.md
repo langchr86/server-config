@@ -9,13 +9,23 @@ Einrichten unter `192.168.0.6:8096` oder `https://media.langchr86.ch`
 * Deutsch, German, Switzerland.
 * User `admin` als Manager einrichten.
 * Bibliothek nur lesbar in den Container mounten.
-* `Externe Verbindungen zu diesem Server zulassen` deaktivieren
+* `Externe Verbindungen zu diesem Server zulassen` nur deaktivieren, wenn nicht von extern (Caddy) zugegriffen wird.
 
 
 Medienbibliothek einrichten
 ---------------------------
 
+Zuerst alle Bibliotheken erstellen und korrekt konfigurieren.
+Danach einen kompletten Scan anwerfen und unter keinen Umständen abbrechen.
+Dies kann mehrere Stunden dauern!
+
 * `Echtzeitüberwachung` nach Bedarf deaktivieren.
+* `Metadatendienst` deaktivieren für:
+  * Musik
+  * Hörspiele
+  * Soundtracks
+  * ComedyAudio
+  * Comics & Bücher
 
 
 Einstellungen
@@ -36,12 +46,11 @@ Administration -> Erweitert -> Netzwerk:
 
 Administration -> Erweitert -> Plugins -> Katalog:
 
-* `Kodi Sync Queue`
-* `Open Subtitles`
-* `Fanart`
 * `Bookshelf`
+* `Fanart`
+* `Playback Reporting`
 
-Server neu starten: Administration -> Server -> Übersicht -> Herunterfahren
+Server neu starten: Administration -> Server -> Übersicht -> Neustart
 
 Danach müssen manche der Plugins in den Bibliotheken aktiviert werden. Z.B. `Fanart`.
 
@@ -64,12 +73,12 @@ Weitere Infos zur Hardwarebeschleunigung: https://jellyfin.org/docs/general/admi
 Administration -> Server -> Benutzer:
 
 * User `clang` als normaler User einrichten.
-* `Externe Verbindungen zu diesem Server zulassen` aktivieren
+* `Externe Verbindungen zu diesem Server zulassen` aktivieren.
 
 
 ### Fix Comic-Reader on Smartphone
 
-Als `admin` unter: Administration -> Server -> Allgemein -> Benutzerdefinierter CSS-Code:
+Als `admin` unter: Administration -> Server -> Branding -> Benutzerdefinierter CSS-Code:
 
 ~~~
 #comicsPlayer .swiper-slide-img {
