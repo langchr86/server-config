@@ -13,12 +13,15 @@
     - Lang Wiki:
         - icon: si-markdown-#eeeeee
           href: https://wiki.{{ domain }}
-    - Lang Tools:
-        - icon: mdi-tools-#eeeeee
-          href: https://tools.{{ domain }}
     - Lang Fileshare:
         - icon: mdi-cloud-download-outline-#eeeeee
           href: https://fileshare.{{ domain }}
+    - Lang Gallery:
+        - icon: mdi-image-outline-#eeeeee
+          href: https://gallery.{{ domain }}
+    - Lang Tools:
+        - icon: mdi-tools-#eeeeee
+          href: https://tools.{{ domain }}
 
 - Local Access:
     - Vaultwarden Admin:
