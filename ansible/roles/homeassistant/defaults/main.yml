@@ -2,5 +2,5 @@
 
 user: "{{ ansible_env.USER }}"
 group: "users"
-ha_version: "2025.9"
+ha_version: "2025.11"
 ha_config_folder: "/config/homeassistant"
