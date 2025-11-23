@@ -17,10 +17,3 @@ template:
               {{ states('lawn_mower.crawli') }}
             {% endif %}
           "
-      - name: rabbit_combined
-        unique_id: rabbit_combined
-        icon: mdi:robot-vacuum
-        state: "{{ states('sensor.white_rabbit_status') == 'cleaning' }}"
-        attributes:
-          battery: "{{ states('sensor.white_rabbit_batterie') | int(default=0) }} %"
-          status: "{{ states('sensor.white_rabbit_status') }}"
