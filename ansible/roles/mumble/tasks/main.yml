@@ -43,6 +43,7 @@
   vars:
     service_name: "{{ mb_service_name }}"
     force_restart: "{{ config.changed }}"
+    auto_update: true
 
 - name: "Install periodic restart timer task for {{ mb_service_name }}"
   ansible.builtin.include_role:
