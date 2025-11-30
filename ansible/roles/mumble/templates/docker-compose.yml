@@ -3,15 +3,15 @@ version: "3.5"
 services:
   mumble:
     container_name: "mumble"
-    image: magicalex/mumble:latest
+    image: mumblevoip/mumble-server:latest
     environment:
-      - UID={{ uid }}
-      - GID={{ gid }}
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+      - MUMBLE_CUSTOM_CONFIG_FILE=/data/config.ini
     volumes:
-      - {{ mb_config_folder }}/config.ini:/opt/mumble/conf/config.ini:ro
-      - {{ mb_data_folder }}:/opt/mumble/data
-      - /etc/caddy/data/caddy/certificates:/opt/mumble/cert:ro
+      - {{ mb_data_folder }}:/data
+      - {{ mb_config_folder }}/config.ini:/data/config.ini:ro
+      - /etc/caddy/data/caddy/certificates:/cert:ro
     ports:
-      - "64738:64738"
+      - "64738:64738/tcp"
       - "64738:64738/udp"
-
