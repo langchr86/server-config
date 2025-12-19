@@ -2,6 +2,16 @@ Samba
 =====
 
 
+Shares
+------
+
+Shares have the URL pattern:
+
+~~~
+\\lang-main\share-main
+~~~
+
+
 Change passwords
 ----------------
 
