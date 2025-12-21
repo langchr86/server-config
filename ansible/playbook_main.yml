@@ -110,7 +110,7 @@
     - role: rsync
       vars:
         rsync_jobs:
-          - name: "backups-{{ hostname_main }}"
+          - name: "backup-share-common-{{ hostname_main }}"
             user: "root"
             timer_OnCalendar: "*-*-* *:20:00"
             steps:
