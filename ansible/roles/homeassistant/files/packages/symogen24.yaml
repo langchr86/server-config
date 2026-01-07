@@ -145,6 +145,11 @@ template:
               Kühlen
             {% endif %}
           "
+          error: "
+            {% if states('sensor.wpl17ics_message_number') | int(default=0) != 0 %}
+              {{ states('sensor.wpl17ics_message_number') | int(default=0) }}
+            {% endif %}
+          "
       - name: comfoair_combined
         unique_id: comfoair_combined
         icon: mdi:air-conditioner
