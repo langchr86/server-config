@@ -3,7 +3,7 @@ version: "3.5"
 services:
   homepage:
     container_name: "homepage"
-    image: ghcr.io/gethomepage/homepage:v0.10.9
+    image: ghcr.io/gethomepage/homepage:v1.9.0
     ports:
       - "4000:3000"
     env_file: "{{ homepage_config_folder }}/homepage.env"
@@ -14,6 +14,8 @@ services:
     networks:
       - caddy_homepage_net
       - caddy_jellyfin_net
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=dashboard.{{ domain }},dashboard.{{ domain2 }}
 
 networks:
   caddy_homepage_net:
