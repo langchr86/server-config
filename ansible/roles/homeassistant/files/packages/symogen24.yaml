@@ -196,8 +196,8 @@ template:
         icon: mdi:car-electric
         state: "{{ states('binary_sensor.cupra_born_engine_status') }}"
         attributes:
-          charge: "{{ states('sensor.cupra_born_state_of_charge') | int(default=0) }} %"
-          range: "{{ states('sensor.cupra_born_range_in_kilometers') | int(default=0) }} km"
+          charge: "{{ states('sensor.cupra_born_battery_level') | int(default=0) }} %"
+          range: "{{ states('sensor.cupra_born_electric_range') | int(default=0) }} km"
       - name: tv_wohnen_combined
         unique_id: tv_wohnen_combined
         icon: mdi:youtube-tv
