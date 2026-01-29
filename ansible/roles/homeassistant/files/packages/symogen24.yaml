@@ -198,6 +198,13 @@ template:
         attributes:
           charge: "{{ states('sensor.cupra_born_battery_level') | int(default=0) }} %"
           range: "{{ states('sensor.cupra_born_electric_range') | int(default=0) }} km"
+      - name: renault_r5_combined
+        unique_id: renault_r5_combined
+        icon: mdi:car-electric-outline
+        state: "false"
+        attributes:
+          charge: "{{ states('sensor.renault_r5_batterie') | int(default=0) }} %"
+          range: "{{ states('sensor.renault_r5_batteriereichweite') | int(default=0) }} km"
       - name: tv_wohnen_combined
         unique_id: tv_wohnen_combined
         icon: mdi:youtube-tv
