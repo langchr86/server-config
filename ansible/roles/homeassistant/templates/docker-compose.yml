@@ -1,7 +1,9 @@
-version: '3'
+---
+version: "3.9"
 services:
   homeassistant:
     container_name: homeassistant
+    # TODO(clang): change to use ghcr.io?
     image: homeassistant/home-assistant:{{ ha_version }}
     ports:
       - "8123:8123"

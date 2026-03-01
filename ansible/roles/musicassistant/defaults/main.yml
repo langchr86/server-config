@@ -1,0 +1,6 @@
+---
+
+user: "{{ ansible_env.USER }}"
+group: "users"
+ma_config_folder: "/config/musicassistant"
+ma_music_folder: "/share/Audios/"

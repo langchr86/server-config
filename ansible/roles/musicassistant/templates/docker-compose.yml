@@ -1,0 +1,13 @@
+---
+version: "3.9"
+services:
+  musicassistant:
+    container_name: musicassistant
+    image: ghcr.io/music-assistant/server:2.7.9
+    volumes:
+      - {{ ma_config_folder }}:/data
+      - {{ ma_music_folder }}:/music:ro
+    environment:
+      # Provide logging level as environment variable. Default=info, possible=(critical, error, warning, info, debug)
+      - LOG_LEVEL=info
+    network_mode: host

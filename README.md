@@ -51,8 +51,9 @@ The following services are available:
 * media server: [jellyfin](https://jellyfin.org/)
 * media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
 * low-latency voice chat: [mumble](https://www.mumble.com/)
-* home automation: [homeassistant](https://www.home-assistant.io/)
+* home automation: [home-assistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)
+* multi-room audio system: [music-assistant](https://www.music-assistant.io)
 * private finance management: [actual budget](https://actualbudget.org/)
 * service dashboard: [homepage](https://gethomepage.dev/)
 

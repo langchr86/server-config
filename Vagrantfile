@@ -27,6 +27,8 @@ Vagrant.configure("2") do |config|
     main.vm.network "forwarded_port", guest: 4000, host: 4000   # homepage
     main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
     main.vm.network "forwarded_port", guest: 5006, host: 5006   # actual budget
+    main.vm.network "forwarded_port", guest: 8095, host: 8095   # musicassistant: web interface
+    main.vm.network "forwarded_port", guest: 8097, host: 8097   # musicassistant: streaming
     main.vm.network "forwarded_port", guest: 8123, host: 8123   # homeassistant
     main.vm.network "forwarded_port", guest: 9000, host: 9000   # Lyrion: JSON RPC CLI/API
     main.vm.network "forwarded_port", guest: 9090, host: 9090   # Lyrion: classic squeezebox CLI

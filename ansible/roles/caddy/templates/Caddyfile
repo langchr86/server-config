@@ -38,6 +38,12 @@ home.{{ domain }} home.{{ domain2 }} {
   }
 }
 
+music.{{ domain }} music.{{ domain2 }} {
+  reverse_proxy musicassistant:8095 {
+    header_up X-Real-IP {remote_host}
+  }
+}
+
 media.{{ domain }} media.{{ domain2 }} {
   reverse_proxy jellyfin:8096
 }

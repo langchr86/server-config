@@ -9,23 +9,10 @@
       - curl
       - software-properties-common
       - docker.io
+      - docker-compose-v2
 
 - name: Ensure old docker-compose is not installed
   become: true
   ansible.builtin.apt:
     name: docker-compose
     state: absent
-
-- name: "Create docker plugins folder: {{ docker_plugins_folder }}"
-  become: true
-  ansible.builtin.file:
-    dest: "{{ docker_plugins_folder }}"
-    state: directory
-    mode: "755"
-
-- name: "Install docker compose V2 plugin"
-  become: true
-  ansible.builtin.get_url:
-    url: "{{ docker_compose_url }}"
-    dest: "{{ docker_plugins_folder }}/docker-compose"
-    mode: "755"

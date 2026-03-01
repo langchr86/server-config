@@ -1,0 +1,22 @@
+---
+
+- name: Create app config folder
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: "775"
+  with_items:
+    - "{{ ma_config_folder }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "musicassistant"
+    auto_restart_if_failing: true
+    service_dependencies:
+      - caddy.service
+# TODO(clang): HA as dependency
+# TODO(clang): should we really expose this with caddy?
