@@ -22,11 +22,14 @@ Vagrant.configure("2") do |config|
     main.vm.network "private_network", ip: "192.168.10.6"
     #main.vm.network "forwarded_port", guest: 53, host: 53       # adguard
     main.vm.network "forwarded_port", guest: 3000, host: 3000   # adguard
+    main.vm.network "forwarded_port", guest: 3483, host: 3483, protocol: "tcp"   # Lyrion: slimProto
+    main.vm.network "forwarded_port", guest: 3483, host: 3483, protocol: "udp"   # Lyrion: slimProto
     main.vm.network "forwarded_port", guest: 4000, host: 4000   # homepage
     main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
     main.vm.network "forwarded_port", guest: 5006, host: 5006   # actual budget
     main.vm.network "forwarded_port", guest: 8123, host: 8123   # homeassistant
-    main.vm.network "forwarded_port", guest: 9000, host: 9000   # lyrion
+    main.vm.network "forwarded_port", guest: 9000, host: 9000   # Lyrion: JSON RPC CLI/API
+    main.vm.network "forwarded_port", guest: 9090, host: 9090   # Lyrion: classic squeezebox CLI
     main.vm.network "forwarded_port", guest: 9091, host: 9091   # transmission
     main.vm.disk :disk, size: "32GB", name: "share_1"
     main.vm.disk :disk, size: "32GB", name: "share_2"
