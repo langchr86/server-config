@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_x11 = true
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "4096"
-    vb.cpus = 4
+    vb.memory = "16000"
+    vb.cpus = 16
     vb.customize ["modifyvm", :id, "--vram", "128"]
     vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
   end
@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
     main.vm.network "forwarded_port", guest: 4000, host: 4000   # homepage
     main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
     main.vm.network "forwarded_port", guest: 5006, host: 5006   # actual budget
+    main.vm.network "forwarded_port", guest: 8000, host: 8000   # audiomuse
     main.vm.network "forwarded_port", guest: 8123, host: 8123   # homeassistant
     main.vm.network "forwarded_port", guest: 9000, host: 9000   # Lyrion: JSON RPC CLI/API
     main.vm.network "forwarded_port", guest: 9090, host: 9090   # Lyrion: classic squeezebox CLI
