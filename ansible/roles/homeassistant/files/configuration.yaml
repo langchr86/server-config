@@ -28,7 +28,5 @@ recorder:
       - sun.sun
       - weather.home
     entity_globs:
-      - sensor.*_akkuspannung
-      - sensor.button_*_battery
       - sensor.energy_next_*
       - sensor.sun_next_*
