@@ -102,7 +102,7 @@
               - { name: "homeassistant", src: "/config/homeassistant", opts: '--exclude="home-assistant_v2.db*"' }
               - { name: "jdownloader", src: "/config/jdownloader" }
               - { name: "jellyfin", src: "/config/jellyfin", opts: '--exclude="cache" --exclude="data/metadata" --exclude="data/transcodes"' }
-              - { name: "jellyseerr", src: "/config/jellyseerr" }
+              - { name: "seerr", src: "/config/seerr" }
               - { name: "lyrion", src: "/config/lyrion", opts: '--exclude="config/cache"' }
               - { name: "mumble", src: "/config/mumble" }
               - { name: "transmission", src: "/config/transmission" }
@@ -195,7 +195,7 @@
     - role: mosquitto
     - role: homeassistant
     - role: jellyfin
-    - role: jellyseerr
+    - role: seerr
     - role: lyrion
     - role: actual
 

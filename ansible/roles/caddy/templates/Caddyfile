@@ -43,7 +43,7 @@ media.{{ domain }} media.{{ domain2 }} {
 }
 
 mediarequest.{{ domain }} mediarequest.{{ domain2 }} {
-  reverse_proxy jellyseerr:5055
+  reverse_proxy seerr:5055
 }
 
 budget.{{ domain }} budget.{{ domain2 }} {

@@ -11,11 +11,11 @@
           key: {{ '{{' }}HOMEPAGE_VAR_JELLYFIN_API_KEY{{ '}}' }}
           enableBlocks: true
           enableNowPlaying: false
-    - Jellyseerr:
-        icon: jellyseerr.svg
+    - Seerr:
+        icon: seerr.svg
         href: https://mediarequest.{{ domain }}
         server: local-docker
-        container: jellyseerr
+        container: seerr
     - Lyrion:
         icon: lyrion.svg
         href: http://{{ ip_address_main }}:9000/

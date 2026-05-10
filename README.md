@@ -49,7 +49,7 @@ The following services are available:
   with free backend: [vaultwarden](https://github.com/dani-garcia/vaultwarden)
 * multi-room audio system: [lyrion music server](https://lyrion.org/)
 * media server: [jellyfin](https://jellyfin.org/)
-* media request management: [jellyseerr](https://github.com/Fallenbagel/jellyseerr)
+* media request management: [seerr](https://github.com/seerr-team/seerr)
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)

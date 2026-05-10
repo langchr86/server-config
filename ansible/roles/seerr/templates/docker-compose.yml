@@ -1,9 +1,9 @@
 ---
-version: "3.5"
 services:
-  jellyseerr:
-    container_name: "jellyseerr"
-    image: fallenbagel/jellyseerr:latest
+  seerr:
+    container_name: "seerr"
+    image: ghcr.io/seerr-team/seerr:v3
+    init: true
     environment:
       - PUID={{ uid }}
       - PGID={{ gid }}

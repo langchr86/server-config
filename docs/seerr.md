@@ -1,5 +1,5 @@
-Jellyseerr
-========
+Seerr
+=====
 
 
 Einstellungen
