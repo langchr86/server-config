@@ -58,7 +58,7 @@
 
 - name: "Simulate .HA_VERSION file for HACS installation"
   ansible.builtin.copy:
-    content: "{{ ha_version }}.0"
+    content: "2026.6.0"
     dest: "{{ ha_config_folder }}/.HA_VERSION"
     force: false
     mode: "u+rw"
@@ -77,6 +77,7 @@
     service_name: "homeassistant"
     auto_restart_if_failing: true
     force_restart: "{{ core_config.changed or packages.changed or hacs.changed }}"
+    auto_update: true
     service_dependencies:
       - mosquitto.service
       - caddy.service

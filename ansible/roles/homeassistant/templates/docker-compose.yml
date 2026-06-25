@@ -3,7 +3,7 @@ version: "3.9"
 services:
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:{{ ha_version }}
+    image: homeassistant/home-assistant:latest
     ports:
       - "8123:8123"
       - "5683:5683/udp"
