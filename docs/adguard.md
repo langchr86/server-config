@@ -17,3 +17,7 @@ need to be changed to use the local DNS server.
 To test the blocking functionality the following pages can be used:
 
 * https://canyoublockit.com/
+
+Some useful recommendations for additional lists can be found here:
+
+* https://github.com/hagezi/dns-blocklists/wiki/FAQ#whatshouldiuse
