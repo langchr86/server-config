@@ -14,3 +14,6 @@ vagrant provision main
 ~~~~~~
 
 See the [Vagrantfile](/Vagrantfile) for more information.
+
+To access the web services use: [dashboard.localhost](https://dashboard.localhost/).
+You need to accept the security risk because of the self-signed certificate.
