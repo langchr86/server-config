@@ -1,5 +1,4 @@
 ---
-version: "2.3"
 services:
   jdownloader:
     image: jaymoulin/jdownloader:2.1.3
