@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
     main.vm.network "private_network", ip: "192.168.10.6"
     #main.vm.network "forwarded_port", guest: 53, host: 53       # adguard
     main.vm.network "forwarded_port", guest: 3000, host: 3000   # adguard
+    main.vm.network "forwarded_port", guest: 3456, host: 3456   # vikunja
     main.vm.network "forwarded_port", guest: 3483, host: 3483, protocol: "tcp"   # Lyrion: slimProto
     main.vm.network "forwarded_port", guest: 3483, host: 3483, protocol: "udp"   # Lyrion: slimProto
     main.vm.network "forwarded_port", guest: 4000, host: 4000   # homepage

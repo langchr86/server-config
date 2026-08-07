@@ -1,0 +1,8 @@
+---
+
+vikunja_user: "{{ ansible_env.USER }}"
+vikunja_group: "users"
+vikunja_service_name: "vikunja"
+vikunja_config_folder: "/config/vikunja"
+vikunja_files_folder: "{{ vikunja_config_folder }}/files"
+vikunja_db_folder: "{{ vikunja_config_folder }}/db"

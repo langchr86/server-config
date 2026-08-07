@@ -106,6 +106,7 @@
               - { name: "lyrion", src: "/config/lyrion", opts: '--exclude="config/cache"' }
               - { name: "mumble", src: "/config/mumble" }
               - { name: "transmission", src: "/config/transmission" }
+              - { name: "vikunja", src: "/config/vikunja" }
 
     - role: rsync
       vars:
@@ -198,6 +199,7 @@
     - role: seerr
     - role: lyrion
     - role: actual
+    - role: vikunja
 
     - role: homepage
       vars:

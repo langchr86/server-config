@@ -76,6 +76,11 @@
         href: https://budget.{{ domain }}
         server: local-docker
         container: actual
+    - Vikunja:
+        icon: vikunja.svg
+        href: https://tasks.{{ domain }}
+        server: local-docker
+        container: vikunja
     - Mumble:
         icon: mumble.svg
         server: local-docker

@@ -21,6 +21,7 @@ services:
       - homepage_net
       - homeassistant_net
       - jellyfin_net
+      - vikunja_net
 
 networks:
   actual_net:
@@ -28,3 +29,4 @@ networks:
   homepage_net:
   homeassistant_net:
   jellyfin_net:
+  vikunja_net:

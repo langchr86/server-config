@@ -1,0 +1,31 @@
+---
+
+- name: Create folders
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ vikunja_user }}"
+    group: "{{ vikunja_group }}"
+    mode: "u+rw"
+    recurse: true
+  with_items:
+    - "{{ vikunja_config_folder }}"
+    - "{{ vikunja_files_folder }}"
+    - "{{ vikunja_db_folder }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_uid.yml
+  vars:
+    user_name: "{{ vikunja_user }}"
+
+- ansible.builtin.import_tasks: tasks/evaluate_gid.yml
+  vars:
+    group_name: "{{ vikunja_group }}"
+
+- ansible.builtin.include_role:
+    name: docker-compose-service
+  vars:
+    service_name: "{{ vikunja_service_name }}"
+    auto_restart_if_failing: true
+    service_dependencies:
+      - caddy.service

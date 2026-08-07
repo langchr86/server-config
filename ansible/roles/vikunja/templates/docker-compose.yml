@@ -1,0 +1,48 @@
+---
+services:
+  vikunja:
+    container_name: "vikunja"
+    image: vikunja/vikunja:2.5.0
+    environment:
+      PUID: {{ uid }}
+      PGID: {{ gid }}
+      VIKUNJA_SERVICE_PUBLICURL: https://tasks.{{ domain }}
+      VIKUNJA_SERVICE_SECRET: {{ passwords.vikunja_secret }}
+      VIKUNJA_SERVICE_ENABLEREGISTRATION: false
+      VIKUNJA_DATABASE_HOST: vikunja-db
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_PASSWORD: {{ passwords.vikunja_db_password }}
+      VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_DATABASE: vikunja
+    ports:
+      - 3456:3456
+    volumes:
+      - {{ vikunja_files_folder }}:/app/vikunja/files
+    networks:
+      - vikunja_internal
+      - caddy_vikunja_net
+    depends_on:
+      vikunja-db:
+        condition: service_healthy
+
+  vikunja-db:
+    container_name: "vikunja-db"
+    image: paradedb/paradedb:v0.25.3
+    environment:
+      POSTGRES_USER: vikunja
+      POSTGRES_PASSWORD: {{ passwords.vikunja_db_password }}
+      POSTGRES_DB: vikunja
+    volumes:
+      - {{ vikunja_db_folder }}:/var/lib/postgresql
+    networks:
+      - vikunja_internal
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER" ]
+      interval: 2s
+      start_period: 30s
+
+networks:
+  vikunja_internal:
+  caddy_vikunja_net:
+    external: true
