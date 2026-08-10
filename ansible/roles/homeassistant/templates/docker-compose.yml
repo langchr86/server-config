@@ -11,6 +11,7 @@ services:
       - /share:/share:ro
     environment:
       - TZ="{{ timezone }}"
+      - SETUP_PORT=8123
     networks:
       - mosquitto_homeassistant_net
       - caddy_homeassistant_net

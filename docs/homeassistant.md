@@ -26,7 +26,10 @@ If you encounter the following errors in the HA log:
 [homeassistant.components.http.forwarded] Received X-Forwarded-For header from an untrusted proxy 192.168.96.2
 ~~~
 
-You need the add the reported IP as trusted proxy in the main HA config file under `trusted_proxies:`
+You need the add the reported IP as trusted proxy in:
+`Config` -> `System` -> `Network` -> `HTTP-Server` -> `Reverse-Proxy`
+and enable `trust X-Forwarded-For`.
+Usually we need: `172.0.0.0/8` and `192.168.0.0/16` in our setup with Caddy.
 
 
 My Custom Integrations
