@@ -1,4 +1,4 @@
-{ 
+{
   "password" : "{{ myjd_password }}",
   "email" : "lang.chr86@gmail.com",
   "devicename" : "{{ ansible_hostname }}"
