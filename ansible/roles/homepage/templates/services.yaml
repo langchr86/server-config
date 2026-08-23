@@ -21,6 +21,10 @@
         href: http://{{ ip_address_main }}:9000/
         server: local-docker
         container: lyrion
+    - Mumble:
+        icon: mumble.svg
+        server: local-docker
+        container: mumble
 
 - Network:
     - AdGuard:
@@ -41,19 +45,10 @@
         icon: ddclient.svg
         server: local-docker
         container: ddclient
-
-- Home:
-    - Home Assistant:
-        icon: home-assistant.svg
-        href: https://home.{{ domain }}
-        server: local-docker
-        container: homeassistant
     - MQTT-Broker:
         icon: mqtt.svg
         server: local-docker
         container: mosquitto
-
-- Downloads:
     - JDownloader:
         icon: jdownloader2.png
         href: https://my.jdownloader.org
@@ -71,6 +66,11 @@
         href: https://bitwarden.{{ domain }}
         server: local-docker
         container: bitwarden
+    - Home Assistant:
+        icon: home-assistant.svg
+        href: https://home.{{ domain }}
+        server: local-docker
+        container: homeassistant
     - Actual Budget:
         icon: actual-budget.svg
         href: https://budget.{{ domain }}
@@ -81,7 +81,3 @@
         href: https://tasks.{{ domain }}
         server: local-docker
         container: vikunja
-    - Mumble:
-        icon: mumble.svg
-        server: local-docker
-        container: mumble
