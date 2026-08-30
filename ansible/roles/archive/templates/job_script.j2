@@ -13,8 +13,18 @@ printf "************************************************************************
 
 FILE="{{ archive_job.dest }}/{{ step.name }}.tar.gz"
 
+{% if step.systemctl_pause | default(false) %}
+echo "systemctl stop {{ step.name }}"
+systemctl stop "{{ step.name }}"
+{% endif %}
+
 echo "run archive step: {{ step.src }} into '${FILE}'"
 tar -zcvf "${FILE}" {{ step.opts | default('') }} "{{ step.src }}"
+
+{% if step.systemctl_pause | default(false) %}
+echo "systemctl start {{ step.name }}"
+systemctl start "{{ step.name }}"
+{% endif %}
 
 echo "make accessible for 'users' group '${FILE}'"
 chmod 644 "${FILE}"

@@ -96,17 +96,17 @@
             dest: "/share/backups/{{ hostname_main }}/config/"
             timer_OnCalendar: "*-*-* 04:30:00"
             steps:
-              - { name: "actual", src: "/config/actual" }
-              - { name: "adguard", src: "/config/adguard" }
+              - { name: "actual", src: "/config/actual", systemctl_pause: true }
+              - { name: "adguard", src: "/config/adguard", systemctl_pause: true }
               - { name: "bitwarden", src: "/config/bitwarden" }
               - { name: "homeassistant", src: "/config/homeassistant", opts: '--exclude="home-assistant_v2.db*"' }
               - { name: "jdownloader", src: "/config/jdownloader" }
-              - { name: "jellyfin", src: "/config/jellyfin", opts: '--exclude="cache" --exclude="data/metadata" --exclude="data/transcodes"' }
-              - { name: "seerr", src: "/config/seerr" }
+              - { name: "jellyfin", src: "/config/jellyfin", systemctl_pause: true, opts: '--exclude="cache" --exclude="data/metadata" --exclude="data/transcodes"' }
+              - { name: "seerr", src: "/config/seerr", systemctl_pause: true }
               - { name: "lyrion", src: "/config/lyrion", opts: '--exclude="config/cache"' }
-              - { name: "mumble", src: "/config/mumble" }
+              - { name: "mumble", src: "/config/mumble", systemctl_pause: true }
               - { name: "transmission", src: "/config/transmission" }
-              - { name: "vikunja", src: "/config/vikunja" }
+              - { name: "vikunja", src: "/config/vikunja", systemctl_pause: true }
 
     - role: rsync
       vars:
