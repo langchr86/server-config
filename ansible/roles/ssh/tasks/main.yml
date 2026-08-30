@@ -13,7 +13,7 @@
   ansible.posix.authorized_key:
     user: "{{ ansible_facts.env.USER }}"
     state: present
-    key: "{{ lookup('file', '{{ item }}') }}"
+    key: "{{ lookup('file', item) }}"
   with_items:
     - "{{ ssh_pub_files }}"
 
