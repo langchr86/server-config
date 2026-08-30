@@ -21,6 +21,7 @@ services:
     networks:
       - vikunja_internal
       - caddy_vikunja_net
+    restart: unless-stopped
     depends_on:
       vikunja-db:
         condition: service_healthy
