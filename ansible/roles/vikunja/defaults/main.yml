@@ -1,6 +1,6 @@
 ---
 
-vikunja_user: "{{ ansible_env.USER }}"
+vikunja_user: "{{ ansible_facts.env.USER }}"
 vikunja_group: "users"
 vikunja_service_name: "vikunja"
 vikunja_config_folder: "/config/vikunja"

@@ -7,7 +7,7 @@
 
 - name: Add bash aliases
   ansible.builtin.lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bash_aliases"
+    dest: "{{ ansible_facts.env.HOME }}/.bash_aliases"
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
     state: present
@@ -21,7 +21,7 @@
 
 - name: Add bash exports
   ansible.builtin.lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
+    dest: "{{ ansible_facts.env.HOME }}/.bashrc"
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
     state: present
@@ -35,7 +35,7 @@
 
 - name: Source usual bash definitions
   ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
+    path: "{{ ansible_facts.env.HOME }}/.bashrc"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: usual bash definitions"
     block: |
       # Source bash definitions

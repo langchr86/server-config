@@ -1,6 +1,6 @@
 ---
 
-adguard_user: "{{ ansible_env.USER }}"
+adguard_user: "{{ ansible_facts.env.USER }}"
 adguard_group: "users"
 adguard_service_name: "adguard"
 adguard_config_folder: "/config/{{ adguard_service_name }}/conf"

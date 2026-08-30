@@ -16,10 +16,10 @@
   when: subvolume_list.rc != 0
   changed_when: true
 
-- name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group and user '{{ ansible_env.USER }}'"
+- name: "Ensure subvolume '{{ subvolume_path }}' is accessible by 'users' group and user '{{ ansible_facts.env.USER }}'"
   become: true
   ansible.builtin.file:
     path: '{{ subvolume_path }}'
-    owner: '{{ ansible_env.USER }}'
+    owner: '{{ ansible_facts.env.USER }}'
     group: 'users'
     mode: '0775'

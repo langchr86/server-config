@@ -1,12 +1,12 @@
 ---
 
 ssh_allowed_users:
-  - '{{ ansible_env.USER }}'
+  - '{{ ansible_facts.env.USER }}'
 
 ssh_pub_files:
   - 'eddsa-key-clang-privat-20220905.opub'
 
 sshd_config_file: "/etc/ssh/sshd_config"
 
-ssh_user_config_folder: "{{ ansible_env.HOME }}/.ssh"
+ssh_user_config_folder: "{{ ansible_facts.env.HOME }}/.ssh"
 ssh_user_config_file: "{{ ssh_user_config_folder }}/config"

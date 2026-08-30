@@ -9,5 +9,5 @@
 - name: Add tmux config
   ansible.builtin.copy:
     src: .tmux.conf
-    dest: "{{ ansible_env.HOME }}"
+    dest: "{{ ansible_facts.env.HOME }}"
     mode: "u+rw"

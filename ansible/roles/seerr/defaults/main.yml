@@ -1,6 +1,6 @@
 ---
 
-js_user: "{{ ansible_env.USER }}"
+js_user: "{{ ansible_facts.env.USER }}"
 js_group: "users"
 js_service_name: "seerr"
 js_config_folder: "/config/seerr"

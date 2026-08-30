@@ -6,6 +6,6 @@
     path: "{{ item }}"
     state: directory
     mode: '0775'
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ ansible_facts.env.USER }}"
     group: "users"
   with_items: "{{ folders }}"

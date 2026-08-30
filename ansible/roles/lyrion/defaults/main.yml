@@ -1,6 +1,6 @@
 ---
 
-lyrion_user: "{{ ansible_env.USER }}"
+lyrion_user: "{{ ansible_facts.env.USER }}"
 lyrion_group: "users"
 lyrion_base_folder: "/config/lyrion"
 lyrion_config_folder: "{{ lyrion_base_folder }}/config"

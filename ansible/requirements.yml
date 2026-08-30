@@ -1,5 +1,5 @@
 - src: 'https://github.com/langchr86/git-tools.git'
-  version: '6b94968'
+  version: '65e531dc1606ffe0f887e88a99997f15a6531ca4'
 - src: 'https://github.com/vlcty/ansible-systemd-timers.git'
   version: '3f300a7'
 - src: 'https://github.com/vladgh/ansible-collection-vladgh-samba.git'

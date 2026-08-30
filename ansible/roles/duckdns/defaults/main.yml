@@ -1,6 +1,6 @@
 ---
 
-ddns_user: "{{ ansible_env.USER }}"
+ddns_user: "{{ ansible_facts.env.USER }}"
 ddns_group: "users"
 ddns_config_folder: "/config/duckdns"
 ddns_script_folder: "/opt/duckdns_scripts"

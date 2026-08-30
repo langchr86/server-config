@@ -9,7 +9,7 @@
     sd_timer_name: "{{ archive_job.name }}"
     sd_timer_command: "{{ script }}"
     sd_timer_OnCalendar: "{{ archive_job.timer_OnCalendar | default('*-*-* 02:00:00') }}"
-    sd_timer_user: "{{ archive_job.user | default(ansible_env.USER) }}"
+    sd_timer_user: "{{ archive_job.user | default(ansible_facts.env.USER) }}"
     sd_timer_persistent: true
 
 - name: "Create job script: '{{ script }}'"

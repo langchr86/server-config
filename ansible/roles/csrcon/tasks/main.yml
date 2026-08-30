@@ -4,18 +4,18 @@
   ansible.builtin.unarchive:
     src: "{{ csrcon_url }}"
     remote_src: true
-    dest: "{{ ansible_env.HOME }}"
-    creates: "{{ ansible_env.HOME }}/{{ csrcon_folder }}/rcon"
+    dest: "{{ ansible_facts.env.HOME }}"
+    creates: "{{ ansible_facts.env.HOME }}/{{ csrcon_folder }}/rcon"
 
 - name: Install rcon CLI
   ansible.builtin.copy:
-    src: "{{ ansible_env.HOME }}/{{ csrcon_folder }}/rcon"
+    src: "{{ ansible_facts.env.HOME }}/{{ csrcon_folder }}/rcon"
     remote_src: true
-    dest: "{{ ansible_env.HOME }}/.local/bin/rcon"
+    dest: "{{ ansible_facts.env.HOME }}/.local/bin/rcon"
     mode: "u+rwx"
 
 - name: "Copy config files to {{ cs2_config_folder }}/cfg"
   ansible.builtin.copy:
     src: "rcon.yaml"
-    dest: "{{ ansible_env.HOME }}/rcon.yaml"
+    dest: "{{ ansible_facts.env.HOME }}/rcon.yaml"
     mode: "u+rwx"

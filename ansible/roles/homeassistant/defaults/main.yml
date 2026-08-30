@@ -1,5 +1,5 @@
 ---
 
-user: "{{ ansible_env.USER }}"
+user: "{{ ansible_facts.env.USER }}"
 group: "users"
 ha_config_folder: "/config/homeassistant"

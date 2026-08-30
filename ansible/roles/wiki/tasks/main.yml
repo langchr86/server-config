@@ -5,7 +5,7 @@
   ansible.builtin.file:
     path: "{{ wiki_web_folder }}"
     state: directory
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ ansible_facts.env.USER }}"
     group: "users"
     mode: "774"
 
