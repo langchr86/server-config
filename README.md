@@ -55,6 +55,7 @@ The following services are available:
   with [mosquitto MQTT](https://mosquitto.org/)
 * private finance management: [actual budget](https://actualbudget.org/)
 * task management: [vikunja](https://vikunja.io)
+* wireguard VPN: [wg-easy](https://wg-easy.github.io)
 * service dashboard: [homepage](https://gethomepage.dev/)
 
 

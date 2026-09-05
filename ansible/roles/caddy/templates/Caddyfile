@@ -8,6 +8,11 @@ ssh.{{ domain }} ssh.{{ domain2 }} {
   respond 204
 }
 
+# needed for wireguard access
+vpn.{{ domain }} vpn.{{ domain2 }} {
+  respond 204
+}
+
 tools.{{ domain }} tools.{{ domain2 }} {
   root * /srv/tools
   file_server browse
