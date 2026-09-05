@@ -5,14 +5,16 @@ PLAYBOOK=${1}
 SCRIPT_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 cd ${SCRIPT_DIR}
 
-sudo apt-get update
-sudo apt-get install --yes \
-  software-properties-common \
-  python3 \
-  python3-passlib
+if ! command -v ansible >/dev/null 2>&1; then
+  sudo apt-get update
+  sudo apt-get install --yes \
+    software-properties-common \
+    python3 \
+    python3-passlib
 
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt-get install --yes ansible
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
+  sudo apt-get install --yes ansible
+fi
 
 ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
