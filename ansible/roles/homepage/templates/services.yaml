@@ -37,6 +37,11 @@
           url: http://{{ ip_address_main }}:3000/
           username: {{ '{{' }}HOMEPAGE_VAR_ADGUARD_USER{{ '}}' }}
           password: {{ '{{' }}HOMEPAGE_VAR_ADGUARD_PASSWORD{{ '}}' }}
+    - WG-Easy:
+        icon: wireguard.svg
+        href: https://vpn.{{ domain }}
+        server: local-docker
+        container: wgeasy
     - Caddy:
         icon: caddy.svg
         server: local-docker

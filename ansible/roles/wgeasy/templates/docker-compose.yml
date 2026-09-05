@@ -1,0 +1,46 @@
+---
+services:
+  wgeasy:
+    #environment:
+    #  Optional:
+    #  - PORT=51821
+    #  - HOST=0.0.0.0
+    #  - INSECURE=false
+
+    image: ghcr.io/wg-easy/wg-easy:15
+    container_name: wgeasy
+    networks:
+      wgeasy:
+        ipv4_address: 10.42.42.42
+        ipv6_address: fdcc:ad94:bacf:61a3::2a
+      caddy_wgeasy_net:
+    volumes:
+      - {{ wge_config_folder }}:/etc/wireguard
+      - /lib/modules:/lib/modules:ro
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    environment:
+      - PORT=51821
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv6.conf.all.forwarding=1
+      - net.ipv6.conf.default.forwarding=1
+
+networks:
+  wgeasy:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.42.42.0/24
+        - subnet: fdcc:ad94:bacf:61a3::/64
+  caddy_wgeasy_net:
+    external: true

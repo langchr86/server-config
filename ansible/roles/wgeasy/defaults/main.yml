@@ -1,0 +1,6 @@
+---
+
+wge_user: "{{ ansible_facts.env.USER }}"
+wge_group: "users"
+wge_service_name: "wgeasy"
+wge_config_folder: "/config/wgeasy"

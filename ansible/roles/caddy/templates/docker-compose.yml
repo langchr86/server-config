@@ -22,6 +22,7 @@ services:
       - homeassistant_net
       - jellyfin_net
       - vikunja_net
+      - wgeasy_net
 
 networks:
   actual_net:
@@ -30,3 +31,4 @@ networks:
   homeassistant_net:
   jellyfin_net:
   vikunja_net:
+  wgeasy_net:

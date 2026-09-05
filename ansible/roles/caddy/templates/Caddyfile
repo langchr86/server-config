@@ -55,6 +55,10 @@ tasks.{{ domain }} tasks.{{ domain2 }} {
   reverse_proxy vikunja:3456
 }
 
+vpn.{{ domain }} vpn.{{ domain2 }} {
+  reverse_proxy wgeasy:51821
+}
+
 bitwarden.{{ domain }}:443 bitwarden.{{ domain2 }}:443 {
   # This setting may have compatibility issues with some browsers
   # (e.g., attachment downloading on Firefox). Try disabling this if you encounter issues.
