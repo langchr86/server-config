@@ -13,6 +13,5 @@
       - apt-transport-https
       - ca-certificates
       - curl
-      - software-properties-common
       - docker.io
-      - docker-compose-v2
+      - docker-compose

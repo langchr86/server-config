@@ -1,6 +1,7 @@
 {
   "hostname_main": "vm-main",
   "hostname_backup": "vm-backup",
+  "ip_net_prefix": "192.168.10",
   "ip_address_main": "192.168.10.6",
   "ip_address_backup": "192.168.10.5",
   "ssh_evaluate_host_aliases": false,
@@ -32,5 +33,6 @@
     {"path": "/dev/sdc"}
   ],
   "main_user": "vagrant",
-  "main_password": "vagrant"
+  "main_password": "vagrant",
+  "wge_password": "vagrant12345"
 }

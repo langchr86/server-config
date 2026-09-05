@@ -32,6 +32,8 @@ Vagrant.configure("2") do |config|
     main.vm.network "forwarded_port", guest: 9000, host: 9000   # Lyrion: JSON RPC CLI/API
     main.vm.network "forwarded_port", guest: 9090, host: 9090   # Lyrion: classic squeezebox CLI
     main.vm.network "forwarded_port", guest: 9091, host: 9091   # transmission
+    main.vm.network "forwarded_port", guest: 51840, host: 51840 # wireguard
+    main.vm.network "forwarded_port", guest: 51841, host: 51841 # wg-easy
     main.vm.disk :disk, size: "32GB", name: "share_1"
     main.vm.disk :disk, size: "32GB", name: "share_2"
     main.vm.disk :disk, size: "32GB", name: "share_3"

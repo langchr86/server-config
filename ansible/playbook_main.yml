@@ -102,11 +102,12 @@
               - { name: "homeassistant", src: "/config/homeassistant", opts: '--exclude="home-assistant_v2.db*"' }
               - { name: "jdownloader", src: "/config/jdownloader" }
               - { name: "jellyfin", src: "/config/jellyfin", systemctl_pause: true, opts: '--exclude="cache" --exclude="data/metadata" --exclude="data/transcodes"' }
-              - { name: "seerr", src: "/config/seerr", systemctl_pause: true }
               - { name: "lyrion", src: "/config/lyrion", opts: '--exclude="config/cache"' }
               - { name: "mumble", src: "/config/mumble", systemctl_pause: true }
+              - { name: "seerr", src: "/config/seerr", systemctl_pause: true }
               - { name: "transmission", src: "/config/transmission" }
               - { name: "vikunja", src: "/config/vikunja", systemctl_pause: true }
+              - { name: "wgeasy", src: "/config/wgeasy", systemctl_pause: true }
 
     - role: rsync
       vars:
@@ -178,6 +179,10 @@
       vars:
         adguard_user: "{{ main_user }}"
         adguard_password: "{{ main_password }}"
+    - role: wgeasy
+      vars:
+        wge_user: "{{ main_user }}"
+        wge_password: "{{ main_password }}"
 
     - role: transmission
       vars:

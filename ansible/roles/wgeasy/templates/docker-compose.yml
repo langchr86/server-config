@@ -1,0 +1,48 @@
+---
+services:
+  wgeasy:
+    image: ghcr.io/wg-easy/wg-easy:15
+    container_name: wgeasy
+    networks:
+      wgeasy:
+        ipv4_address: 10.42.42.42
+#      caddy_wgeasy_net:
+    volumes:
+      - {{ wge_config_folder }}:/etc/wireguard
+      - /lib/modules:/lib/modules:ro
+    ports:
+      - "51840:51840/udp"
+      - "51841:51841/tcp"
+    environment:
+      - PUID={{ uid }}
+      - PGID={{ gid }}
+      - PORT=51841
+      - INSECURE=true
+      - DISABLE_IPV6=true
+      - INIT_ENABLED=true
+      - INIT_USERNAME={{ wge_user }}
+      - INIT_PASSWORD={{ wge_password }}
+      - INIT_HOST=vpn.{{ domain }}
+      - INIT_PORT=51840
+      - INIT_DNS={{ ip_net_prefix }}.1
+      - INIT_IPV4_CIDR={{ ip_net_prefix }}.0/24
+      - INIT_IPV6_CIDR=::/0
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=1
+
+networks:
+  wgeasy:
+    driver: bridge
+    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.42.42.0/24
+#  caddy_wgeasy_net:
+#    external: true

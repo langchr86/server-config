@@ -10,6 +10,7 @@ hostname_backup: "lang-backup"
 hostname_claudia: "claudia-server"
 hostname_kevin: "mueller-nas"
 
+ip_net_prefix: "192.168.0"
 ip_address_main: "192.168.0.6"
 ip_address_backup: "192.168.0.5"
 ip_address_claudia: "192.168.0.124"
