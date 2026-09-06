@@ -9,22 +9,6 @@
         main_user: "clang"
         main_password: "{{ passwords.clang }}"
 
-    - ansible.builtin.import_tasks: tasks/ubuntu_apt.yml
-    - ansible.builtin.import_tasks: tasks/basic_setup.yml
 
   roles:
-    - role: git-tools
-      vars:
-        git_graphical_tools: false
-        git_aliases: true
-        git_rerere: true
-        git_editor_nano: true
-        git_prompt: true
-        git_user_name: "Christian Lang"
-        git_user_email: "lang.chr86@gmail.com"
-
-    - role: bash
-    - role: tmux
-
-    - role: dockerio
     - role: wgeasy
