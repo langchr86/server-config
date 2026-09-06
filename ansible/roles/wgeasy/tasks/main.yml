@@ -25,5 +25,5 @@
   vars:
     service_name: "{{ wge_service_name }}"
     auto_restart_if_failing: true
-    service_dependencies:
-      - caddy.service
+#    service_dependencies:
+#      - caddy.service
