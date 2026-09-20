@@ -87,8 +87,10 @@ See the following step-by-step guides:
 Further documentation
 ---------------------
 
-You can also find some detail documentation for specific individual ansible roles or system parts under:
+You can also find some detail documentation for system parts under:
 [Documentation](/docs)
+
+The specific ansible roles have documentation in its role directory.
 
 
 

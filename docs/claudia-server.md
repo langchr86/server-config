@@ -30,9 +30,9 @@ If the samba role fails to create the user do it manually:
 
 ## Configure RSync backups on host
 
-See: [rsync-daemon role](rsync-daemon.md)
+See: [rsync-daemon role](/ansible/roles/rsync-daemon/rsync-daemon.md)
 
 
 ## Others
 
-* [Jellyfin](jellyfin.md)
+* [Jellyfin](/ansible/roles/jellyfin/jellyfin.md)
