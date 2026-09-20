@@ -99,6 +99,7 @@ template:
         state: "{{ max(0, (states('sensor.solarnet_power_load_inverted') | float(default=0))
                 - (states('sensor.wpl17ics_real_power_all_modes') | float(default=0))
                 - (states('sensor.comfoairq_ventilation_current_power_usage') | float(default=0))
+                - (states('sensor.outlet_lang_gpu_power') | float(default=0))
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
                 - (states('sensor.outlet_tv_wohnen_power') | float(default=0))
@@ -211,6 +212,12 @@ template:
         state: "{{ states('switch.outlet_tv_wohnen') }}"
         attributes:
           power: "{{ states('sensor.outlet_tv_wohnen_power') | int(default=0) }} W"
+      - name: lang_gpu_combined
+        unique_id: lang_gpu_combined
+        icon: mdi:expansion-card
+        state: "{{ states('switch.1pm_lang_gpu') }}"
+        attributes:
+          power: "{{ states('sensor.outlet_lang_gpu_power') | int(default=0) }} W"
       - name: motorrad_combined
         unique_id: motorrad_combined
         icon: mdi:motorbike-electric

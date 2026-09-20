@@ -70,6 +70,7 @@ Device IPs
 |------|----------------------|
 | .5   | lang-backup          |
 | .6   | lang-main            |
+| .7   | lang-gpu             |
 | .20  | tv-wohnen            |
 | .21  | tv-dispo             |
 | .30  | lang-pv-symo24       |
@@ -85,6 +86,7 @@ Device IPs
 | .55  | sensor-dispo         |
 | .56  | sensor-garage        |
 | .60  | technik-wasser       |
+| .64  | 1pm-lang-gpu         |
 | .65  | 1pm-tv-wohnen        |
 | .66  | 1pm-rack             |
 | .67  | 1pm-buro             |

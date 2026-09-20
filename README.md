@@ -23,7 +23,7 @@ The infrastructure consists of multiple hosts
 where one is responsible to provide access to internal services through the internet.
 The following diagram gives an overview of the relevant hosts and some data flows.
 
-![infrastructure_overview](docs/images/infrastructure_overview.png)
+![infrastructure_overview](docs/images/infrastructure_overview.drawio.png)
 
 The following services are available:
 
@@ -50,6 +50,7 @@ The following services are available:
 * multi-room audio system: [lyrion music server](https://lyrion.org/)
 * media server: [jellyfin](https://jellyfin.org/)
 * media request management: [seerr](https://github.com/seerr-team/seerr)
+* game/desktop streaming: [apollo](https://github.com/ClassicOldSong/Apollo)
 * low-latency voice chat: [mumble](https://www.mumble.com/)
 * home automation: [homeassistant](https://www.home-assistant.io/)
   with [mosquitto MQTT](https://mosquitto.org/)

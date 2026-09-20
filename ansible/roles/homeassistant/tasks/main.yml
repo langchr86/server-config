@@ -50,6 +50,7 @@
     dest: "{{ ha_config_folder }}/packages"
     mode: "u+rw"
   with_items:
+    - "packages/lang_gpu.yaml"
     - "packages/mystrom.yaml"
     - "packages/robots.yaml"
     - "packages/symogen24.yaml"
