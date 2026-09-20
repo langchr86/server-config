@@ -1,0 +1,5 @@
+# lang-cpu controls
+
+rest_command:
+  lang_gpu_shutdown:
+    url: http://192.168.0.7:5001/shutdown

@@ -70,6 +70,7 @@ Device IPs
 |------|----------------------|
 | .5   | lang-backup          |
 | .6   | lang-main            |
+| .7   | lang-gpu             |
 | .20  | tv-wohnen            |
 | .21  | tv-dispo             |
 | .30  | lang-pv-symo24       |
