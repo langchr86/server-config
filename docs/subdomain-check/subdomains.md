@@ -8,4 +8,6 @@ https://media.langchr86.ch/web/index.html
 https://mediarequest.langchr86.ch/login
 https://mumble.langchr86.ch
 https://ssh.langchr86.ch
+https://tasks.langchr86.ch
+https://tools.langchr86.ch
 https://wiki.langchr86.ch
