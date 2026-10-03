@@ -28,7 +28,7 @@ The following diagram gives an overview of the relevant hosts and some data flow
 The following services are available:
 
 * local file access: [samba](https://www.samba.org/)
-* SSH access hardened by using the following guides and tools:)
+* SSH access hardened by using the following guides and tools:
   * [ssh-audit.com](https://www.ssh-audit.com/)
   * [ssh-audit.com/hardening_guides.html](https://www.ssh-audit.com/hardening_guides.html)
   * [ssh-jumphost-vs-wireguard-jumphost](https://www.procustodibus.com/blog/2021/12/ssh-jumphost-vs-wireguard-jumphost/)
