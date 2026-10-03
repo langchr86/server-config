@@ -1,5 +1,20 @@
 ---
 
+- name: "Regenerate ed25519 host key only if format or options mismatch"
+  become: true
+  community.crypto.openssh_keypair:
+    path: /etc/ssh/ssh_host_ed25519_key
+    regenerate: full_idempotence
+    type: ed25519
+
+- name: "Regenerate RSA host key only if format or options mismatch"
+  become: true
+  community.crypto.openssh_keypair:
+    path: /etc/ssh/ssh_host_rsa_key
+    regenerate: full_idempotence
+    type: rsa
+    size: 4096
+
 - name: "Daemon settings: global"
   become: true
   ansible.builtin.lineinfile:
@@ -37,13 +52,14 @@
     - {regexp: "^PermitTunnel", line: "PermitTunnel no"}
     - {regexp: "^PerSourceMaxStartups", line: "PerSourceMaxStartups 1"}
     - {regexp: "^KexAlgorithms", line: "KexAlgorithms sntrup761x25519-sha512@openssh.com,gss-curve25519-sha256-,gss-group16-sha512-,diffie-hellman-group-exchange-sha256"}
-    - {regexp: "^Ciphers", line: "Ciphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr"}
+    - {regexp: "^Ciphers", line: "Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr"}
     - {regexp: "^MACs", line: "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com"}
+    - {regexp: "^RequiredRSASize", line: "RequiredRSASize 3072"}
     - {regexp: "^HostKeyAlgorithms", line: "HostKeyAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256"}
     - {regexp: "^CASignatureAlgorithms", line: "CASignatureAlgorithms sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256"}
     - {regexp: "^GSSAPIKexAlgorithms", line: "GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-group16-sha512-"}
-    - {regexp: "^HostbasedAcceptedAlgorithms", line: "HostbasedAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-256"}
-    - {regexp: "^PubkeyAcceptedAlgorithms", line: "PubkeyAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-256"}
+    - {regexp: "^HostbasedAcceptedAlgorithms", line: "HostbasedAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256"}
+    - {regexp: "^PubkeyAcceptedAlgorithms", line: "PubkeyAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256"}
     - {regexp: "^AllowUsers", line: "AllowUsers {{ ssh_allowed_users | join(' ') }}"}
   notify: restart sshd
 
