@@ -86,6 +86,8 @@ Update system
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get autoremove
+fwupdmgr get-update
+fwupdmgr update
 ~~~
 
 
