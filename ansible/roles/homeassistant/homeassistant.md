@@ -37,4 +37,4 @@ My Custom Integrations
 
 * https://github.com/michaelarnauts/home-assistant-comfoconnect (this replaces the core integration: Comfoconnect)
 * https://github.com/mk-maddin/wattpilot-HA
-* https://github.com/SpangleLabs/history-explorer-card
+* https://github.com/Cook23/history-explorer-card
