@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
     main.vm.network "forwarded_port", guest: 443, host: 443     # caddy
     main.vm.network "forwarded_port", guest: 5006, host: 5006   # actual budget
     main.vm.network "forwarded_port", guest: 8123, host: 8123   # homeassistant
+    main.vm.network "forwarded_port", guest: 8096, host: 8096   # jellyfin
     main.vm.network "forwarded_port", guest: 9000, host: 9000   # Lyrion: JSON RPC CLI/API
     main.vm.network "forwarded_port", guest: 9090, host: 9090   # Lyrion: classic squeezebox CLI
     main.vm.network "forwarded_port", guest: 9091, host: 9091   # transmission
