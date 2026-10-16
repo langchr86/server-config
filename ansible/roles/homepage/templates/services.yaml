@@ -7,6 +7,7 @@
         container: jellyfin
         widget:
           type: jellyfin
+          version: 2
           url: http://{{ ip_address_main }}:8096
           key: {{ '{{' }}HOMEPAGE_VAR_JELLYFIN_API_KEY{{ '}}' }}
           enableBlocks: true
