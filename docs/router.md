@@ -52,15 +52,11 @@ If you want to disable all devices at once you can use:
 IP Management
 -------------
 
-| IP range    | usage                |
-|-------------|----------------------|
-| .2   - .9   | servers              |
-| .10  - .19  | network              |
-| .20  - .29  | media                |
-| .30  - .39  | energy               |
-| .40  - .49  |                      |
-| .50  - .99  | smart home |
-| .100 - .200 | DHCP                 |
+| IP range    | usage                    |
+|-------------|--------------------------|
+| .2   - .29  | servers & infrastructure |
+| .30  - .99  | smart home               |
+| .100 - .250 | DHCP                     |
 
 
 Device IPs
@@ -71,27 +67,25 @@ Device IPs
 | .5   | lang-backup          |
 | .6   | lang-main            |
 | .7   | lang-gpu             |
-| .20  | tv-wohnen            |
-| .21  | tv-dispo             |
 | .30  | lang-pv-symo24       |
 | .31  | servicewelt          |
-| .33  | 1pm-motorrad         |
 | .48  | button-buro          |
 | .49  | button-wohnen        |
-| .50  | sensor-sitzplatz     |
 | .51  | sensor-technik       |
 | .52  | sensor-wohnen        |
 | .53  | sensor-buero         |
 | .54  | sensor-schlafen      |
 | .55  | sensor-dispo         |
 | .56  | sensor-garage        |
+| .57  | sensor-schopf        |
+| .58  | sensor-keller        |
 | .60  | technik-wasser       |
 | .64  | 1pm-lang-gpu         |
 | .65  | 1pm-tv-wohnen        |
 | .66  | 1pm-rack             |
 | .67  | 1pm-buro             |
-| .68  | boiler               |
-| .69  | warmepumpe           |
+| .68  | 3em-boiler           |
+| .69  | 3em-warmepumpe       |
 | .70  | storen-dispo-west    |
 | .71  | storen-wohnen-ost    |
 | .72  | storen-sitzplatz-sud |
