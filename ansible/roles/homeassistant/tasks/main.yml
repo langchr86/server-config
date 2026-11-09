@@ -57,21 +57,6 @@
     - "packages/wpl17ics.yaml"
   register: packages
 
-- name: "Simulate .HA_VERSION file for HACS installation"
-  ansible.builtin.copy:
-    content: "2026.6.0"
-    dest: "{{ ha_config_folder }}/.HA_VERSION"
-    force: false
-    mode: "u+rw"
-
-- name: Install HACS
-  become: true
-  ansible.builtin.shell:
-    cmd: "wget -O - https://get.hacs.xyz | bash -"
-    chdir: "{{ ha_config_folder }}"
-    creates: "{{ ha_config_folder }}/custom_components/hacs/manifest.json"
-  register: hacs
-
 - ansible.builtin.include_role:
     name: docker-compose-service
   vars:
