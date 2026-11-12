@@ -4,14 +4,13 @@ services:
     container_name: homeassistant
     image: homeassistant/home-assistant:latest
     ports:
-      - "8123:8123"
+      - "8123:80"
       - "5683:5683/udp"
     volumes:
       - {{ ha_config_folder }}:/config
       - /share:/share:ro
     environment:
       - TZ="{{ timezone }}"
-      - SETUP_PORT=8123
     networks:
       - mosquitto_homeassistant_net
       - caddy_homeassistant_net
