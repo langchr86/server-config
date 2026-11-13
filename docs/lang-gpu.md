@@ -68,3 +68,18 @@ rest_command:
   lang_gpu_shutdown:
     url: http://192.168.0.7:5001/shutdown
 ~~~~~~
+
+
+Power Consumption
+-----------------
+
+A simple reduction can be optained by limiting the maximum power of the GPU.
+
+For that we use:
+https://www.msi.com/Landing/afterburner
+
+E.g. limiting TDP to 60% gives me only 9% lower FPS but 25% lower overall power-consumption on an RTX 3080.
+
+* Enable to auto-start the app on windows startup.
+* Save the profile.
+* Enable auto-load (windows-symbol in the left bottom corner).
