@@ -47,6 +47,23 @@ In AVM Fritzbox this not allowed by default and needs to be activated per device
 If you want to disable all devices at once you can use:
 
 `Internet` -> `Freigaben` -> `Sie können die Einstellung "Selbstständige Portfreigabe" für alle Geräte deaktivieren, die bisher keine Portfreigabe angefordert haben.`
+`Netzwerk` -> `Erweiterte Netzwerkeinstellungen` -> `Heimnetzfreigaben` -> disable all of them.
+
+### Use at least WPA2
+
+`WLAN` -> `Sicherheit` -> `WPA2 + WPA3`
+
+### Disable `FRITZ! Stick & Surf`
+
+`WLAN` -> `Sicherheit` -> `FRITZ! Stick & Surf aktivieren`
+
+### Disable `Kompatibilität für ältere WLAN-Geräte`
+
+`WLAN` -> `Sicherheit` -> `Sicherheitseinstellungen für den WLAN-Zugang auf eine erhöhte Kompatibilität für ältere WLAN-Geräte optimieren`
+
+### Disable WPS
+
+`WLAN` -> `Sicherheit` -> `WPS-Schnellverbindung`
 
 
 IP Management
