@@ -103,7 +103,6 @@ template:
                 - (states('sensor.outlet_rack_power') | float(default=0))
                 - (states('sensor.outlet_buro_power') | float(default=0))
                 - (states('sensor.outlet_tv_wohnen_power') | float(default=0))
-                - (states('sensor.motorrad_power') | float(default=0))
                 - (states('sensor.boiler_channel_a_power') | float(default=0))
                 - (states('sensor.tumbler_leistung') | float(default=0))
                 - (states('sensor.waschmaschine_leistung') | float(default=0))
@@ -218,12 +217,6 @@ template:
         state: "{{ states('switch.1pm_lang_gpu') }}"
         attributes:
           power: "{{ states('sensor.outlet_lang_gpu_power') | int(default=0) }} W"
-      - name: motorrad_combined
-        unique_id: motorrad_combined
-        icon: mdi:motorbike-electric
-        state: "{{ states('switch.motorrad') }}"
-        attributes:
-          power: "{{ states('sensor.motorrad_power') | int(default=0) }} W"
       - name: entharter_combined
         unique_id: entharter_combined
         icon: mdi:waves
