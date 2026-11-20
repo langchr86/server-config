@@ -97,6 +97,7 @@ Device IPs
 | .57  | sensor-schopf        |
 | .58  | sensor-keller        |
 | .60  | technik-wasser       |
+| .63  | 1pm-homelab          |
 | .64  | 1pm-lang-gpu         |
 | .65  | 1pm-tv-wohnen        |
 | .66  | 1pm-rack             |
